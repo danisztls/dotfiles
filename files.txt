@@ -1,0 +1,10 @@
+.aliases
+.bashrc
+.profile
+.vimrc
+.Xresources
+.zshrc
+.config/nvim
+.config/zsh
+.vim
+

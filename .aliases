@@ -1,0 +1,18 @@
+# auto color
+alias ls='ls --color=auto'
+alias grep='grep --colour=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+
+# x clipboard
+alias "c=xclip -selection clipboard"
+alias "v=xclip -o"
+
+# fzf
+alias "fzfp=fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+# 7z
+alias "7zcrypt=7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p"
+
+# show current MPD song
+alias 'mpcc=notify-send "Now playing" "`mpc current`"'
