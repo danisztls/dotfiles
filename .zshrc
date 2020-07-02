@@ -51,10 +51,8 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # use beam shape cursor for each new prompt.
 
-# fuzzy finder
+# fzf
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-export FZF_DEFAULT_COMMAND="rg --hidden --ignore-case --files" 
-export FZF_DEFAULT_OPTS="--bind 'f1:execute(vim {}),f2:execute(gedit {} 2> /dev/null),f3:execute(code {})'"
 
 # autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -57,6 +57,10 @@ for file in "${config_files[@]}"; do
 	rm -f "$XDG_CONFIG_HOME/$file" && ln -s "/tmp/$USER/config/$file" "$XDG_CONFIG_HOME/$file"
 done
 
+# fzf
+export FZF_DEFAULT_COMMAND="rg --ignore-case --files" # override by aliases 
+export FZF_DEFAULT_OPTS="--bind 'f1:execute(nvim {}),f2:execute(gvim {} 2>/dev/null),f3:execute(code -r {})'"
+
 # broot launcher
 source /home/lobo/.config/broot/launcher/bash/br
 

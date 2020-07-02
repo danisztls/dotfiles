@@ -1,5 +1,6 @@
 .aliases
 .bashrc
+.gvimrc
 .profile
 .vimrc
 .Xresources
