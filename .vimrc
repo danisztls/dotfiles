@@ -1,7 +1,7 @@
 call plug#begin('.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
 
@@ -10,7 +10,10 @@ set nocompatible
 filetype plugin on
 syntax on
 set encoding=utf-8
+
+" line number
 set number relativenumber
+nmap <leader>h :setlocal number! relativenumber!<CR>
 
 " autocompletion
 set wildmode=longest,list,full
@@ -22,21 +25,22 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" clipboard
+vnoremap <C-c> "*y :let @+=@*<CR>
+map <C-v> "+P
+
 " disable automatic commenting on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" sell-check set to <leader>en and <leader>pt
-map <leader>en :setlocal spell! spelllang=en_us<CR>
-map <leader>pt :setlocal spell! spelllang=pt_br<CR>
-
-" vim-markdown
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
+" spell-check
+nmap <leader>en :setlocal spell! spelllang=en_us<CR>
+nmap <leader>pt :setlocal spell! spelllang=pt_br<CR>
 
 " markdown-preview
 "let g:mkdp_refresh_slow = 1
 let g:mkdp_browser = "electron"
-map <leader>t <Plug>MarkdownPreviewToggle
+nmap <leader>t <Plug>MarkdownPreviewToggle
 
 " fzf
-map <leader>f :Files
+nmap <leader>f :Files
+
