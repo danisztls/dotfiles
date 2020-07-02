@@ -2,6 +2,8 @@ call plug#begin('.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular'
+Plug 'mzlogin/vim-markdown-toc'
+Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
 
@@ -43,4 +45,15 @@ nmap <leader>t <Plug>MarkdownPreviewToggle
 
 " fzf
 nmap <leader>f :Files
+
+"vim-markdown
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_folding_disabled = 1
+set conceallevel=2
+
+"vim-markdown-toc
+let g:vmt_fence_text = 'TOC'
+let g:vmt_fence_closing_text = '/TOC'
+let g:vmt_list_item_char = '-'
 
