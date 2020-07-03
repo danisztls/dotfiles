@@ -1,6 +1,7 @@
-call plug#begin('.vim/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'plasticboy/vim-markdown'
@@ -8,8 +9,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
 
 " basics
-set nocompatible
-filetype plugin on
+"set nocompatible
+filetype plugin indent on
 syntax on
 set encoding=utf-8
 
@@ -37,6 +38,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " spell-check
 nmap <leader>en :setlocal spell! spelllang=en_us<CR>
 nmap <leader>pt :setlocal spell! spelllang=pt_br<CR>
+
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
 
 " markdown-preview
 "let g:mkdp_refresh_slow = 1
