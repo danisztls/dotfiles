@@ -80,7 +80,7 @@ shopt -s expand_aliases
 
 # change the window title of X terminals
 case ${TERM} in
-	xterm|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
+	xterm|rxvt*|Eterm*|aterm|alacritty|kterm|gnome*|interix|konsole*)
 		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"';;
 	screen*) # && exec zsh # use zsh on X terminals
 		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"';;

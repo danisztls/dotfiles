@@ -7,8 +7,8 @@ export BROWSER="chromium"
 export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'"
 
 # shell history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE="~/.cache/sh-history"
 
 # set QT window decoration platform
@@ -30,7 +30,7 @@ export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go" # Go
 # set path
 export PATH=/bin
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/Source/bash/bin # Bash scripts
+export PATH=$PATH:$HOME/Workshop/source/bin # personal scripts 
 
 export NODEJS_HOME=$XDG_DATA_HOME/node_modules # Node
 export npm_config_prefix=$XDG_DATA_HOME/npm

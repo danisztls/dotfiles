@@ -5,6 +5,7 @@
 .vimrc
 .Xresources
 .zshrc
+.config/alacritty.yml
 .config/nvim
 .config/zsh
 .vim
