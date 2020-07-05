@@ -2,6 +2,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'mhinz/vim-signify'
+Plug 'vim-syntastic/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'plasticboy/vim-markdown'
@@ -39,13 +41,24 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 nmap <leader>en :setlocal spell! spelllang=en_us<CR>
 nmap <leader>pt :setlocal spell! spelllang=pt_br<CR>
 
+" vim-syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+nmap <leader>s :SyntasticReset
+nmap <leader>ss :SyntasticCheck
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 
 " markdown-preview
 "let g:mkdp_refresh_slow = 1
 let g:mkdp_browser = "electron"
-nmap <leader>t <Plug>MarkdownPreviewToggle
+nmap <leader>p <Plug>MarkdownPreviewToggle
 
 " fzf
 nmap <leader>f :Files
@@ -60,4 +73,4 @@ set conceallevel=2
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 let g:vmt_list_item_char = '-'
-
+nmap <leader>t :GenTocGitLab<CR>
