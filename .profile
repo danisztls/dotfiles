@@ -1,15 +1,15 @@
 # preferred programs
-export EDITOR="vim"
-export VISUAL="gvim"
+export EDITOR="nvim"
+export VISUAL="alacritty -e nvim"
 export BROWSER="chromium"
 
 # use nvim as manpager
 export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'"
 
 # shell history
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE="~/.cache/sh-history"
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE="$HOME/.cache/sh-history"
 
 # set QT window decoration platform
 # export QT_QPA_PLATFORMTHEME=qt5ct
@@ -46,21 +46,21 @@ config_dirs=("Code - OSS/Cache" "Code - OSS/CachedData" "Code - OSS/CachedExtens
 config_files=("variety/history.txt" "variety/variety.log" "variety/.last_change_time")
 
 for dir in "${cache_dirs[@]}"; do
-	mkdir -p "/tmp/$USER/cache/$dir" && rm -rf "$XDG_CACHE_HOME/$dir" && ln -s "/tmp/$USER/cache/$dir" "$XDG_CACHE_HOME/$dir"
+	mkdir -p "/tmp/$USER/cache/$dir" && rm -rf "${XDG_CACHE_HOME:?}/$dir" && ln -s "/tmp/$USER/cache/$dir" "${XDG_CACHE_HOME:?}/$dir"
 done
 
 for dir in "${config_dirs[@]}"; do
-	mkdir -p "/tmp/$USER/config/$dir" && rm -rf "$XDG_CONFIG_HOME/$dir" && ln -s "/tmp/$USER/config/$dir" "$XDG_CONFIG_HOME/$dir"
+	mkdir -p "/tmp/$USER/config/$dir" && rm -rf "${XDG_CONFIG_HOME:?}/$dir" && ln -s "/tmp/$USER/config/$dir" "${XDG_CONFIG_HOME:?}/$dir"
 done
 
 for file in "${config_files[@]}"; do
-	rm -f "$XDG_CONFIG_HOME/$file" && ln -s "/tmp/$USER/config/$file" "$XDG_CONFIG_HOME/$file"
+	rm -f "${XDG_CONFIG_HOME:?}/$file" && ln -s "/tmp/$USER/config/$file" "${XDG_CONFIG_HOME:?}/$file"
 done
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg --ignore-case --files" # override by aliases 
-export FZF_DEFAULT_OPTS="--bind 'f1:execute(nvim {}),f2:execute(gvim {} 2>/dev/null),f3:execute(code -r {})'"
+export FZF_DEFAULT_OPTS="--bind 'f1:execute(nvim {}),f2:execute(xdg-open {}),f3:execute(nautilus {}),f4:execute(ranger {}),f5:execute(echo {} | xclip)' --color=dark --color=fg:-1,bg:-1,hl:#9173eb,fg+:#ffffff,bg+:#2d3444,hl+:#7047eb --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"
 
 # broot launcher
-source /home/lobo/.config/broot/launcher/bash/br
+source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 

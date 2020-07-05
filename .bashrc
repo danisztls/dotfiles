@@ -8,7 +8,7 @@ export HISTCONTROL=ignoredups:erasedups	# no duplicate entries
 colors() {
   local fgc bgc vals seq0
 
-  printf "Color escapes are %s\n" '\e[${value};...;${value}m'
+  printf "Color escapes are %s\n \e[${value};...;${value}m"
   printf "Values 30..37 are \e[33mforeground colors\e[m\n"
   printf "Values 40..47 are \e[43mbackground colors\e[m\n"
   printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
@@ -43,9 +43,9 @@ match_lhs=""
 if ${use_color} ; then
   if type -P dircolors >/dev/null ; then
     if [[ -f ~/.dir_colors ]] ; then
-      eval $(dircolors -b ~/.dir_colors)
+      eval "$(dircolors -b ~/.dir_colors)"
     elif [[ -f /etc/DIR_COLORS ]] ; then
-      eval $(dircolors -b /etc/DIR_COLORS)
+      eval "$(dircolors -b /etc/DIR_COLORS)"
     fi
   fi
 

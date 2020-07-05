@@ -17,7 +17,7 @@ alias "v=xclip -o"
 prev="bat --style=numbers --color=always --line-range :500 {}"
 alias 'f=rg -i --files | fzf --preview "$prev"' # default
 alias "fh=rg -iuu -g '!.git/**' -g '!.cache/**' --files | fzf --preview '$prev'" # hidden and ignored
-alias 'ft=rg -i -t md -t txt --files | fzf --preview "$prev"' # markdown and text
+alias 'fmd=rg -i -t md --files | fzf --preview "$prev"' # markdown and text
 
 # 7z
 alias "7zcrypt=7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p"
