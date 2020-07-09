@@ -1,24 +1,27 @@
-# enable colors
+# Colors
 autoload -U colors && colors
 
-# change prompt
+# Prompt
 export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$reset_color%} $%b "
 
-# load aliases
-[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
+# Aliases
+[ -f "$XDG_DATA_HOME/shell/aliases" ] && source "$XDG_DATA_HOME/shell/aliases" 
 
-# load functions
-fpath=( ~/.config/zsh/functions "${fpath[@]}" )
-autoload -Uz extract
+# Functions
+if [ -d "$XDG_DATA_HOME/shell/functions" ]; then
+	fpath=( "$XDG_DATA_HOME/shell/functions" "${fpath[@]}" )
+	autoload -Uz extract
+fi
 
-# basic auto/tab complete
+# Autocompletion
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
+mkdir -p $XDG_CACHE_HOME/zsh 
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots) # include hidden files
 
-# bindings
+# Bindings
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[5~"  vi-forward-word
@@ -26,11 +29,11 @@ bindkey  "^[[6~"  vi-backward-word
 bindkey  "^[[2~"  delete-word
 bindkey  "^[[3~"  delete-char
 
-# edit line in vim with ctrl-e
+# Ctrl-e to edit line in editor
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# change cursor shape for different vi modes
+# Change cursor shape for different vi modes
 function zle-keymap-select {
 	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
 		echo -ne '\e[1 q'
@@ -50,7 +53,7 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # use beam shape cursor for each new prompt.
 
-# dynamic window title of X terminal
+# Dynamic window title on X
 autoload -Uz add-zsh-hook
 
 function xterm_title_precmd () {
@@ -68,18 +71,18 @@ if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) 
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
-# fzf
+# Fuzzy finder
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
-# autosuggestions
+# Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#858B8E"
 
-# powerlevel10k
+# Powerlevel10k
 if test "$TERM" != "linux"; then
 	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme && source ~/.config/zsh/p10k.zsh
 fi
 
-# syntax-highlighting; should be last
+# Syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

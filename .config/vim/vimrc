@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
@@ -10,7 +10,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
 
-" basics
+"set vim info path
+set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
+if has('nvim') | let &viminfo .= '.nvim' | endif
+
 "set nocompatible
 filetype plugin indent on
 syntax on
@@ -74,3 +77,4 @@ let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 let g:vmt_list_item_char = '-'
 nmap <leader>t :GenTocGitLab<CR>
+

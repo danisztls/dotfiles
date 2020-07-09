@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
-let g:netrw_dirhist_7='/home/lobo/.config/fish/functions'
-let g:netrw_dirhist_6='/home/daniel/teste'
-let g:netrw_dirhist_5='/home/daniel/.local/share/gtksourceview-4/styles/dark-lord.xml'
-let g:netrw_dirhist_4='/etc/xdg/autostart'
-let g:netrw_dirhist_3='/home/daniel/.vim'
-let g:netrw_dirhist_2='/etc/udev'
-let g:netrw_dirhist_1='/etc/sysctl.d'
