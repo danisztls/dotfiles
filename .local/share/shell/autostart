@@ -1,0 +1,18 @@
+#!/bin/bash
+# Link cache files to /tmp
+cache_dirs=("chromium" "mesa_shader_cache")
+config_dirs=("Code - OSS/Cache" "Code - OSS/CachedData" "Code - OSS/CachedExtensions" "Code - OSS/Code Cache" "Code - OSS/GPUCache" "variety/wallpaper")
+config_files=("variety/history.txt" "variety/variety.log" "variety/.last_change_time")
+
+for dir in "${cache_dirs[@]}"; do
+	mkdir -p "/tmp/$USER/cache/$dir" && rm -rf "${XDG_CACHE_HOME:?}/$dir" && ln -s "/tmp/$USER/cache/$dir" "${XDG_CACHE_HOME:?}/$dir"
+done
+
+for dir in "${config_dirs[@]}"; do
+	mkdir -p "/tmp/$USER/config/$dir" && rm -rf "${XDG_CONFIG_HOME:?}/$dir" && ln -s "/tmp/$USER/config/$dir" "${XDG_CONFIG_HOME:?}/$dir"
+done
+
+for file in "${config_files[@]}"; do
+	rm -f "${XDG_CONFIG_HOME:?}/$file" && ln -s "/tmp/$USER/config/$file" "${XDG_CONFIG_HOME:?}/$file"
+done
+

@@ -1,10 +1,10 @@
-# Preferred apps
+# Preferred programs
 export EDITOR="nvim"
 export VISUAL="alacritty -e nvim"
-export BROWSER="chromium"
+export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # neovim as manpager
+[[ $USER != root ]] && export BROWSER="chromium"
 
-# Neovim as manpager
-export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'"
+# TODO: Setup a text based browser for root
 
 # Cleanup
 export XDG_CONFIG_HOME=$HOME/.config
@@ -31,42 +31,29 @@ export VIMINIT="set runtimepath^=~/.config/vim|set runtimepath+=~/.config/vim/af
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 # Shell history
-export HISTFILE="$XDG_DATA_HOME/shell/history"
+if [[ $USER != root ]]; then
+	export HISTFILE="$XDG_DATA_HOME/shell/history"
+else
+	export HISTFILE="/tmp/shell-history"
+fi
+	
 export HISTSIZE=10000
 export SAVEHIST=10000
 
 # Path
 export PATH=/bin
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/Workshop/source/bin # personal scripts 
 export PATH=$PATH:$NODEJS_HOME/bin
 export PATH=$PATH:$HOME/.perl5/bin
-# export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin # Ruby
+[[ $USER != root ]] && export PATH=$PATH:$HOME/Workshop/source/bin # personal scripts 
 
 # Fuzzy finder
 export FZF_DEFAULT_COMMAND="rg --ignore-case --files" 
 export FZF_DEFAULT_OPTS="--bind 'f1:execute(nvim {}),f2:execute(xdg-open {}),f3:execute(nautilus {}),f4:execute(ranger {}),f5:execute(echo {} | xclip)' --color=dark --color=fg:-1,bg:-1,hl:#9173eb,fg+:#ffffff,bg+:#2d3444,hl+:#7047eb --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"
 
-# Link cache files to /tmp
-cache_dirs=("chromium" "mesa_shader_cache")
-config_dirs=("Code - OSS/Cache" "Code - OSS/CachedData" "Code - OSS/CachedExtensions" "Code - OSS/Code Cache" "Code - OSS/GPUCache" "variety/wallpaper")
-config_files=("variety/history.txt" "variety/variety.log" "variety/.last_change_time")
-
-for dir in "${cache_dirs[@]}"; do
-	mkdir -p "/tmp/$USER/cache/$dir" && rm -rf "${XDG_CACHE_HOME:?}/$dir" && ln -s "/tmp/$USER/cache/$dir" "${XDG_CACHE_HOME:?}/$dir"
-done
-
-for dir in "${config_dirs[@]}"; do
-	mkdir -p "/tmp/$USER/config/$dir" && rm -rf "${XDG_CONFIG_HOME:?}/$dir" && ln -s "/tmp/$USER/config/$dir" "${XDG_CONFIG_HOME:?}/$dir"
-done
-
-for file in "${config_files[@]}"; do
-	rm -f "${XDG_CONFIG_HOME:?}/$file" && ln -s "/tmp/$USER/config/$file" "${XDG_CONFIG_HOME:?}/$file"
-done
-
-# QT
-# export QT_QPA_PLATFORMTHEME=qt5ct
+# Autostart
+[ -f "$XDG_DATA_HOME/shell/autostart" ] && ( [ -r "/tmp/$USER" ] || "$XDG_DATA_HOME/shell/autostart" )
 
 # Broot
-source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
+[ -f "$XDG_CONFIG_HOME/broot/launcher/bash/br" ] && source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 

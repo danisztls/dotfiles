@@ -1,3 +1,6 @@
+# .profile forced load if root
+[[ $USER == root ]] && source "/root/.profile"
+
 # Colors
 autoload -U colors && colors
 
@@ -8,9 +11,11 @@ export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~
 [ -f "$XDG_DATA_HOME/shell/aliases" ] && source "$XDG_DATA_HOME/shell/aliases" 
 
 # Functions
-if [ -d "$XDG_DATA_HOME/shell/functions" ]; then
-	fpath=( "$XDG_DATA_HOME/shell/functions" "${fpath[@]}" )
-	autoload -Uz extract
+if [[ $USER != root ]]; then
+	if [ -d "$XDG_DATA_HOME/shell/functions" ]; then
+		fpath=( "$XDG_DATA_HOME/shell/functions" "${fpath[@]}" )
+		autoload -Uz extract
+	fi
 fi
 
 # Autocompletion
@@ -80,7 +85,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#858B8E"
 
 # Powerlevel10k
 if test "$TERM" != "linux"; then
-	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme && source ~/.config/zsh/p10k.zsh
+	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme && source "$XDG_CONFIG_HOME/zsh/p10k.zsh"
 fi
 
 # Syntax-highlighting

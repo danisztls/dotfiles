@@ -72,10 +72,10 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # load bash completions
-[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+[ -r "/usr/share/bash-completion/bash_completion" ] && . "/usr/share/bash-completion/bash_completion"
 
 # load aliases
-[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
+[ -f "$XDG_DATA_HOME/shell/aliases" ] && source "$XDG_DATA_HOME/shell/aliases"
 shopt -s expand_aliases
 
 # change the window title of X terminals
