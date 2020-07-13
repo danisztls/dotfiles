@@ -8,34 +8,33 @@ Xft.hintstyle: hintfull
 Xft.lcdfilter: lcdfilter
 
 ! Colors
-!! special
 *.foreground:   #eceff1
-*.background:   #22282d
+*.background:   #242e33
 *.cursorColor:  #eceff1
 
 !! black
-*.color0:       #263238
-*.color8:       #37474f
+*.color0:       #1d2529
+*.color8:       #12171a
 
 !! red
-*.color1:       #ff4d00
-*.color9:       #ff6b4d
+*.color1:       #f21d41
+*.color9:       #cc0f2f
 
 !! green
-*.color2:       #8bc34a
-*.color10:      #9ccc65
+*.color2:       #88f719
+*.color10:      #69bf13
 
 !! yellow
 *.color3:       #ffc107
-*.color11:      #ffa000
+*.color11:      #f29800
 
 !! blue
-*.color4:       #03a9f4
-*.color12:      #81d4fa
+*.color4:       #00d4ff
+*.color12:      #00a8e0
 
 !! magenta
-*.color5:       #e91e63
-*.color13:      #ad1457
+*.color5:       #9000ff
+*.color13:      #8416d9
 
 !! cyan
 *.color6:       #26a69a
@@ -45,18 +44,14 @@ Xft.lcdfilter: lcdfilter
 *.color7:       #cfd8dc
 *.color15:      #eceff1
 
-!! transparency
+! XTerm
+XTerm.vt100.faceName: Hack:size=11
+
+! URxvt
 urxvt.depth: 32
 urxvt.background: [80]#22282d
 
-! Fonts
 urxvt.font: xft:Hack:size=11
-!urxvt.boldFont: xft:Hack-Bold 
-!urxvt.italicFont: xft:Hack-Italic
-!urxvt.boldItalicfont: xft:Hack-BoldItalic
-XTerm.vt100.faceName: Hack:size=11
-
-! urxvt
 urxvt.letterSpace: 0
 urxvt.lineSpace: 0
 urxvt.geometry: 80x24
@@ -67,7 +62,7 @@ urxvt.saveline: 2048
 urxvt.scrollBar: false
 urxvt.scrollBar_right: false
 
-!! Common Keybinds for Navigations
+!! Keybinds
 urxvt.keysym.Shift-Up: command:\033]720;1\007
 urxvt.keysym.Shift-Down: command:\033]721;1\007
 urxvt.keysym.Control-Up: \033[1;5A
@@ -75,7 +70,7 @@ urxvt.keysym.Control-Down: \033[1;5B
 urxvt.keysym.Control-Right: \033[1;5C
 urxvt.keysym.Control-Left: \033[1;5D
 
-!! Copy Paste & Other Extensions
+!! Extensions
 !urxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
 URxvt.clipboard.autocopy: true
 urxvt.copyCommand: xclip -i -selection clipboard

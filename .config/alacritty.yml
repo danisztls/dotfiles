@@ -170,11 +170,11 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Tomorrow Night Bright)
+# Colors
 colors:
   # Default colors
   primary:
-    background: '#22282d'
+    background: '#1d2529'
     foreground: '#eceff1'
 
     # Bright and dim foreground colors
@@ -190,8 +190,8 @@ colors:
   # Colors which should be used to draw the terminal cursor. If these are unset,
   # the cursor color will be the inverse of the cell color.
   cursor:
-    text: '#000000'
-    cursor: '#eceff1'
+    text: '#eceff1'
+    cursor: '#cfd8dc'
 
   # Selection colors
   #
@@ -204,39 +204,39 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#263238'
-    red:     '#ff4d00'
-    green:   '#8bc34a'
-    yellow:  '#ffc107'
-    blue:    '#03a9f4'
-    magenta: '#e91e63'
+    black:   '#12171a'
+    red:     '#f21d41'
+    green:   '#69bf13'
+    yellow:  '#f29800'
+    blue:    '#00a8e0'
+    magenta: '#8416d9'
     cyan:    '#009688'
-    white:   '#cfd8dc'
+    white:   '#ccc5c2'
 
   # Bright colors
   bright:
-    black:   '#37474f'
-    red:     '#ff6b4d'
-    green:   '#9ccc65'
-    yellow:  '#ffa000'
-    blue:    '#81d4fa'
-    magenta: '#ad1457'
+    black:   '#242e33'
+    red:     '#cc0f2f'
+    green:   '#88f719'
+    yellow:  '#ffc107'
+    blue:    '#00d4ff'
+    magenta: '#9000ff'
     cyan:    '#26a69a'
-    white:   '#eceff1'
+    white:   '#fff7f2'
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
   #dim:
-  #  black:   '#000000'
-  #  red:     '#8c3336'
-  #  green:   '#7a8530'
-  #  yellow:  '#97822e'
-  #  blue:    '#506d8f'
-  #  magenta: '#80638e'
-  #  cyan:    '#497e7a'
-  #  white:   '#9a9a9a'
+  #  black:   '#3e5059'
+  #  red:     '#b23024'
+  #  green:   '#5fb224'
+  #  yellow:  '#b27012'
+  #  blue:    '#2483b2'
+  #  magenta: '#7724b2'
+  #  cyan:    '#1f997a'
+  #  white:   '#999491'
 
   # Indexed Colors
   #
@@ -278,7 +278,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.78
+background_opacity: 0.7
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
