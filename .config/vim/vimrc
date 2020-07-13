@@ -4,9 +4,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
 Plug 'vim-syntastic/syntastic'
-Plug 'godlygeek/tabular'
+"Plug 'godlygeek/tabular'
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
 

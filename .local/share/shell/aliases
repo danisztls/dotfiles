@@ -10,17 +10,30 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 
 # x clipboard
-alias "c=xclip -selection clipboard"
-alias "v=xclip -o"
+#alias "c=xclip -selection clipboard"
+#alias "v=xclip -o"
+
+# shortcuts
+alias "b=chromium"
+alias "q=exit"
+alias "v=nvim"
+alias "f=nautilus"
+alias "m=nautilus"
 
 # fzf
 prev="bat --style=numbers --color=always --line-range :500 {}"
-alias 'f=rg -i --files | fzf --preview "$prev"' # default
+alias 'f=rg -t md --files | fzf --preview "$prev"' # markdown files only
 alias "fh=rg -iuu -g '!.git/**' -g '!.cache/**' --files | fzf --preview '$prev'" # hidden and ignored
-alias 'fmd=rg -i -t md --files | fzf --preview "$prev"' # markdown and text
 
 # 7z
 alias "7zcrypt=7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p"
 
-# show current MPD song
-alias 'mpcc=notify-send "Now playing" "`mpc current`"'
+# trash-cli
+alias "rm=trash"
+
+# git
+alias "gstat=git status"
+alias "gadd=git add"
+alias "gdiff=git diff"
+alias "gpull=git pull"
+alias "gpush=git commit && git push"

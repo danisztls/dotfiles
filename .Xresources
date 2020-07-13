@@ -38,8 +38,8 @@ Xft.lcdfilter: lcdfilter
 *.color13:      #ad1457
 
 !! cyan
-*.color6:       #009688
-*.color14:      #26a69a
+*.color6:       #26a69a
+*.color14:      #009688
 
 !! white
 *.color7:       #cfd8dc
