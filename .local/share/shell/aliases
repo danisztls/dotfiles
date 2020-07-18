@@ -21,15 +21,20 @@ alias "f=nautilus"
 alias "m=nautilus"
 
 # fzf
-prev="bat --style=numbers --color=always --line-range :500 {}"
-alias 'f=rg -t md --files | fzf --preview "$prev"' # markdown files only
-alias "fh=rg -iuu -g '!.git/**' -g '!.cache/**' --files | fzf --preview '$prev'" # hidden and ignored
+alias "fh=fzf-expert hidden" # hidden and ignored
+alias "fmd=fzf-expert md" # markdown files only
+alias "fpdf=fzf-expert pdf" # pdf and postscript files only
+alias "fvideo=fzf-expert video" # videos only
 
 # 7z
 alias "7zcrypt=7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p"
 
 # trash-cli
 alias "rm=trash"
+
+# no overwrites
+alias "mv=mv -n"
+alias "cp=cp -n"
 
 # git
 alias "gstat=git status"

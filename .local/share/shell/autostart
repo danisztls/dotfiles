@@ -1,7 +1,7 @@
 #!/bin/bash
 # Link cache files to /tmp
 cache_dirs=("chromium" "mesa_shader_cache")
-config_dirs=("Code - OSS/Cache" "Code - OSS/CachedData" "Code - OSS/CachedExtensions" "Code - OSS/Code Cache" "Code - OSS/GPUCache" "variety/wallpaper")
+config_dirs=("Code - OSS/Cache" "Code - OSS/CachedData" "Code - OSS/CachedExtensions" "Code - OSS/Code Cache" "Code - OSS/GPUCache" "discord/Cache" "discord/Code Cache" "discord/GPUCache" "Electron" "variety/wallpaper")
 config_files=("variety/history.txt" "variety/variety.log" "variety/.last_change_time")
 
 for dir in "${cache_dirs[@]}"; do

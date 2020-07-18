@@ -22,6 +22,11 @@ set encoding=utf-8
 set number relativenumber
 nmap <leader>h :setlocal number! relativenumber!<CR>
 
+" 4 spaces tab
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 " autocompletion
 set wildmode=longest,list,full
 
