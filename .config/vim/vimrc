@@ -1,10 +1,12 @@
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
+Plug 'jreybert/vimagit'
 Plug 'vim-syntastic/syntastic'
-"Plug 'godlygeek/tabular'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
@@ -43,6 +45,12 @@ map <C-v> "+P
 
 " disable automatic commenting on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" vim auto-update
+set updatetime=500
+
+" nerdtree
+map <leader>b :NERDTreeToggle<CR>
 
 " spell-check
 nmap <leader>en :setlocal spell! spelllang=en_us<CR>
