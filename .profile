@@ -2,7 +2,7 @@
 export EDITOR="nvim"
 export VISUAL="alacritty -e nvim"
 export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # neovim as manpager
-[[ $USER != root ]] && export BROWSER="chromium"
+[[ $USER != root ]] && export BROWSER="browser"
 
 # TODO: Setup a text based browser for root
 

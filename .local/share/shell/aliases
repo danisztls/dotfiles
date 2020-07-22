@@ -14,7 +14,7 @@ alias vimdiff='nvim -d'
 #alias "v=xclip -o"
 
 # shortcuts
-alias "b=chromium"
+alias "b=browser"
 alias "q=exit"
 alias "v=nvim"
 alias "f=nautilus"
@@ -37,6 +37,7 @@ alias "mv=mv -n"
 alias "cp=cp -n"
 
 # git
+alias "g=git"
 alias "gstat=git status"
 alias "gadd=git add"
 alias "gdiff=git diff"

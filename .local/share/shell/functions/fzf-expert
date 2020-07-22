@@ -19,6 +19,8 @@ fzfHidden() { rg -iuu -g '!.git/**' -g '!.cache/**' --files | fzf --preview "$pr
 
 fzfMd() { rg -t md --files | fzf --preview "prevBat"; }
 
+# rg syntax is kind of dumb for files search I can use find instead
+
 # Killing all evince-previewer processes is not a big deal most of the time I will have only one open.
 fzfPdf() {
     rg -t pdf -t postscript --files | fzf --bind "enter:execute(evince -w {} &>/dev/null),tab:execute(killall evince-previewer),del:reload(trash {} && rg -t pdf -t postscript --files)"
