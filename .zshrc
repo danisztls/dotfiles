@@ -91,3 +91,5 @@ fi
 # Syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
+source /home/lobo/.config/broot/launcher/bash/br
