@@ -5,27 +5,27 @@ alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias diff='colordiff'
-
+alias ps='grc ps'
 # nvim
 alias vim='nvim'
 alias vimdiff='nvim -d'
-
-# x clipboard
-#alias "c=xclip -selection clipboard"
-#alias "v=xclip -o"
 
 # shortcuts
 alias "b=browser"
 alias "q=exit"
 alias "v=nvim"
-alias "f=nautilus"
-alias "m=nautilus"
 
-# fzf
-alias "fh=fzf-expert hidden" # hidden and ignored
-alias "fmd=fzf-expert md" # markdown files only
-alias "fpdf=fzf-expert pdf" # pdf and postscript files only
-alias "fvideo=fzf-expert video" # videos only
+# fzf-special
+alias "fhid=fzf-specifal hidden" # hidden files
+alias "fmd=fzf-special md" # markdown files
+alias "fpdf=fzf-special pdf" # pdf and postscript files
+alias "fvid=fzf-special media" # videos and audio
+alias "full=fzf-special full" # full text search
+alias "fcd=fzf-special cd" # directories
+alias "fps=fzf-special ps" # processes
+
+# Terminal to SVG
+alias ttsvg="termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg"
 
 # 7z
 alias "7zcrypt=7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p"
