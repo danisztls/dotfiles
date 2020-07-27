@@ -1,0 +1,35 @@
+<!-- TOC GitLab -->
+<ul>
+<li><a href="#what-is-this">What is this?</a></li>
+<li><a href="#how-it-works">How it works?</a></li>
+<li><a href="#fuzzy-search">Fuzzy Search</a></li>
+<li><a href="#nebula">Nebula</a></li>
+</ul>
+<!-- /TOC -->
+<h1 id="what-is-this">What is this?</h1>
+<p>These are some of my Linux configuration files. Interpreters, terminals, text editors, plugins, utils, etc.</p>
+<h1 id="how-it-works">How it works?</h1>
+<p>I’m using rsync to sync my dotfiles to a separate git working tree.</p>
+<p>An alternative to that is to create a bare git repo as instructed by <a href="https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html">harfangk</a>.</p>
+<pre class="shell"><code>git init --bare $HOME/.dotfiles`
+echo &#39;alias git-dotfiles=&quot;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&quot;&#39; &gt;&gt; $HOME/.aliases
+git dotfiles config --local status.showUntrackedFiles no</code></pre>
+<h1 id="fuzzy-search">Fuzzy Search</h1>
+<p><strong>fzf-special</strong> is a shell function that does specialized fuzzy searchs with <a href="https://github.com/junegunn/fzf">fzf</a>.</p>
+<ul>
+<li><strong>hidden</strong>: hidden files</li>
+<li><strong>markdown</strong>: markdown files</li>
+<li><strong>pdf</strong>: pdf, ps and eps files</li>
+<li><strong>media</strong>: videos and audio files</li>
+<li><strong>cd</strong>: browse directories and cd</li>
+<li><strong>ps</strong>: search and manage processes</li>
+</ul>
+<p><strong>cd</strong></p>
+<p><strong>ps</strong></p>
+<figure>
+<img src="fzf-special.svg" alt="" /><figcaption>fzf-special.svg</figcaption>
+</figure>
+<p>TODO: Create demos of features and posts screenshots and animations.</p>
+<h1 id="nebula">Nebula</h1>
+<p>Nebula is a colorful color scheme that fits well with space, futurism and cyberpunk thematics. It started as terminal colors and growed to a set of themes for the applications I use.</p>
+<p><insert screenshot></p>
