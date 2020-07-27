@@ -7,7 +7,7 @@
 * [Gems](#gems)
     * [Fuzzy search](#fuzzy-search)
     * [Nebula](#nebula)
-* [TODO](#todo)
+* [Todo](#todo)
 
 <!-- /TOC -->
 
@@ -42,16 +42,16 @@ git dotfiles config --local status.showUntrackedFiles no
 
 **cd**
 
-![fzf-cd.svg](assets/fzf-cd.svg)
+[![asciicast](https://asciinema.org/a/349907.svg)](https://asciinema.org/a/349907)
 
 **ps**
 
-![fzf-ps.svg](assets/fzf-ps.svg)
+[![asciicast](https://asciinema.org/a/349904.svg)](https://asciinema.org/a/349904)
 
 ## Nebula
 Nebula is a colorful color scheme that fits well with space, futurism and cyberpunk thematics. It started as terminal colors and growed to a set of themes for the applications I use.
 
 ![nebula-terminal](assets/nebula-terminal.png)
 
-# TODO
+# Todo
 TODO: Merge linux-desktop-hacks here. +asap
