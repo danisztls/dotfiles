@@ -25,7 +25,7 @@ alias "fcd=fzf-special cd" # directories
 alias "fps=fzf-special ps" # processes
 
 # Terminal to SVG
-alias ttsvg="termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg"
+alias "ttsvg=termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg"
 
 # 7z
 alias "7zcrypt=7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p"

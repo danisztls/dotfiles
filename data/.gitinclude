@@ -1,0 +1,11 @@
+.bashrc
+.config/alacritty.yml
+.config/termtosvg
+.config/vim/autoload/plug.vim
+.config/vim/vimrc
+.config/zsh/p10k.zsh
+.local/share/shell
+.profile
+.Xresources
+.zshrc
+
