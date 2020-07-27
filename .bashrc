@@ -78,6 +78,10 @@ shopt -s checkwinsize
 [ -f "$XDG_DATA_HOME/shell/aliases" ] && source "$XDG_DATA_HOME/shell/aliases"
 shopt -s expand_aliases
 
+# load functions
+source "$XDG_DATA_HOME/shell/functions/extract"
+source "$XDG_DATA_HOME/shell/functions/fzf-special"
+
 # change the window title of X terminals
 case ${TERM} in
 	xterm|rxvt*|Eterm*|aterm|alacritty|kterm|gnome*|interix|konsole*)

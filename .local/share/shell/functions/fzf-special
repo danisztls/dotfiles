@@ -3,101 +3,102 @@
 # dependencies: fzf, ripgrep, trash-cli 
 # optionals: ripgrep-all
 
-printHelp() {
-    printf "USAGE:
-    \t\e[1m'hidden'\e[0m hidden files excluding .git and .cache;
-    \t\e[1m'md'\e[0m markdown files;
-    \t\e[1m'pdf'\e[0m pdf and postscript files;
-    \t\e[1m'media'\e[0m videos and audio files;
-    \t\e[1m'full'\e[0m full text search documents; 
-    \t\e[1m'cd'\e[0m show and cd to sub-directories;
-    \t\e[1m'ps'\e[0m show and manage processes."
-}
+fzf-special() {
+    printHelp() {
+        printf "USAGE:
+        \t\e[1m'hidden'\e[0m hidden files excluding .git and .cache;
+        \t\e[1m'md'\e[0m markdown files;
+        \t\e[1m'pdf'\e[0m pdf and postscript files;
+        \t\e[1m'media'\e[0m videos and audio files;
+        \t\e[1m'full'\e[0m full text search documents; 
+        \t\e[1m'cd'\e[0m show and cd to sub-directories;
+        \t\e[1m'ps'\e[0m show and manage processes."
+    }
 
-# COMMON FORMATS
-# shortcuts: enter preview, f1 opens with xdg-open, f2 opens with nvim, f3 copy path to console clipboard, del moves files to trash.
+    # COMMON FORMATS
+    # shortcuts: enter preview, f1 opens with xdg-open, f2 opens with nvim, f3 copy path to console clipboard, del moves files to trash.
 
-# open with nautilus is disabled because it's hanging the console after window is closed
-# f4:execute-silent(nautilus -w -s {} >/dev/null)
+    # open with nautilus is disabled because it's hanging the console after window is closed
+    # f4:execute-silent(nautilus -w -s {} >/dev/null)
 
-txtEditor="nvim"
-pdfPreviewer="evince -w"
-mediaPreviewer="mpv --no-terminal --length=7" # autoclose after 7s 
+    txtEditor="nvim"
+    pdfPreviewer="evince -w"
+    mediaPreviewer="mpv --no-terminal --length=7" # autoclose after 7s 
 
-# comment do disable custom color scheme
-colors="--color=dark --color=fg:-1,bg:-1,hl:#9173eb,fg+:#ffffff,bg+:#2d3444,hl+:#7047eb --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"
+    # comment do disable custom color scheme
+    colors="--color=dark --color=fg:-1,bg:-1,hl:#9173eb,fg+:#ffffff,bg+:#2d3444,hl+:#7047eb --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"
 
-# shellcheck disable=SC2034 # will be used by subshells
-FZF_DEFAULT_OPTS="--bind 'f1:execute(xdg-open {} 2>/dev/null),f2:execute($txtEditor {}),f3:execute(xclip <<< {})' --preview-window=right:60%:wrap ${colors}"
+    # shellcheck disable=SC2034 # will be used by subshells
+    FZF_DEFAULT_OPTS="--bind 'f1:execute(xdg-open {} 2>/dev/null),f2:execute($txtEditor {}),f3:execute(xclip <<< {})' --preview-window=right:60%:wrap ${colors}"
 
-batPreview="bat --style=numbers --color=always --line-range :500 {}"
+    batPreview="bat --style=numbers --color=always --line-range :500 {}"
 
-fzfHidden() {
-    fd -t f -iuu -E '!.git/**' -E '!.cache/**' | fzf --preview "$batPreview"
-}
+    fzfHidden() {
+        fd -t f -iuu -E '!.git/**' -E '!.cache/**' | fzf --preview "$batPreview"
+    }
 
-fzfMd() {
-    fd -t f -i -g '*.md' | fzf --bind "del:reload(trash {} && fd -t f -i -g '*.md')" --preview "$batPreview"  
-}
+    fzfMd() {
+        fd -t f -i -g '*.md' | fzf --bind "del:reload(trash {} && fd -t f -i -g '*.md')" --preview "$batPreview"  
+    }
 
-fzfPdf() {
-    fd -t f -i '^.*\.(pdf|ps|eps)$' | fzf --bind "enter:execute($pdfPreviewer {} &>/dev/null),del:reload(trash {} && fd -t f -i '^.*\.(pdf|ps|eps)$')"
-}
+    fzfPdf() {
+        fd -t f -i '^.*\.(pdf|ps|eps)$' | fzf --bind "enter:execute($pdfPreviewer {} &>/dev/null),del:reload(trash {} && fd -t f -i '^.*\.(pdf|ps|eps)$')"
+    }
 
-fzfMedia() {
-    fd -t f -i '^.*\.(mkv|mp4|avi)$' | fzf --bind "enter:execute($mediaPreviewer {}),del:reload(trash {} && fd -t f -i '^.*\.(mkv|mp4|avi)$')"
-} 
+    fzfMedia() {
+        fd -t f -i '^.*\.(mkv|mp4|avi)$' | fzf --bind "enter:execute($mediaPreviewer {}),del:reload(trash {} && fd -t f -i '^.*\.(mkv|mp4|avi)$')"
+    } 
 
-# FULL SEARCH
-# find string inside files (full search)
-rgaEnabled="true"
+    # FULL SEARCH
+    # find string inside files (full search)
+    rgaEnabled="true"
 
-fzfFull() {
-    if [[ $rgaEnabled == true ]]; then
-        rgFind="rg -i --files-with-matches --no-messages"
-        rgPreview="rg --ignore-case --pretty --no-line-number --context 10 {q} {}"
-    else
-        rgFind="rga -i --files-with-matches --rga-adapters='-decompress,tar,zip,ffmpeg,sqlite'"
-        rgPreview="[[ ! -z {} ]] && rga --pretty --context 10 {q} {}"
-    fi
+    fzfFull() {
+        if [[ $rgaEnabled == true ]]; then
+            rgFind="rg -i --files-with-matches --no-messages"
+            rgPreview="rg --ignore-case --pretty --no-line-number --context 10 {q} {}"
+        else
+            rgFind="rga -i --files-with-matches --rga-adapters='-decompress,tar,zip,ffmpeg,sqlite'"
+            rgPreview="[[ ! -z {} ]] && rga --pretty --context 10 {q} {}"
+        fi
 
-    file="$(
-        FZF_DEFAULT_COMMAND="$rgFind '$1'"
-        fzf --preview "$rgPreview" \
-            --sort --phony -q "$1" \
-            --bind "change:reload:$rgFind {q}"
-    )" && xdg-open "$file" >/dev/null
-}
+        file="$(
+            FZF_DEFAULT_COMMAND="$rgFind '$1'"
+            fzf --preview "$rgPreview" \
+                --sort --phony -q "$1" \
+                --bind "change:reload:$rgFind {q}"
+        )" && xdg-open "$file" >/dev/null
+    }
 
-# SYSTEM
-# search dirs and cd to them
-fzfCd() {
-    # shellcheck disable=SC2164 # it's already a noop
-    directory="$(fd -t d -i | fzf --preview 'tree -C -c {} | head -200')" && cd "$directory"
-}
+    # SYSTEM
+    # search dirs and cd to them
+    fzfCd() {
+        # shellcheck disable=SC2164 # it's already a noop
+        directory="$(fd -t d -i | fzf --preview 'tree -C -c {} | head -200')" && cd "$directory"
+    }
 
-# f1 term, f2 kill, f3 sleep, f4 wake
-# TODO: Is there a way to keep updating it to make it like top?
-fzfPs() {
-    psFind="grc --colour=on ps -Ao pid,cmd,tt,user,time,stat"
-    # shellcheck disable=SC2034
-    FZF_DEFAULT_COMMAND="$psFind"
-    fzf --ansi --header-lines=1 --reverse --cycle \
-        --bind "change:reload($psFind),\
+    # f1 term, f2 kill, f3 sleep, f4 wake
+    # TODO: Is there a way to keep updating it to make it like top?
+    fzfPs() {
+        psFind="grc --colour=on ps -Ao pid,cmd,tt,user,time,stat"
+        # shellcheck disable=SC2034
+        FZF_DEFAULT_COMMAND="$psFind"
+        fzf --ansi --header-lines=1 --reverse --cycle \
+            --bind "change:reload($psFind),\
 f1:reload(kill -15 {1} && sleep 0.15 && $psFind),\
 f2:reload(kill -9 {1} && sleep 0.15 && $psFind),\
 f3:reload(kill -19 {1} && sleep 0.15 && $psFind),\
 f4:reload(kill -18 {1} && sleep 0.15 && $psFind)"
+    }
+
+    case $1 in
+        hidden) fzfHidden ;;
+        md) fzfMd ;;
+        pdf) fzfPdf ;;
+        media) fzfMedia ;;
+        full) fzfFull "$2" ;;
+        cd) fzfCd ;;
+        ps) fzfPs "$2" ;;
+        *) printHelp ;;
+    esac
 }
-
-case $1 in
-    hidden) fzfHidden ;;
-    md) fzfMd ;;
-    pdf) fzfPdf ;;
-    media) fzfMedia ;;
-    full) fzfFull "$2" ;;
-    cd) fzfCd ;;
-    ps) fzfPs "$2" ;;
-    *) printHelp ;;
-esac
-
