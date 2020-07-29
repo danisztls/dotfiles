@@ -1,0 +1,5 @@
+#!/bin/bash
+# Open a dir or file in code-oss in a new window. 
+
+path="${NAUTILUS_SCRIPT_CURRENT_URI:7}" # extract path from url
+code -n --folder-uri $path

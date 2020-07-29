@@ -22,6 +22,7 @@ I created a bare git repo as instructed by [harfangk](https://harfangk.github.io
 # Where is everything?
 - **assets**: screenshots and terminal svg animations
 - **dotfiles**: my dotfiles
+- **gnome**: hacks for gnome desktop
 - **themes**: themes and ricing material
 
 ```shell

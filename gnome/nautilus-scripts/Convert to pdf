@@ -1,0 +1,11 @@
+#!/bin/bash
+# Convert a file to pdf using pandoc. Auto-detect input format.
+
+path="${NAUTILUS_SCRIPT_CURRENT_URI:7}" # extract path from url
+path="`python3 -c "import sys, urllib.parse as ul; \
+    print(ul.unquote_plus(sys.argv[1]))" $path`/" # decode
+files=(${NAUTILUS_SCRIPT_SELECTED_FILE_PATHS//"$path"/}) # extract relative paths
+
+for f in "${files[@]}"; do
+	pandoc $f -s -o "${f%%.*}".pdf
+done

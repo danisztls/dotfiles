@@ -1,0 +1,17 @@
+#!/bin/bash
+# Moves the selected files to an assets dir and copy to clipboard the markdown code to source it. 
+
+path="${NAUTILUS_SCRIPT_CURRENT_URI:7}" # extract path from url
+path="`python3 -c "import sys, urllib.parse as ul; \
+    print(ul.unquote_plus(sys.argv[1]))" $path`/" # decode
+files=(${NAUTILUS_SCRIPT_SELECTED_FILE_PATHS//"$path"/}) # extract relative paths
+
+target=$HOME/.assets
+
+for f in "${files[@]}"; do
+	mv $f $target/
+	code=${code:+${code}:}"[$f]($target/$f)"
+done
+
+echo -e $code | xclip -selection clipboard
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+# Compress a file or a directory into an encrypted 7z archive with a random password copied to clipboard.
+
+path="${NAUTILUS_SCRIPT_CURRENT_URI:7}" # extract path from url
+path="`python3 -c "import sys, urllib.parse as ul; \
+    print(ul.unquote_plus(sys.argv[1]))" $path`/" # decode
+files=(${NAUTILUS_SCRIPT_SELECTED_FILE_PATHS//"$path"/}) # extract relative paths
+
+password=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 7 | head -n 1`
+echo $password | xclip -selection clipboard
+
+7z a -t7z -mhe=on -p"$password" `date +%Y-%m-%dT%H-%M-%S`.7z $files
