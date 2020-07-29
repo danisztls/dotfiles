@@ -21,7 +21,8 @@ I created a bare git repo as instructed by [harfangk](https://harfangk.github.io
 
 # Where is everything?
 - **assets**: screenshots and terminal svg animations
-- **data**: my dotfiles
+- **dotfiles**: my dotfiles
+- **themes**: themes and ricing material
 
 ```shell
 git init --bare $HOME/.dotfiles`
