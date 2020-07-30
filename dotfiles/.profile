@@ -28,6 +28,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export VIMINIT="set runtimepath^=~/.config/vim|set runtimepath+=~/.config/vim/after|source ~/.config/vim/vimrc" # vim and neovim
+export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 # Shell history
