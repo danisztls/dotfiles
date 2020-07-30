@@ -209,7 +209,7 @@ colors:
     green:   '#69bf13'
     yellow:  '#f29800'
     blue:    '#00a8e0'
-    magenta: '#8416d9'
+    magenta: '#9000ff'
     cyan:    '#009688'
     white:   '#ccc5c2'
 
@@ -220,7 +220,7 @@ colors:
     green:   '#88f719'
     yellow:  '#ffc107'
     blue:    '#00d4ff'
-    magenta: '#9000ff'
+    magenta: '#a700ff'
     cyan:    '#26a69a'
     white:   '#fff7f2'
 
