@@ -29,7 +29,7 @@ fzf-special() {
     colors="--color=dark --color=fg:-1,bg:-1,hl:#9173eb,fg+:#ffffff,bg+:#2d3444,hl+:#7047eb --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"
 
     # shellcheck disable=SC2034 # will be used by subshells
-    FZF_DEFAULT_OPTS="--bind 'f1:execute(xdg-open {} 2>/dev/null),f2:execute($txtEditor {}),f3:execute(xclip <<< {})' --preview-window=right:60%:wrap ${colors}"
+    export FZF_DEFAULT_OPTS="--bind 'f1:execute(xdg-open {} 2>/dev/null),f2:execute($txtEditor {}),f3:execute(xclip <<< {})' --preview-window=right:60%:wrap ${colors}"
 
     batPreview="bat --style=numbers --color=always --line-range :500 {}"
 
@@ -78,7 +78,6 @@ fzf-special() {
     }
 
     # f1 term, f2 kill, f3 sleep, f4 wake
-    # TODO: Is there a way to keep updating it to make it like top?
     fzfPs() {
         psFind="grc --colour=on ps -Ao pid,cmd,tt,user,time,stat"
         # shellcheck disable=SC2034
