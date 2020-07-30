@@ -1,4 +1,4 @@
-# auto color
+# colorized output
 #alias ls='ls --color=auto'
 alias ls='exa'
 alias grep='grep --colour=auto'
@@ -6,41 +6,60 @@ alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias diff='colordiff'
 alias ps='grc ps'
-# nvim
+
+# file management
+alias rm='trash -v' # move to trash
+alias mv='mv -v -n' # verbose and don't overwrite
+alias cp='cp -v -n'
+
+# neovim
+alias v='nvim'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 
-# shortcuts
-alias "b=browser"
-alias "q=exit"
-alias "v=nvim"
+# pacman
+alias p='pacman'
 
-# fzf-special
-alias "fhid=fzf-specifal hidden" # hidden files
-alias "fmd=fzf-special md" # markdown files
-alias "fpdf=fzf-special pdf" # pdf and postscript files
-alias "fvid=fzf-special media" # videos and audio
-alias "full=fzf-special full" # full text search
-alias "fcd=fzf-special cd" # directories
-alias "fps=fzf-special ps" # processes
-
-# Terminal to SVG
-alias "ttsvg=termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg"
-
-# 7z
-alias "7zcrypt=7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p"
-
-# trash-cli
-alias "rm=trash"
-
-# no overwrites
-alias "mv=mv -n"
-alias "cp=cp -n"
+# systemctl
+alias 's?=systemctl status'
+alias 's#=systemctl restart'
+alias 's!=systemctl stop'
+alias 'su?=systemctl --user status'
+alias 'su#=systemctl --user restart'
+alias 'su!=systemctl --user stop'
 
 # git
-alias "g=git"
-alias "gstat=git status"
-alias "gadd=git add"
-alias "gdiff=git diff"
-alias "gpull=git pull"
-alias "gpush=git commit && git push"
+alias g='git'
+alias 'g?=git status'
+alias 'g%=git diff'
+alias 'g+=git add'
+alias 'g#=git commit'
+alias 'g-:==git pull'
+alias 'g:-==git push'
+alias 'g:=git log'
+
+# common shortcuts
+alias b='browser'
+alias q='exit'
+
+# fzf
+alias fhid='fzf-specifal hidden' # hidden files
+alias fmd='fzf-special md' # markdown files
+alias fpdf='fzf-special pdf' # pdf and postscript files
+alias fvid='fzf-special media' # videos and audio
+alias full='fzf-special full' # full text search
+alias fcd='fzf-special cd' # directories
+alias fps='fzf-special ps' # processes
+
+# attach to weechat session
+alias irc='tmux -L weechat a'
+
+# terminal to svg
+alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
+
+# encrypted 7z
+alias 7zcrypt='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p'
+
+# funny
+alias god='sudo -i'
+alias yolo="git add -A && git commit -m YOLO && git push origin master"
