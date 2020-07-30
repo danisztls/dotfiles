@@ -44,8 +44,7 @@ export SAVEHIST=10000
 # Path
 export PATH=/bin
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$NODEJS_HOME/bin
-export PATH=$PATH:$HOME/.perl5/bin
+export PATH=$PATH:$XDG_DATA_HOME/npm/bin
 
 # Autostart
 [ -f "$XDG_DATA_HOME/shell/autostart" ] && ( [ -r "/tmp/$USER" ] || "$XDG_DATA_HOME/shell/autostart" )
