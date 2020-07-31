@@ -1,4 +1,4 @@
 #!/bin/bash
 # Sync dotfiles to git working dir
-cd dotfiles
+cd dots || exit
 rsync -ar --delete --files-from="./.gitinclude" --exclude-from="./.gitignore" "$HOME" "./"
