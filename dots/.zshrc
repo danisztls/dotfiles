@@ -83,6 +83,9 @@ fi
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#858B8E"
 
+# Broot
+source /home/lobo/.config/broot/launcher/bash/br
+
 # Powerlevel10k
 if test "$TERM" != "linux"; then
 	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme && source "$XDG_CONFIG_HOME/zsh/p10k.zsh"
@@ -91,5 +94,3 @@ fi
 # Syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-source /home/lobo/.config/broot/launcher/bash/br
