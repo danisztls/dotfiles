@@ -3,7 +3,7 @@
 
 uid=$(id -u) 
 cache_dirs=("chromium" "mesa_shader_cache" "mozilla" "thunderbird")
-config_dirs=("Code - OSS/Cache" "Code - OSS/CachedData" "Code - OSS/CachedExtensions" "Code - OSS/Code Cache" "Code - OSS/GPUCache" "discord/Cache" "discord/Code Cache" "discord/GPUCache" "Electron" "variety/wallpaper")
+config_dirs=("Code - OSS/Cache" "Code - OSS/CachedData" "Code - OSS/CachedExtensions" "Code - OSS/Code Cache" "Code - OSS/GPUCache" "discord/Cache" "discord/Code Cache" "discord/GPUCache" "Electron" "variety/wallpaper" "whatsapp-nativefier-d40211/Cache" "whatsapp-nativefier-d40211/GPUCache" "whatsapp-nativefier-d40211/blob_storage")
 config_files=("variety/history.txt" "variety/variety.log" "variety/.last_change_time")
 
 for dir in "${cache_dirs[@]}"; do

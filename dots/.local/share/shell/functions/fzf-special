@@ -34,7 +34,7 @@ fzf-special() {
     batPreview="bat --style=numbers --color=always --line-range :500 {}"
 
     fzfHidden() {
-        fd -t f -iuu -E '!.git/**' -E '!.cache/**' | fzf --preview "$batPreview"
+        fd -t f -iuu -E '**/.git/**' -E '.cache/**' | fzf --preview "$batPreview"
     }
 
     fzfMd() {

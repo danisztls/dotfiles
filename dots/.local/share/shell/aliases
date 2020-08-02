@@ -19,6 +19,11 @@ alias vimdiff='nvim -d'
 
 # pacman
 alias p='pacman'
+alias yays='yay --editmenu --mflags --skipinteg' # ask to edit PKGBUILD and skip integrity checks
+
+# root
+alias god='sudo -i'
+alias s='sudo'
 
 # systemctl
 alias 's?=systemctl status'
@@ -37,13 +42,14 @@ alias 'g#=git commit'
 alias 'g-:==git pull'
 alias 'g:-==git push'
 alias 'g:=git log'
+alias yolo="git add -A && git commit -m YOLO && git push origin master"
 
 # common shortcuts
 alias b='browser'
 alias q='exit'
 
 # fzf
-alias fhid='fzf-specifal hidden' # hidden files
+alias f='fzf-special hidden' # hidden files
 alias fmd='fzf-special md' # markdown files
 alias fpdf='fzf-special pdf' # pdf and postscript files
 alias fvid='fzf-special media' # videos and audio
