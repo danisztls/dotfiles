@@ -1,19 +1,26 @@
+#!/bin/bash
 # Opens URI in a normal or in a private browser session depending on matching of a set of regular expressions.
 
-if [ $1 ]; then
-    uri="$1"
-else
-    uri="about:blank"
+uri="$1"
+browser=firefox
+browser_signon=chromium
+
+# open default browser if URI is empty
+if [ -z "$1" ]; then
+    $browser
 fi
 
-signedon_patterns=(github.com gitlab.com gmail.com)
+# signon_file is a file with regex patterns for URI separated by new line
+signon_file="$XDG_CONFIG_HOME/browser/signon" 
 
-for regex in "${signedon_patterns[@]}"; do
+mapfile -t signon_patterns <"$signon_file"
+
+for regex in "${signon_patterns[@]}"; do
     echo "${BASH_REMATCH[*]}"
     if [[ $uri =~ $regex  ]]; then
-        chromium "$uri" &>/dev/null; exit
+        $browser_signon "$uri" &>/dev/null; exit
     fi
 done
 
-firefox "$uri" &>/dev/null; exit
+$browser "$uri" &>/dev/null; exit
 
