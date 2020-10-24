@@ -63,7 +63,8 @@ fzf-special() {
         fi
 
         file="$(
-            FZF_DEFAULT_COMMAND="$rgFind '$1'"
+        # shellcheck disable=SC2030
+            export FZF_DEFAULT_COMMAND="$rgFind '$1'"
             fzf --preview "$rgPreview" \
                 --sort --phony -q "$1" \
                 --bind "change:reload:$rgFind {q}"
@@ -79,9 +80,9 @@ fzf-special() {
 
     # f1 term, f2 kill, f3 sleep, f4 wake
     fzfPs() {
-        psFind="grc --colour=on ps -Ao pid,cmd,tt,user,time,stat"
-        # shellcheck disable=SC2034
-        FZF_DEFAULT_COMMAND="$psFind"
+        psFind="grc --colour=on ps -Ao pid,cmd,%mem,%cpu,tt,user,time,stat"
+        # shellcheck disable=SC2031
+        export FZF_DEFAULT_COMMAND="$psFind"
         fzf --ansi --header-lines=1 --reverse --cycle \
             --bind "change:reload($psFind),\
 f1:reload(kill -15 {1} && sleep 0.15 && $psFind),\

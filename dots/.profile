@@ -4,7 +4,8 @@ export VISUAL="alacritty -e nvim"
 export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # neovim as manpager
 [[ $USER != root ]] && export BROWSER="browser"
 
-# TODO: Setup a text based browser for root
+# ACO over LLVM
+export RADV_PERFTEST=aco
 
 # Cleanup
 export XDG_CONFIG_HOME=$HOME/.config
@@ -47,8 +48,9 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$XDG_DATA_HOME/npm/bin
 
 # Autostart
-[ -f "$XDG_DATA_HOME/shell/autostart" ] && ( [ -r "/tmp/$USER" ] || "$XDG_DATA_HOME/shell/autostart" )
+[ -f "$XDG_CONFIG_HOME/shell/autostart" ] && ( [ -r "/tmp/$USER" ] || "$XDG_CONFIG_HOME/shell/autostart" )
 
 # Broot
+# shellcheck disable=SC1090
 [ -f "$XDG_CONFIG_HOME/broot/launcher/bash/br" ] && source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 

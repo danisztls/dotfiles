@@ -8,12 +8,12 @@ autoload -U colors && colors
 export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$reset_color%} $%b "
 
 # Aliases
-[ -f "$XDG_DATA_HOME/shell/aliases" ] && source "$XDG_DATA_HOME/shell/aliases" 
+[ -f "$XDG_CONFIG_HOME/shell/aliases" ] && source "$XDG_CONFIG_HOME/shell/aliases" 
 
 # Functions
 if [[ $USER != root ]]; then
-	if [ -d "$XDG_DATA_HOME/shell/functions" ]; then
-		fpath=( "$XDG_DATA_HOME/shell/functions" "${fpath[@]}" )
+	if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
+		fpath=( "$XDG_CONFIG_HOME/shell/functions" "${fpath[@]}" )
 		autoload -Uz extract fzf-special
 	fi
 fi

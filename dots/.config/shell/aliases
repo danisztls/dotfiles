@@ -57,6 +57,12 @@ alias full='fzf-special full' # full text search
 alias fcd='fzf-special cd' # directories
 alias fps='fzf-special ps' # processes
 
+# feh fit window
+alias feh='feh --scale-down --auto-zoom'
+
+# use gopass
+alias pass='gopass'
+
 # attach to weechat session
 alias irc='tmux -L weechat a'
 
@@ -66,6 +72,5 @@ alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
 # encrypted 7z
 alias 7zcrypt='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p'
 
-# funny
-alias god='sudo -i'
-alias yolo="git add -A && git commit -m YOLO && git push origin master"
+# open by default application
+alias xo='xdg-open'

@@ -2,6 +2,8 @@ call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
@@ -51,6 +53,7 @@ set updatetime=500
 
 " nerdtree
 map <leader>b :NERDTreeToggle<CR>
+let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " spell-check
 nmap <leader>en :setlocal spell! spelllang=en_us<CR>
@@ -69,6 +72,7 @@ let g:syntastic_check_on_wq = 0
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
+"let g:airline_powerline_fonts = 1
 
 " markdown-preview
 "let g:mkdp_refresh_slow = 1
