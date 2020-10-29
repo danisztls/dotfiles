@@ -15,42 +15,66 @@ fzf-special() {
         \t\e[1m'ps'\e[0m show and manage processes."
     }
 
-    # COMMON FORMATS
-    # shortcuts: enter preview, f1 opens with xdg-open, f2 opens with nvim, f3 copy path to console clipboard, del moves files to trash.
+    # SHORTCUTS
+    # enter preview/opens, f1 opens with xdg-open, f2 opens with text editor, f3 copy path to console clipboard,
+    # f4 echoes path to stdout, del move file to trash.
 
     # open with nautilus is disabled because it's hanging the console after window is closed
     # f4:execute-silent(nautilus -w -s {} >/dev/null)
 
+    # SETTINGS
     txtEditor="nvim"
     pdfPreviewer="evince -w"
-    mediaPreviewer="mpv --no-terminal --length=7" # autoclose after 7s 
+    mediaPreviewer="mpv --no-terminal --length=5" # autoclose after 5s 
 
-    # comment do disable custom color scheme
-    colors="--color=dark --color=fg:-1,bg:-1,hl:#9173eb,fg+:#ffffff,bg+:#2d3444,hl+:#7047eb --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"
+    # COLORS 
+    colors="--color=\
+dark,\
+fg:-1,\
+bg:-1,\
+hl:#9173eb,\
+fg+:#ffffff,\
+bg+:#2d3444,\
+hl+:#7047eb,\
+info:#98c379,\
+prompt:#61afef,\
+pointer:#be5046,\
+marker:#e5c07b,\
+spinner:#61afef,\
+header:#61afef"
 
     # shellcheck disable=SC2034 # will be used by subshells
-    export FZF_DEFAULT_OPTS="--bind 'f1:execute(xdg-open {} 2>/dev/null),f2:execute($txtEditor {}),f3:execute(xclip <<< {})' --preview-window=right:60%:wrap ${colors}"
+    export FZF_DEFAULT_OPTS="--bind '\
+enter:execute-silent(xdg-open {} 2>/dev/null)+abort,\
+f1:execute-silent(xdg-open {} 2>/dev/null),\
+f2:execute($txtEditor {}),\
+f3:execute-silent(xclip <<< {}),\
+f4:accept' \
+--preview-window=right:60%:wrap ${colors}"
 
     batPreview="bat --style=numbers --color=always --line-range :500 {}"
-
+    
+    ## F: find anything including hidden files
     fzfHidden() {
         fd -t f -iuu -E '**/.git/**' -E '.cache/**' | fzf --preview "$batPreview"
     }
-
+    
+    ## FMD: find markdown notes
     fzfMd() {
         fd -t f -i -g '*.md' | fzf --bind "del:reload(trash {} && fd -t f -i -g '*.md')" --preview "$batPreview"  
     }
 
+    ## FPDF: find preview pdf and postscript files
     fzfPdf() {
-        fd -t f -i '^.*\.(pdf|ps|eps)$' | fzf --bind "enter:execute($pdfPreviewer {} &>/dev/null),del:reload(trash {} && fd -t f -i '^.*\.(pdf|ps|eps)$')"
+        fd -t f -i '^.*\.(pdf|ps|eps)$' | fzf --bind "enter:execute-silent($pdfPreviewer {} &>/dev/null),del:reload(trash {} && fd -t f -i '^.*\.(pdf|ps|eps)$')"
     }
 
+    ## FVID: find video files 
     fzfMedia() {
-        fd -t f -i '^.*\.(mkv|mp4|avi)$' | fzf --bind "enter:execute($mediaPreviewer {}),del:reload(trash {} && fd -t f -i '^.*\.(mkv|mp4|avi)$')"
+        fd -t f -i '^.*\.(mkv|mp4|webm|avi)$' | fzf --bind "enter:execute-silent($mediaPreviewer {}),del:reload(touch {} && fd -t f -i '^.*\.(mkv|mp4|webm|avi)$')"
     } 
 
-    # FULL SEARCH
-    # find string inside files (full search)
+    # FULL: search inside files
     rgaEnabled="true"
 
     fzfFull() {
@@ -72,13 +96,14 @@ fzf-special() {
     }
 
     # SYSTEM
-    # search dirs and cd to them
+    ## FCD: search dirs and cd to them
     fzfCd() {
         # shellcheck disable=SC2164 # it's already a noop
         directory="$(fd -t d -i | fzf --preview 'tree -C -c {} | head -200')" && cd "$directory"
     }
-
-    # f1 term, f2 kill, f3 sleep, f4 wake
+    
+    ## FPS: search processes and manage them
+    ## f1 term, f2 kill, f3 sleep, f4 wake
     fzfPs() {
         psFind="grc --colour=on ps -Ao pid,cmd,%mem,%cpu,tt,user,time,stat"
         # shellcheck disable=SC2031
