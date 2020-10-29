@@ -79,8 +79,8 @@ shopt -s checkwinsize
 shopt -s expand_aliases
 
 # load functions
-source "$XDG_DATA_HOME/shell/functions/extract"
-source "$XDG_DATA_HOME/shell/functions/fzf-special"
+source "$XDG_CONFIG_HOME/shell/functions/extract"
+source "$XDG_CONFIG_HOME/shell/functions/fzf-special"
 
 # change the window title of X terminals
 case ${TERM} in
