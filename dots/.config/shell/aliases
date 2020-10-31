@@ -57,6 +57,10 @@ alias full='fzf-special full' # full text search
 alias fcd='fzf-special cd' # directories
 alias fps='fzf-special ps' # processes
 
+# Journal
+alias jt='journal-tasks'
+alias jl='journal-log'
+
 # clear cache
 alias clear-cache='sync; echo 3 > /proc/sys/vm/drop_caches'
 
