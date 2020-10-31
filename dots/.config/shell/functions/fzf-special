@@ -99,7 +99,7 @@ f4:accept' \
     ## FCD: search dirs and cd to them
     fzfCd() {
         # shellcheck disable=SC2164 # it's already a noop
-        directory="$(fd -t d -i | fzf --preview 'tree -C -c {} | head -200')" && cd "$directory"
+        cd "$(fd -t d -i | fzf --preview 'tree -C -c {} | head -200' --bind 'enter:accept')"
     }
     
     ## FPS: search processes and manage them
