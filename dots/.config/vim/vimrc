@@ -12,14 +12,15 @@ Plug 'vim-airline/vim-airline'
 " git highlight, un/stage changes
 Plug 'airblade/vim-gitgutter'
 " git workflow
-Plug 'jreybert/vimagit'
+"Plug 'tpope/vim-fugitive'
+"Plug 'jreybert/vimagit'
 " syntax highlighting
 Plug 'vim-syntastic/syntastic'
+" REPL 
+Plug 'metakirby5/codi.vim'
 " markdown features
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-" python live editor 
-Plug 'metakirby5/codi.vim'
 " org mode
 Plug 'jceb/vim-orgmode'
 call plug#end()
@@ -66,6 +67,9 @@ set updatetime=250
 " disable automatic commenting on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" fzf
+nmap <leader>f :Files
+
 " nerdtree
 map <leader>b :NERDTreeToggle<CR>
 let g:NERDTreeGitStatusUseNerdFonts = 1
@@ -79,24 +83,27 @@ highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
+" fugitive
+
 " syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-nmap <leader>s :SyntasticReset
-nmap <leader>ss :SyntasticCheck
+nmap <leader>s :SyntasticCheck
+nmap <leader>S :SyntasticReset
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" codi
+nmap <leader>c :Codi
+nmap <leader>C :Codi!
+
 " markdown-preview
 "let g:mkdp_refresh_slow = 1
 let g:mkdp_browser = "electron"
 nmap <leader>p <Plug>MarkdownPreviewToggle
-
-" fzf
-nmap <leader>f :Files
 
 "vim-markdown
 let g:vim_markdown_math = 1
