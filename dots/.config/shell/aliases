@@ -62,7 +62,7 @@ alias jt='journal-tasks'
 alias jl='journal-log'
 
 # clear cache
-alias clear-cache='sync; echo 3 > /proc/sys/vm/drop_caches'
+alias clear-cache='sudo sync; echo 3 > /proc/sys/vm/drop_caches'
 
 # feh fit window
 alias feh='feh --scale-down --auto-zoom'

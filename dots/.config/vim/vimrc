@@ -1,17 +1,27 @@
+" plugins
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
+" search files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" browse files 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
+" status line
 Plug 'vim-airline/vim-airline'
-Plug 'mhinz/vim-signify'
+" git highlight, un/stage changes
 Plug 'airblade/vim-gitgutter'
+" git workflow
 Plug 'jreybert/vimagit'
+" syntax highlighting
 Plug 'vim-syntastic/syntastic'
+" markdown features
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+" python live editor 
 Plug 'metakirby5/codi.vim'
+" org mode
+Plug 'jceb/vim-orgmode'
 call plug#end()
 
 "set vim info path
@@ -46,21 +56,30 @@ map <C-l> <C-w>l
 vnoremap <C-c> "*y :let @+=@*<CR>
 map <C-v> "+P
 
-" disable automatic commenting on new line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" spell-check
+nmap <leader>en :setlocal spell! spelllang=en_us<CR>
+nmap <leader>pt :setlocal spell! spelllang=pt_br<CR>
 
 " vim auto-update
-set updatetime=500
+set updatetime=250
+
+" disable automatic commenting on new line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " nerdtree
 map <leader>b :NERDTreeToggle<CR>
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
-" spell-check
-nmap <leader>en :setlocal spell! spelllang=en_us<CR>
-nmap <leader>pt :setlocal spell! spelllang=pt_br<CR>
+" airline
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline_powerline_fonts = 1
 
-" vim-syntastic
+" gitgutter
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+" syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -70,10 +89,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline_powerline_fonts = 1
 
 " markdown-preview
 "let g:mkdp_refresh_slow = 1
