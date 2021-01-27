@@ -1,27 +1,27 @@
 " plugins
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
-" search files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" browse files 
-Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf.vim' " fuzzy search
+
+Plug 'preservim/nerdtree' " file browser 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-" status line
-Plug 'vim-airline/vim-airline'
-" git highlight, un/stage changes
-Plug 'airblade/vim-gitgutter'
-" git workflow
-"Plug 'tpope/vim-fugitive'
-"Plug 'jreybert/vimagit'
-" syntax highlighting
-Plug 'vim-syntastic/syntastic'
-" REPL 
-Plug 'metakirby5/codi.vim'
-" markdown features
-Plug 'mzlogin/vim-markdown-toc'
+
+Plug 'vim-airline/vim-airline' " status line
+
+Plug 'airblade/vim-gitgutter' " git highlight, un/stage changes
+Plug 'tpope/vim-fugitive' " conflict resolution flow
+"Plug 'jreybert/vimagit' 
+
+Plug 'dense-analysis/ale' " syntax highlighting
+"Plug 'vim-syntastic/syntastic' " slower
+
+"Plug 'neoclide/coc.nvim', {'branch': 'release'} " lsp editor
+
+Plug 'metakirby5/codi.vim' " REPL
+
+Plug 'mzlogin/vim-markdown-toc' " md table of contents
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-" org mode
 Plug 'jceb/vim-orgmode'
 call plug#end()
 
@@ -86,15 +86,17 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 " fugitive
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-nmap <leader>s :SyntasticCheck
-nmap <leader>S :SyntasticReset
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+""set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"nmap <leader>s :SyntasticCheck
+"nmap <leader>S :SyntasticReset
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+" ALE
 
 " codi
 nmap <leader>c :Codi
