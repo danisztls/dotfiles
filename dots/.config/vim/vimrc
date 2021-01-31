@@ -97,6 +97,11 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 "let g:syntastic_check_on_wq = 0
 
 " ALE
+let g:airline#extensions#ale#enabled = 1
+highlight ALEWarning ctermbg=yellow
+highlight ALEError ctermbg=red
+nmap <silent> <C-b> <Plug>(ale_previous_wrap)
+nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 " codi
 nmap <leader>c :Codi
