@@ -7,7 +7,6 @@
 * [Fuzzy search](#fuzzy-search)
 * [Themes](#themes)
     * [Nebula](#nebula)
-    * [Arc Glass](#arc-glass)
 * [More](#more)
 * [FAQ](#faq)
     * [How this works?](#how-this-works)
@@ -54,11 +53,6 @@ These are some of my configurations and scripts that I use to make my life in Li
 Nebula is a colorful terminal color scheme inspired in space, futurism and cyberpunk thematics.
 
 ![nebula-terminal](assets/nebula-terminal.png)
-
-## Arc Glass
-Arc Glass is a fork of Arc Theme with glassy looks and support for popular applications like Chromium, Gedit, VS Code and Discord.
-
-![arc-glass](assets/arc-glass.png)
 
 # More
 Some projects I have spin-offed:
