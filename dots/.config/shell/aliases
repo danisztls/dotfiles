@@ -42,7 +42,7 @@ alias 'g#=git commit'
 alias 'g-:==git pull'
 alias 'g:-==git push'
 alias 'g:=git log'
-alias yolo="git add -A && git commit -m "$(date '+%y-%m-%d')" && git push"
+alias yolo="git add -A && git commit -m "$(date '+%y-%m-%d')" && git ls-remote 2>/dev/null && git push"
 
 # common shortcuts
 alias b='browser'
