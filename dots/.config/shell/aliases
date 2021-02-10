@@ -18,7 +18,7 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 
 # pacman
-alias p='pacman'
+alias pm='pacman'
 alias yays='yay --editmenu --mflags --skipinteg' # ask to edit PKGBUILD and skip integrity checks
 
 # root
