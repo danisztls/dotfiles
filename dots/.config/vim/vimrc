@@ -100,7 +100,7 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
-"set background=dark
+set background=dark
 colorscheme PaperColor
 
 " fzf
@@ -132,7 +132,7 @@ nmap <leader>C :Codi!
 
 "markdown
 set conceallevel=2
-let g:vim_markdown_math = 1
+let g:vim_markdown_math = 0 " if enabled $ signs will bug syntax
 let g:vim_markdown_frontmatter = 1
 "let g:vim_markdown_folding_disabled = 1
 

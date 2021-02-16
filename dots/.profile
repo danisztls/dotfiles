@@ -32,13 +32,8 @@ export VIMINIT="set runtimepath^=~/.config/vim|set runtimepath+=~/.config/vim/af
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
-# Shell history
-if [[ $USER != root ]]; then
-	export HISTFILE="$XDG_DATA_HOME/shell/history"
-else
-	export HISTFILE="/tmp/shell-history"
-fi
-	
+# History
+export HISTFILE="$XDG_DATA_HOME/shell/history"
 export HISTSIZE=10000
 export SAVEHIST=10000
 

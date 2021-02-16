@@ -69,7 +69,7 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
-"set background=dark
+set background=dark
 colorscheme PaperColor
 
 " airline
