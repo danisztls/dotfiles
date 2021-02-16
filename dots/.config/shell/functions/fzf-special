@@ -75,10 +75,8 @@ f4:accept' \
     } 
 
     # FULL: search inside files
-    rgaEnabled="true"
-
     fzfFull() {
-        if [[ $rgaEnabled == true ]]; then
+        if [[ $(command -v rga) ]]; then
             rgFind="rga -i --files-with-matches --rga-adapters='-decompress,tar,zip,ffmpeg,sqlite'"
             rgPreview="[[ ! -z {} ]] && rga --pretty --context 10 {q} {}"
         else
