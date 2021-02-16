@@ -13,35 +13,51 @@ Xft.lcdfilter: lcdfilter
 *.cursorColor:  #cdf8dc
 
 !! black
+!!! background
 *.color0:       #1d2529
+!!! 3rd background
 *.color8:       #12171a
 
 !! red
+!!! negative
 *.color1:       #f21d41
+!!! import/try-catch keywords
 *.color9:       #cc0f2f
 
 !! green
+!!! positive
 *.color2:       #88f719
+!!! type and +emphasized keywords
 *.color10:      #69bf13
 
 !! yellow
+!!! strings
 *.color3:       #ffc107
+!!! typically if/conditional/loop keywords
 *.color11:      #f29800
 
 !! blue
+!!! neutral (2nd background) 
 *.color4:       #00d4ff
+!!! accent (rarely used)
 *.color12:      #00a8e0
 
 !! magenta
+!!! comments
 *.color5:       #9000ff
+!!! numbers
 *.color13:      #8416d9
 
 !! cyan
+!!! storage class keywords
 *.color6:       #26a69a
+!!! rest of keywords
 *.color14:      #009688
 
 !! white
+!!! foreground
 *.color7:       #cfd8dc
+!!! highlight
 *.color15:      #eceff1
 
 ! XTerm
