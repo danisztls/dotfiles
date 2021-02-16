@@ -6,7 +6,6 @@
     * [Environment](#environment)
 * [Fuzzy search](#fuzzy-search)
 * [Themes](#themes)
-    * [Nebula](#nebula)
 * [More](#more)
 * [FAQ](#faq)
     * [How this works?](#how-this-works)
@@ -16,19 +15,20 @@
 <!-- /TOC -->
 
 # Introduction
-These are some of my configurations and scripts that I use to make my life in Linux more functional and enjoyable. 
+These are some of the configurations and scripts that I use to make my life in Linux more functional and enjoyable. 
 
 ## Structure
 - **assets**: screenshots and terminal svg animations
 - **dots**: my dotfiles
+- **dots-root**: root dotfiles
 - **gnome**: hacks for gnome desktop
 - **themes**: themes and ricing material
 
 ## Environment
-- **desktop**: gnome-shell
-- **shell**: zsh
-- **terminal**: alacritty
-- **editor**: vim
+- **shell interpreter**: zsh
+- **terminal emulator**: alacritty
+- **desktop environment**: gnome-shell
+- **text editor**: nvim
 
 # Fuzzy search
 **fzf-special** does specialized fuzzy searchs it's a wrapper to [fzf](https://github.com/junegunn/fzf) and code searching tools like rg, fd and rga.
@@ -42,14 +42,13 @@ These are some of my configurations and scripts that I use to make my life in Li
 
 **cd**
 
-[![asciicast](https://asciinema.org/a/349907.svg)](https://asciinema.org/a/349907)
+[![fcd-asciicast](https://asciinema.org/a/349907.svg)](https://asciinema.org/a/349907)
 
 **ps**
 
-[![asciicast](https://asciinema.org/a/349904.svg)](https://asciinema.org/a/349904)
+[![fps-asciicast](https://asciinema.org/a/349904.svg)](https://asciinema.org/a/349904)
 
 # Themes
-## Nebula
 Nebula is a colorful terminal color scheme inspired in space, futurism and cyberpunk thematics.
 
 ![nebula-terminal](assets/nebula-terminal.png)
@@ -74,9 +73,7 @@ g... config --local status.showUntrackedFiles no
 ```
 
 ## And the root user?
-I symbolic linked the configuration paths from /root my /home. That seamless integrate both environments.
-
-*Warning: That opens a vulnerability for root privilege escalation. If a malicious program/attacker modifies the configuration files in the right way they can run any code as root.*
+I used to symbolic link configuration paths from */root* to */home/USER* but that opens a vulnerability for root privilege escalation. Because an attacker can modify the configuration files to run code as root.*
 
 ## What is the license?
 My own code is under MIT license but components may be under other licenses.
