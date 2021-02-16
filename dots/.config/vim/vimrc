@@ -4,8 +4,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' " fuzzy search
 
 Plug 'preservim/nerdtree' " file browser 
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
+Plug 'Xuyuanp/nerdtree-git-plugin' " git support
+Plug 'ryanoasis/vim-devicons' " icons support
 
 Plug 'vim-airline/vim-airline' " status line
 
@@ -14,15 +14,19 @@ Plug 'tpope/vim-fugitive' " conflict resolution flow
 "Plug 'jreybert/vimagit' 
 
 Plug 'dense-analysis/ale' " syntax highlighting
-"Plug 'vim-syntastic/syntastic' " slower
 
 "Plug 'neoclide/coc.nvim', {'branch': 'release'} " lsp editor
 
 Plug 'metakirby5/codi.vim' " REPL
 
+Plug 'godlygeek/tabular' " text filtering and alignment
+Plug 'plasticboy/vim-markdown' " markdown stuff
 Plug 'mzlogin/vim-markdown-toc' " md table of contents
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'jceb/vim-orgmode'
+"Plug 'jceb/vim-orgmode'
+Plug 'aklt/plantuml-syntax'
+
+Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 "set vim info path
@@ -67,6 +71,38 @@ set updatetime=250
 " disable automatic commenting on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" colors
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1,
+  \       'override' : {
+  \         'color00' : ['#1d2529', ''],
+  \         'color01' : ['#f21d41', ''],
+  \         'color02' : ['#88f719', ''],
+  \         'color03' : ['#ffc107', ''],
+  \         'color04' : ['#00d4ff', ''],
+  \         'color05' : ['#9000ff', ''],
+  \         'color06' : ['#29a69a', ''],
+  \         'color07' : ['#cfd8dc', ''],
+  \         'color08' : ['#12171a', ''],
+  \         'color09' : ['#cc0f2f', ''],
+  \         'color10' : ['#69bf13', ''],
+  \         'color11' : ['#f29800', ''],
+  \         'color12' : ['#00a8e0', ''],
+  \         'color13' : ['#8416d9', ''],
+  \         'color14' : ['#009688', ''],
+  \         'color15' : ['#eceff1', ''],
+  \         'cursorlinenr_bg' : ['#3a3a3a', ''],
+  \         'visual_bg' : ['#bec0c0', '']
+  \       }
+  \     }
+  \   }
+  \ }
+
+"set background=dark
+colorscheme PaperColor
+
 " fzf
 nmap <leader>f :Files
 
@@ -83,19 +119,6 @@ highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
-" fugitive
-
-" syntastic
-""set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"nmap <leader>s :SyntasticCheck
-"nmap <leader>S :SyntasticReset
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
 " ALE
 let g:airline#extensions#ale#enabled = 1
 highlight ALEWarning ctermbg=yellow
@@ -107,18 +130,18 @@ nmap <silent> <C-e> <Plug>(ale_next_wrap)
 nmap <leader>c :Codi
 nmap <leader>C :Codi!
 
+"markdown
+set conceallevel=2
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+"let g:vim_markdown_folding_disabled = 1
+
 " markdown-preview
 "let g:mkdp_refresh_slow = 1
 let g:mkdp_browser = "electron"
 nmap <leader>p <Plug>MarkdownPreviewToggle
 
-"vim-markdown
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_folding_disabled = 1
-set conceallevel=2
-
-"vim-markdown-toc
+"markdown-toc
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 let g:vmt_list_item_char = '-'
