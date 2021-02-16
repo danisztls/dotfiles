@@ -54,3 +54,6 @@ export PATH=$PATH:$XDG_DATA_HOME/npm/bin
 # shellcheck disable=SC1090
 [ -f "$XDG_CONFIG_HOME/broot/launcher/bash/br" ] && source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 
+# Socket for Docker rootless
+# export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
