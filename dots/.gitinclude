@@ -6,6 +6,7 @@
 .config/rofi
 .config/wgetrc
 .config/zsh/p10k.zsh
+.gitconfig
 .profile
 .Xresources
 .zshrc
