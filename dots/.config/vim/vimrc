@@ -58,6 +58,12 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" gnores capital-typos when you want to write/quit
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
+
 " clipboard
 vnoremap <C-c> "*y :let @+=@*<CR>
 map <C-v> "+P
@@ -71,6 +77,9 @@ set updatetime=250
 
 " disable automatic commenting on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" soft linewrap
+set wrap linebreak
 
 " colors
 let g:PaperColor_Theme_Options = {
@@ -140,8 +149,10 @@ set foldlevel=3
 
 " markdown-preview
 "let g:mkdp_refresh_slow = 1
-let g:mkdp_browser = "electron"
-nmap <leader>p <Plug>MarkdownPreviewToggle
+"let g:mkdp_browser = "firefox"
+let g:mkdp_markdown_css = expand('~/.config/vim/markdown.css')
+nmap <leader>p <Plug>MarkdownPreview
+nmap <leader>P <Plug>MarkdownPreviewStop
 
 "markdown-toc
 let g:vmt_fence_text = 'TOC'

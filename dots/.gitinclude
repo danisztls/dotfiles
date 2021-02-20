@@ -1,6 +1,7 @@
 .bashrc
 .config/alacritty.yml
 .config/vim/autoload/plug.vim
+.config/vim/markdown.css
 .config/vim/vimrc
 .config/shell
 .config/rofi
