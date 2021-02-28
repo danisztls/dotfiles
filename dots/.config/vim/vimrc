@@ -176,5 +176,5 @@ let g:mkdp_preview_options = {
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 let g:vmt_list_item_char = '-'
-nmap <leader>t :GenTocGitLab<CR>
+nmap <leader>t :GenTocGFM<CR>
 
