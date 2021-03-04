@@ -55,8 +55,11 @@ alias fcd='fzf-special cd' # directories
 alias fps='fzf-special ps' # processes
 
 # Journal
-alias jt='journal-tasks'
-alias jl='journal-log'
+alias j='journal'
+alias jw='journal write'
+alias jr='journal read'
+alias js='journal show'
+alias jf='journal find'
 
 # clear cache
 alias clear-cache='sudo sync; echo 3 > /proc/sys/vm/drop_caches'
