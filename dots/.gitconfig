@@ -12,3 +12,13 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
+[alias]
+    a = add
+    c = commit
+    d = diff
+    l = log
+    s = status
+    br = branch
+    co = checkout
+    cp = cherry-pick
+    rf = reflog
