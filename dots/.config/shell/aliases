@@ -80,7 +80,7 @@ alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
 alias 7zcrypt='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p'
 
 # open by default application
-alias xo='xdg-open'
+alias x='xdg-open "$@" 2>/dev/null'
 
 # chrome print to pdf
 alias chromium2pdf='chromium --headless --disable-gpu --print-to-pdf'
