@@ -11,7 +11,7 @@
   margin-bottom: 0;
 }
 .markdown-body {
-  font-family: sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 16px;
   color: #333;
   line-height: 1.6;
@@ -45,6 +45,7 @@
   margin-bottom: 0.5em;
   font-weight: bold;
   line-height: 1.4;
+  font-family: 'Noto Sans Display', sans-serif;
 }
 .markdown-body p,
 .markdown-body blockquote,
@@ -162,12 +163,12 @@
   content: normal;
 }
 .markdown-body code {
-  font-family: monospace;
+  font-family: 'JetBrains Mono', 'Hacker', monospace;
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
   margin: 0;
-  background-color: rgba(0,0,0,0.04);
+  background-color: rgba(255, 193, 7, 0.15);
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
@@ -225,4 +226,8 @@
 
 #page-header {
     display: none !important;
+}
+
+.anchor {
+    display: none;
 }
