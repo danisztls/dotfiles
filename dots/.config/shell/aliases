@@ -85,3 +85,6 @@ alias x='xdg-open "$@" 2>/dev/null'
 
 # chrome print to pdf
 alias chromium2pdf='chromium --headless --disable-gpu --print-to-pdf'
+
+# yarn XDG compliance
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
