@@ -46,7 +46,8 @@ alias b='browser'
 alias q='exit'
 
 # fzf
-alias f='fzf-special hidden' # hidden files
+alias f='fzf-special'
+alias fall='fzf-special all' # hidden files
 alias fmd='fzf-special md' # markdown files
 alias fpdf='fzf-special pdf' # pdf and postscript files
 alias fvid='fzf-special media' # videos and audio

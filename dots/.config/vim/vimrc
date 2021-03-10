@@ -114,7 +114,13 @@ set background=dark
 colorscheme PaperColor
 
 " fzf
-nmap <leader>f :Files
+nmap <leader>F :Files<CR>
+nmap <leader>fw :Windows<CR>
+"" vim-fugitive
+nmap <leader>fc :BCommits<CR>
+nmap <leader>fC :Commits<CR>
+"" UltiSnips
+nmap <leader>fs :Snippets<CR>
 
 " nerdtree
 map <leader>b :NERDTreeToggle<CR>

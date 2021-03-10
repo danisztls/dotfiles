@@ -45,6 +45,9 @@ export PATH=$PATH:$XDG_DATA_HOME/npm/bin
 # Autostart
 [ -f "$XDG_CONFIG_HOME/shell/autostart" ] && ( [ -r "/tmp/$USER" ] || "$XDG_CONFIG_HOME/shell/autostart" )
 
+# Fzf
+export FZF_DEFAULT_COMMAND="fd -t f -i -E '**/.git/**' -E '**cache/**' -E '**/node_modules/**'"
+
 # Broot
 # shellcheck disable=SC1090
 [ -f "$XDG_CONFIG_HOME/broot/launcher/bash/br" ] && source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
