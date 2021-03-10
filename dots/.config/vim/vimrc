@@ -60,6 +60,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" enable mouse events
+set mouse=a
+
 " gnores capital-typos when you want to write/quit
 :command WQ wq
 :command Wq wq
@@ -162,6 +165,7 @@ endfunc
 
 "let g:mkdp_refresh_slow = 1
 "let g:mkdp_browser = "chromium"
+"let g:mkdp_auto_start = 1
 let g:mkdp_browserfunc = "Mkdp_chromium"
 let g:mkdp_markdown_css = expand('~/.config/vim/markdown.css')
 nmap <leader>p <Plug>MarkdownPreview
