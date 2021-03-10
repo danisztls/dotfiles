@@ -25,7 +25,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 "Plug 'jceb/vim-orgmode'
 Plug 'aklt/plantuml-syntax'
 
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme' " improved highlighting
+Plug 'junegunn/vader.vim' " test framework
+
+Plug 'SirVer/ultisnips' " snippets framework
+Plug 'honza/vim-snippets' " snippets
 call plug#end()
 
 "set vim info path
@@ -182,4 +186,9 @@ let g:vmt_fence_closing_text = '/TOC'
 "let g:vmt_list_item_char = '*'
 "let g:vmt_cycle_list_item_markers = 1
 nmap <leader>t :GenTocGFM<CR>
+
+"UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
