@@ -16,9 +16,7 @@ Plug 'junegunn/gv.vim' " commit browser
 
 Plug 'dense-analysis/ale' " syntax highlighting
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'} " lsp editor
-
-Plug 'metakirby5/codi.vim' " REPL
+"Plug 'metakirby5/codi.vim' " REPL
 
 Plug 'godlygeek/tabular' " text filtering and alignment
 Plug 'plasticboy/vim-markdown' " markdown stuff
@@ -143,8 +141,8 @@ nmap <silent> <C-b> <Plug>(ale_previous_wrap)
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 " codi
-nmap <leader>c :Codi
-nmap <leader>C :Codi!
+"nmap <leader>c :Codi<CR>
+"nmap <leader>C :Codi!<CR>
 
 "markdown
 set conceallevel=2
