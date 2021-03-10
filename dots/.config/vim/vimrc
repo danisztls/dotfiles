@@ -43,7 +43,7 @@ set encoding=utf-8
 
 " line number
 set number relativenumber
-nmap <leader>h :setlocal number! relativenumber!<CR>
+nnoremap <leader>h :setlocal number! relativenumber!<CR>
 
 " 4 spaces tab
 set tabstop=4
@@ -55,13 +55,16 @@ set wildmode=longest,list,full
 
 " fix splits
 set splitbelow splitright
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " enable mouse events
 set mouse=a
+
+" folds
+nnoremap <space> za
 
 " gnores capital-typos when you want to write/quit
 :command WQ wq
@@ -71,11 +74,11 @@ set mouse=a
 
 " clipboard
 vnoremap <C-c> "*y :let @+=@*<CR>
-map <C-v> "+P
+noremap <C-v> "+P
 
 " spell-check
-nmap <leader>en :setlocal spell! spelllang=en_us<CR>
-nmap <leader>pt :setlocal spell! spelllang=pt_br<CR>
+nnoremap <leader>en :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>pt :setlocal spell! spelllang=pt_br<CR>
 
 " vim auto-update
 set updatetime=250
@@ -119,16 +122,16 @@ set background=dark
 colorscheme PaperColor
 
 " fzf
-nmap <leader>F :Files<CR>
-nmap <leader>fw :Windows<CR>
+nnoremap <leader>F :Files<CR>
+nnoremap <leader>fw :Windows<CR>
 "" vim-fugitive
-nmap <leader>fc :BCommits<CR>
-nmap <leader>fC :Commits<CR>
+nnoremap <leader>fc :BCommits<CR>
+nnoremap <leader>fC :Commits<CR>
 "" UltiSnips
-nmap <leader>fs :Snippets<CR>
+nnoremap <leader>fs :Snippets<CR>
 
 " nerdtree
-map <leader>b :NERDTreeToggle<CR>
+noremap <leader>b :NERDTreeToggle<CR>
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " airline
@@ -148,8 +151,8 @@ nmap <silent> <C-b> <Plug>(ale_previous_wrap)
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 " codi
-"nmap <leader>c :Codi<CR>
-"nmap <leader>C :Codi!<CR>
+"nnoremap <leader>c :Codi<CR>
+"nnoremap <leader>C :Codi!<CR>
 
 "markdown
 set conceallevel=2
@@ -189,7 +192,7 @@ let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 "let g:vmt_list_item_char = '*'
 "let g:vmt_cycle_list_item_markers = 1
-nmap <leader>t :GenTocGFM<CR>
+nnoremap <leader>t :GenTocGFM<CR>
 
 "UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
