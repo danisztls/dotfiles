@@ -16,7 +16,7 @@ Plug 'junegunn/gv.vim' " commit browser
 
 Plug 'dense-analysis/ale' " syntax highlighting
 
-"Plug 'metakirby5/codi.vim' " REPL
+Plug 'metakirby5/codi.vim' " REPL
 
 Plug 'godlygeek/tabular' " text filtering and alignment
 Plug 'plasticboy/vim-markdown' " markdown stuff
@@ -62,6 +62,23 @@ noremap <C-l> <C-w>l
 
 " enable mouse events
 set mouse=a
+
+" alternative <esc> in insert mode
+inoremap jk <esc>
+
+" disable arrow keys
+"inoremap <Up> <nop>
+"inoremap <Down> <nop>
+"inoremap <Left> <nop>
+"inoremap <Right> <nop>
+
+" enclose helpers
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lel
+nnoremap <leader>[ viw<esc>a]<esc>bi[<esc>lel
+nnoremap <leader>{ viw<esc>a}<esc>bi{<esc>lel
+nnoremap <leader>* viw<esc>a*<esc>bi*<esc>lel
 
 " folds
 nnoremap <space> za
@@ -151,8 +168,8 @@ nmap <silent> <C-b> <Plug>(ale_previous_wrap)
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 " codi
-"nnoremap <leader>c :Codi<CR>
-"nnoremap <leader>C :Codi!<CR>
+nnoremap <leader>c :Codi<CR>
+nnoremap <leader>C :Codi!<CR>
 
 "markdown
 set conceallevel=2
@@ -199,3 +216,5 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" Python
+autocmd FileType python :iabbrev <buffer> iff if:<left>
