@@ -87,12 +87,10 @@ f4:accept' \
             rgPreview="rg --ignore-case --pretty --no-line-number --context 10 {q} {}"
         fi
 
-        file="$(
-            export FZF_DEFAULT_COMMAND="$rgFind '$1'"
-            fzf --preview "$rgPreview" \
-                --sort --phony -q "$1" \
-                --bind "change:reload:$rgFind {q}"
-        )" && xdg-open "$file" >/dev/null
+        export FZF_DEFAULT_COMMAND="$rgFind '$1'"
+        fzf --preview "$rgPreview" \
+            --sort --phony -q "$1" \
+            --bind "change:reload:$rgFind {q}"
     }
 
     ## FCD: search dirs and cd to them
