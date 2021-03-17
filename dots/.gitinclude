@@ -1,5 +1,6 @@
 .bashrc
 .config/alacritty.yml
+.config/kitty/kitty.conf
 .config/vim/autoload/plug.vim
 .config/vim/markdown.css
 .config/vim/vimrc
