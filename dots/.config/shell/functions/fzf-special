@@ -23,7 +23,7 @@ fzf-special() {
     # f4:execute-silent(nautilus -w -s {} >/dev/null)
 
     # SETTINGS
-    txtEditor="nvim"
+    textEditor="nvim"
     pdfPreviewer="evince -w"
     mediaPreviewer="mpv --no-terminal --length=5" # autoclose after 5s 
 
@@ -42,14 +42,15 @@ pointer:#be5046,\
 marker:#e5c07b,\
 spinner:#61afef,\
 header:#61afef"
-
-    # shellcheck disable=SC2034 # will be used by subshells
+    
+    # DEFAULTS
     export FZF_DEFAULT_OPTS="--bind '\
 f1:execute-silent(xdg-open {} 2>/dev/null),\
-f2:execute($txtEditor {}),\
+f2:execute(${EDITOR:-$textEditor} {}),\
 f3:execute-silent(xclip <<< {}),\
 f4:accept' \
---preview-window=right:60%:wrap ${colors}"
+        --header 'f1 → default, f2 → editor, f3 → clipboard, f4 → terminal, del → delete' \
+        --preview-window=right:60%:wrap ${colors}"
 
     batPreview="bat --style=numbers --color=always --line-range :500 {}"
     
@@ -64,7 +65,8 @@ f4:accept' \
     }
     ## FMD: find markdown notes
     fzfMd() {
-        fd -t f -i -g '*.md' | fzf --bind "del:reload(trash {} && fd -t f -i -g '*.md')" --preview "$batPreview"  
+        fd -t f -i -g '*.md' |
+        fzf --bind "del:reload(trash {} && fd -t f -i -g '*.md')" --preview "$batPreview"
     }
 
     ## FPDF: find preview pdf and postscript files
@@ -96,7 +98,9 @@ f4:accept' \
     ## FCD: search dirs and cd to them
     fzfCd() {
         # shellcheck disable=SC2164 # it's already a noop
-        cd "$(fd -t d -i | fzf --preview 'tree -C -c {} | head -200' --bind 'enter:accept')"
+        cd "$(fd -t d -i |
+        fzf --preview 'tree -C -c {} | head -200' --bind 'enter:accept' \
+            --header 'f1 → browser, f2 → editor, enter → cd')"
     }
     
     ## FPS: search processes and manage them
@@ -106,6 +110,7 @@ f4:accept' \
         # shellcheck disable=SC2031
         export FZF_DEFAULT_COMMAND="$psFind"
         fzf --ansi --header-lines=1 --reverse --cycle \
+            --header "f1 → SIGTERM, f2 → SIGKILL, f3 → SIGSTOP, f4 → SIGCONTv" \
             --bind "change:reload($psFind),\
 f1:reload(kill -15 {1} && sleep 0.15 && $psFind),\
 f2:reload(kill -9 {1} && sleep 0.15 && $psFind),\
