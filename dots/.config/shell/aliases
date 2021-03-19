@@ -46,14 +46,14 @@ alias b='browser'
 alias q='exit'
 
 # fzf
-alias f='fzf-special'
-alias fall='fzf-special all' # hidden files
-alias fmd='fzf-special md' # markdown files
-alias fpdf='fzf-special pdf' # pdf and postscript files
-alias fvid='fzf-special media' # videos and audio
-alias full='fzf-special full' # full text search
-alias fcd='fzf-special cd' # directories
-alias fps='fzf-special ps' # processes
+alias f='fzfx'
+alias fall='fzfx all' # hidden files
+alias fmd='fzfx md' # markdown files
+alias fpdf='fzfx pdf' # pdf and postscript files
+alias fvid='fzfx media' # videos and audio
+alias full='fzfx full' # full text search
+alias fcd='fzfx cd' # directories
+alias fps='fzfx ps' # processes
 
 # Journal
 alias j='journal'
