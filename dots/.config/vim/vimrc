@@ -8,7 +8,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin' " git support
 Plug 'ryanoasis/vim-devicons' " icons support
 
 Plug 'vim-airline/vim-airline' " status line
-
 Plug 'airblade/vim-gitgutter' " git highlight, un/stage changes
 Plug 'tpope/vim-fugitive' " conflict resolution flow
 Plug 'junegunn/gv.vim' " commit browser
@@ -140,7 +139,6 @@ let g:PaperColor_Theme_Options = {
 
 set background=dark
 colorscheme PaperColor
-let g:airline_theme='papercolor'
 
 " fzf
 nnoremap <leader>F :Files<CR>
