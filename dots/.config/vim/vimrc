@@ -83,7 +83,10 @@ nnoremap <leader>* viw<esc>a*<esc>bi*<esc>lel
 " folds
 nnoremap <space> za
 
-" gnores capital-typos when you want to write/quit
+" diffs
+nnoremap dg :diffget<CR>
+
+" ignores capital-typos when you want to write/quit
 :command WQ wq
 :command Wq wq
 :command W w
