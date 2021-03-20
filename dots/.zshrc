@@ -14,7 +14,7 @@ export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~
 if [[ $USER != root ]]; then
 	if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
 		fpath=( "$XDG_CONFIG_HOME/shell/functions" "${fpath[@]}" )
-		autoload -Uz extract fzf-special
+		autoload -Uz extract yolo
 	fi
 fi
 
