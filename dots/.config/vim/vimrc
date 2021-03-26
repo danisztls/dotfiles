@@ -116,21 +116,21 @@ let g:PaperColor_Theme_Options = {
   \       'transparent_background': 1,
   \       'override' : {
   \         'color00' : ['#1d2529', ''],
-  \         'color01' : ['#f21d41', ''],
-  \         'color02' : ['#88f719', ''],
-  \         'color03' : ['#ffc107', ''],
-  \         'color04' : ['#00d4ff', ''],
-  \         'color05' : ['#9000ff', ''],
-  \         'color06' : ['#29a69a', ''],
-  \         'color07' : ['#cfd8dc', ''],
-  \         'color08' : ['#12171a', ''],
-  \         'color09' : ['#cc0f2f', ''],
-  \         'color10' : ['#69bf13', ''],
-  \         'color11' : ['#f29800', ''],
-  \         'color12' : ['#00a8e0', ''],
-  \         'color13' : ['#8416d9', ''],
-  \         'color14' : ['#009688', ''],
-  \         'color15' : ['#eceff1', ''],
+  \         'color01' : ['#12171a', ''],
+  \         'color02' : ['#ff66c2', ''],
+  \         'color03' : ['#d9b600', ''],
+  \         'color04' : ['#6bac00', ''],
+  \         'color05' : ['#999999', ''],
+  \         'color06' : ['#d40059', ''],
+  \         'color07' : ['#dddddd', ''],
+  \         'color08' : ['#00a8e0', ''],
+  \         'color09' : ['#ff5c00', ''],
+  \         'color10' : ['#379000', ''],
+  \         'color11' : ['#00af9e', ''],
+  \         'color12' : ['#b37eff', ''],
+  \         'color13' : ['#009385', ''],
+  \         'color14' : ['#0087e9', ''],
+  \         'color15' : ['#cf2424', ''],
   \         'cursorlinenr_bg' : ['#3a3a3a', ''],
   \         'visual_bg' : ['#bec0c0', '']
   \       }
@@ -140,6 +140,7 @@ let g:PaperColor_Theme_Options = {
 
 set background=dark
 colorscheme PaperColor
+let g:airline_theme='papercolor'
 
 " fzf
 nnoremap <leader>F :Files<CR>
