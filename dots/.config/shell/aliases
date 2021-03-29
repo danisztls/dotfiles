@@ -1,34 +1,40 @@
-# colorized output
+# Colorized Output
 #alias ls='ls --color=auto'
-alias ls='exa'
+alias ls='exa' # exa parameters are similar but not fully compliable with ls
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias diff='colordiff'
+alias cat='bat'
 alias ps='grc ps'
 
-# file management
+# Common
+alias b='browser'
+alias q='exit'
+alias x='xdg-open "$@" 2>/dev/null' # open with default application
+
+# File management
 alias rm='trash -v' # move to trash
 alias mv='mv -v -n' # verbose and don't overwrite
 alias cp='cp -v -n'
 
-# neovim
+# Vim
 alias v='nvim'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 
-# pacman
+# Pacman
 alias pm='pacman'
 #alias yays='yay --editmenu --mflags --skipinteg' # ask to edit PKGBUILD and skip integrity checks
 alias yay='paru'
 alias yays='paru -Syu'
 alias yeet='paru -Rcs'
 
-# root
+# Superadmin
 alias god='sudo -i'
 alias s='sudo'
 
-# systemctl
+# Systemd
 alias 's?=systemctl status'
 alias 's#=systemctl restart'
 alias 's!=systemctl stop'
@@ -36,18 +42,18 @@ alias 'su?=systemctl --user status'
 alias 'su#=systemctl --user restart'
 alias 'su!=systemctl --user stop'
 
-# git
+# Git
 alias g='git'
 alias 'g?=git status'
 alias 'g+=git add'
 alias 'g%=git diff'
 alias 'g#=git commit'
 
-# common shortcuts
-alias b='browser'
-alias q='exit'
+# rename master branch to main
+# require manual intervention on web server
+alias unchain="git branch -M master main && git push -u origin main && git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main && git branch -a"
 
-# fzf
+# Fzf
 alias f='fzfx'
 alias fall='fzfx all' # hidden files
 alias fmd='fzfx md' # markdown files
@@ -64,36 +70,30 @@ alias jr='journal read'
 alias js='journal show'
 alias jf='journal find'
 
-# clear cache
-alias clear-cache='sudo sync; echo 3 > /proc/sys/vm/drop_caches'
-
-# feh fit window
-alias feh='feh --scale-down --auto-zoom'
-
-# use gopass
-alias pass='gopass'
-
-# attach to weechat session
-alias irc='tmux -L weechat a'
-
-# terminal to svg
-alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
-
-# encrypted 7z
-alias 7zcrypt='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p'
-
-# open by default application
-alias x='xdg-open "$@" 2>/dev/null'
-
-# chrome print to pdf
-alias chromium2pdf='chromium --headless --disable-gpu --print-to-pdf'
-
-# yarn XDG compliance
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
-
-# exercism
+# Exercism
 alias ex-down="exercism download"
 alias ex-send="exercism submit"
 
-# rename master to main
-alias unchain="git branch -M master main && git push -u origin main && git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main && git branch -a"
+# Clear cache
+alias clear-cache='sudo sync; echo 3 > /proc/sys/vm/drop_caches' # not working due system to policies
+
+# Feh
+alias feh='feh --scale-down --auto-zoom' # fit window
+
+# Pass
+alias pass='gopass' # use gopass
+
+# Weechat
+alias irc='tmux -L weechat a' # attach to session
+
+# Termtosvg
+alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
+
+# Encrypted 7z
+alias 7zcrypt='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p' # create encrypted 7z w/ multi-OS compliance
+
+# Chromium
+alias chromium2pdf='chromium --headless --disable-gpu --print-to-pdf' # print to pdf
+
+# Yarn
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config" # force XDG compliance
