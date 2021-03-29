@@ -82,9 +82,6 @@ nnoremap <leader>* viw<esc>a*<esc>bi*<esc>lel
 " folds
 nnoremap <space> za
 
-" diffs
-nnoremap dg :diffget<CR>
-
 " ignores capital-typos when you want to write/quit
 :command WQ wq
 :command Wq wq
@@ -143,11 +140,21 @@ colorscheme PaperColor
 " fzf
 nnoremap <leader>F :Files<CR>
 nnoremap <leader>fw :Windows<CR>
+
+" Git and diffs
+nnoremap dg :diffget<CR>
+nnoremap dh :diffget LO<CR>
+nnoremap dl :diffget RE<CR>
+nnoremap <silent> ]C /\v^[<>=\|]{4,7}($\|\s\|\r)<CR>
+
 "" vim-fugitive
 nnoremap <leader>fc :BCommits<CR>
 nnoremap <leader>fC :Commits<CR>
-"" UltiSnips
-nnoremap <leader>fs :Snippets<CR>
+
+"" gitgutter
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 " nerdtree
 noremap <leader>b :NERDTreeToggle<CR>
@@ -155,12 +162,8 @@ let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline_powerline_fonts = 1
-
-" gitgutter
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='supernova'
 
 " ALE
 let g:airline#extensions#ale#enabled = 1
@@ -217,6 +220,7 @@ nnoremap <leader>t :GenTocGFM<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+nnoremap <leader>fs :Snippets<CR>
 
 " Python
 autocmd FileType python :iabbrev <buffer> iff if:<left>
