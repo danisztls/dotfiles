@@ -23,3 +23,5 @@
     co = checkout
     cp = cherry-pick
     rf = reflog
+[merge]
+	tool = vimdiff
