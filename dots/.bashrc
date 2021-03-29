@@ -89,3 +89,6 @@ case ${TERM} in
 	screen*) # && exec zsh # use zsh on X terminals
 		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"';;
 esac
+
+
+source /home/lobo/.config/broot/launcher/bash/br
