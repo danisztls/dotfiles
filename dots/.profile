@@ -59,7 +59,12 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$XDG_DATA_HOME/npm/bin
 
 # Autostart
-[ -f "$XDG_CONFIG_HOME/shell/autostart" ] && ( [ -r "/tmp/$USER" ] || "$XDG_CONFIG_HOME/shell/autostart" )
+# Will run after login and will not run again until next boot even if .profile is sourced
+autostart_lock=/run/user/$(id -u)/autostart.lock
+if [ -f "$XDG_CONFIG_HOME/shell/autostart" ] && ! [ -f "$autostart_lock" ]; then
+    "$XDG_CONFIG_HOME/shell/autostart"
+    touch "$autostart_lock"
+fi
 
 # FZF
 # Set bg: -1 and fg: -1 to enable transparency

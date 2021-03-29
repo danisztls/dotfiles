@@ -1,5 +1,6 @@
 #!/bin/bash
 # Autostart
+# Things bellow will run at startup
 
 # Link cache files to /run/user/<user_id>
 uid=$(id -u) 
