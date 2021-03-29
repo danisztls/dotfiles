@@ -2,31 +2,27 @@
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' " fuzzy search
-
 Plug 'preservim/nerdtree' " file browser 
 Plug 'Xuyuanp/nerdtree-git-plugin' " git support
 Plug 'ryanoasis/vim-devicons' " icons support
-
 Plug 'vim-airline/vim-airline' " status line
 Plug 'airblade/vim-gitgutter' " git highlight, un/stage changes
 Plug 'tpope/vim-fugitive' " conflict resolution flow
 Plug 'junegunn/gv.vim' " commit browser
 "Plug 'jreybert/vimagit' 
-
 Plug 'dense-analysis/ale' " syntax highlighting
-
 Plug 'metakirby5/codi.vim' " REPL
-
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular' " text filtering and alignment
 Plug 'plasticboy/vim-markdown' " markdown stuff
 Plug 'mzlogin/vim-markdown-toc' " md table of contents
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 "Plug 'jceb/vim-orgmode'
 Plug 'aklt/plantuml-syntax'
-
 Plug 'NLKNguyen/papercolor-theme' " improved highlighting
 Plug 'junegunn/vader.vim' " test framework
-
 Plug 'SirVer/ultisnips' " snippets framework
 Plug 'honza/vim-snippets' " snippets
 call plug#end()
