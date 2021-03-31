@@ -25,3 +25,5 @@
     rf = reflog
 [merge]
 	tool = vimdiff
+[init]
+	defaultBranch = main
