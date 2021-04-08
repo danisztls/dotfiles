@@ -43,7 +43,8 @@ alias 'su#=systemctl --user restart'
 alias 'su!=systemctl --user stop'
 
 # Git
-alias g='git'
+alias 'g=git'
+alias 'gl=git-lfs'
 alias 'g?=git status'
 alias 'g+=git add'
 alias 'g%=git diff'
@@ -63,7 +64,7 @@ alias fmd='fzfx md' # markdown files
 alias fpdf='fzfx pdf' # pdf and postscript files
 alias fvid='fzfx media' # videos and audio
 alias full='fzfx full' # full text search
-alias fcd='fzfx cd' # directories
+alias fcd='cd "$(fzfx cd)"' # directories
 alias fps='fzfx ps' # processes
 
 # Journal
@@ -100,3 +101,9 @@ alias chromium2pdf='chromium --headless --disable-gpu --print-to-pdf' # print to
 
 # Yarn
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config" # force XDG compliance
+
+# VaultGuard
+alias vg="vaultguard"
+
+# Makepkg
+alias makesrcinfo="makepkg --printsrcinfo > .SRCINFO"
