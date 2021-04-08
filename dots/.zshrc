@@ -12,10 +12,10 @@ export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~
 
 # Functions
 if [[ $USER != root ]]; then
-	if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
-		fpath=( "$XDG_CONFIG_HOME/shell/functions" "${fpath[@]}" )
-		autoload -Uz extract yolo color-palette
-	fi
+    if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
+        fpath=( "$XDG_CONFIG_HOME/shell/functions" "${fpath[@]}" )
+        autoload -Uz extract yolo
+    fi
 fi
 
 # Autocompletion
@@ -93,4 +93,3 @@ fi
 
 # Syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
