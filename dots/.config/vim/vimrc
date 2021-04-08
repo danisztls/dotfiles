@@ -94,6 +94,9 @@ noremap <C-v> "+P
 nnoremap <leader>en :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>pt :setlocal spell! spelllang=pt_br<CR>
 
+" allow the . to execute once for each line of a visual selection
+vnoremap . :normal .<CR>
+
 " vim auto-update
 set updatetime=250
 
