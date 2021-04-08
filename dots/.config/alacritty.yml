@@ -174,7 +174,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#1d2529'
+    background: '#242e33'
     foreground: '#eceff1'
 
     # Bright and dim foreground colors
@@ -191,7 +191,7 @@ colors:
   # the cursor color will be the inverse of the cell color.
   cursor:
     text: '#eceff1'
-    cursor: '#cfd8dc'
+    cursor: '#c9d1d7'
 
   # Selection colors
   #
@@ -205,24 +205,24 @@ colors:
   # Normal colors
   normal:
     black:   '#1d2529'
-    red:     '#cf2424'
-    green:   '#379000'
-    yellow:  '#ff5c00'
-    blue:    '#0087e9'
-    magenta: '#b37eff'
-    cyan:    '#009385'
-    white:   '#adbac7'
+    red:     '#ff1447'
+    green:   '#4e9c00'
+    yellow:  '#ba9c00'
+    blue:    '#009bba'
+    magenta: '#a42eff'
+    cyan:    '#0ba394'
+    white:   '#eceff1'
 
   # Bright colors
   bright:
-    black:   '#242e33'
-    red:     '#d40059'
-    green:   '#6bac00'
-    yellow:  '#d9b600'
-    blue:    '#00a8e0'
-    magenta: '#ff66c2'
-    cyan:    '#00af9e'
-    white:   '#dddddd'
+    black:   '#12171a'
+    red:     '#db0025'
+    green:   '#308000'
+    yellow:  '#cc6800'
+    blue:    '#007ea8'
+    magenta: '#c557ff'
+    cyan:    '#008276'
+    white:   '#c9d1d7'
 
   # Dim colors
   #
@@ -278,7 +278,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.87
+background_opacity: 0.98
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
