@@ -18,6 +18,7 @@ Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular' " text filtering and alignment
 Plug 'plasticboy/vim-markdown' " markdown stuff
 Plug 'mzlogin/vim-markdown-toc' " md table of contents
+"Plug 'lbcnz/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'branch': 'beta' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 "Plug 'jceb/vim-orgmode'
 Plug 'aklt/plantuml-syntax'
@@ -186,10 +187,10 @@ function! g:Mkdp_chromium(url)
 endfunc
 
 "let g:mkdp_refresh_slow = 1
-"let g:mkdp_browser = "chromium"
 "let g:mkdp_auto_start = 1
+"let g:mkdp_browser = "firefox"
 let g:mkdp_browserfunc = "Mkdp_chromium"
-let g:mkdp_markdown_css = expand('~/.config/vim/markdown.css')
+"let g:mkdp_markdown_css = expand('~/.config/vim/markdown.css')
 nmap <leader>p <Plug>MarkdownPreview
 nmap <leader>P <Plug>MarkdownPreviewStop
 let g:mkdp_preview_options = {
