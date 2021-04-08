@@ -79,8 +79,10 @@ shopt -s checkwinsize
 shopt -s expand_aliases
 
 # load functions
-source "$XDG_CONFIG_HOME/shell/functions/extract"
-source "$XDG_CONFIG_HOME/shell/functions/fzf-special"
+mapfile -t funcs < <(ls "$XDG_CONFIG_HOME/shell/functions/") # see SC2207
+for func in "${funcs[@]}"; do
+    source "$XDG_CONFIG_HOME/shell/functions/$func"
+done
 
 # change the window title of X terminals
 case ${TERM} in
@@ -90,5 +92,4 @@ case ${TERM} in
 		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"';;
 esac
 
-
-source /home/lobo/.config/broot/launcher/bash/br
+source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
