@@ -1,7 +1,7 @@
 # Stage all changes, commit with today's date as message and push to remote.
 # It's an educated function that knows to not push when improper and how to make amends.
 # usage: extract <file>
-    yolo() {
+yolo() {
     today="$(date '+%y-%m-%d')"
     last_commit="$(git shortlog -1 | sed -n '2p' | sed 's/ //g')"
     git add -A
