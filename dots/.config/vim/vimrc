@@ -226,3 +226,19 @@ nnoremap <leader>fs :Snippets<CR>
 
 " Python
 autocmd FileType python :iabbrev <buffer> iff if:<left>
+
+" FUNCTIONS
+" convert rows of numbers or text (as if pasted from excel column) to a tuple
+fun! ToTuple() range
+    silent execute a:firstline . "," . a:lastline . "s/^/'/"
+    silent execute a:firstline . "," . a:lastline . "s/$/',/"
+    silent execute a:firstline . "," . a:lastline . "join"
+    silent execute "normal I("
+    silent execute "normal $xa)"
+endfunction
+
+" convert a simple code span to a nice shell code fence
+fun! ToShell()
+    silent execute "s/^`/```sh\r/"
+    silent execute "s/`$/\r```/"
+endfunction
