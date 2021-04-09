@@ -1,6 +1,8 @@
 # Dotfiles
 These are some of the configurations and scripts that I use to make my life in Linux more functional and enjoyable. 
 
+[![GitHub Super-Linter](https://github.com/lbcnz/dotfiles/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 <!-- TOC GFM -->
 
 * [Structure](#structure)
