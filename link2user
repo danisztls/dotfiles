@@ -1,19 +1,23 @@
 #!/bin/bash
 # Link dotfiles from repo to $HOME
 
+# Strict mode
+set -e
+set -o pipefail
+
 # Get options from optargs
 # -f is force mode, to overwrite instead of backing up files
 while getopts "f" option; do
   case $option in
     f) forceMode=true;;
-    *) printf "Something unexpected happened.\n"
+    *) printf "\e[0;33mSomething unexpected happened.\n"
   esac
 done
 
 # Backup existing config by default
 if ! [ $forceMode ]; then
     mkdir -p "$HOME/dotfiles-backup"
-    _getridof() { mv "$1" "$HOME/dotfiles-backup"; }
+    _getridof() { mv -b "$1" "$HOME/dotfiles-backup"; }
 # Use trash instead of rm if available
 elif [ "$(command -v trash)" ]; then
     _getridof() { trash "$1"; }
@@ -26,14 +30,34 @@ _link() {
 # Link files
 # Symbolic links using absolute paths,
 # configuration will break if source is renamed 
+    # Return error if expected argument is missing
+    if ! [ "$1" ]; then
+        printf "\e[0;31mMissing argument!\n"
+        return 1
+    fi
+    # Source and Destination
     src="$PWD/dots/$1"
     dst="$HOME/$1"
+    dst_dir="${dst%/*?}"
+    # Noop if it's already the right symlink
+    if [ "$(readlink "$dst")" = "$src" ]; then
+        printf "\e[1;39m'%s'\e[0;34m is already set up!\n" "$dst"
+        return 0
+    fi
+
+    # Get rid of existent
     if [ -e "$dst" ]; then
-        _getridof "$dst" && printf "'%s' exists. Getting rid of!\n" "$dst"
+        printf "\e[1;39m'%s'\e[0;33m exists. Do you want to get rid of it?\e[1;39m (y/N)\n" "$dst"
+        read -r answer
+        case ${answer:0:1} in
+            y|Y) _getridof "$dst";;
+            *) return 1;;
+        esac
     fi
     # Ensure parent dirs exist at destination
-    mkdir -p "${dst%/*?[/]}"
-    ln -s "$src" "$dst" && printf "'%s' succesfully linked!\n" "$dst"
+    mkdir -p "$dst_dir"
+    # Link files
+    ln -s "$src" "$dst" && printf "\e[0;32mSuccesfully linked\e[1;39m '%s'\e[0;32m to\e[1;39m '%s'\e[0;32m!\n" "$src" "$dst"
 }
 
 _link ".bashrc"
