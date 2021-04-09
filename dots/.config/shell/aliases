@@ -33,14 +33,16 @@ alias yeet='paru -Rcs'
 # Superadmin
 alias god='sudo -i'
 alias s='sudo'
+alias se='sudoedit'
 
 # Systemd
-alias 's?=systemctl status'
-alias 's#=systemctl restart'
-alias 's!=systemctl stop'
+alias 's?'='sudo systemctl status'
+alias 's#'='sudo systemctl restart'
+alias 's!'='sudo systemctl stop'
 alias 'su?=systemctl --user status'
 alias 'su#=systemctl --user restart'
 alias 'su!=systemctl --user stop'
+# other ideas: %, +, -, @
 
 # Git
 alias 'g=git'
