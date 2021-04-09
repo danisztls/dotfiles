@@ -1,0 +1,49 @@
+#!/bin/bash
+# Link dotfiles from repo to $HOME
+
+# Get options from optargs
+# -f is force mode, to overwrite instead of backing up files
+while getopts "f" option; do
+  case $option in
+    f) forceMode=true;;
+    *) printf "Something unexpected happened.\n"
+  esac
+done
+
+# Backup existing config by default
+if ! [ $forceMode ]; then
+    mkdir -p "$HOME/dotfiles-backup"
+    _getridof() { mv "$1" "$HOME/dotfiles-backup"; }
+# Use trash instead of rm if available
+elif [ "$(command -v trash)" ]; then
+    _getridof() { trash "$1"; }
+# Remove when no alternative is left
+else
+    _getridof() { rm "$1"; }
+fi
+
+_link() {
+# Link files
+# Symbolic links using absolute paths,
+# configuration will break if source is renamed 
+    src="$PWD/dots/$1"
+    dst="$HOME/$1"
+    if [ -e "$dst" ]; then
+        _getridof "$dst" && printf "'%s' exists. Getting rid of!\n" "$dst"
+    fi
+    # Ensure parent dirs exist at destination
+    mkdir -p "${dst%/*?[/]}"
+    ln -s "$src" "$dst" && printf "'%s' succesfully linked!\n" "$dst"
+}
+
+_link ".bashrc"
+_link ".gitconfig"
+_link ".profile"
+_link ".Xresources"
+_link ".zshrc"
+_link ".config/allacritty.yml"
+_link ".config/kitty"
+_link ".config/rofi"
+_link ".config/shell"
+_link ".config/vim"
+_link ".config/zsh"
