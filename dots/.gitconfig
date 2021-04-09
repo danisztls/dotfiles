@@ -18,7 +18,7 @@
     ss = show
     d = diff
     a = add
-    aA = add
+    aA = add --all
     c = commit
     cA = commit --amend
     f  = fetch

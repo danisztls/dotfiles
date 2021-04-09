@@ -45,10 +45,6 @@ alias 'su!=systemctl --user stop'
 # Git
 alias 'g=git'
 alias 'gl=git-lfs'
-alias 'g?=git status'
-alias 'g+=git add'
-alias 'g%=git diff'
-alias 'g#=git commit'
 
 # rename master branch to main
 # require manual intervention on web server
