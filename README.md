@@ -1,5 +1,5 @@
 # Dotfiles
-These are some of the configurations and scripts that I use to make my life in Linux more functional and enjoyable. 
+These are some of the configurations and scripts that I use to make my life in Linux more functional and enjoyable.
 
 [![GitHub Super-Linter](https://github.com/lbcnz/dotfiles/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
@@ -74,7 +74,7 @@ g... config --local status.showUntrackedFiles no
 ### Why you don't use a dotfiles manager?
 [twpayne/chezmoi](https://github.com/twpayne/chezmoi) is interesting but I don't need those features right now or they are superseded by other tools that I currently use and so it would add unneeded complexity. That may change in the future though.
 
-> "If you do not personalize your configuration or only ever use a single operating system with a single account and none of your dotfiles contain secrets then you don't need chezmoi." — chezmoi README 
+> "If you do not personalize your configuration or only ever use a single operating system with a single account and none of your dotfiles contain secrets then you don't need chezmoi." — chezmoi README
 
 ### How to preserve my 'goodies' when doing things as root?
 Let's think of a common use case, editing files as superuser. There are many ways you can run a text editor as root and they all apparently do the same thing albeit being very different.
@@ -88,19 +88,23 @@ As it boils down to preserving environment variables I wrote, to demonstrate the
 | su      | user | /root      | yes     |
 | sudo su | root | /root      | no      |
 
-What basically happens is that `sudo` reset the environment variables while `su` just overwrite some of them. 
+What basically happens is that `sudo` reset the environment variables while `su` just overwrite some of them.
 
+su manpage:
 > For backward compatibility, su defaults to not change the current directory and to only set the environment variables HOME and SHELL  (plus
 > USER  and LOGNAME if the target user is not root).  It is recommended to always use the --login option (instead of its shortcut -) to avoid
-> side effects caused by mixing environments. — su manpage
+> side effects caused by mixing environments.
 
-> When sudo executes a command, the security policy specifies the execution environment for the command. — sudo manpage
+sudo manpage:
+> When sudo executes a command, the security policy specifies the execution environment for the command.
 
 And that policy is to unset all variables unless `Defaults env_reset` in `/etc/sudoers` is changed to `Defaults !env_reset`. Despite I despising typing `sudo` before every command, it is indeed more robust and safer than `su` for use with desktop environments. At least by default.
 
 #### "So what if you want to make vim or whatever else work with `su`?"
 
-First you have to link or copy your vim configuration to `/root` and if you use `$VIMINIT` you can't run `sudo su`. If you link the files you are increasing surface for root privilege escalation and copying the files, even if automated, is avoidable boring maintenance. Also you would not want to have a one thousand lines vim config causing problems when things fall apart and you have to log in as root as last resort to restore the system.
+First you have to link or copy your vim configuration to `/root` and if you use `$VIMINIT` you can't run `sudo su`. If you link the files you are increasing surface for root privilege escalation and copying the files, even if automated, is avoidable boring maintenance.
+
+Also you would not want to have a `vimrc` over one 1K lines causing problems when things fall apart and you have to log in as root as last resort to restore the system.
 
 #### "So what if I want to use `sudo` for that."
 
