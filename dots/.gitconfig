@@ -14,28 +14,45 @@
     file-decoration-style = none
 
 [alias]
-    a = add
-    c = commit
-    d = diff
-    l = log
     s = status
+    ss = show
+    d = diff
+    a = add
+    aA = add
+    c = commit
+    cA = commit --amend
+    f  = fetch
+    fA = fetch --all
+    pu = pull
+    ps = push
+    psF = push --force-with-lease
+    l = log
+    lO = log --pretty=oneline
+    lD = log --decorate --graph
     br = branch
+    brD = branch --delete
+    brDF = branch --delete --force
     co = checkout
     cp = cherry-pick
+    sl = shortlog
     rf = reflog
 
 [merge]
 	tool = vimdiff
+
 [init]
 	defaultBranch = main
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [user]
 	signingkey = F01BCA9BE4937F59B2AF899699265C42D8308B04 
 	name = Daniel Souza
 	email = danisztls@gmail.com
+
 [commit]
 	gpgsign = true
