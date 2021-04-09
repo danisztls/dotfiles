@@ -7,28 +7,23 @@ These are some of the configurations and scripts that I use to make my life in L
 
 * [Structure](#structure)
 * [Environment](#environment)
-* [More](#more)
 * [FAQ](#faq)
   * [How this works?](#how-this-works)
   * [Why you don't use a bare git repo?](#why-you-dont-use-a-bare-git-repo)
   * [Why you don't use a dotfiles manager?](#why-you-dont-use-a-dotfiles-manager)
   * [How to preserve my 'goodies' when doing things as root?](#how-to-preserve-my-goodies-when-doing-things-as-root)
-    * ["So what if you want to make vim or whatever else work with `su`?"](#so-what-if-you-want-to-make-vim-or-whatever-else-work-with-su)
-    * ["So what if I want to use `sudo` for that."](#so-what-if-i-want-to-use-sudo-for-that)
+    * ["So what if you want to make vim or whatever else work with 'su'?"](#so-what-if-you-want-to-make-vim-or-whatever-else-work-with-su)
+    * ["So what if I want to use 'sudo' for that."](#so-what-if-i-want-to-use-sudo-for-that)
   * [What is the license?](#what-is-the-license)
+* [See also](#see-also)
 
 <!-- /TOC -->
 
 ## Structure
-- dots: user dotfiles
-- dots-root: root dotfiles
-- gnome: hacks for gnome
-
 ```sh
 .
 ├── dots                        # user dotfiles
 │   └── WARNING.MD              # warning to not delete hidden files
-├── dots-root                   # root dotfiles
 ├── gnome                       # hacks for gnome environment
 │   ├── nautilus-scripts        # context menu scripts for nautilus
 │   ├── nvim-override.desktop   # hack for opening txtx files w/ alacritty
@@ -44,12 +39,7 @@ These are some of the configurations and scripts that I use to make my life in L
 - **desktop environment**: gnome-shell
 - **text editor**: nvim
 
-## More
-Related projects that I develop.
-
-- [arbie](https://github.com/lbcnz/arbie): automatic and robust backup
-- [journal](https://github.com/lbcnz/journal): CLI management of notes and tasks
-- [fzfx](https://github.com/lbcnz/fzfx): battle-tested use cases for fzf
+![Desktop in 2021](https://github.com/lbcnz/dotfiles/raw/main/assets/21-desktop.png)
 
 ## FAQ
 ### How this works?
@@ -100,13 +90,13 @@ sudo manpage:
 
 And that policy is to unset all variables unless `Defaults env_reset` in `/etc/sudoers` is changed to `Defaults !env_reset`. Despite I despising typing `sudo` before every command, it is indeed more robust and safer than `su` for use with desktop environments. At least by default.
 
-#### "So what if you want to make vim or whatever else work with `su`?"
+#### "So what if you want to make vim or whatever else work with 'su'?"
 
 First you have to link or copy your vim configuration to `/root` and if you use `$VIMINIT` you can't run `sudo su`. If you link the files you are increasing surface for root privilege escalation and copying the files, even if automated, is avoidable boring maintenance.
 
 Also you would not want to have a `vimrc` over one 1K lines causing problems when things fall apart and you have to log in as root as last resort to restore the system.
 
-#### "So what if I want to use `sudo` for that."
+#### "So what if I want to use 'sudo' for that."
 
 You can use `sudo -E` to preserve environment or edit `sudoers` file for having it by default. But still, you will be increasing surface for root privilege escalation and mixing environments is bad practice and can cause tragic side effects. Sometimes it's not a good idea to run things in mixed environments, things may not work and user files may be overwritten as root.
 
@@ -114,3 +104,8 @@ The only 'sane' alternative is to use `sudoedit` or `su -e` which creates a temp
 
 ### What is the license?
 My own code is under MIT license but components may be under other licenses.
+
+## See also
+- [arbie](https://github.com/lbcnz/arbie): automatic and robust backup
+- [journal](https://github.com/lbcnz/journal): CLI management of notes and tasks
+- [fzfx](https://github.com/lbcnz/fzfx): battle-tested use cases for fzf
