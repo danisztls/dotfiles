@@ -1,5 +1,0 @@
-#!/bin/bash
-# Sync root dotfiles from repo to /root
-
-sudo rsync -ar "dots-root/" "/root/"
-
