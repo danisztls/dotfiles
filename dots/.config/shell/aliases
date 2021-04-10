@@ -109,3 +109,10 @@ alias makesrcinfo="makepkg --printsrcinfo > .SRCINFO"
 
 # Network
 alias ping="prettyping"
+
+# RAM management
+# clear respectively and cumulatively PageCache, dentries and inodes
+# not recommended but relatively safe and better than paging out of RAM
+alias free-ram1="sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'" 
+alias free-ram2="sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'" 
+alias free-ram3="sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'" 
