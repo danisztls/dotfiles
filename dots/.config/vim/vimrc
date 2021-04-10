@@ -162,16 +162,23 @@ noremap <leader>b :NERDTreeToggle<CR>
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 let g:airline_theme='supernova'
+"" integrations
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " ALE
-let g:airline#extensions#ale#enabled = 1
+"" set HL colors
 highlight ALEWarning ctermbg=yellow
 highlight ALEError ctermbg=red
+"" binds for moving
 nmap <silent> <C-b> <Plug>(ale_previous_wrap)
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
+"" when to lint
+"let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 1 " when opening a file
 
 " codi
 nnoremap <leader>c :Codi<CR>
