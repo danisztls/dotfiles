@@ -5,10 +5,7 @@ export VISUAL="alacritty -e nvim"
 export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # neovim as manpager
 [[ $USER != root ]] && export BROWSER="chromium"
 
-# ACO over LLVM
-export RADV_PERFTEST=aco
-
-# Cleanup
+# XDG
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
@@ -75,15 +72,17 @@ fi
 # FZF
 # Set bg: -1 and fg: -1 to enable transparency
 export FZF_DEFAULT_COMMAND="fd -t f -i -E '**/.git/**' -E '**cache/**' -E '**/node_modules/**'"
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=dark,bg+:#373e47,bg:#2d333b,spinner:#6bac00,hl:#0087e9"\
-" --color=fg:#adbac7,header:#009385,info:#d9b600,pointer:#b37eff"\
-" --color=marker:#cf2424,fg+:#dddddd,prompt:#d40059,hl+:#ff5c00"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--color=dark,bg+:#373e47,bg:#2d333b,spinner:#6bac00,hl:#0087e9 \
+--color=fg:#adbac7,header:#009385,info:#d9b600,pointer:#b37eff \
+--color=marker:#cf2424,fg+:#dddddd,prompt:#d40059,hl+:#ff5c00"
 
 # Broot
 # shellcheck disable=SC1090
 [ -f "$XDG_CONFIG_HOME/broot/launcher/bash/br" ] && source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 
+# ACO over LLVM
+export RADV_PERFTEST=aco
+
 # Socket for Docker rootless
 # export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-
