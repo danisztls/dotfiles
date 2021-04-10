@@ -37,8 +37,6 @@ These are some of the configurations and scripts that I use to make my life in L
 
 ## Environment
 - **shell interpreter**: zsh
-    - powerlevel10k
-    - vi mode
 - **terminal emulator**: alacritty
 - **desktop environment**: gnome-shell
 - **text editor**: nvim
