@@ -57,12 +57,13 @@ alias onceuponatime='git rebase -i $(git log --pretty=oneline | tail -n 1 | sed 
 
 # Fzf
 alias f='fzfx'
-alias fall='fzfx all' # hidden files
+alias ff='fzfx full' # full text search
+alias fh='fzfx all' # hidden files
+alias fcd='cd "$(fzfx cd)"' # directories
 alias fmd='fzfx md' # markdown files
 alias fpdf='fzfx pdf' # pdf and postscript files
-alias fvid='fzfx media' # videos and audio
-alias full='fzfx full' # full text search
-alias fcd='cd "$(fzfx cd)"' # directories
+alias fav='fzfx media' # audio and videos
+alias fpic='fzfx media' # pictures 
 alias fps='fzfx ps' # processes
 
 # Journal
@@ -95,7 +96,7 @@ alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
 alias 7zcrypt='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p' # create encrypted 7z w/ multi-OS compliance
 
 # Chromium
-alias chromium2pdf='chromium --headless --disable-gpu --print-to-pdf' # print to pdf
+alias html2pdf='chromium --headless --disable-gpu --run-all-compositor-stages-before-draw --print-to-pdf-no-header --print-to-pdf' # print to pdf
 
 # Yarn
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config" # force XDG compliance
@@ -105,3 +106,6 @@ alias vg="vaultguard"
 
 # Makepkg
 alias makesrcinfo="makepkg --printsrcinfo > .SRCINFO"
+
+# Network
+alias ping="prettyping"
