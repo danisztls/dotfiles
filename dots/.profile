@@ -13,6 +13,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
+# Cleanup
+# Check: https://wiki.archlinux.org/index.php/XDG_Base_Directory
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export ATOM_HOME="$XDG_DATA_HOME/atom"
@@ -48,6 +50,9 @@ export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
 export VIMINIT="set runtimepath^=~/.config/vim|set runtimepath+=~/.config/vim/after|source ~/.config/vim/vimrc" # vim and neovim
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export TASKDATA="$XDG_DATA_HOME/task" # taskwarrior
+export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
+export WAKATIME_HOME="XDG_CONFIG_HOME/wakatime"
 
 # History
 export HISTFILE="$XDG_DATA_HOME/shell/history"
