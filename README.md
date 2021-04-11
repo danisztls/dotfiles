@@ -31,7 +31,7 @@ These are some of the configurations and scripts that I use to make my life in L
 │   └── README.md               # gnome hacks readme
 ├── HISTORY.md                  # changes over time
 ├── LICENSE                     # mit license
-├── link2user                   # script to link dotfiles to $HOME
+├── link2home                   # script to link dotfiles to $HOME
 └── README.md                   # dotfiles readme
 ```
 
@@ -45,7 +45,7 @@ These are some of the configurations and scripts that I use to make my life in L
 
 ## FAQ
 #### How this works?
-I wrote, **link2user** a script to link the dotfiles in this repo to `$HOME`. I use a declarative approach instead of iterating over everything inside `dots` so to allow fine control of what is being linked. The script by default backup original files. The `-f` option use `trash` or `rm` to remove them instead.
+I wrote, **link2home** a script to link the dotfiles in this repo to `$HOME`. I use a declarative approach instead of iterating over everything inside `dots` so to allow fine control of what is being linked. The script by default backup original files. The `-f` option use `trash` or `rm` to remove them instead.
 
 ```sh
 _link ".bashrc"
