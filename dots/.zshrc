@@ -1,3 +1,7 @@
+# Reload .profile
+# changes get in effect in the same session
+[ -f "$HOME/.profile" ] && source "$HOME/.profile" 
+
 # Colors
 autoload -U colors && colors
 
