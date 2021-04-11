@@ -7,14 +7,13 @@ yolo() {
     last_commit="$(git shortlog -1 | sed -n '2p' | sed 's/ //g')"
     git add -A
     # check if today's commit exists
-    if [ $today = $last_commit ]; then
-        git commit --amend -m $today
+    if [ "$today" = "$last_commit" ]; then
+        git commit --amend -m "$today"
     else
-        git commit -m $today 
+        git commit -m "$today"
     fi
     # check for remote
     if git ls-remote 2>/dev/null; then
         git push
     fi
 }
-
