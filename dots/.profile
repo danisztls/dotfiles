@@ -60,6 +60,7 @@ export SAVEHIST=10000
 export PATH=/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$XDG_DATA_HOME/npm/bin
+export PATH=$PATH:$GOPATH/bin
 
 # Autostart
 # Will run after login and will not run again until next boot even if .profile is sourced
