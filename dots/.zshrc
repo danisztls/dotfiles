@@ -1,6 +1,3 @@
-# .profile forced load if root
-[[ $USER == root ]] && source "/root/.profile"
-
 # Colors
 autoload -U colors && colors
 
@@ -11,11 +8,9 @@ export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~
 [ -f "$XDG_CONFIG_HOME/shell/aliases" ] && source "$XDG_CONFIG_HOME/shell/aliases" 
 
 # Functions
-if [[ $USER != root ]]; then
-    if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
-        fpath=( "$XDG_CONFIG_HOME/shell/functions" "${fpath[@]}" )
-        autoload -Uz extract yolo
-    fi
+if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
+    fpath=( "$XDG_CONFIG_HOME/shell/functions" "${fpath[@]}" )
+    autoload -Uz extract yolo
 fi
 
 # Autocompletion
