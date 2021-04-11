@@ -1,3 +1,4 @@
+#!/bin/sh
 # Stage all changes, commit with today's date as message and push to remote.
 # It's an educated function that knows to not push when improper and how to make amends.
 # usage: extract <file>
@@ -6,7 +7,7 @@ yolo() {
     last_commit="$(git shortlog -1 | sed -n '2p' | sed 's/ //g')"
     git add -A
     # check if today's commit exists
-    if [[ $today == $last_commit ]]; then
+    if [ $today = $last_commit ]; then
         git commit --amend -m $today
     else
         git commit -m $today 
