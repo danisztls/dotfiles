@@ -1,0 +1,15 @@
+# Compress files
+# usage: compress <file> <path>
+compress() {
+    [ -f "$1" ] && return 1 # return if file exists
+    [ -e "$2" ] || return 1 # return if path doesn't exist
+    
+    case "$1" in
+      *.tar)     tar -cf "$1" "$2";;
+      *.tar.*)   tar cjf "$1" "$2";;
+      *.zip)     zip     "$1" "$2";;
+      *.7z)      7z a    "$1" "$2";;
+      *) echo "'$1' cannot be compressed via compress()";;
+    esac
+}
+# note: bzip, gzip only compress files and write in place

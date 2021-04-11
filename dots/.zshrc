@@ -14,7 +14,7 @@ export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~
 # Functions
 if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
     fpath=( "$XDG_CONFIG_HOME/shell/functions" "${fpath[@]}" )
-    autoload -Uz extract yolo
+    autoload -Uz compress extract yolo
 fi
 
 # Autocompletion
