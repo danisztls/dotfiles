@@ -8,10 +8,10 @@ set -o pipefail
 # Get options from optargs
 # -f is force mode, to overwrite instead of backing up files
 while getopts "f" option; do
-  case $option in
-    f) forceMode=true;;
-    *) printf "\e[0;33mSomething unexpected happened.\n"
-  esac
+    case $option in
+        f) forceMode=true;;
+        *) printf "\e[33mSomething unexpected happened.\n\e[0m"
+    esac
 done
 
 # Backup existing config by default
@@ -32,7 +32,7 @@ _link() {
 # configuration will break if source is renamed 
     # Return error if expected argument is missing
     if [ "$#" -lt 2 ]; then
-        printf "\e[0;31mMissing arguments!\n"
+        printf "\e[31mMissing arguments!\n\e[0m"
         return 1
     fi
     # Source and Destination
@@ -47,7 +47,7 @@ _link() {
 
     # Get rid of existent
     if [ -e "$dst" ]; then
-        printf "\e[1;39m'%s'\e[0;33m exists. Do you want to get rid of it?\e[1;39m (y/N)\n" "$dst"
+        printf "\e[1;39m'%s'\e[0;33m exists. Do you want to get rid of it?\e[1;39m (y/N)\n\e[0m" "$dst"
         while true; do
             read -r answer
             case ${answer:0:1} in
@@ -60,7 +60,8 @@ _link() {
     # Ensure parent dirs exist at destination
     mkdir -p "$dst_dir"
     # Link files
-    ln -s "$src" "$dst" && printf "\e[0;32mSuccesfully linked\e[1;39m '%s'\e[0;32m to\e[1;39m '%s'\e[0;32m!\n" "$src" "$dst"
+    ln -s "$src" "$dst" &&
+    printf "\e[32mSuccesfully linked\e[1;39m '%s'\e[0;32m to\e[1;39m '%s'\e[0;32m!\n\e[0m" "$src" "$dst"
 }
 
 _link "shell/profile"           ".profile"
