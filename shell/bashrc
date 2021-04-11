@@ -78,12 +78,6 @@ shopt -s checkwinsize
 [ -f "$XDG_DATA_HOME/shell/aliases" ] && source "$XDG_DATA_HOME/shell/aliases"
 shopt -s expand_aliases
 
-# load functions
-mapfile -t funcs < <(ls "$XDG_CONFIG_HOME/shell/functions/") # see SC2207
-for func in "${funcs[@]}"; do
-    source "$XDG_CONFIG_HOME/shell/functions/$func"
-done
-
 # change the window title of X terminals
 case ${TERM} in
 	xterm|rxvt*|Eterm*|aterm|alacritty|kterm|gnome*|interix|konsole*)

@@ -35,12 +35,12 @@ These are some of the configurations and scripts that I use to make my life in L
 ├── misc
 │   └── rofi
 ├── README.md                   
+├── scripts                     # shell, python scripts                  
 ├── shell
 │   ├── alacritty.yml
 │   ├── aliases
 │   ├── autostart
 │   ├── bashrc
-│   ├── functions
 │   ├── kitty
 │   ├── profile
 │   ├── Xresources

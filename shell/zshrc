@@ -11,12 +11,6 @@ export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~
 # Aliases
 [ -f "$XDG_CONFIG_HOME/shell/aliases" ] && source "$XDG_CONFIG_HOME/shell/aliases" 
 
-# Functions
-if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
-    fpath=( "$XDG_CONFIG_HOME/shell/functions" "${fpath[@]}" )
-    autoload -Uz compress extract yolo
-fi
-
 # Autocompletion
 autoload -U compinit
 zstyle ':completion:*' menu select
