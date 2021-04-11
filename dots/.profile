@@ -49,7 +49,7 @@ export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export TASKDATA="$XDG_DATA_HOME/task" # taskwarrior
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
-export WAKATIME_HOME="XDG_CONFIG_HOME/wakatime"
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
 # History
 export HISTFILE="$XDG_DATA_HOME/shell/history"
