@@ -23,16 +23,34 @@ These are some of the configurations and scripts that I use to make my life in L
 ```sh
 .
 ├── assets                      # screenshots
-├── dots                        # dotfiles
-│   └── WARNING.MD              # warning to not delete hidden files
-├── gnome                       # hacks for gnome environment
-│   ├── nautilus-scripts        # context menu scripts for nautilus
-│   ├── nvim-override.desktop   # hack for opening text files w/ alacritty
-│   └── README.md               # gnome hacks readme
-├── HISTORY.md                  # changes over time
-├── LICENSE                     # mit license
+├── git
+│   └── config                  # .gitconfig
+├── gnome
+│   ├── nautilus-scripts        # context menu scripts
+│   ├── nvim-override.desktop   # hack to open files w/ term
+│   └── README.md               
+├── HISTORY.md                  # timeline of changes
+├── LICENSE
 ├── link2home                   # script to link dotfiles to $HOME
-└── README.md                   # dotfiles readme
+├── misc
+│   └── rofi
+├── README.md                   
+├── shell
+│   ├── alacritty.yml
+│   ├── aliases
+│   ├── autostart
+│   ├── bashrc
+│   ├── functions
+│   ├── kitty
+│   ├── profile
+│   ├── Xresources
+│   ├── zsh
+│   └── zshrc
+└── vim
+    ├── autoload
+    ├── markdown.css
+    ├── plugged
+    └── vimrc
 ```
 
 ## Environment
@@ -45,11 +63,10 @@ These are some of the configurations and scripts that I use to make my life in L
 
 ## FAQ
 #### How this works?
-I wrote, **link2home** a script to link the dotfiles in this repo to `$HOME`. I use a declarative approach instead of iterating over everything inside `dots` so to allow fine control of what is being linked. The script by default backup original files. The `-f` option use `trash` or `rm` to remove them instead.
+I wrote, **link2home** a script to link the dotfiles in this repo to `$HOME`. The script by default backup original files while with the `-f` option it will use `trash` or `rm` to remove them instead. 1st argument is source path in relation to repo dir while 2nd argument is destination path in relation to `$HOME`.
 
 ```sh
-_link ".bashrc"
-_link ".zshrc"
+_link "shell/bashrc" ".bashrc"
 ...
 ```
 
