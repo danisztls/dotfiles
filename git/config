@@ -14,28 +14,32 @@
     file-decoration-style = none
 
 [alias]
-    s = status
-    ss = show
-    d = diff
-    a = add
-    aA = add --all
-    c = commit
-    cA = commit --amend
-    f  = fetch
-    fA = fetch --all
-    pu = pull
-    ps = push
-    psF = push --force-with-lease
-    l = log
-    lO = log --pretty=oneline
-    lD = log --decorate --graph
-    br = branch
-    brD = branch --delete
-    brDF = branch --delete --force
-    co = checkout
-    cp = cherry-pick
-    sl = shortlog
-    rf = reflog
+# git treats upper and lower case as equals,
+# I use it just for config contrast
+# lower case is mode and upper are options 
+    a      = add
+    aA     = add --all
+    br     = branch
+    brD    = branch --delete
+    brDF   = branch --delete --force
+    c      = commit
+    cA     = commit --amend
+    co     = checkout
+    cp     = cherry-pick
+    d      = diff
+    ds     = diff --staged
+    f      = fetch
+    fA     = fetch --all
+    l      = log
+    lO     = log --pretty=oneline
+    lD     = log --decorate --graph
+    pu     = pull
+    ps     = push
+    psF    = push --force-with-lease
+    rf     = reflog
+    s      = status
+    ss     = show
+    sl     = shortlog
 
 [merge]
 	tool = vimdiff
