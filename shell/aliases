@@ -60,6 +60,8 @@ alias f='fzfx'
 alias ff='fzfx full' # full text search
 alias fh='fzfx all' # hidden files
 alias fcd='cd "$(fzfx cd)"' # directories
+alias fcp='cp -n "$(fzfx)" .' # copy files
+alias fmv='mv -n "$(fzfx)" "$(fzfx cd)"' # move files
 alias fmd='fzfx md' # markdown files
 alias fpdf='fzfx pdf' # pdf and postscript files
 alias fav='fzfx media' # audio and videos
@@ -91,7 +93,6 @@ alias irc='tmux -L weechat a' # attach to session
 
 # Termtosvg
 alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
-
 
 # Chromium
 alias html2pdf='chromium --headless --disable-gpu --run-all-compositor-stages-before-draw --print-to-pdf-no-header --print-to-pdf' # print to pdf
