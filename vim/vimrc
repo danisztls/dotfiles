@@ -6,15 +6,17 @@ Plug 'preservim/nerdtree' " file browser
 Plug 'Xuyuanp/nerdtree-git-plugin' " git support
 Plug 'ryanoasis/vim-devicons' " icons support
 Plug 'vim-airline/vim-airline' " status line
-Plug 'airblade/vim-gitgutter' " git highlight, un/stage changes
-Plug 'tpope/vim-fugitive' " conflict resolution flow
-Plug 'junegunn/gv.vim' " commit browser
 "Plug 'jreybert/vimagit' 
 Plug 'dense-analysis/ale' " syntax highlighting
 Plug 'metakirby5/codi.vim' " REPL
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive' " conflict resolution flow
+Plug 'tpope/vim-rhubarb' " github integration
+"Plug 'shumphrey/fugitive-gitlab.nvim' " gitlab integration
+Plug 'airblade/vim-gitgutter' " git highlight, un/stage changes
+Plug 'junegunn/gv.vim' " commit browser
 Plug 'godlygeek/tabular' " text filtering and alignment
 Plug 'plasticboy/vim-markdown' " markdown stuff
 Plug 'mzlogin/vim-markdown-toc' " md table of contents
@@ -33,6 +35,10 @@ call plug#end()
 set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
 if has('nvim') | let &viminfo .= '.nvim' | endif
 
+" load additional (after) configs
+filetype plugin on
+
+" GLOBAL
 "set nocompatible
 filetype plugin indent on
 syntax on
@@ -70,12 +76,15 @@ inoremap jk <esc>
 "inoremap <Right> <nop>
 
 " enclose helpers
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lel
-nnoremap <leader>[ viw<esc>a]<esc>bi[<esc>lel
-nnoremap <leader>{ viw<esc>a}<esc>bi{<esc>lel
-nnoremap <leader>* viw<esc>a*<esc>bi*<esc>lel
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>le
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>le
+nnoremap <leader>( viw<esc>a)<esc>bi(<esc>le
+nnoremap <leader>[ viw<esc>a]<esc>bi[<esc>le
+nnoremap <leader>{ viw<esc>a}<esc>bi{<esc>le
+
+" tabularize
+"" usage :Tab<delimiter_char>
+cnoreabbrev Tab Tabularize/
 
 " folds
 nnoremap <space> za
@@ -101,7 +110,8 @@ vnoremap . :normal .<CR>
 set updatetime=250
 
 " disable automatic commenting on new line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " soft linewrap
 set wrap linebreak
