@@ -142,21 +142,6 @@ colorscheme PaperColor
 nnoremap <leader>F :Files<CR>
 nnoremap <leader>fw :Windows<CR>
 
-" Git and diffs
-nnoremap dg :diffget<CR>
-nnoremap dh :diffget LO<CR>
-nnoremap dl :diffget RE<CR>
-nnoremap <silent> ]C /\v^[<>=\|]{4,7}($\|\s\|\r)<CR>
-
-"" vim-fugitive
-nnoremap <leader>fc :BCommits<CR>
-nnoremap <leader>fC :Commits<CR>
-
-"" gitgutter
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-
 " nerdtree
 noremap <leader>b :NERDTreeToggle<CR>
 let g:NERDTreeGitStatusUseNerdFonts = 1
@@ -231,7 +216,28 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 nnoremap <leader>fs :Snippets<CR>
 
-" Python
+" GIT
+"" Diffs
+nnoremap dg :diffget<CR>
+nnoremap dh :diffget LO<CR>
+nnoremap dl :diffget RE<CR>
+nnoremap <silent> ]C /\v^[<>=\|]{4,7}($\|\s\|\r)<CR>
+
+"" Fugitive
+nnoremap <leader>fc :BCommits<CR>
+nnoremap <leader>fC :Commits<CR>
+
+"" Git gutter
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+nmap <leader>hs <Plug>(GitGutterStageHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)
+nnoremap <leader>hl :GitGutterLineHighlineToggle<CR>
+
+" PYTHON
 autocmd FileType python :iabbrev <buffer> iff if:<left>
 
 " FUNCTIONS
@@ -249,3 +255,21 @@ fun! ToShell()
     silent execute "s/^`/```sh\r/"
     silent execute "s/`$/\r```/"
 endfunction
+
+" remove trailing whitespaces
+func! CleanUp(...)
+  if a:0  " opfunc
+    let [first, last] = [line("'["), line("']")]
+  else
+    let [first, last] = [line("'<"), line("'>")]
+  endif
+  for lnum in range(first, last)
+    let line = getline(lnum)
+
+    " clean up the text, e.g.:
+    let line = substitute(line, '\s\+$', '', '')
+
+    call setline(lnum, line)
+  endfor
+endfunction
+nmap <silent> <Leader>x :set opfunc=CleanUp<CR>g@
