@@ -92,8 +92,6 @@ alias irc='tmux -L weechat a' # attach to session
 # Termtosvg
 alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
 
-# Encrypted 7z
-alias 7zcrypt='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p' # create encrypted 7z w/ multi-OS compliance
 
 # Chromium
 alias html2pdf='chromium --headless --disable-gpu --run-all-compositor-stages-before-draw --print-to-pdf-no-header --print-to-pdf' # print to pdf
@@ -116,3 +114,8 @@ alias ping="prettyping"
 alias free-ram1="sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'" 
 alias free-ram2="sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'" 
 alias free-ram3="sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'" 
+
+# File archiving
+alias cf="compress"
+alias xf="extract"
+alias 7zcrypt="7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p" # create encrypted 7z w/ multi-OS compliance
