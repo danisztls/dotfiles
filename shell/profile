@@ -80,10 +80,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=fg:#adbac7,header:#009385,info:#d9b600,pointer:#b37eff \
 --color=marker:#cf2424,fg+:#dddddd,prompt:#d40059,hl+:#ff5c00"
 
-# Broot
-# shellcheck disable=SC1090
-[ -f "$XDG_CONFIG_HOME/broot/launcher/bash/br" ] && source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
-
 # ACO over LLVM
 export RADV_PERFTEST=aco
 
