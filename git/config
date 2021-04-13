@@ -1,17 +1,16 @@
 [core]
-    pager = delta
+    pager = delta --diff-so-fancy --dark 
+
+[diff]
+    colorMoved = default
+
+[delta]
+    features = navigate side-by-side line-numbers
+    line-numbers-left-format = "{nm:^4}│ "
+    line-numbers-right-format = "│ "
 
 [interactive]
     diffFilter = delta --color-only
-
-[delta]
-    features = side-by-side line-numbers decorations
-    whitespace-error-style = 22 reverse
-
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
 
 [alias]
 # upper and lower case just for contrast as git treat them equally
