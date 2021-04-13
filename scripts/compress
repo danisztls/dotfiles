@@ -1,36 +1,35 @@
 #!/bin/bash
 # Compress files
-compress() {
-    # fail if number of arguments is not between 1 and 2
-    if [ $# -lt 1 ] || [ $# -gt 2 ] ; then
-        return 1
-    fi
-   
-    if [ $# -eq 1 ]; then
-    # I am feeling lucky mode
-    # zst us best compression
-    # usage: compress <path>
-        inPath="$1" # input path
-        [ -e "$inPath" ] || return 1 # fail with file or dir does not exist
-        outName="${inPath%.*.*}" # remove extension if any
-        outName="${outName%[/]}" # remove trailing slash if any
-        tar -cf "$outName.tar.zst" "$1"        
 
-    else
-    # Normal mode
-    # note: bzip, gzip only compress files and write in place
-    # and so weren't included
-    # usage: compress <file> <path>
-        # fail if file exists
-        outFile="$1" && [ -f "$outFile" ] && return 1
-        # fail if path is not a dir or file
-        inPath="$2" && [ -e "$inPath" ] || return 1
-        case "$outFile" in
-          *.tar)    tar -cf  "$outFile" "$inPath";;
-          *.tar.*)  tar -cjf "$outFile" "$inPath";;
-          *.zip)    zip      "$outFile" "$inPath";;
-          *.7z)     7z a     "$outFile" "$inPath";;
-          *) echo "'${outFile#*.}' not supported by compress";;
-        esac
-    fi
-}
+# fail if number of arguments is not between 1 and 2
+if [ $# -lt 1 ] || [ $# -gt 2 ] ; then
+    return 1
+fi
+
+if [ $# -eq 1 ]; then
+# I am feeling lucky mode
+# zst us best compression
+# usage: compress <path>
+    inPath="$1" # input path
+    [ -e "$inPath" ] || return 1 # fail with file or dir does not exist
+    outName="${inPath%.*.*}" # remove extension if any
+    outName="${outName%[/]}" # remove trailing slash if any
+    tar -cf "$outName.tar.zst" "$1"        
+
+else
+# Normal mode
+# note: bzip, gzip only compress files and write in place
+# and so weren't included
+# usage: compress <file> <path>
+    # fail if file exists
+    outFile="$1" && [ -f "$outFile" ] && return 1
+    # fail if path is not a dir or file
+    inPath="$2" && [ -e "$inPath" ] || return 1
+    case "$outFile" in
+      *.tar)    tar -cf  "$outFile" "$inPath";;
+      *.tar.*)  tar -cjf "$outFile" "$inPath";;
+      *.zip)    zip      "$outFile" "$inPath";;
+      *.7z)     7z a     "$outFile" "$inPath";;
+      *) echo "'${outFile#*.}' not supported by compress";;
+    esac
+fi
