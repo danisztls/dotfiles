@@ -1,2 +1,4 @@
 scripts/private/
 vim/plugged/**
+vim/.netrwhist
+
