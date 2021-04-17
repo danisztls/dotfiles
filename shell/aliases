@@ -1,6 +1,6 @@
 # Colorized Output
 #alias ls='ls --color=auto'
-alias ls='exa' # exa parameters are similar but not fully compliable with ls
+alias ls='exa' # exa is close but not fully compliant with ls
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
@@ -8,6 +8,7 @@ alias diff='colordiff'
 alias cat='bat'
 alias ps='grc ps'
 alias ip='ip -c'
+alias ping="prettyping"
 
 # Common
 alias b='browser'
@@ -19,15 +20,16 @@ alias rm='trash -v' # move to trash
 alias mv='mv -v -n' # verbose and don't overwrite
 alias cp='cp -v -n'
 
+# File archiving
+alias cf="compress"
+alias xf="extract"
+alias 7zcrypt="7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p" # create encrypted 7z w/ multi-OS compliance
+
 # Vim
 alias vim='nvim'
 alias v='nvim'
 alias vimdiff='nvim -d'
 alias vd='nvim -d'
-
-# Pacman
-alias pac='pacman'
-alias p='paru'
 
 # Superadmin
 alias god='sudo -i'
@@ -54,6 +56,21 @@ alias 'sysu-'='systemctl --user disable'
 alias 'sysu%'='systemctl --user edit'
 alias 'sysu@'='systemctl --user mask'
 
+# RAM management
+# clear respectively and cumulatively PageCache, dentries and inodes
+# not recommended but relatively safe and better than paging out of RAM
+alias free-ram1="sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'"
+alias free-ram2="sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'"
+alias free-ram3="sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'"
+
+# Package management
+alias pac='pacman'
+alias p='paru'
+
+# Make
+alias makeinfo="makepkg --printsrcinfo > .SRCINFO"
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config" # force XDG compliance
+
 # Git
 alias 'g=git'
 alias 'gl=git-lfs'
@@ -62,8 +79,14 @@ alias 'gl=git-lfs'
 # require manual intervention on web server
 alias unchain="git branch -M master main && git push -u origin main && git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main && git branch -a"
 
-# do a rebase from the beginning 
+# do a rebase from the beginning
 alias onceuponatime='git rebase -i $(git log --pretty=oneline | tail -n 1 | sed "s/\s.*//")'
+
+# Pass
+alias pass='gopass' # use gopass
+
+# VaultGuard
+alias vg="vaultguard"
 
 # Fzf
 alias f='fzfx'
@@ -75,54 +98,21 @@ alias fmv='fzfx mv' # move files
 alias fmd='fzfx md' # markdown files
 alias fpdf='fzfx pdf' # pdf and postscript files
 alias fav='fzfx media' # audio and videos
-alias fpic='fzfx media' # pictures 
+alias fpic='fzfx media' # pictures
 alias fps='fzfx ps' # processes
 
 # Journal
 alias j='journal'
 
-# Exercism
-alias ex-down="exercism download"
-alias ex-send="exercism submit"
-
-# Clear cache
-alias clear-cache='sudo sync; echo 3 > /proc/sys/vm/drop_caches' # not working due system to policies
-
 # Feh
 alias feh='feh --scale-down --auto-zoom' # fit window
-
-# Pass
-alias pass='gopass' # use gopass
 
 # Weechat
 alias irc='tmux -L weechat a' # attach to session
 
-# Termtosvg
-alias ttsvg='termtosvg -c=bash -t ~/.config/termtosvg/nebula.svg'
-
 # Chromium
 alias html2pdf='chromium --headless --disable-gpu --run-all-compositor-stages-before-draw --print-to-pdf-no-header --print-to-pdf' # print to pdf
 
-# Yarn
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config" # force XDG compliance
-
-# VaultGuard
-alias vg="vaultguard"
-
-# Makepkg
-alias makesrcinfo="makepkg --printsrcinfo > .SRCINFO"
-
-# Network
-alias ping="prettyping"
-
-# RAM management
-# clear respectively and cumulatively PageCache, dentries and inodes
-# not recommended but relatively safe and better than paging out of RAM
-alias free-ram1="sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'" 
-alias free-ram2="sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'" 
-alias free-ram3="sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'" 
-
-# File archiving
-alias cf="compress"
-alias xf="extract"
-alias 7zcrypt="7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p" # create encrypted 7z w/ multi-OS compliance
+# Exercism
+alias ex-down="exercism download"
+alias ex-send="exercism submit"
