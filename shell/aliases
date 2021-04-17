@@ -56,6 +56,12 @@ alias 'sysu-'='systemctl --user disable'
 alias 'sysu%'='systemctl --user edit'
 alias 'sysu@'='systemctl --user mask'
 
+# Docker
+alias docker='sudo docker'
+alias d='sudo docker'
+alias docker-compose='sudo docker-compose'
+alias d+='sudo docker-compose'
+
 # RAM management
 # clear respectively and cumulatively PageCache, dentries and inodes
 # not recommended but relatively safe and better than paging out of RAM
