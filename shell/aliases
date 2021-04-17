@@ -35,13 +35,24 @@ alias s='sudo'
 alias se='sudoedit'
 
 # Systemd
-alias 's?'='sudo systemctl status'
-alias 's#'='sudo systemctl restart'
-alias 's!'='sudo systemctl stop'
-alias 'su?=systemctl --user status'
-alias 'su#=systemctl --user restart'
-alias 'su!=systemctl --user stop'
-# other ideas: %, +, -, @
+# root
+alias 'sys'='sudo systemctl'
+alias 'sys?'='sudo systemctl status'
+alias 'sys!'='sudo systemctl restart' # will start when not running
+alias 'sys#'='sudo systemctl stop'
+alias 'sys+'='sudo systemctl enable'
+alias 'sys-'='sudo systemctl disable'
+alias 'sys%'='sudo systemctl edit'
+alias 'sys@'='sudo systemctl mask'
+# user
+alias 'sysu'='systemctl --user'
+alias 'sysu?'='systemctl --user status'
+alias 'sysu!'='systemctl --user restart'
+alias 'sysu#'='systemctl --user stop'
+alias 'sysu+'='systemctl --user enable'
+alias 'sysu-'='systemctl --user disable'
+alias 'sysu%'='systemctl --user edit'
+alias 'sysu@'='systemctl --user mask'
 
 # Git
 alias 'g=git'
