@@ -25,11 +25,8 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 
 # Pacman
-alias pm='pacman'
-#alias yays='yay --editmenu --mflags --skipinteg' # ask to edit PKGBUILD and skip integrity checks
-alias yay='paru'
-alias yays='paru -Syu'
-alias yeet='paru -Rcs'
+alias pac='pacman'
+alias p='paru'
 
 # Superadmin
 alias god='sudo -i'
