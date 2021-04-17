@@ -80,10 +80,6 @@ alias fps='fzfx ps' # processes
 
 # Journal
 alias j='journal'
-alias jw='journal write'
-alias jr='journal read'
-alias js='journal show'
-alias jf='journal find'
 
 # Exercism
 alias ex-down="exercism download"
