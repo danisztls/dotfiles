@@ -20,9 +20,10 @@ alias mv='mv -v -n' # verbose and don't overwrite
 alias cp='cp -v -n'
 
 # Vim
-alias v='nvim'
 alias vim='nvim'
+alias v='nvim'
 alias vimdiff='nvim -d'
+alias vd='nvim -d'
 
 # Pacman
 alias pac='pacman'
