@@ -7,6 +7,7 @@ alias fgrep='fgrep --colour=auto'
 alias diff='colordiff'
 alias cat='bat'
 alias ps='grc ps'
+alias ip='ip -c'
 
 # Common
 alias b='browser'
