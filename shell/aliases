@@ -1,4 +1,5 @@
-# Colorized Output
+# Colorized output
+# Check: https://wiki.archlinux.org/index.php/Color_output_in_console 
 #alias ls='ls --color=auto'
 alias ls='exa' # exa is close but not fully compliant with ls
 alias grep='grep --colour=auto'
@@ -9,6 +10,9 @@ alias cat='bat'
 alias ps='grc ps'
 alias ip='ip -c'
 alias ping="prettyping"
+# disable GRC
+alias journalctl='journalctl'
+
 
 # Common
 alias b='browser'

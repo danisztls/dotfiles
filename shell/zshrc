@@ -8,9 +8,6 @@ autoload -U colors && colors
 # Prompt
 export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$reset_color%} $%b "
 
-# Aliases
-[ -f "$XDG_CONFIG_HOME/shell/aliases" ] && source "$XDG_CONFIG_HOME/shell/aliases" 
-
 # Autocompletion
 autoload -U compinit
 zstyle ':completion:*' menu select
