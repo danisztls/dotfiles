@@ -61,9 +61,9 @@ alias 'sysu%'='systemctl --user edit'
 alias 'sysu@'='systemctl --user mask'
 
 # Docker
-alias docker='sudo docker'
-alias d='sudo docker'
-alias docker-compose='sudo docker-compose'
+alias docker='sudo docker | dco'
+alias d='sudo docker | dco'
+alias docker-compose='sudo docker-compose | dco'
 alias d+='sudo docker-compose'
 
 # RAM management
