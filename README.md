@@ -151,15 +151,13 @@ The only 'sane' alternative is to use `sudoedit` or `su -e` which creates a temp
 
 *Note: C is CTRL and M is META/ALT*
 
-#### Have anything to recommend?
-- [arbie](https://github.com/lbcnz/arbie): automatic and robust backup
-- [journal](https://github.com/lbcnz/journal): CLI management of notes and tasks
-- [fzfx](https://github.com/lbcnz/fzfx): battle-tested use cases for fzf
+#### What about the looks?
+As customs require I did my own ricing. Check [supernova-theme](https://github.com/lbcnz/supernova-theme).
 
-*Note: those are side projects of mine*
-
-#### How to record and share terminal sessions?
-Use [asciicinema](https://asciinema.org/) or termtosvg.
+And to improve Gnome looks:
+- [arc-theme](https://github.com/jnsh/arc-theme)
+- [papirus-icon-theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+- [capitaine-cursors](https://github.com/keeferrourke/capitaine-cursors)
 
 #### What is the license?
 My own code is under MIT license but components may be under other licenses.
