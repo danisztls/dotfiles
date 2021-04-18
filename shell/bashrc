@@ -1,6 +1,10 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
+# Reload .profile
+# changes get in effect in the same session
+[ -f "$HOME/.profile" ] && source "$HOME/.profile" 
+
 export TERM="xterm-256color"	# getting proper colors
 export HISTCONTROL=ignoredups:erasedups	# no duplicate entries
 
@@ -74,10 +78,6 @@ shopt -s checkwinsize
 # load bash completions
 [ -r "/usr/share/bash-completion/bash_completion" ] && . "/usr/share/bash-completion/bash_completion"
 
-# load aliases
-[ -f "$XDG_DATA_HOME/shell/aliases" ] && source "$XDG_DATA_HOME/shell/aliases"
-shopt -s expand_aliases
-
 # change the window title of X terminals
 case ${TERM} in
 	xterm|rxvt*|Eterm*|aterm|alacritty|kterm|gnome*|interix|konsole*)
@@ -85,5 +85,3 @@ case ${TERM} in
 	screen*) # && exec zsh # use zsh on X terminals
 		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"';;
 esac
-
-source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
