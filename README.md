@@ -12,10 +12,14 @@ These are some of the configurations and scripts that I use to make my life in L
     * [Why you don't use a bare git repo?](#why-you-dont-use-a-bare-git-repo)
     * [Why you don't use a dotfiles manager?](#why-you-dont-use-a-dotfiles-manager)
     * [How to preserve my 'goodies' when doing things as root?](#how-to-preserve-my-goodies-when-doing-things-as-root)
-  * [What shortcuts do you use on the terminal?](#what-shortcuts-do-you-use-on-the-terminal)
-    * [Have anything to recommend?](#have-anything-to-recommend)
-    * [How to record and share terminal sessions?](#how-to-record-and-share-terminal-sessions)
+    * [What are the terminal shortcuts?](#what-are-the-terminal-shortcuts)
+    * [What about the looks?](#what-about-the-looks)
     * [What is the license?](#what-is-the-license)
+* [Extra](#extra)
+    * [Backup](#backup)
+    * [Personal organization](#personal-organization)
+    * [File browsing](#file-browsing)
+    * [Recording terminal sessions](#recording-terminal-sessions)
 
 <!-- /TOC -->
 
@@ -121,7 +125,7 @@ You can use `sudo -E` to preserve environment or edit `sudoers` file for having 
 
 The only 'sane' alternative is to use `sudoedit` or `su -e` which creates a temporary file for editing and overwrites the actual file with it when exiting. It uses the editor set at `$SUDO_EDITOR`, `$VISUAL` or `$EDITOR`, whichever comes first. Hacks are not desired here.
 
-### What shortcuts do you use on the terminal?
+#### What are the terminal shortcuts?
 
 **Zsh customs**
 
@@ -162,3 +166,15 @@ And to improve Gnome looks:
 #### What is the license?
 My own code is under MIT license but components may be under other licenses.
 
+## Extra
+#### Backup
+[Arbie](https://github.com/lbcnz/arbie), automatic and robust backup.
+
+#### Personal organization 
+[Journal](https://github.com/lbcnz/journal): CLI management of notes and tasks.
+
+#### File browsing
+[Fzfx](https://github.com/lbcnz/fzfx), battle-tested use cases for Fzf.
+
+#### Recording terminal sessions
+Use [asciicinema](https://asciinema.org/) or termtosvg.
