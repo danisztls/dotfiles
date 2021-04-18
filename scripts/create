@@ -1,0 +1,15 @@
+#!/bin/bash
+# Create a file from a template
+# usage: create script.py
+
+file="$1"
+[ -f "$file" ] && (echo "File already exists."; exit 1)
+
+# Look for a template on template .dir
+templateDir="$HOME/.templates"
+for f in "$templateDir"/*; do # iterate over files
+    if [ "${f##*.}" = "${file#*.}" ]; then # if extension match
+        cp "$f" "$file"; exit # create the file and exit
+    fi
+done
+echo "Template not found."; exit 1 # print error and exit
