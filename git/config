@@ -15,37 +15,43 @@
 [alias]
 # upper and lower case just for contrast as git treat them equally
 # lower case is mode and upper are options 
-    a      = add
-    aA     = add --all
-    br     = branch
-    brD    = branch --delete
-    brDF   = branch --delete --force
-    c      = commit
-    cA     = commit --amend
-    co     = checkout
-    cp     = cherry-pick
-    d      = diff
-    ds     = diff --staged
-    f      = fetch
-    fA     = fetch --all
-    l      = log
-    lO     = log --pretty=oneline
-    lD     = log --decorate --graph
-    m      = merge
-    pu     = pull
-    ps     = push
-    psF    = push --force-with-lease
-    r      = rebase
-    rI     = rebase -i
-    rf     = reflog
-    s      = status
-    ss     = show
-    sl     = shortlog
-    t      = tag
-    t      = tag -s
+    a     =  add
+    aA    =  add --all
+    br    =  branch
+    brD   =  branch --delete
+    brDF  =  branch --delete --force
+    c     =  commit
+    cA    =  commit --amend
+    co    =  checkout
+    cp    =  cherry-pick
+    d     =  diff
+    ds    =  diff --staged
+    f     =  fetch
+    fA    =  fetch --all
+    l     =  log
+    lO    =  log --pretty=oneline
+    lD    =  log --decorate --graph
+    mg    =  merge
+    mgA   =  merge --abort
+    mgC   =  merge --continue
+    mt    =  mergetool --prompt
+    pl    =  pull
+    ps    =  push
+    psF   =  push --force-with-lease
+    r     =  reset
+    rb    =  rebase
+    rbA   =  rebase --abort
+    rbC   =  rebase --continue
+    rbI   =  rebase -i
+    rf    =  reflog
+    s     =  status
+    ss    =  show
+    sl    =  shortlog
+    t     =  tag
+    ts    =  tag -s
 
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 
 [init]
 	defaultBranch = main
