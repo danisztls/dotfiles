@@ -24,6 +24,20 @@ if ! [ -f "$ZINIT[BIN_DIR]/zinit.zsh" ]; then
     git clone --depth 1 --branch master "https://github.com/zdharma/zinit" "$ZINIT[BIN_DIR]" &&
 fi && source "$ZINIT[BIN_DIR]/zinit.zsh" # load
 
+# Plugins
+# -------
+zinit wait lucid depth=1 for \
+    atinit"zicompinit; zicdreplay" \
+        zdharma/fast-syntax-highlighting \
+    atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    blockf atpull'zinit creinstall -q .' \
+        zsh-users/zsh-completions \
+    is-snippet \
+        "/usr/share/fzf/key-bindings.zsh" \
+    load \
+        sobolevn/wakatime-zsh-plugin \
+
 # Core
 # ----
 # If dumb console set rainbow prompt
@@ -52,22 +66,6 @@ else
 	add-zsh-hook -Uz preexec x_title_preexec
 fi
 
-# Selection menu for completion
-zstyle ':completion:*' menu select
-
-# Plugins
-# -------
-zinit wait lucid depth=1 for \
-    atinit"zicompinit; zicdreplay" \
-        zdharma/fast-syntax-highlighting \
-    atload"_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions \
-    blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions \
-    is-snippet \
-        "/usr/share/fzf/key-bindings.zsh" \
-    sobolevn/wakatime-zsh-plugin
-
 # Bindings
 # --------
 bindkey  "^[[H"   beginning-of-line
@@ -82,6 +80,9 @@ bindkey  "^[[3~"  delete-char
 # Use beam shape cursor
 echo -ne '\e[5 q' # on startup.
 preexec() { echo -ne '\e[5 q' ;} # for each new prompt.
+
+# Selection menu for completion
+zstyle ':completion:*' menu select
 
 # Ctrl-e to edit line in editor
 autoload edit-command-line
