@@ -57,5 +57,5 @@
 | key | action                                   |
 | -   | -                                        |
 | M-C | cd into selected dir                     |
-| ^r  | paste selected file paths into cli       |
+| ^t  | paste selected file paths into cli       |
 | ^r  | paste selected cmd from history into cli |
