@@ -49,9 +49,9 @@ set encoding=utf-8
 set number relativenumber
 nnoremap <leader>h :setlocal number! relativenumber!<CR>
 
-" 4 spaces tab
-set tabstop=4
-set shiftwidth=4
+" n spaces tab
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " autocompletion
