@@ -14,6 +14,7 @@ Plug 'tpope/vim-fugitive' " conflict resolution flow
 Plug 'tpope/vim-rhubarb' " github integration
 Plug 'airblade/vim-gitgutter' " git highlight, un/stage changes
 Plug 'junegunn/gv.vim' " commit browser
+Plug 'rhysd/git-messenger.vim' " show commit messages
 Plug 'godlygeek/tabular' " text filtering and alignment
 Plug 'plasticboy/vim-markdown' " markdown stuff
 Plug 'mzlogin/vim-markdown-toc' " md table of contents
@@ -237,7 +238,7 @@ nnoremap <silent> ]C /\v^[<>=\|]{4,7}($\|\s\|\r)<CR>
 nnoremap <leader>fc :BCommits<CR>
 nnoremap <leader>fC :Commits<CR>
 
-"" Git gutter
+"" Git Gutter
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
@@ -246,6 +247,11 @@ nmap <leader>hs <Plug>(GitGutterStageHunk)
 nmap <leader>hu <Plug>(GitGutterUndoHunk)
 nmap <leader>hp <Plug>(GitGutterPreviewHunk)
 nnoremap <leader>hl :GitGutterLineHighlineToggle<CR>
+
+"" Git Messenger
+nmap <Leader>hm <Plug>(git-messenger)
+"let g:git_messenger_include_diff="current"
+let g:git_messenger_always_into_popup=v:true
 
 " PYTHON
 autocmd FileType python :iabbrev <buffer> iff if:<left>
