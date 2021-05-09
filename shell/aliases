@@ -13,7 +13,6 @@ alias ping="prettyping"
 # disable GRC
 alias journalctl='journalctl'
 
-
 # Common
 alias b='browser'
 alias q='exit'
@@ -64,36 +63,8 @@ alias 'sysu@'='systemctl --user mask'
 alias docker='sudo docker'
 alias docker-compose='sudo docker-compose'
 
-# alias will not work with dco because arguments need to be passed
-_dco() {
-    progs=(docker docker-compose)
-    isProgSupported=false
-    modes=(ps images)
-    isModeSupported=false
-    
-    for i in ${progs[@]}; do
-        if [ $2 = $i ]; then
-            isProgSupported=true
-            break
-        fi
-    done
-    
-    for i in ${modes[@]}; do
-        if [ $3 = $i ]; then
-            isModeSupported=true
-            break
-        fi
-    done
-
-    if [ $isProgSupported = true ] && [ $isModeSupported = true ]; then
-        $@ | dco
-    else
-        $@
-    fi
-}
-
-alias d='_dco sudo docker'
-alias d+='_dco sudo docker-compose'
+alias d='sudo docker'
+alias d+='sudo docker-compose'
 
 # RAM management
 # clear respectively and cumulatively PageCache, dentries and inodes
