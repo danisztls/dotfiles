@@ -85,7 +85,8 @@ alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config" # force XDG complian
 alias ipy='ipython'
 
 # Git
-alias 'g=git'
+alias 'g=hub'
+alias 'git=hub'
 alias 'gl=git-lfs'
 
 # rename master branch to main
