@@ -1,3 +1,4 @@
+DEVELOPMENT.md
 scripts/private/
 shell/zsh/zinit/*
 vim/plugged/**
