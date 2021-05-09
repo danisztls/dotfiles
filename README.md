@@ -14,6 +14,7 @@ These are some of the configurations and scripts that I use to make my life in L
     * [How to preserve my 'goodies' when doing things as root?](#how-to-preserve-my-goodies-when-doing-things-as-root)
     * [What are the terminal shortcuts?](#what-are-the-terminal-shortcuts)
     * [What about the looks?](#what-about-the-looks)
+    * [Is it worth the time?](#is-it-worth-the-time)
     * [What is the license?](#what-is-the-license)
 * [Extra](#extra)
     * [Backup](#backup)
@@ -162,6 +163,12 @@ And to improve Gnome looks:
 - [arc-theme](https://github.com/jnsh/arc-theme)
 - [papirus-icon-theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 - [capitaine-cursors](https://github.com/keeferrourke/capitaine-cursors)
+
+#### Is it worth the time?
+Sometimes but not always. Those hacks save time put also take time.
+
+![xkcd: Is It Worth the Time?](https://github.com/danisztls/dotfiles/raw/main/assets/is-it-worth-the-time.png)
+— [Randall Munroe](https://xkcd.com/1205/)
 
 #### What is the license?
 My own code is under MIT license but components may be under other licenses.
