@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Deep clean a local git repo by expiring the reflog and pruning everything without a ref
+
+# usage: git-bleach <path-to-repo> (optional)
+
+# cd to repo if valid path is inputted
+if [ -d "$1/.git" ]; then
+  cd "$1" || exit
+fi
+
+# calculate space saved in bytes
+sizeBefore=$(du -bd 0 | sed 's/\t.//')
+sizeAfter=$(du -bd 0 | sed 's/\t.//')
+sizeSaved=$((sizeBefore - sizeAfter))
+
+# transform space saved to human readable format
+if [[ $sizeSaved -lt 1024 ]]; then
+  sizeFormat="B"
+elif [[ $sizeSaved -gt 1023 ]] && [[ $sizeSaved -lt 1048576 ]]; then
+  sizeSaved=$((sizeSaved / 1024))
+  sizeFormat="K"
+elif [[ $sizeSaved -gt 1048575 ]] && [[ $sizeSaved -lt 1073741824 ]]; then
+  sizeSaved=$((sizeSaved / 1048576))
+  sizeFormat="M"
+elif [[ $sizeSaved -gt 1073741823 ]] && [[ $sizeSaved -lt 1099511627776 ]]; then
+  sizeSaved=$((sizeSaved / 1073741824))
+  sizeFormat="G"
+else
+  sizeFormat="?"
+  echo "Size is bigger than a gigabyte. What the heck are you storing here?"
+fi
+
+# deep clean git repo
+git reflog expire --expire=all
+git gc --aggressive --prune=now
+
+# show size saved
+printf "\n%s saved. \n" "$sizeSaved$sizeFormat"
