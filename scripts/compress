@@ -11,7 +11,7 @@ if [ $# -eq 1 ]; then
 # zst is best compression
 # usage: compress <path>
     inPath="$1" # input path
-    [ -e "$inPath" ] || return 1 # fail with file or dir does not exist
+    [ -e "$inPath" ] || exit 1 # fail with file or dir does not exist
     outName="${inPath%.*.*}" # remove extension if any
     outName="${outName%[/]}" # remove trailing slash if any
     tar -cf - "$1" | zstd > "$outName.tar.zst"        
