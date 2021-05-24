@@ -2,7 +2,7 @@
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' " fuzzy search
-Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar' " improve netrw
 Plug 'ryanoasis/vim-devicons' " icons support
 Plug 'vim-airline/vim-airline' " status line
 Plug 'dense-analysis/ale' " syntax highlighting
@@ -25,11 +25,6 @@ Plug 'junegunn/vader.vim' " test framework
 Plug 'SirVer/ultisnips' " snippets framework
 Plug 'honza/vim-snippets' " snippets
 Plug 'wakatime/vim-wakatime'
-" YAGNI
-"Plug 'preservim/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin' " git support
-"Plug 'lbcnz/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'branch': 'beta' }
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
 
 "set vim info path
@@ -152,10 +147,6 @@ colorscheme PaperColor
 " fzf
 nnoremap <leader>F :Files<CR>
 nnoremap <leader>fw :Windows<CR>
-
-" nerdtree
-"noremap <leader>b :NERDTreeToggle<CR>
-"let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " airline
 let g:airline_theme='supernova'
