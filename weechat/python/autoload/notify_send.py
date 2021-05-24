@@ -1,1 +1,1 @@
-/usr/lib/weechat/python/notify_send.py
+/usr/share/weechat/python/notify_send.py
