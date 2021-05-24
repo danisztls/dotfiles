@@ -43,6 +43,7 @@
     rbA   =  rebase --abort
     rbC   =  rebase --continue
     rbI   =  rebase -i
+    rmc   =  rm --cached
     rf    =  reflog
     s     =  status
     ss    =  show
