@@ -1,4 +1,7 @@
-! Screen
+! Configuration for X clients
+! reload after editing: xrdb ~/.Xresources 
+
+! Display
 Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
@@ -10,64 +13,37 @@ Xft.lcdfilter: lcdfilter
 ! Colors
 *.foreground:   #eceff1
 *.background:   #242e33
-*.cursorColor:  #cdf8dc
-
+*.cursorColor:  #c9d1d7
 !! black
-!!! background
-*.color0:       #1d2529
-!!! 3rd background
-*.color8:       #12171a
-
+*.color0:       #636c77
+*.color8:       #6c7986
 !! red
-!!! negative
-*.color1:       #f21d41
-!!! import/try-catch keywords
-*.color9:       #cc0f2f
-
+*.color1:       #ff1447
+*.color9:       #db0025
 !! green
-!!! positive
-*.color2:       #88f719
-!!! type and +emphasized keywords
-*.color10:      #69bf13
-
+*.color2:       #4e9c00
+*.color10:      #308000
 !! yellow
-!!! strings
-*.color3:       #ffc107
-!!! typically if/conditional/loop keywords
+*.color3:       #ba9c00
 *.color11:      #f29800
-
 !! blue
-!!! neutral (2nd background) 
-*.color4:       #00d4ff
-!!! accent (rarely used)
-*.color12:      #00a8e0
-
+*.color4:       #009bba
+*.color12:      #007ea8
 !! magenta
-!!! comments
-*.color5:       #9000ff
-!!! numbers
-*.color13:      #8416d9
-
+*.color5:       #a42eff
+*.color13:      #c557ff
 !! cyan
-!!! storage class keywords
 *.color6:       #26a69a
-!!! rest of keywords
 *.color14:      #009688
-
 !! white
-!!! foreground
-*.color7:       #cfd8dc
-!!! highlight
-*.color15:      #eceff1
-
-! XTerm
-XTerm.vt100.faceName: Hack:size=11
+*.color7:       #c9d1d7
+*.color15:      #ffffff
 
 ! URxvt
 urxvt.depth: 32
-urxvt.background: [80]#22282d
+urxvt.background: [98]#242e33
 
-urxvt.font: xft:Hack:size=11
+urxvt.font: xft:Hack Nerd Font:size=12
 urxvt.letterSpace: 0
 urxvt.lineSpace: 0
 urxvt.geometry: 80x24
@@ -83,14 +59,9 @@ urxvt.keysym.Control-Up: \033[1;5A
 urxvt.keysym.Control-Down: \033[1;5B
 urxvt.keysym.Control-Right: \033[1;5C
 urxvt.keysym.Control-Left: \033[1;5D
-urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-urxvt.keysym.M-Escape: perl:keyboard-select:activate
-urxvt.keysym.M-s: perl:keyboard-select:search
-urxvt.keysym.M-u: perl:url-select:select_next
-urxvt.keysym.M-c: perl:clipboard:copy
-urxvt.keysym.M-v: perl:clipboard:paste
-urxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
 urxvt.urlLauncher: chromium 
 urxvt.underlineURLs: true
 urxvt.urlButton: 1
 
+! XTerm
+XTerm.vt100.faceName: Hack Nerd Font:size=12
