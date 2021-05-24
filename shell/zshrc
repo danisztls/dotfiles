@@ -1,8 +1,8 @@
 # Instant Prompt
 # --------------
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" && "$TERM" == 'alacritty' ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Reload .profile
 # ---------------
@@ -25,19 +25,22 @@ fi && source "$ZINIT[BIN_DIR]/zinit.zsh" # load
 
 # Core
 # ----
-# If dumb console set rainbow prompt
-if [[ "$TERM" == linux ]]; then
-    autoload -U colors && colors
-    export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$reset_color%} $%b "
-
-# If X load P10K and set terminal title
-else
+# If Alacritty load P10K
+if [[ "$TERM" == 'alacritty' ]]; then
     zinit depth=1 for \
         load \
             romkatv/powerlevel10k \
         is-snippet \
             "$XDG_CONFIG_HOME/zsh/p10k.zsh"
-	
+
+# Else set rainbow prompt
+else
+    autoload -U colors && colors
+    export PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$reset_color%} $%b "
+fi
+
+# If X set terminal title
+if [[ "$TERM" != "linux" ]]; then
     function x_title_precmd () {
         print -Pn -- '\e]2;%n@%m %~\a'
         [[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
@@ -48,7 +51,7 @@ else
     }
 
     add-zsh-hook -Uz precmd x_title_precmd
-	add-zsh-hook -Uz preexec x_title_preexec
+	  add-zsh-hook -Uz preexec x_title_preexec
 fi
 
 # Plugins
