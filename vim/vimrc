@@ -93,6 +93,7 @@ nnoremap <space> za
 
 " clipboard
 vnoremap <C-c> "*y :let @+=@*<CR>
+vnoremap <C-x> "*x :let @+=@*<CR>
 noremap <C-v> "+P
 
 " spell-check
