@@ -1,3 +1,4 @@
 certs
 sec.conf
 irc.conf
+*.log
