@@ -6,30 +6,49 @@ Weechat is a CLI client and relay daemon for IRC.
 - [Example conf](https://gist.github.com/spicycode/371ca343201391a7eb5409f3288e2864)
 
 ## Bindings
-| key                  | action            |
-| -                    | -                 |
-| `M-[n]` and `M-j[n]`     | move between tabs |
-| `M-B`                  | toggle buffers    |
-| `M-N`                  | toggle nicks      |
+| key                  | action                      |
+| -                    | -                           |
+| `M-[n]` and `M-j[n]`     | move between buffers        |
+| `M-B`                  | toggle buffers              |
+| `M-N`                  | toggle nicks                |
+| `F9 and F10`           | scroll title left and right |
 
-## Vim Plugin
+## [Vimode](https://github.com/GermainZ/weechat-vimode/)
 - `/` searchs
 - `:` prefix a command
+- most binds will not work
+- plugin have it's own [binds](https://github.com/GermainZ/weechat-vimode/#current-key-bindings) and `nmap`
+
+### Bindings
+| key    | action          |
+| -      | -               |
+| K or H | next buffer     |
+| J or L | previous buffer |
 
 ## Settings
-Setting options via editing files is problematic. They can be set declaratively through `/set <option> <value>`. Or interactively `/fset <namespace>`. `/fset *` show all options.
+Setting options by manually editing files is problematic. Set them declaratively through `/set <option> <value>`. Or interactively by `/fset <namespace>`. `/fset *` show all options and `/save` immediately save settings to disk.
 
 ## Service
-Weechat can be setup to run as a service inside a Tmux session. This way it can be used as a CLI and as a relay/daemon.
+Weechat can be setup to run as a service inside a Tmux session. To...
+- stay connected and log chat history in background 
+- use the same user in multiple devices at the same time by use of a relay
 
 - `irc` attachs to session
 - `^B-d` detachs
 
-## Troubleshooting
-TODO: Many binds only work at command mode and behave erratic.
+## Colors 
+`^c-c[code]` insert color codes 
 
-TODO: Colors are limited when running inside Tmux.
+| code  | color     |
+| -     | -         |
+| b     | bold      |
+| i     | italic    |
+| o     | disable   |
+| v     | reverse   |
+| _     | underline |
+| xx,yy | fg and bg |
 
-I verified that Tmux is with True Color enabled through:
+## Filter
+Useless join, part and quit messages can be smart filterated. Only messages from people that recently interacted will de displayed. The filter acts retroactively.
 
-`printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"`
+`/filter add irc_smart * irc_smart_filter *`

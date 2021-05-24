@@ -4,6 +4,9 @@
 
 * [Servers](#servers)
 * [Clients](#clients)
+* [Security](#security)
+  * [CertFP](#certfp)
+  * [Cloaking](#cloaking)
 * [Basics](#basics)
   * [NickServ](#nickserv)
 * [Management](#management)
@@ -25,11 +28,25 @@
 <!-- /TOC -->
 
 ## Servers
-For decades Freenode was the bastion of IRC but following a takeover the staff departed and created [Libera](https://libera.chat/). *at 21-05-19*
+- [Freenode](https://freenode.net/): suffered a hostile takeover
+- [Libera](https://libera.chat/): new fork from freenode following above
+- [OFTC](https://www.oftc.net/): old fork from freenode exclusively for open-source projects
+- [EFNet](http://www.efnet.org/): a refuge for crackers 
+- [Tilde](https://tilde.chat/): unix-centered communities
 
 ## Clients
-- Weechat: CLI client and server
-- [Convos](https://convos.chat/): modern web UI like Discord
+- [Weechat](https://weechat.org/): CLI client and relay server so you can use the same account at the same time on multiple devices
+- [ZNC](https://github.com/znc/znc): bouncer that is left connected so an IRC client can disconnect/reconnect without losing the chat session
+- [Convos](https://convos.chat/): modern web UI like Discord, has docker setup
+
+## Security
+Sending password as plaintext is lax. SSL/TLS while far from perfect on IRC make things a lot safer.
+
+### CertFP
+Is an alternative authentication method that uses a X.509 client certificate to authenticate and encrypt upstream communication. Other advantages are changing nicks without deauthing.
+
+### Cloaking
+Hostnames are public on IRC and that's asking to be DDoSed. Cloaking is a server feature that hides the host and show something like `user.server.net` inplace. It is also used to tag moderators and related with special cloaks. 
 
 ## Basics
 | `/join #channel`           | Joins the specified channel.                                                                  |
@@ -233,3 +250,4 @@ Examples: red text: `^c4`; black text on a blue bg: `^c1,2`.
 
 ## See also
 - Heavily based on [xero/IRC Reference](https://gist.github.com/xero/2d6e4b061b4ecbeb9f99)
+- [IRCv3](https://github.com/ircv3/ircv3-specifications/milestone/4/) in development
