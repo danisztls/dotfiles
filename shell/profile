@@ -59,7 +59,7 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # Path
-export PATH=/bin
+export PATH=/bin:/usr/bin/:/usr/local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/Dev/dotfiles/scripts
 export PATH=$PATH:$HOME/Dev/dotfiles/scripts/private
