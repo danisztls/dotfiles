@@ -2,7 +2,7 @@
 CLI client and relay daemon for IRC.
 
 - [Docs](https://weechat.org/files/doc/devel/weechat_user.en.html)
-- [Example conf](https://gist.github.com/spicycode/371ca343201391a7eb5409f3288e2864)
+- [My always up-to-date WeeChat configuration](https://gist.github.com/pascalpoitras/8406501/7b81f9fbe9326aafaf4931378751a223f4d89c44)
 
 <!-- TOC GFM -->
 
@@ -12,9 +12,11 @@ CLI client and relay daemon for IRC.
     * [Binds](#binds)
 * [Settings](#settings)
 * [Service](#service)
+  * [Clients](#clients)
   * [Binds](#binds-1)
 * [Colors](#colors)
 * [Filter](#filter)
+* [Integrations](#integrations)
 
 <!-- /TOC -->
 
@@ -60,6 +62,9 @@ Weechat can be setup to run as a service inside a Tmux session. To...
 - stay connected and log chat history in background 
 - use the same user in extra devices at the same time via relay
 
+### Clients
+[Glowing Bear](https://github.com/glowing-bear/glowing-bear): web frontend
+
 ### Binds
 - `irc` attachs to session
 - `^B-d` detachs
@@ -80,3 +85,8 @@ Weechat can be setup to run as a service inside a Tmux session. To...
 Useless join, part and quit messages can be smart filterated. Display status messages from recently interacted users, filter others. Acts retroactively.
 
 `/filter add irc_smart * irc_smart_filter *`
+
+## Integrations
+- [Matrix](https://github.com/poljar/weechat-matrix): seamless
+- [Slack](https://github.com/wee-slack/wee-slack): require API token
+- [Discord](https://github.com/terminal-discord/weechat-discord): may violate ToS

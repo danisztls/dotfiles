@@ -1,4 +1,5 @@
 certs
 sec.conf
-irc.conf
 *.log
+matrix/
+matrix.conf
