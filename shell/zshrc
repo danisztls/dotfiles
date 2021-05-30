@@ -1,7 +1,9 @@
 # Instant Prompt
 # --------------
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" && "$TERM" == 'alacritty' ]]; then
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  if [[ "$TERM" == 'alacritty' || "$TERM" == 'tmux-256color' ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
 fi
 
 # Reload .profile
@@ -26,7 +28,7 @@ fi && source "$ZINIT[BIN_DIR]/zinit.zsh" # load
 # Core
 # ----
 # If Alacritty load P10K
-if [[ "$TERM" == 'alacritty' ]]; then
+if [[ "$TERM" == 'alacritty' || "$TERM" == 'tmux-256color' ]]; then
     zinit depth=1 for \
         load \
             romkatv/powerlevel10k \
@@ -61,7 +63,7 @@ zinit wait lucid depth=1 for \
         zdharma/fast-syntax-highlighting \
     atload"_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions \
-    blockf atpull'zinit creinstall -q .' \
+    blockf atpull'zinit creinstall -q "$XDG_CONFIG_HOME/shell/completions"' \
         zsh-users/zsh-completions \
     is-snippet \
         "/usr/share/fzf/key-bindings.zsh" \
