@@ -101,6 +101,7 @@ alias git-orwell='git rebase -i $(git log --pretty=oneline | tail -n 1 | sed "s/
 
 # Pass
 alias pass='gopass' # use gopass
+alias genotp='zbarimg -q --raw download.png | pass insert -a' # usage: genotp <name>
 alias genpwd="tr -dc 'a-zA-Z0-9!@#$%*()[]{}' < /dev/urandom | fold -w 16 | head -n 1 | xclip -sel clip"
 
 # VaultGuard
@@ -119,8 +120,9 @@ alias fav='fzfx media' # audio and videos
 alias fpic='fzfx media' # pictures
 alias fps='fzfx ps' # processes
 
-# Journal
+# Organization
 alias j='journal'
+alias t='timew'
 
 # Feh
 alias feh='feh --scale-down --auto-zoom' # fit window
