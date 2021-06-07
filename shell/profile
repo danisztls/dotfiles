@@ -2,7 +2,8 @@
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim -d"
 export VISUAL="alacritty -e nvim"
-export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # neovim as manpager
+#export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # neovim as manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s" # syntax highlight
 export LESS="-R " # colorize output
 export BROWSER="chromium"
