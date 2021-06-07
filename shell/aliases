@@ -1,7 +1,8 @@
 # Colorized output
 # Check: https://wiki.archlinux.org/index.php/Color_output_in_console 
 #alias ls='ls --color=auto'
-alias ls='exa --long --git' # exa is close but not fully compliant with ls
+#alias ls='exa --long --git' # exa is close but not fully compliant with ls
+alias ls='exa --long'
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
