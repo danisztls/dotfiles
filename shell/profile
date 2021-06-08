@@ -1,9 +1,9 @@
-# Preferred programs
+# Preferred
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim -d"
-export VISUAL="alacritty -e nvim"
-#export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # neovim as manpager
+export VISUAL="urxvt -e nvim" # alacritty has double the latency ~0.5s
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+#export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # slower than bat
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s" # syntax highlight
 export LESS="-R " # colorize output
 export BROWSER="chromium"
