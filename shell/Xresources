@@ -44,7 +44,7 @@ urxvt.depth: 32
 urxvt.background: [98]#242e33
 
 urxvt.font: xft:Hack Nerd Font:size=12
-urxvt.letterSpace: 0
+urxvt.letterSpace: -1
 urxvt.lineSpace: 0
 urxvt.geometry: 80x24
 !urxvt.internalBorder: 24
