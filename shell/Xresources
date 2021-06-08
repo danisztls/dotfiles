@@ -60,11 +60,14 @@ urxvt.keysym.Control-Down: \033[1;5B
 urxvt.keysym.Control-Right: \033[1;5C
 urxvt.keysym.Control-Left: \033[1;5D
 
-urxvt.perl-ext-common: default,matcher
+urxvt.perl-ext-common: default,matcher,resize-font
 urxvt.url-launcher: /usr/bin/xdg-open
 urxvt.underlineURLs: true
 urxvt.urlButton: 1
 URxvt.matcher.button: 1
+
+urxvt.iso14755: false
+urxvt.iso14755_52: false
 
 ! XTerm
 XTerm.vt100.faceName: Hack Nerd Font:size=12
