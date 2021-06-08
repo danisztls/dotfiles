@@ -39,23 +39,25 @@ _link() {
     src="$PWD/$1"
     dst="$HOME/$2"
     dst_dir="${dst%/*?}"
-    # Noop if it's already the right symlink
-    if [ "$(readlink "$dst")" = "$src" ]; then
-        printf "\e[1;39m'%s'\e[0;34m is already set up!\n" "$dst"
-        return 0
-    fi
 
-    # Get rid of existent
+    # It already exists?
     if [ -e "$dst" ]; then
-        printf "\e[1;39m'%s'\e[0;33m exists. Do you want to get rid of it?\e[1;39m (y/N)\n\e[0m" "$dst"
-        while true; do
-            read -r answer
-            case ${answer:0:1} in
-                y|Y) _getridof "$dst"; return;;
-                n|N) return;;
-                *) continue;;
-            esac
-        done
+        # noop if it's the right symlink
+        if ! [ $forceMode ] && [ "$(readlink "$dst")" = "$src" ]; then
+            printf "\e[1;39m'%s'\e[0;34m is already set up!\n" "$dst"
+            return 0
+        # otherwise get rid or skip
+        else
+            printf "\e[1;39m'%s'\e[0;33m exists. Do you want to get rid of it?\e[1;39m (y/N)\n\e[0m" "$dst"
+            while true; do
+                read -r answer
+                case ${answer:0:1} in
+                    y|Y) _getridof "$dst";;
+                    n|N) return;;
+                    *) continue;;
+                esac
+            done
+        fi
     fi
     # Ensure parent dirs exist at destination
     mkdir -p "$dst_dir"
