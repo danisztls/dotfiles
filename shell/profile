@@ -110,6 +110,3 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 
 # ACO over LLVM
 export RADV_PERFTEST=aco
-
-# Socket for Docker rootless
-# export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
