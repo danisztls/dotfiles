@@ -59,9 +59,12 @@ urxvt.keysym.Control-Up: \033[1;5A
 urxvt.keysym.Control-Down: \033[1;5B
 urxvt.keysym.Control-Right: \033[1;5C
 urxvt.keysym.Control-Left: \033[1;5D
-urxvt.urlLauncher: chromium 
+
+urxvt.perl-ext-common: default,matcher
+urxvt.url-launcher: /usr/bin/xdg-open
 urxvt.underlineURLs: true
 urxvt.urlButton: 1
+URxvt.matcher.button: 1
 
 ! XTerm
 XTerm.vt100.faceName: Hack Nerd Font:size=12
