@@ -24,7 +24,8 @@ Plug 'NLKNguyen/papercolor-theme' " improved highlighting
 Plug 'junegunn/vader.vim' " test framework
 Plug 'SirVer/ultisnips' " snippets framework
 Plug 'honza/vim-snippets' " snippets
-Plug 'wakatime/vim-wakatime'
+Plug 'wakatime/vim-wakatime' " time tracking
+Plug 'Yggdroot/indentLine' " visual cues for identation
 call plug#end()
 
 "set vim info path
