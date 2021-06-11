@@ -43,7 +43,7 @@ set encoding=utf-8
 
 " line number
 set number relativenumber
-nnoremap <leader>h :setlocal number! relativenumber!<CR>
+nnoremap <leader>n :setlocal number! relativenumber!<CR>
 
 " n spaces tab
 set tabstop=2
