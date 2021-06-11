@@ -175,11 +175,21 @@ nnoremap <leader>l :ALEToggleBuffer<CR>
 "let g:ale_lint_on_text_changed = 'never'
 "let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1 " when opening a file
+
+"" set linters
+let g:ale_linters = {
+\   'html': ['prettier'],
+\   'javascript': ['eslint', 'prettier'] 
+\}
+
+"" disable linters
 let g:ale_pattern_options = {
-    \'\.min.js$': {'ale_enabled': 0},
-    \'\.html$': {'ale_enabled': 0},
-    \'\.md$': {'ale_enabled': 0}
-    \}
+\   '\.min.js$': {'ale_enabled': 0},
+\   '\.md$': {'ale_enabled': 0}
+\}
+
+"" set fixers (fix w/ :ALEFixer)
+let b:ale_fixers = ['prettier', 'eslint']
 
 " codi
 nnoremap <leader>c :Codi<CR>
