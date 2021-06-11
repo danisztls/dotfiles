@@ -100,6 +100,11 @@ noremap <C-v> "+P
 nnoremap <leader>en :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>pt :setlocal spell! spelllang=pt_br<CR>
 
+" show hidden chars
+nnoremap <leader>i :setlocal list!<CR>
+"" show space as .
+set lcs+=space:·
+
 " allow the . to execute once for each line of a visual selection
 vnoremap . :normal .<CR>
 
