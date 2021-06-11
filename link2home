@@ -58,6 +58,8 @@ _link() {
                 esac
             done
         fi
+    else
+	rm "$dst" # remove eventual broken symlinks as those aren't detected as existent
     fi
     # Ensure parent dirs exist at destination
     mkdir -p "$dst_dir"
