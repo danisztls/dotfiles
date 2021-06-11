@@ -26,6 +26,7 @@ Plug 'SirVer/ultisnips' " snippets framework
 Plug 'honza/vim-snippets' " snippets
 Plug 'wakatime/vim-wakatime' " time tracking
 Plug 'Yggdroot/indentLine' " visual cues for identation
+Plug 'lilydjwg/colorizer'
 call plug#end()
 
 "set vim info path
@@ -241,6 +242,9 @@ nnoremap <leader>hl :GitGutterLineHighlineToggle<CR>
 nmap <Leader>hm <Plug>(git-messenger)
 "let g:git_messenger_include_diff="current"
 let g:git_messenger_always_into_popup=v:true
+
+" Colorizer
+let g:colorizer_maxlines = 500
 
 " PYTHON
 autocmd FileType python :iabbrev <buffer> iff if:<left>
