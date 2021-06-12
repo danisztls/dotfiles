@@ -196,21 +196,6 @@ let b:ale_fixers = ['prettier', 'eslint']
 nnoremap <leader>c :Codi<CR>
 nnoremap <leader>C :Codi!<CR>
 
-"markdown
-set conceallevel=2
-let g:vim_markdown_math = 0 " if enabled $ signs will bug syntax
-let g:vim_markdown_frontmatter = 1
-"set foldlevel=3
-let g:vim_markdown_folding_disabled = 1
-
-"markdown-toc
-let g:vmt_fence_text = 'TOC'
-let g:vmt_fence_closing_text = '/TOC'
-let g:vmt_list_indent_text = '  '
-"let g:vmt_list_item_char = '*'
-"let g:vmt_cycle_list_item_markers = 1
-nnoremap <leader>t :GenTocGFM<CR>
-
 "UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -246,8 +231,6 @@ let g:git_messenger_always_into_popup=v:true
 " Colorizer
 let g:colorizer_maxlines = 500
 
-" PYTHON
-autocmd FileType python :iabbrev <buffer> iff if:<left>
 
 " FUNCTIONS
 " convert rows of numbers or text (as if pasted from excel column) to a tuple
