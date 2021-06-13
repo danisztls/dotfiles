@@ -125,7 +125,14 @@ setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " soft linewrap
 set wrap linebreak
 
-" colors
+" Colors
+" https://github.com/RRethy/vim-hexokinase/issues/10 
+set termguicolors
+
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 let g:PaperColor_Theme_Options = {
   \   'theme': {
   \     'default': {
@@ -233,9 +240,12 @@ nmap <Leader>hm <Plug>(git-messenger)
 "let g:git_messenger_include_diff="current"
 let g:git_messenger_always_into_popup=v:true
 
-" Colorizer
-let g:colorizer_maxlines = 500
+" WEB
+"autocmd FileType html css
 
+" hexokinase
+let g:Hexokinase_highlighters = ['virtual']
+"let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
 
 " FUNCTIONS
 " convert rows of numbers or text (as if pasted from excel column) to a tuple
