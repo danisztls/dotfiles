@@ -199,6 +199,9 @@
 | @x     | execute macro recorded at x   |
 | @@     | execute last macro            |
 
+## Plugin Management
+[Plug](https://github.com/junegunn/vim-plug)
+
 ## Checking
 ### Spell checking
 - \en      toggle spell checking for english (custom)

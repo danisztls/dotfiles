@@ -1,44 +1,49 @@
-" plugins
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim' " fuzzy search
-Plug 'tpope/vim-vinegar' " improve netrw
-Plug 'ryanoasis/vim-devicons' " icons support
+" Browsing
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fuzzy find
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-vinegar' " improved Netrw
+
+" Visual
 Plug 'vim-airline/vim-airline' " status line
-Plug 'dense-analysis/ale' " syntax highlighting
-Plug 'metakirby5/codi.vim' " REPL
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+Plug 'ryanoasis/vim-devicons' " icons support
+Plug 'NLKNguyen/papercolor-theme' " improved highlighting
+Plug 'Yggdroot/indentLine' " identation cues
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colors cues
+
+" Code
+Plug 'dense-analysis/ale' " syntax highlighting and fixing
+Plug 'metakirby5/codi.vim' " repl
+Plug 'tpope/vim-surround' " quoting
+Plug 'tpope/vim-commentary' " commenting
+Plug 'godlygeek/tabular' " alignment
+
+" Git
 Plug 'tpope/vim-fugitive' " conflict resolution flow
 Plug 'tpope/vim-rhubarb' " github integration
 Plug 'airblade/vim-gitgutter' " git highlight, un/stage changes
 Plug 'junegunn/gv.vim' " commit browser
 Plug 'rhysd/git-messenger.vim' " show commit messages
-Plug 'godlygeek/tabular' " text filtering and alignment
-Plug 'plasticboy/vim-markdown' " markdown stuff
-Plug 'mzlogin/vim-markdown-toc' " md table of contents
-Plug 'jceb/vim-orgmode'
-Plug 'aklt/plantuml-syntax'
-Plug 'NLKNguyen/papercolor-theme' " improved highlighting
-Plug 'junegunn/vader.vim' " test framework
+
+" Markdown
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " language pack
+Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' } " table of contents
+
+" Snippets
 Plug 'SirVer/ultisnips' " snippets framework
 Plug 'honza/vim-snippets' " snippets
+
+" Deprecation candidates
+Plug 'tpope/vim-abolish' " variations for search and replace
 Plug 'wakatime/vim-wakatime' " time tracking
-Plug 'Yggdroot/indentLine' " visual cues for identation
-Plug 'lilydjwg/colorizer'
+"Plug 'junegunn/vader.vim' " vimscript test framework
 call plug#end()
 
 "set vim info path
 set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
 if has('nvim') | let &viminfo .= '.nvim' | endif
 
-" load additional (after) configs
-filetype plugin on
-
-" GLOBAL
-"set nocompatible
-filetype plugin indent on
+filetype plugin indent on " per filetype config
 syntax on
 set encoding=utf-8
 
