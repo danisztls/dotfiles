@@ -35,8 +35,6 @@ Plug 'honza/vim-snippets' " snippets
 
 " Deprecation candidates
 Plug 'tpope/vim-abolish' " variations for search and replace
-Plug 'wakatime/vim-wakatime' " time tracking
-"Plug 'junegunn/vader.vim' " vimscript test framework
 call plug#end()
 
 "set vim info path

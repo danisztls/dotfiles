@@ -68,8 +68,7 @@ zinit wait lucid depth=1 for \
     is-snippet \
         "/usr/share/fzf/key-bindings.zsh" \
     load \
-        wfxr/forgit \
-        sobolevn/wakatime-zsh-plugin
+        wfxr/forgit
 
 zinit lucid wait'0a' for \
 as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" tj/git-extras
