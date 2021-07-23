@@ -64,9 +64,9 @@
 	required = true
 
 [user]
-	signingkey = F01BCA9BE4937F59B2AF899699265C42D8308B04 
+	signingkey = F3BA377BDF055814B7A521FC0E4A21C049A48DAF 
 	name = Daniel Souza
-	email = danisztls@gmail.com
+	email = me@posix.dev.br
 
 [commit]
 	gpgsign = true
