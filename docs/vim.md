@@ -15,6 +15,7 @@
 * [Search](#search)
   * [Regex replace](#regex-replace)
 * [Macros](#macros)
+* [Plugin Management](#plugin-management)
 * [Checking](#checking)
   * [Spell checking](#spell-checking)
   * [Syntax checking](#syntax-checking)
@@ -324,6 +325,8 @@ Where `$1` is the place holder string and `$2` format options lke l1c1r1 where l
 left, right and center and the numbers refers to desired whitespaces for each.
 
 When invoked without selection will consider the paragraph as its scope.
+
+`\zs` is the zero-width ‘pattern start’ search atom. I don't know exactly what it does but when used as `:Tabularize:\zs` it will use `:` as delimiter but not space it.
 
 #### Patterns
 - Save: `:AddTabularPattern first_comma /^[^,]\zs,/r0c0l0`
