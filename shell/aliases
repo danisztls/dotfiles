@@ -34,7 +34,7 @@ alias 7zcrypt="7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p" # cr
 alias vim='nvim'
 alias v='nvim'
 alias vimdiff='nvim -d'
-alias vd='nvim -d'
+alias vdiff='nvim -d' # vd is for visidata
 
 # Superadmin
 alias god='sudo -i'
