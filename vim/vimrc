@@ -78,12 +78,20 @@ inoremap jk <esc>
 "inoremap <Left> <nop>
 "inoremap <Right> <nop>
 
-" enclose helpers
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>le
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>le
-nnoremap <leader>( viw<esc>a)<esc>bi(<esc>le
-nnoremap <leader>[ viw<esc>a]<esc>bi[<esc>le
-nnoremap <leader>{ viw<esc>a}<esc>bi{<esc>le
+" enclosing helpers
+"" word on cursor
+nnoremap <leader>" ciw"<C-r>"" 
+nnoremap <leader>' ciw'<C-r>"' 
+nnoremap <leader>( ciw(<C-r>") 
+nnoremap <leader>[ ciw[<C-r>"] 
+nnoremap <leader>{ ciw{<C-r>"} 
+
+"" cursor to EOL
+nnoremap <leader>e" c$"<C-r>""
+nnoremap <leader>e' c$'<C-r>"'
+nnoremap <leader>e( c$(<C-r>")
+nnoremap <leader>e[ c$[<C-r>"]
+nnoremap <leader>e{ c${<C-r>"}
 
 " tabularize
 "" usage :Tab<delimiter_char>
