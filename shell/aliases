@@ -83,7 +83,7 @@ alias p='paru'
 
 # Make
 alias makeinfo="makepkg --printsrcinfo > .SRCINFO"
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config" # force XDG compliance
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"' # force XDG compliance
 
 # Python
 alias ipy='ipython'
