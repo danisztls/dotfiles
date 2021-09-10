@@ -57,7 +57,7 @@
 | y        | yawk (copy without deleting)        |
 | x        | delete char                         |
 | X        | delete line                         |
-| d        | delete extennts of next motion      |
+| d        | delete extents of next motion       |
 | dd       | delete line                         |
 | dw       | delete until next word              |
 | d0 or d^ | delete until start of line          |
