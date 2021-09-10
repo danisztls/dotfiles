@@ -66,6 +66,10 @@ export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
+## Steam Debugging
+export STEAM_LINUX_RUNTIME_LOG=1
+export PRESSURE_VESSEL_VERBOSE=1
+
 ## Rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
