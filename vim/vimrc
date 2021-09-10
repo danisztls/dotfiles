@@ -17,6 +17,7 @@ Plug 'metakirby5/codi.vim' " repl
 Plug 'tpope/vim-surround' " quoting
 Plug 'tpope/vim-commentary' " commenting
 Plug 'godlygeek/tabular' " alignment
+Plug 'cespare/vim-toml' " syntax for TOML
 
 " Git
 Plug 'tpope/vim-fugitive' " conflict resolution flow
