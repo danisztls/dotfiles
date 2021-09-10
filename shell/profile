@@ -73,6 +73,9 @@ export PRESSURE_VESSEL_VERBOSE=1
 ## Rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
+## Hugo
+export HUGO_CACHEDIR="$XDG_CACHE_HOME/hugo"
+
 # History
 export HISTFILE="$XDG_DATA_HOME/shell/history"
 export HISTSIZE=10000
