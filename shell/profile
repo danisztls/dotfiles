@@ -55,6 +55,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 ## Python
 export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
 export PYTHONHISTFILE="$XDG_DATA_HOME/python" # FIXME: I don't think its working.
 
@@ -85,6 +86,7 @@ export DXVK_FRAME_RATE="144"
 
 ## Rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 ## Hugo
 export HUGO_CACHEDIR="$XDG_CACHE_HOME/hugo"
