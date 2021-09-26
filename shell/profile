@@ -67,23 +67,6 @@ export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
-# Gaming
-## Steam
-export STEAM_LINUX_RUNTIME_VERBOSE=1
-export PRESSURE_VESSEL_VERBOSE=1
-
-# MangoHUD
-export MANGOHUD=1
-export MANGOHUD_CONFIG="$XDG_CONFIG_HOME/MangoHud/MangoHud.conf"
-
-## Gallium
-# export GALLIUM_HUD=GPU-load,cpu,fps  # makes Steam crash
-
-## Vulkan
-# check https://github.com/doitsujin/dxvk
-# export DXVK_HUD="fps,memory,gpuload,scale=1"
-export DXVK_FRAME_RATE="144"
-
 ## Rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
