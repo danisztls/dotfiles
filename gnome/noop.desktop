@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=Noop
+Comment=Do nothing at all
+Exec=echo "Don't open: %u"
+Icon=xterm
+Terminal=false
+Type=Application
