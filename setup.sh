@@ -47,12 +47,19 @@ _link() {
         printf "\e[31mMissing arguments!\n\e[0m"
         return 1
     fi
+
     # Source and Destination
     src="$PWD/$1"
     dst="$HOME/$2"
     dst_dir="${dst%/*?}"
 
-    # It already exists?
+    # Is there a broken symlink at destination?
+    if [ -h "$dst" ] && ! [ -e "$dst" ]; then
+        rm -f "$dst"
+        printf "NOTICE: %s was a broken symlink and was removed." "$dst"
+    fi
+
+    # Does destination already exists?
     if [ -e "$dst" ]; then
         # noop if it's the right symlink
         if ! [ $forceMode ] && [ "$(readlink "$dst")" = "$src" ]; then
@@ -71,12 +78,11 @@ _link() {
               esac
           done
         fi
-    else
-	      rm "$dst" # remove eventual broken symlinks as those aren't detected as existent
-        # TODO: This will cause problems w/ pipefail
     fi
+
     # Ensure parent dirs exist at destination
     mkdir -p "$dst_dir"
+
     # Link files
     ln -s "$src" "$dst" &&
     printf "\e[32mSuccesfully linked\e[1;39m '%s'\e[0;32m to\e[1;39m '%s'\e[0;32m!\n\e[0m" "$src" "$dst"
