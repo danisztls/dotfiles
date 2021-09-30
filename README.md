@@ -32,7 +32,7 @@ These are some of the configurations and scripts that I use to make my life in L
 ├── git                         # git configuration
 ├── HISTORY.md                  # timeline of changes
 ├── LICENSE
-├── link2home                   # link dotfiles to $HOME
+├── setup.sh                    # link dotfiles to $HOME
 ├── misc                        # miscellaneous
 ├── README.md                   
 ├── scripts                     # scripts
@@ -50,7 +50,7 @@ These are some of the configurations and scripts that I use to make my life in L
 
 ## FAQ
 #### How this works?
-I wrote, **link2home** a script to link the dotfiles in this repo to `$HOME`. The script by default backup original files while with the `-f` option it will use `trash` or `rm` to remove them instead. 1st argument is source path in relation to repo dir while 2nd argument is destination path in relation to `$HOME`.
+I wrote, a setup script to link the dotfiles in this repo to `$HOME`. The script by default backup original files while with the `-f` option it will use `trash` or `rm` to remove them instead. 1st argument is source path in relation to repo dir while 2nd argument is destination path in relation to `$HOME`.
 
 ```sh
 _link "shell/bashrc" ".bashrc"
