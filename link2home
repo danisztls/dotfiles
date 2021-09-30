@@ -5,8 +5,10 @@
 set -e
 set -o pipefail
 
+# TODO: Use variables for escape codes
+
 # Get options from optargs
-# -f is force mode, to overwrite instead of backing up files
+# -f is force mode, remove by default any conflicting file 
 while getopts "f" option; do
     case $option in
         f) forceMode=true;;
@@ -14,17 +16,27 @@ while getopts "f" option; do
     esac
 done
 
-# Backup existing config by default
-if ! [ $forceMode ]; then
-    mkdir -p "$HOME/dotfiles-backup"
-    _getridof() { mv -b "$1" "$HOME/dotfiles-backup"; }
-# Use trash instead of rm if available
-elif [ "$(command -v trash)" ]; then
-    _getridof() { trash "$1"; }
-# Remove when no alternative is left
-else
-    _getridof() { rm "$1"; }
-fi
+_backup() {
+    if ! [ -e "$1.bak" ]; then
+        mv "$1" "$1.bak"
+    else
+        printf "ERROR: %s already exists\n" "$1.bak"
+        return 1
+    fi
+}
+
+_remove() {
+    rm -rf "$1"
+}
+
+_trash() {
+    if [ "$(command -v trash)" ]; then
+        trash "$1"
+    else
+        printf "%s\n" "ERROR: trash-cli is not found"
+        return 1
+    fi
+}
 
 _link() {
 # Link files
@@ -48,18 +60,20 @@ _link() {
             return 0
         # otherwise get rid or skip
         else
-            printf "\e[1;39m'%s'\e[0;33m exists. Do you want to get rid of it?\e[1;39m (y/N)\n\e[0m" "$dst"
-            while true; do
-                read -r answer
-                case ${answer:0:1} in
-                    y|Y) _getridof "$dst";;
-                    n|N) return;;
-                    *) continue;;
-                esac
-            done
+          printf "\e[1;39m'%s'\e[0;33m exists. What do you want to do?\e[1;39m backup (b), remove (r), ignore (i)\n\e[0m" "$dst"
+          while true; do
+              read -r answer
+              case ${answer:0:1} in
+                  b|B) _backup "$dst" && break;;
+                  r|R) _remove "$dst" && break;;
+                  i|I) break;;
+                  *)   continue;;
+              esac
+          done
         fi
     else
-	rm "$dst" # remove eventual broken symlinks as those aren't detected as existent
+	      rm "$dst" # remove eventual broken symlinks as those aren't detected as existent
+        # TODO: This will cause problems w/ pipefail
     fi
     # Ensure parent dirs exist at destination
     mkdir -p "$dst_dir"
