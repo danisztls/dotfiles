@@ -26,6 +26,9 @@ else
   recipe="$1"
 fi
 
+# Fix recipe path
+recipe="recipes/${recipe}"
+
 # getopts don't work when mixing parameters and arguments
 _getOpts "${@:2}"  # slice the parameters array to remove 1st parameter
 
