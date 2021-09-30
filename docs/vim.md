@@ -8,8 +8,8 @@
 * [Motions](#motions)
   * [Marks](#marks)
   * [Registers](#registers)
-* [Special](#special)
-  * [Undo, redo and repeat](#undo-redo-and-repeat)
+* [Misc](#misc)
+* [Undo, redo and repeat](#undo-redo-and-repeat)
 * [Splits and Tabs](#splits-and-tabs)
 * [Folds](#folds)
 * [Search](#search)
@@ -24,7 +24,7 @@
   * [Git](#git)
 * [Browse files](#browse-files)
 * [Organization](#organization)
-* [Misc](#misc)
+* [Misc](#misc-1)
   * [Fuzzy finder](#fuzzy-finder)
   * [REPL](#repl)
   * [Markdown](#markdown)
@@ -67,7 +67,8 @@
 | p        | paste before                        |
 | P        | paste after                         |
 | s        | substitute (delete and insert) char |
-| S        | substitute line                     |
+| S        | substitute line (w/ line selected)  |
+| S        | append at line indentation level    |
 | v        | select char                         |
 | V        | select line                         |
 
@@ -138,11 +139,13 @@
 | ---        | ---                                       |
 | "[a-Z]verb | store/read from different memory register |
 
-## Special
-- `+`   start vi/vim at a specific line and can be used with expressions.
+## Misc 
+- `+` start vi/vim at a specific line and can be used with expressions.
 - `vi +'/foo/d|wq!' ~/.ssh/known_hosts` remove an entry from SSH know hosts
+- `=G` fix indentation on the whole file
+- `gqq` format a line into multi-lines following `textwidth`
 
-### Undo, redo and repeat
+## Undo, redo and repeat
 | command | behavior                |
 | ---     | ---                     |
 | u       | undo                    |
@@ -160,7 +163,6 @@
 | C^w{+-=}    | resize splits                    |
 | C^wT        | convert split to tab             |
 | gt          | switch between tabs              |
-
 
 ## Folds
 | action | behavior              |
