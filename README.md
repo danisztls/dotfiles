@@ -16,6 +16,7 @@ These are some of the configurations and scripts that I use to make my life in L
     * [What about the looks?](#what-about-the-looks)
     * [Is it worth the time?](#is-it-worth-the-time)
     * [What is the license?](#what-is-the-license)
+    * [Any caveats?](#any-caveats)
 * [Extra](#extra)
     * [Backup](#backup)
     * [Personal organization](#personal-organization)
@@ -50,12 +51,13 @@ These are some of the configurations and scripts that I use to make my life in L
 
 ## FAQ
 #### How this works?
-I wrote, a setup script to link the dotfiles in this repo to `$HOME`. The script by default backup original files while with the `-f` option it will use `trash` or `rm` to remove them instead. 1st argument is source path in relation to repo dir while 2nd argument is destination path in relation to `$HOME`.
+A setup script link the dotfiles in this repo to those on `$HOME`.
 
-```sh
-_link "shell/bashrc" ".bashrc"
-...
-```
+Usage: `./setup <recipe>`
+
+Recipes on `recipes/`. Run from the project root.
+
+The force mode, `-f` option, bypass the file already exists checks and auomatically remove any existing file. Don't use options as first argument.
 
 #### Why you don't use a bare git repo?
 I tried it originally but just didn't like the flow. Maybe doing things differently would improve it but I am happy with my current approach.
@@ -139,7 +141,7 @@ The only 'sane' alternative is to use `sudoedit` or `su -e` which creates a temp
 *Note: C is CTRL and M is META/ALT*
 
 #### What about the looks?
-As customs require I did my own ricing. Check [supernova-theme](https://github.com/lbcnz/supernova-theme).
+As the custom I did my own ricing. Check [supernova-theme](https://github.com/lbcnz/supernova-theme).
 
 And to improve Gnome looks:
 - [arc-theme](https://github.com/jnsh/arc-theme)
@@ -147,13 +149,20 @@ And to improve Gnome looks:
 - [capitaine-cursors](https://github.com/keeferrourke/capitaine-cursors)
 
 #### Is it worth the time?
-Sometimes but not always. Those hacks save time put also take time.
+Sometimes but not always. Those hacks save time put also took me a lot of time to discover, create, test and improve.
 
 ![xkcd: Is It Worth the Time?](https://github.com/danisztls/dotfiles/raw/main/assets/is-it-worth-the-time.png)
 — [Randall Munroe](https://xkcd.com/1205/)
 
 #### What is the license?
 My own code is under MIT license but components may be under other licenses.
+
+#### Any caveats?
+Some things might not work unless you have the same programs and versions that I'm currently using.
+
+Some configs are personal and is a good idea to check before using. As an example I have my public PGP key set on Git config.
+
+Zinit will not work unless you have priorly established a SSH handshake with Github due to SSH being forced over HTTPS on Git config.
 
 ## Extra
 #### Backup
