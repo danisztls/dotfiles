@@ -5,22 +5,28 @@
 set -e
 set -o pipefail
 
-# TODO: Use variables for escape codes
-
 # Get options from optargs
 # -f is force mode, remove by default any conflicting file 
 while getopts "f" option; do
   case $option in
     f) forceMode=true;;
-    *) printf "\e[33mSomething unexpected happened.\n\e[0m"
+    *) printf "${error}ERROR:${reset} %s\n" "Something unexpected happened."
   esac
 done
+
+# ANSI escape codes
+reset="\e[0m"
+strong="\e[1;39m"
+error="\e[1;31m"
+warning="\e[1;33m"
+notice="\e[1;34m"
+success="\e[1;32m"
 
 _backup() {
   if ! [ -e "$1.bak" ]; then
     mv "$1" "$1.bak"
   else
-    printf "ERROR: %s already exists\n" "$1.bak"
+    printf "${error}ERROR:${reset} ${strong}'%s'${reset} already exists.\n" "$1.bak"
     return 1
   fi
 }
@@ -33,7 +39,7 @@ _trash() {
   if [ "$(command -v trash)" ]; then
     trash "$1"
   else
-    printf "%s\n" "ERROR: trash-cli is not found"
+    printf "${error}ERROR:${reset} ${strong}'%s'${reset} was not found.\n" "trash-cli"
     return 1
   fi
 }
@@ -44,7 +50,7 @@ _link() {
 
   # Return error if expected argument is missing
   if [ "$#" -lt 2 ]; then
-    printf "\e[31mMissing arguments!\n\e[0m"
+    printf "${error}ERROR:${reset} %s\n" "Missing arguments."
     return 1
   fi
 
@@ -55,26 +61,29 @@ _link() {
   # Is there a broken symlink at destination?
   if [ -h "$dst" ] && ! [ -e "$dst" ]; then
     rm -f "$dst"
-    printf "NOTICE: %s was a broken symlink and was removed." "$dst"
+    printf "${notice}NOTICE:${reset} ${strong}'%s'${reset} was a broken symlink and was removed.\n" "$dst"
   fi
 
   # Does destination already exists?
   if [ -e "$dst" ]; then
+
     # noop if it's the right symlink
     if ! [ $forceMode ] && [ "$(readlink "$dst")" = "$src" ]; then
-      printf "\e[1;39m'%s'\e[0;34m is already set up!\n" "$dst"
+      printf "${notice}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$dst"
       return 0
-      # otherwise get rid or skip
 
+    # otherwise get rid or skip
     else
-      printf "\e[1;39m'%s'\e[0;33m exists. What do you want to do?\e[1;39m backup (b), remove (r), ignore (i)\n\e[0m" "$dst"
+      printf "${notice}NOTICE:${reset} destination ${strong}'%s'${reset} already exists.\n" "$dst"
+      # shellcheck disable=SC2059
+      printf "${warning}What to do?${reset} backup ${success}(b)${reset}, remove ${error}(r)${reset} or ignore ${notice}(i)${reset} it?\n"
       while true; do
         read -r answer
         case ${answer:0:1} in
           b|B) _backup "$dst" && break;;
           r|R) _remove "$dst" && break;;
           i|I) break;;
-          *)   continue;;
+            *) continue;;
         esac
       done
     fi
@@ -85,7 +94,7 @@ _link() {
 
   # Link files
   ln -s "$src" "$dst" &&
-  printf "\e[32mSuccesfully linked\e[1;39m '%s'\e[0;32m to\e[1;39m '%s'\e[0;32m!\n\e[0m" "$src" "$dst"
+  printf "${success}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$dst" "$src"
 }
 
 _link "shell/profile"           ".profile"
