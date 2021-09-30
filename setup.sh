@@ -6,10 +6,9 @@ set -e
 set -o pipefail
 
 # Get options from optargs
-# -f is force mode, remove by default any conflicting file 
 while getopts "f" option; do
   case $option in
-    f) forceMode=true;;
+    f) forceMode=true;;  # remove by default any conflicting file
     *) printf "${error}ERROR:${reset} %s\n" "Something unexpected happened."
   esac
 done
@@ -46,7 +45,7 @@ _trash() {
 
 _link() {
   # Symbolic links using absolute paths
-  # NOTE: Conf will break if source is renamed .
+  # NOTE: Conf will break if source is renamed.
 
   # Return error if expected argument is missing
   if [ "$#" -lt 2 ]; then
@@ -60,32 +59,37 @@ _link() {
 
   # Is there a broken symlink at destination?
   if [ -h "$dst" ] && ! [ -e "$dst" ]; then
-    rm -f "$dst"
+    _remove "$dst"
     printf "${notice}NOTICE:${reset} ${strong}'%s'${reset} was a broken symlink and was removed.\n" "$dst"
   fi
 
   # Does destination already exists?
   if [ -e "$dst" ]; then
-
-    # noop if it's the right symlink
-    if ! [ $forceMode ] && [ "$(readlink "$dst")" = "$src" ]; then
-      printf "${notice}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$dst"
-      return 0
-
-    # otherwise get rid or skip
+    if [ $forceMode ]; then
+      _remove "$dst"
+    
+    # be sensible
     else
-      printf "${notice}NOTICE:${reset} destination ${strong}'%s'${reset} already exists.\n" "$dst"
-      # shellcheck disable=SC2059
-      printf "${warning}What to do?${reset} backup ${success}(b)${reset}, remove ${error}(r)${reset} or ignore ${notice}(i)${reset} it?\n"
-      while true; do
-        read -r answer
-        case ${answer:0:1} in
-          b|B) _backup "$dst" && break;;
-          r|R) _remove "$dst" && break;;
-          i|I) break;;
-            *) continue;;
-        esac
-      done
+      # noop if it's the right symlink
+      if [ "$(readlink "$dst")" = "$src" ]; then
+        printf "${notice}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$dst"
+
+      # otherwise get rid or skip
+      else
+        printf "${notice}NOTICE:${reset} destination ${strong}'%s'${reset} already exists.\n" "$dst"
+        # shellcheck disable=SC2059
+        printf "${warning}What to do?${reset} backup ${success}(b)${reset}, remove ${error}(r)${reset} or ignore ${notice}(i)${reset} it?\n"
+
+        while true; do
+          read -r answer
+          case ${answer:0:1} in
+            b|B) _backup "$dst" && break;;
+            r|R) _remove "$dst" && break;;
+            i|I) break;;
+              *) continue;;
+          esac
+        done
+      fi
     fi
   fi
 
@@ -95,7 +99,7 @@ _link() {
   # Link files
   ln -s "$src" "$dst" &&
   printf "${success}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$dst" "$src"
-}
+ }
 
 _link "shell/profile"           ".profile"
 _link "shell/bashrc"            ".bashrc"
