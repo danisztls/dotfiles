@@ -1,17 +1,33 @@
 #!/bin/bash
 # Link dotfiles from repo to $HOME
+# USAGE: setup <recipe> <opts>
+# e.g. 
+
+# shellcheck disable=SC2059
 
 # Strict mode
 set -e
 set -o pipefail
 
 # Get options from optargs
-while getopts "f" option; do
-  case $option in
-    f) forceMode=true;;  # remove by default any conflicting file
-    *) printf "${error}ERROR:${reset} %s\n" "Something unexpected happened."
-  esac
-done
+_getOpts() {
+  while getopts "f" option; do
+    case $option in
+      f) forceMode="true";;  # remove by default any conflicting file
+      *) printf "${error}ERROR:${reset} %s\n" "Unexpected argument."
+    esac
+  done
+}
+
+# Get recipe
+if ! [ "$1" ] || [ "${1:0:1}" == "-" ]; then
+  recipe=default
+else
+  recipe="$1"
+fi
+
+# getopts don't work when mixing parameters and arguments
+_getOpts "${@:2}"  # slice the parameters array to remove 1st parameter
 
 # ANSI escape codes
 reset="\e[0m"
@@ -21,6 +37,7 @@ warning="\e[1;33m"
 notice="\e[1;34m"
 success="\e[1;32m"
 
+# Lib
 _backup() {
   if ! [ -e "$1.bak" ]; then
     mv "$1" "$1.bak"
@@ -77,7 +94,6 @@ _link() {
       # otherwise get rid or skip
       else
         printf "${notice}NOTICE:${reset} destination ${strong}'%s'${reset} already exists.\n" "$dst"
-        # shellcheck disable=SC2059
         printf "${warning}What to do?${reset} backup ${success}(b)${reset}, remove ${error}(r)${reset} or ignore ${notice}(i)${reset} it?\n"
 
         while true; do
@@ -99,21 +115,12 @@ _link() {
   # Link files
   ln -s "$src" "$dst" &&
   printf "${success}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$dst" "$src"
- }
+}
 
-_link "shell/profile"           ".profile"
-_link "shell/bashrc"            ".bashrc"
-_link "shell/Xresources"        ".Xresources"
-_link "shell/zshrc"             ".zshrc"
-_link "shell/zsh"               ".config/zsh"
-_link "shell/aliases"           ".config/shell/aliases"
-_link "shell/autostart"         ".config/shell/autostart"
-_link "shell/completions"       ".config/shell/completions"
-_link "shell/tmux"              ".config/tmux"
-_link "shell/alacritty.yml"     ".config/alacritty.yml"
-_link "shell/kitty"             ".config/kitty"
-_link "vim"                     ".config/vim"
-_link "git/config"              ".gitconfig"
-_link "misc/rofi"               ".config/rofi"
-_link "templates"               ".templates"
-_link "weechat"                 ".config/weechat"
+# Main
+if [ -e "$recipe" ]; then
+  # shellcheck disable=SC1090
+  source "$recipe"
+else
+  printf "${error}ERROR:${reset} Recipe ${strong}%s${reset} not found.\n"
+fi

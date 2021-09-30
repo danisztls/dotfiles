@@ -1,0 +1,19 @@
+#!/bin/bash
+# Recipe for Dotfiles Setup.
+
+_link "shell/profile"           ".profile"
+_link "shell/bashrc"            ".bashrc"
+_link "shell/Xresources"        ".Xresources"
+_link "shell/zshrc"             ".zshrc"
+_link "shell/zsh"               ".config/zsh"
+_link "shell/aliases"           ".config/shell/aliases"
+_link "shell/autostart"         ".config/shell/autostart"
+_link "shell/completions"       ".config/shell/completions"
+_link "shell/tmux"              ".config/tmux"
+_link "shell/alacritty.yml"     ".config/alacritty.yml"
+_link "shell/kitty"             ".config/kitty"
+_link "vim"                     ".config/vim"
+_link "git/config"              ".gitconfig"
+_link "misc/rofi"               ".config/rofi"
+_link "templates"               ".templates"
+_link "weechat"                 ".config/weechat"
