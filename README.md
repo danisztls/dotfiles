@@ -19,7 +19,7 @@ These are some of the configurations and scripts that I use to make my life in L
 * [Extra](#extra)
     * [Backup](#backup)
     * [Personal organization](#personal-organization)
-    * [File browsing](#file-browsing)
+    * [File discovery](#file-discovery)
     * [Recording terminal sessions](#recording-terminal-sessions)
 
 <!-- /TOC -->
@@ -28,34 +28,16 @@ These are some of the configurations and scripts that I use to make my life in L
 ```sh
 .
 ├── assets                      # screenshots
-├── git
-│   └── config                  # .gitconfig
-├── gnome
-│   ├── nautilus-scripts        # context menu scripts
-│   ├── nvim-override.desktop   # hack to open files w/ term
-│   └── README.md               
+├── desktop                     # hacks for desktop environment
+├── git                         # git configuration
 ├── HISTORY.md                  # timeline of changes
 ├── LICENSE
-├── link2home                   # script to link dotfiles to $HOME
-├── misc
-│   └── rofi
+├── link2home                   # link dotfiles to $HOME
+├── misc                        # miscellaneous
 ├── README.md                   
-├── scripts                     # shell, python scripts                  
-├── shell
-│   ├── alacritty.yml
-│   ├── aliases
-│   ├── autostart
-│   ├── bashrc
-│   ├── kitty
-│   ├── profile
-│   ├── Xresources
-│   ├── zsh
-│   └── zshrc
-└── vim
-    ├── autoload
-    ├── markdown.css
-    ├── plugged
-    └── vimrc
+├── scripts                     # scripts
+├── shell                       # shell profile and aliases, terminal config
+└── vim                         # vim and neovim
 ```
 
 ## Environment
@@ -180,7 +162,7 @@ My own code is under MIT license but components may be under other licenses.
 #### Personal organization 
 [Journal](https://github.com/lbcnz/journal): CLI management of notes and tasks.
 
-#### File browsing
+#### File discovery
 [Fzfx](https://github.com/lbcnz/fzfx), battle-tested use cases for Fzf.
 
 #### Recording terminal sessions
