@@ -97,6 +97,7 @@ export PATH=$PATH:$HOME/.emacs.d/bin
 # Load user aliases overriding previous aliases
 # shellcheck disable=SC1090
 [ -f "$XDG_CONFIG_HOME/shell/aliases" ] && source "$XDG_CONFIG_HOME/shell/aliases" 
+[ -f "$XDG_CONFIG_HOME/shell/private/aliases" ] && source "$XDG_CONFIG_HOME/shell/private/aliases" 
 
 # Autostart
 # Will run after login and will not run again until next boot even if .profile is sourced
