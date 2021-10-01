@@ -19,6 +19,10 @@ _getOpts() {
   done
 }
 
+# slice arguments as getopts don't work with mixed parameters/arguments
+# e.g. script.sh target -a
+_getOpts "${@:2}"  # 2nd to nth
+
 # Get recipe
 if ! [ "$1" ] || [ "${1:0:1}" == "-" ]; then
   recipe=default
@@ -28,9 +32,6 @@ fi
 
 # Fix recipe path
 recipe="$(git rev-parse --show-toplevel)/recipes/${recipe}"
-
-# getopts don't work when mixing parameters and arguments
-_getOpts "${@:2}"  # slice the parameters array to remove 1st parameter
 
 # ANSI escape codes
 reset="\e[0m"
