@@ -108,9 +108,6 @@ alias pass='gopass' # use gopass
 alias genotp='zbarimg -q --raw download.png | pass insert -a' # usage: genotp <name>
 alias genpwd="tr -dc 'a-zA-Z0-9!@#$%*()[]{}' < /dev/urandom | fold -w 16 | head -n 1 | xclip -sel clip"
 
-# VaultGuard
-alias vg="vaultguard"
-
 # Fzf
 alias f='fzfx'
 alias ff='fzfx full' # full text search
