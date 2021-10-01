@@ -5,6 +5,24 @@
 # @author: Daniel Souza <me@posix.dev.br>
 # @license: MIT
 
+# Debug
+set -x  # enable
+set +x  # disable
+
+# verbosity, prints shell input lines as they are read
+set -v
+
+# exit when a command has a non-zero exit status
+# note: '||:' at the end of a pipe mask a non-zero exit
+set -e
+
+# exit when referencing undefined variable
+# note: $* and $@ are exceptions
+set -u
+
+# exit if any command in a pipe fail
+set -o pipefail
+
 # Text Decorators
 reset="\e[0m"
 strong="\e[1;39m"
