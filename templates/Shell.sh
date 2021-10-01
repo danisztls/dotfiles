@@ -19,3 +19,18 @@ ${yellow}%s${reset}, \
 ${green}%s${reset}, \
 ${blue}%s${reset}.\n" \
 "Red" "Yellow" "Green" "Blue"
+
+# OptArgs
+_getOpts() {
+  while getopts "ab:" option; do
+    case $option in
+      a) testFlag="true";;
+      b) testVar="$OPTARG";;
+      *) echo "Not a valid argument."
+    esac
+  done
+}
+
+# slice arguments as getopts don't work with mixed parameters/arguments
+# e.g. script.sh target -a
+_getOpts "${@:2}"  # 2nd to nth
