@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-# Title 
-# Description
-# Author
-# License
+#
+# This is a docstring with a description of what this file does.
 
-# LIB
-
-# MAIN
+# @author: Daniel Souza <me@posix.dev.br>
+# @license: MIT
