@@ -14,7 +14,7 @@ _getOpts() {
   while getopts "f" option; do
     case $option in
       f) forceMode="true";;  # remove by default any conflicting file
-      *) printf "${error}ERROR:${reset} %s\n" "Unexpected argument."
+      *) printf "${red}ERROR:${reset} %s\n" "Unexpected argument."
     esac
   done
 }
@@ -35,17 +35,17 @@ _getOpts "${@:2}"  # slice the parameters array to remove 1st parameter
 # ANSI escape codes
 reset="\e[0m"
 strong="\e[1;39m"
-error="\e[1;31m"
-warning="\e[1;33m"
-notice="\e[1;34m"
-success="\e[1;32m"
+red="\e[1;31m"
+yellow="\e[1;33m"
+blue="\e[1;34m"
+green="\e[1;32m"
 
 # Lib
 _backup() {
   if ! [ -e "$1.bak" ]; then
     mv "$1" "$1.bak"
   else
-    printf "${error}ERROR:${reset} ${strong}'%s'${reset} already exists.\n" "$1.bak"
+    printf "${red}ERROR:${reset} ${strong}'%s'${reset} already exists.\n" "$1.bak"
     return 1
   fi
 }
@@ -58,7 +58,7 @@ _trash() {
   if [ "$(command -v trash)" ]; then
     trash "$1"
   else
-    printf "${error}ERROR:${reset} ${strong}'%s'${reset} was not found.\n" "trash-cli"
+    printf "${red}ERROR:${reset} ${strong}'%s'${reset} was not found.\n" "trash-cli"
     return 1
   fi
 }
@@ -69,7 +69,7 @@ _link() {
 
   # Return error if expected argument is missing
   if [ "$#" -lt 2 ]; then
-    printf "${error}ERROR:${reset} %s\n" "Missing arguments."
+    printf "${red}ERROR:${reset} %s\n" "Missing arguments."
     return 1
   fi
 
@@ -80,7 +80,7 @@ _link() {
   # Is there a broken symlink at destination?
   if [ -h "$dst" ] && ! [ -e "$dst" ]; then
     _remove "$dst"
-    printf "${notice}NOTICE:${reset} ${strong}'%s'${reset} was a broken symlink and was removed.\n" "$dst"
+    printf "${blue}NOTICE:${reset} ${strong}'%s'${reset} was a broken symlink and was removed.\n" "$dst"
   fi
 
   # Does destination already exists?
@@ -92,12 +92,12 @@ _link() {
     else
       # noop if it's the right symlink
       if [ "$(readlink "$dst")" = "$src" ]; then
-        printf "${notice}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$dst"
+        printf "${blue}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$dst"
 
       # otherwise get rid or skip
       else
-        printf "${notice}NOTICE:${reset} destination ${strong}'%s'${reset} already exists.\n" "$dst"
-        printf "${warning}What to do?${reset} backup ${success}(b)${reset}, remove ${error}(r)${reset} or ignore ${notice}(i)${reset} it?\n"
+        printf "${blue}NOTICE:${reset} destination ${strong}'%s'${reset} already exists.\n" "$dst"
+        printf "${yellow}What to do?${reset} backup ${green}(b)${reset}, remove ${red}(r)${reset} or ignore ${blue}(i)${reset} it?\n"
 
         while true; do
           read -r answer
@@ -117,7 +117,7 @@ _link() {
 
   # Link files
   ln -s "$src" "$dst" &&
-  printf "${success}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$dst" "$src"
+  printf "${green}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$dst" "$src"
 }
 
 # Main
@@ -125,5 +125,5 @@ if [ -e "$recipe" ]; then
   # shellcheck disable=SC1090
   source "$recipe"
 else
-  printf "${error}ERROR:${reset} Recipe ${strong}%s${reset} not found.\n"
+  printf "${red}ERROR:${reset} Recipe ${strong}%s${reset} not found.\n"
 fi
