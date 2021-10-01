@@ -1,14 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 """
-@title:
-@description:
-@author:
-@license
+This is a docstring with a description of what this file does.
 """
 
-# IMPORT
-
-# LIB
-
-# MAIN
+__author__  = "Daniel Souza <me@posix.dev.br>"
+__license__ = "MIT"
