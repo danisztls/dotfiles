@@ -140,3 +140,6 @@ alias ex-send="exercism submit"
 
 # RadeonTop
 alias radeontop="radeontop -c -T"
+
+# Wayland
+alias alacritty="WAYLAND_DISPLAY= alacritty"
