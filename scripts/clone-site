@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#
+# Use wget to crawl and fetch a local working copy of a website. 
+
+# @author: Daniel Souza <me@posix.dev.br>
+# @license: MIT
+
+# Inspired on https://gist.github.com/mikecrittenden/fe02c59fed1aeebd0a9697cf7e9f5c0c
+
+# Text Decorators
+reset="\e[0m"
+strong="\e[1;39m"
+red="\e[1;31m"
+yellow="\e[1;33m"
+green="\e[1;32m"
+blue="\e[1;34m"
+
+# Main
+target=${1}       # e.g. 'mysite.com/en/'
+domain=${1%%\/*}  # e.g. 'mysite.com'
+path=${1#*\/}     # e.g. 'en'
+
+printf "${blue}NOTICE:${reset} backing up ${strong}'%s${reset}'.\n\n" "${target}"
+
+wget "${target}" \
+  --recursive \
+  --page-requisites \
+  --adjust-extension \
+  --span-hosts \
+  --convert-links \
+  --domains "${domain}" \
+  --no-parent
+
+printf "${green}DONE!${reset}\n"
