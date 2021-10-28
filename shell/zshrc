@@ -27,8 +27,8 @@ fi && source "$ZINIT[BIN_DIR]/zinit.zsh" # load
 
 # Core
 # ----
-# If Alacritty load P10K
-if [[ "$TERM" == 'alacritty' || "$TERM" == 'tmux-256color' ]]; then
+# If GPU accelerated terminal load P10K
+if [[ "$TERM" == 'alacritty' || "$TERM" == 'xterm-kitty' || "$TERM" == 'tmux-256color' ]]; then
     zinit depth=1 for \
         load \
             romkatv/powerlevel10k \

@@ -141,5 +141,8 @@ alias ex-send="exercism submit"
 # RadeonTop
 alias radeontop="radeontop -c -T"
 
+# Node
+alias npmv="npm version --sign-git-tag"
+
 # Wayland
 alias alacritty="WAYLAND_DISPLAY= alacritty"
