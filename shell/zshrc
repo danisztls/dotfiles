@@ -13,7 +13,7 @@ fi
 
 # Zinit
 # -------------
-# https://github.com/zdharma/zinit
+# https://github.com/zdharma-continuum/zinit
 # the fastest plugin manager but also the most complex
 declare -A ZINIT
 ZINIT[BIN_DIR]="$XDG_CONFIG_HOME/zsh/zinit/bin"
@@ -22,7 +22,7 @@ ZINIT[ZCOMPDUMP_PATH]="$XDG_DATA_HOME/shell/zcompdump"
 
 # install if not found
 if ! [ -f "$ZINIT[BIN_DIR]/zinit.zsh" ]; then
-    git clone --depth 1 --branch master "https://github.com/zdharma/zinit" "$ZINIT[BIN_DIR]" &&
+    git clone --depth 1 --branch master "https://github.com/zdharma-continuum/zinit" "$ZINIT[BIN_DIR]" &&
 fi && source "$ZINIT[BIN_DIR]/zinit.zsh" # load
 
 # Core
@@ -60,7 +60,7 @@ fi
 # -------
 zinit wait lucid depth=1 for \
     atinit"zicompinit; zicdreplay" \
-        zdharma/fast-syntax-highlighting \
+        zdharma-continuum/fast-syntax-highlighting \
     atload"_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions \
     blockf atpull'zinit creinstall -q "$XDG_CONFIG_HOME/shell/completions"' \
