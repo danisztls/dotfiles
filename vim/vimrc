@@ -45,6 +45,10 @@ if has('nvim') | let &viminfo .= '.nvim' | endif
 filetype plugin indent on " per filetype config
 au BufNewFile,BufRead *.tsv set ft=tsv " tab-separated values
 
+" env 
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
 syntax on
 set encoding=utf-8
 
