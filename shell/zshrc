@@ -12,9 +12,11 @@ fi
 [ -f "$HOME/.profile" ] && emulate sh -c 'source "$HOME/.profile"'
 
 # Zinit
-# -------------
-# https://github.com/zdharma-continuum/zinit
-# the fastest plugin manager but also the most complex
+# -----
+# fastest plugin manager but also the most complex and confusing
+# repo: https://github.com/zdharma-continuum/zinit
+# docs: https://zdharma-continuum.github.io/zinit/wiki/
+#
 declare -A ZINIT
 ZINIT[BIN_DIR]="$XDG_CONFIG_HOME/zsh/zinit/bin"
 ZINIT[HOME_DIR]="$XDG_CONFIG_HOME/zsh/zinit"
