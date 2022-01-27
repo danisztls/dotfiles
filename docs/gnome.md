@@ -11,6 +11,7 @@
 * [Hacks](#hacks)
   * [Generate webP thumbnails](#generate-webp-thumbnails)
   * [Override default terminal](#override-default-terminal)
+* [Development](#development)
 
 <!-- /TOC -->
 
@@ -113,3 +114,6 @@ cp nvim-override.desktop $HOME/.local/share/applications/
 # Set $VISUAL at .profile
 echo "export VISUAL='alacritty -e nvim'" >> "$HOME/.profile"
 ```
+
+## Development
+[Developer GNOME](https://developer.gnome.org/)
