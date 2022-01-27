@@ -6,7 +6,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 #export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # slower than bat
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s" # syntax highlight
 export LESS="-R " # colorize output
-export BROWSER="chromium"
+export BROWSER="firefox"
 
 # XDG
 export XDG_CONFIG_HOME=$HOME/.config
