@@ -146,3 +146,8 @@ alias npmv="npm version --sign-git-tag"
 
 # Wayland
 alias alacritty="WAYLAND_DISPLAY= alacritty"
+
+# Start Mic Loopback
+alias mic-listen="pactl load-module module-loopback latency_msed=1"
+# Stop Mic Loopback
+alias mic-stop="pactl unload-module module-loopback"
