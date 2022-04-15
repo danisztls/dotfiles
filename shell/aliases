@@ -87,6 +87,9 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"' # force XDG compli
 
 # Python
 alias ipy='ipython'
+alias 'chpy!'="virtualenv env"
+alias 'chpy+'="source env/bin/activate"
+alias 'chpy-'="deactivate"
 
 # Git
 alias 'g=hub'
