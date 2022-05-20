@@ -116,4 +116,5 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=marker:#cf2424,fg+:#dddddd,prompt:#d40059,hl+:#ff5c00"
 
 # Wayland
-# export KITTY_DISABLE_WAYLAND=1
+export KITTY_DISABLE_WAYLAND=1
+# export QT_QPA_PLATFORM=wayland
