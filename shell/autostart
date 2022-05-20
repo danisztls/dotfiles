@@ -26,4 +26,9 @@ for file in "${config_files[@]}"; do
 done &
 
 # Delete from trash files older than 7 days
-trash-empty 7 &
+# trash-empty 7 &
+
+# Desktop Apps
+(sleep 10 && ferdium) &
+(sleep 10 && variety) &
+(sleep 10 && yarr) &
