@@ -118,3 +118,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 # Wayland
 export KITTY_DISABLE_WAYLAND=1
 # export QT_QPA_PLATFORM=wayland
+
+# Nethack
+export NETHACKOPTIONS="!autopickup, windowtype:curses"
