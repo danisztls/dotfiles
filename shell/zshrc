@@ -70,10 +70,23 @@ zinit wait lucid depth=1 for \
     is-snippet \
         "/usr/share/fzf/key-bindings.zsh" \
     load \
-        wfxr/forgit
+        wfxr/forgit \
+    load \
+        joehillen/sysz
+
+# TODO: FIX: sysz not being added to PATH
+# TODO: Try fzf-tab
+
+# Programs
+# --------
+# zinit ice from"gh-r" as"program" pick"$ZPFX/bin/sysz"
+# zinit light joehillen/sysz
 
 zinit lucid wait'0a' for \
 as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" tj/git-extras
+
+# TODO: Try emoji-fzf
+zinit light-mode wait lucid for pschmitt/emoji-fzf.zsh
 
 # Bindings
 # --------
