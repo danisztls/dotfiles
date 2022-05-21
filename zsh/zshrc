@@ -24,7 +24,7 @@ ZINIT[ZCOMPDUMP_PATH]="$XDG_DATA_HOME/shell/zcompdump"
 
 # install if not found
 if ! [ -f "$ZINIT[BIN_DIR]/zinit.zsh" ]; then
-    git clone --depth 1 --branch master "https://github.com/zdharma-continuum/zinit" "$ZINIT[BIN_DIR]" &&
+    git clone --depth 1 --branch main "https://github.com/zdharma-continuum/zinit" "$ZINIT[BIN_DIR]" &&
 fi && source "$ZINIT[BIN_DIR]/zinit.zsh" # load
 
 # Core

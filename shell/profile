@@ -121,3 +121,6 @@ export KITTY_DISABLE_WAYLAND=1
 
 # Nethack
 export NETHACKOPTIONS="!autopickup, windowtype:curses"
+
+# Additional Settings
+source "$XDG_CONFIG_HOME/shell/profile/gaming"

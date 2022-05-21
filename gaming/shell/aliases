@@ -1,5 +1,0 @@
-# Reload Settings
-alias reload='source ~/.profile'
-
-# RadeonTop
-alias radeontop="radeontop -c -T"
