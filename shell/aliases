@@ -154,3 +154,6 @@ alias alacritty="WAYLAND_DISPLAY= alacritty"
 alias mic-listen="pactl load-module module-loopback latency_msed=1"
 # Stop Mic Loopback
 alias mic-stop="pactl unload-module module-loopback"
+
+# yt-dlp
+alias get-video="yt-dlp --write-auto-subs --sponsorblock-remove all"
