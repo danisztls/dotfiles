@@ -20,7 +20,9 @@ target=${1}       # e.g. 'mysite.com/en/'
 domain=${1%%\/*}  # e.g. 'mysite.com'
 path=${1#*\/}     # e.g. 'en'
 
-printf "${blue}NOTICE:${reset} backing up ${strong}'%s${reset}'.\n\n" "${target}"
+# FIXME: It will not work with target is preceded by http:// or https://. Sanitize this.
+
+printf "${blue}NOTICE:${reset} backing up ${strong}'%s${reset} from ${strong}'%s${reset}'.\n\n" "${path}" "${domain}"
 
 wget "${target}" \
   --recursive \
