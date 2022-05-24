@@ -1,15 +1,29 @@
 #!/bin/bash
 # Create a file from a template
-# usage: create script.py
+# usage: create name.py
 
 file="$1"
 [ -f "$file" ] && (echo "File already exists."; exit 1)
 
 # Look for a template on template .dir
-templateDir="$HOME/.templates"
-for f in "$templateDir"/*; do # iterate over files
-    if [ "${f##*.}" = "${file#*.}" ]; then # if extension match
-        cp "$f" "$file"; exit # create the file and exit
+template_dir="$HOME/.templates"
+
+shopt -s dotglob  # set to glob hidden files
+
+for template in "$template_dir"/*; do
+    _copy() { cp "$template" "$file"; exit 0; } # create and exit
+
+    echo "${template##*/}"
+    echo "${file##*/}"
+
+    if [ ! "${file%%.*}" ]; then  # it's a hidden file?
+      if [ "${template##*/}" = "${file##*/}" ]; then # template name match?
+        _copy
+      fi
+      
+    elif [ "${template##*.}" = "${file##*.}" ]; then # template extension match?
+        _copy
     fi
 done
-echo "Template not found."; exit 1 # print error and exit
+
+echo "Didn't work. Probably no template was found."; exit 1 # print error and exit
