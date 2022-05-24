@@ -13,9 +13,6 @@ shopt -s dotglob  # set to glob hidden files
 for template in "$template_dir"/*; do
     _copy() { cp "$template" "$file"; exit 0; } # create and exit
 
-    echo "${template##*/}"
-    echo "${file##*/}"
-
     if [ ! "${file%%.*}" ]; then  # it's a hidden file?
       if [ "${template##*/}" = "${file##*/}" ]; then # template name match?
         _copy
