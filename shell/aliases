@@ -157,3 +157,6 @@ alias mic-stop="pactl unload-module module-loopback"
 
 # yt-dlp
 alias get-video="yt-dlp --write-auto-subs --sponsorblock-remove all"
+
+# cht.sh
+alias consult="cht.sh"
