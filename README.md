@@ -1,56 +1,34 @@
 # Dotfiles
 These are some of the configurations and scripts that I use to make my life in Linux more functional and enjoyable.
 
-[![GitHub Super-Linter](https://github.com/lbcnz/dotfiles/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-
 <!-- TOC GFM -->
 
-* [Structure](#structure)
 * [Environment](#environment)
 * [FAQ](#faq)
-    * [How this works?](#how-this-works)
-    * [Why you don't use a bare git repo?](#why-you-dont-use-a-bare-git-repo)
-    * [Why you don't use a dotfiles manager?](#why-you-dont-use-a-dotfiles-manager)
-    * [How to preserve my 'goodies' when doing things as root?](#how-to-preserve-my-goodies-when-doing-things-as-root)
-    * [What are the terminal shortcuts?](#what-are-the-terminal-shortcuts)
-    * [What about the looks?](#what-about-the-looks)
-    * [Is it worth the time?](#is-it-worth-the-time)
-    * [What is the license?](#what-is-the-license)
-    * [Any caveats?](#any-caveats)
-* [Extra](#extra)
-    * [Backup](#backup)
-    * [Personal organization](#personal-organization)
-    * [File discovery](#file-discovery)
-    * [Recording terminal sessions](#recording-terminal-sessions)
+  * [How this works?](#how-this-works)
+  * [Why you don't use a bare git repo?](#why-you-dont-use-a-bare-git-repo)
+  * [Why you don't use a dotfiles manager?](#why-you-dont-use-a-dotfiles-manager)
+  * [What about the looks?](#what-about-the-looks)
+  * [Is it worth the time?](#is-it-worth-the-time)
+  * [Any caveats?](#any-caveats)
+  * [How to preserve my 'goodies' when doing things as root?](#how-to-preserve-my-goodies-when-doing-things-as-root)
+  * [What are the terminal shortcuts?](#what-are-the-terminal-shortcuts)
 
 <!-- /TOC -->
 
-## Structure
-```sh
-.
-├── assets                      # screenshots
-├── desktop                     # hacks for desktop environment
-├── git                         # git configuration
-├── HISTORY.md                  # timeline of changes
-├── LICENSE
-├── setup.sh                    # link dotfiles to $HOME
-├── misc                        # miscellaneous
-├── README.md                   
-├── scripts                     # scripts
-├── shell                       # shell profile and aliases, terminal config
-└── vim                         # vim and neovim
-```
-
 ## Environment
-- **shell interpreter**: zsh
-- **terminal emulator**: alacritty
-- **desktop environment**: gnome-shell
-- **text editor**: nvim
-
-![Desktop in 2021](https://github.com/lbcnz/dotfiles/raw/main/assets/21-desktop.png)
+- shell interpreter: [zsh](https://www.zsh.org/)
+- zsh plugin manager: [zinit](https://github.com/zdharma-continuum/zinit)
+- terminal emulator: [alacritty](https://alacritty.org/)
+- desktop environment: [gnome-shell](https://wiki.gnome.org/Projects/GnomeShell)
+- text editor: [nvim](https://neovim.io/)
+- backup: [arbie](https://github.com/lbcnz/arbie)
+- file browser: [fzfx](https://github.com/lbcnz/fzfx)
+- notes & tasks: [journal](https://github.com/lbcnz/journal)
+- time logger: [timewarrior](https://timewarrior.net/)
 
 ## FAQ
-#### How this works?
+### How this works?
 A setup script link the dotfiles in this repo to those on `$HOME`.
 
 Usage: `./setup <recipe>`
@@ -59,7 +37,7 @@ Recipes on `recipes/`. Run from the project root.
 
 The force mode, `-f` option, bypass the file already exists checks and auomatically remove any existing file. Don't use options as first argument.
 
-#### Why you don't use a bare git repo?
+### Why you don't use a bare git repo?
 I tried it originally but just didn't like the flow. Maybe doing things differently would improve it but I am happy with my current approach.
 
 I followed the instructions by [harfangk](https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html)
@@ -69,12 +47,35 @@ echo 'alias g...="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"' >>
 g... config --local status.showUntrackedFiles no
 ```
 
-#### Why you don't use a dotfiles manager?
+### Why you don't use a dotfiles manager?
 [twpayne/chezmoi](https://github.com/twpayne/chezmoi) is interesting but I don't need those features right now or they are superseded by other tools that I currently use and so it would add unneeded complexity. That may change in the future though.
 
 > "If you do not personalize your configuration or only ever use a single operating system with a single account and none of your dotfiles contain secrets then you don't need chezmoi." — chezmoi README
 
-#### How to preserve my 'goodies' when doing things as root?
+### What about the looks?
+Check:
+- [supernova-theme](https://github.com/danisztls/supernova-theme).
+- [arc-theme](https://github.com/jnsh/arc-theme)
+- [papirus-icon-theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+- [capitaine-cursors](https://github.com/keeferrourke/capitaine-cursors)
+
+![Desktop in 2021](https://github.com/lbcnz/dotfiles/raw/main/assets/21-desktop.png)
+
+### Is it worth the time?
+Sometimes but not always. Those hacks save time put also took me a lot of time to discover, create, test and improve.
+
+![xkcd: Is It Worth the Time?](https://github.com/danisztls/dotfiles/raw/main/assets/is-it-worth-the-time.png)
+
+— [Randall Munroe](https://xkcd.com/1205/)
+
+### Any caveats?
+Some things might not work unless you have the same programs and versions that I'm currently using.
+
+Some configs are personal and is a good idea to check before using. As an example I have my public PGP key set on Git config.
+
+Zinit will not work unless you have priorly established a SSH handshake with Github due to SSH being forced over HTTPS on Git config.
+
+### How to preserve my 'goodies' when doing things as root?
 Let's think of a common use case, editing files as superuser. There are many ways you can run a text editor as root and they all apparently do the same thing albeit being very different.
 
 As it boils down to preserving environment variables I wrote, to demonstrate the different behaviour of these tools, a simple script that prints the variables `$USER`, `$HOME` and `$VIMINIT`. The later being a long string represented simply by yes/no bellow, meaning that it was passed along or not to the new shell.
@@ -110,8 +111,7 @@ You can use `sudo -E` to preserve environment or edit `sudoers` file for having 
 
 The only 'sane' alternative is to use `sudoedit` or `su -e` which creates a temporary file for editing and overwrites the actual file with it when exiting. It uses the editor set at `$SUDO_EDITOR`, `$VISUAL` or `$EDITOR`, whichever comes first. Hacks are not desired here.
 
-#### What are the terminal shortcuts?
-
+### What are the terminal shortcuts?
 **Zsh customs**
 
 | key    | action                |
@@ -139,40 +139,3 @@ The only 'sane' alternative is to use `sudoedit` or `su -e` which creates a temp
 | C^l | clear history               |
 
 *Note: C is CTRL and M is META/ALT*
-
-#### What about the looks?
-As the custom I did my own ricing. Check [supernova-theme](https://github.com/lbcnz/supernova-theme).
-
-And to improve Gnome looks:
-- [arc-theme](https://github.com/jnsh/arc-theme)
-- [papirus-icon-theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
-- [capitaine-cursors](https://github.com/keeferrourke/capitaine-cursors)
-
-#### Is it worth the time?
-Sometimes but not always. Those hacks save time put also took me a lot of time to discover, create, test and improve.
-
-![xkcd: Is It Worth the Time?](https://github.com/danisztls/dotfiles/raw/main/assets/is-it-worth-the-time.png)
-— [Randall Munroe](https://xkcd.com/1205/)
-
-#### What is the license?
-My own code is under MIT license but components may be under other licenses.
-
-#### Any caveats?
-Some things might not work unless you have the same programs and versions that I'm currently using.
-
-Some configs are personal and is a good idea to check before using. As an example I have my public PGP key set on Git config.
-
-Zinit will not work unless you have priorly established a SSH handshake with Github due to SSH being forced over HTTPS on Git config.
-
-## Extra
-#### Backup
-[Arbie](https://github.com/lbcnz/arbie), automatic and robust backup.
-
-#### Personal organization 
-[Journal](https://github.com/lbcnz/journal): CLI management of notes and tasks.
-
-#### File discovery
-[Fzfx](https://github.com/lbcnz/fzfx), battle-tested use cases for Fzf.
-
-#### Recording terminal sessions
-Use [asciicinema](https://asciinema.org/) or termtosvg.
