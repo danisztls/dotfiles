@@ -12,7 +12,6 @@ These are some of the configurations and scripts that I use to make my life in L
   * [Is it worth the time?](#is-it-worth-the-time)
   * [Any caveats?](#any-caveats)
   * [How to preserve my 'goodies' when doing things as root?](#how-to-preserve-my-goodies-when-doing-things-as-root)
-  * [What are the terminal shortcuts?](#what-are-the-terminal-shortcuts)
 
 <!-- /TOC -->
 
@@ -110,32 +109,3 @@ Also you would not want to have a `vimrc` over one 1K lines causing problems whe
 You can use `sudo -E` to preserve environment or edit `sudoers` file for having it by default. But still, you will be increasing surface for root privilege escalation and mixing environments is bad practice and can cause tragic side effects. Sometimes it's not a good idea to run things in mixed environments, things may not work and user files may be overwritten as root.
 
 The only 'sane' alternative is to use `sudoedit` or `su -e` which creates a temporary file for editing and overwrites the actual file with it when exiting. It uses the editor set at `$SUDO_EDITOR`, `$VISUAL` or `$EDITOR`, whichever comes first. Hacks are not desired here.
-
-### What are the terminal shortcuts?
-**Zsh customs**
-
-| key    | action                |
-| ---    | ---                   |
-| C^r    | fzf history search    |
-| C^t    | fzf directory search  |
-| C^e    | edit line with vim    |
-| Home   | go to start of line   |
-| End    | go to end of line     |
-| PgUp   | move to forward word  |
-| PgDown | move to backward word |
-| Ins    | delete word           |
-| Del    | delete char           |
-
-**Bash defaults**
-
-| key | action                      |
-| --- | ---                         |
-| C^a | move to start of line       |
-| C^e | move to end of line         |
-| M^b | move backwards word-by-word |
-| M^f | move forwards word-by-word  |
-| C^r | do a reverse search         |
-| C^w | delete word left of cursor  |
-| C^l | clear history               |
-
-*Note: C is CTRL and M is META/ALT*
