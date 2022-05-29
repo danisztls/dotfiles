@@ -8,12 +8,23 @@ _link "shell/autostart"                 ".config/shell/autostart"
 _link "shell/completions"               ".config/shell/completions"
 _link	"shell/Xresources"                ".Xresources"
 
-# Terminal
+# Zsh 
 _link	"zsh/zshrc"                       ".zshrc"
 _link "zsh/zsh"                         ".config/zsh"
+
+# Bash
 _link	"bash/bashrc"                     ".bashrc"
+
+# Starship
+_link	"starship/starship.toml"          ".config/starship.toml"
+
+# Tmux
 _link "tmux"                            ".config/tmux"
+
+# Alacritty
 _link "alacritty/alacritty.yml"         ".config/alacritty.yml"
+
+# Kitty
 _link "kitty"                           ".config/kitty"
 
 # Vim
@@ -25,8 +36,10 @@ _link "git/config"                      ".gitconfig"
 # Utils
 _link "templates"                       ".templates"
 
-# Misc
+# Rofi 
 _link "rofi"                            ".config/rofi"
+
+# Weechat
 _link "weechat"                         ".config/weechat"
 
 # Gaming
