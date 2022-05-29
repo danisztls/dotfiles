@@ -156,7 +156,7 @@ alias mic-listen="pactl load-module module-loopback latency_msed=1"
 alias mic-stop="pactl unload-module module-loopback"
 
 # yt-dlp
-alias get-video="yt-dlp --write-auto-subs --sponsorblock-remove all"
+alias get-video="yt-dlp --sponsorblock-remove all"
 
 # cht.sh
 alias consult="cht.sh"
