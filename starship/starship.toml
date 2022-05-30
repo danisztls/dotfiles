@@ -39,9 +39,17 @@ symbol = " "
 # disabled = false
 
 [git_status]
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
+ahead = "[⇡${count} ](bold green)"
+diverged = "⇕[⇡${ahead_count}](bold green)[⇣${behind_count} ](bold red)"
+behind = "[⇣${count} ](bold red)"
+conflicted = "[ ](bold red)"
+untracked = "[ ${count} ](yellow)"
+staged = "[ ${count} ](green)"
+modified = "[ ${count} ](yellow)"
+renamed = "[ ${count} ](yellow)"
+deleted = "[ ${count} ](red]"
+stashed = "[ ${count} ](blue)"
+format = "$all_status$ahead_behind"
 
 [golang]
 symbol = " "
