@@ -1,14 +1,14 @@
-## Steam Debugging
-export STEAM_LINUX_RUNTIME_VERBOSE=1
-export PRESSURE_VESSEL_VERBOSE=1
+# Steam Debugging
+# export STEAM_LINUX_RUNTIME_VERBOSE=1
+# export PRESSURE_VESSEL_VERBOSE=1
 
-## MangoHUD
+# MangoHUD
 export MANGOHUD=1
 
-## Gallium
+# Gallium
 # export GALLIUM_HUD=GPU-load,cpu,fps  # makes Steam crash
 
-## Vulkan
+# Vulkan
 # check https://github.com/doitsujin/dxvk
 # export DXVK_HUD="fps,memory,gpuload,scale=1"
-export DXVK_FRAME_RATE="144"
+# export DXVK_FRAME_RATE="144"
