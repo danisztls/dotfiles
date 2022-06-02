@@ -1,0 +1,2 @@
+#!/bin/sh
+export HUGO_CACHEDIR="$XDG_CACHE_HOME/hugo"

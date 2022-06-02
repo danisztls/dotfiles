@@ -1,3 +1,4 @@
+#!/bin/sh
 # Steam Debugging
 # export STEAM_LINUX_RUNTIME_VERBOSE=1
 # export PRESSURE_VESSEL_VERBOSE=1

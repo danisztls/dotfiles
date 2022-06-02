@@ -1,0 +1,2 @@
+#!/bin/sh
+export VIMINIT="set runtimepath^=~/.config/vim|set runtimepath+=~/.config/vim/after|source ~/.config/vim/vimrc" # vim and neovim

@@ -1,0 +1,5 @@
+#!/bin/sh
+export LESS="-R " # colorize output
+export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s" # syntax highlight
+export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
+export LESSHISTFILE=- # delete file

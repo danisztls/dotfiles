@@ -1,0 +1,5 @@
+#!/bin/sh
+export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export PYLINTHOME="$XDG_CACHE_HOME/pylint"
+export PYTHONHISTFILE="$XDG_DATA_HOME/python" # FIXME: I don't think its working.

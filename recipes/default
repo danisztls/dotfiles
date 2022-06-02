@@ -1,12 +1,15 @@
 #!/bin/bash
 # Recipe for Dotfiles Setup.
 
+# X11
+_link	"x11/Xresources"                  ".Xresources"
+
 # Shell
-_link	"shell/profile"                   ".profile"
 _link "shell/aliases"                   ".config/shell/aliases"
 _link "shell/autostart"                 ".config/shell/autostart"
+_link "shell/config"                    ".config/shell/config"
 _link "shell/completions"               ".config/shell/completions"
-_link	"shell/Xresources"                ".Xresources"
+_link	"shell/profile"                   ".profile"
 
 # Zsh 
 _link	"zsh/zshrc"                       ".zshrc"
@@ -43,5 +46,4 @@ _link "rofi"                            ".config/rofi"
 _link "weechat"                         ".config/weechat"
 
 # Gaming
-_link "gaming/profile"                  ".config/shell/profile/gaming"
-_link "gaming/mangohud/MangoHud.conf"   ".config/MangoHud/MangoHud.conf"
+_link "mangohud/MangoHud.conf"          ".config/MangoHud/MangoHud.conf"
