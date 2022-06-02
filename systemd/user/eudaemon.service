@@ -1,0 +1,7 @@
+[Unit]
+Description=Eudaemon
+Wants=default.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'notify-send "It\'s getting late. Computer will suspend in 15 minutes. Go to sleep"; sleep 15m && systemctl suspend'

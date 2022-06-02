@@ -1,0 +1,8 @@
+#!/usr/bin/env bash 
+# Export OPML settings from a TT-RSS container
+
+innerCMD="cd /var/www/html/tt-rss/ && su -c 'php8 update.php --opml-export admin:latest.opml' app"
+
+containerID="$(docker container ls | grep ttrss-docker_app | sed 's/\s.*//')"
+
+docker exec -i "$containerID" sh -c "$innerCMD"

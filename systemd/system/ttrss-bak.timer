@@ -1,0 +1,11 @@
+[Unit]
+Description=Backup TT-RSS user data
+After=docker.service
+
+[Timer]
+OnCalendar=*-*-* 12:00:00
+Persistent=true
+RandomizedDelaySec=1h
+
+[Install]
+WantedBy=timers.target

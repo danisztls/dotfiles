@@ -47,3 +47,6 @@ _link "weechat"                         ".config/weechat"
 
 # Gaming
 _link "mangohud/MangoHud.conf"          ".config/MangoHud/MangoHud.conf"
+
+# Systemd
+_link "systemd/user"                    ".config/systemd/user"

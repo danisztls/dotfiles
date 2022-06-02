@@ -1,0 +1,7 @@
+[Unit]
+Description=Backup TT-RSS user data
+
+[Service]
+ExecStart=/usr/local/bin/ttrss-bak
+Type=oneshot
+TimeoutSec=30
