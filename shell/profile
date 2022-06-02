@@ -1,7 +1,7 @@
 # Preferred
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim -d"
-export VISUAL="urxvt -e nvim" # alacritty has double the latency ~0.5s
+export VISUAL="alacritty -e nvim" # alacritty latency ~0.5s, urxvt is faster
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 #export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # slower than bat
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s" # syntax highlight
