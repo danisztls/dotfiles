@@ -1,0 +1,12 @@
+#!/bin/sh
+
+alias pass='gopass' # use gopass
+
+# usage: genotp <name>
+genotp() {
+  zbarimg -q --raw download.png | pass insert -a
+}
+
+genpwd() {
+  tr -dc 'a-zA-Z0-9!@#$%*()[]{}' < /dev/urandom | fold -w 16 | head -n 1 | xclip -sel clip
+}

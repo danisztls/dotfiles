@@ -1,7 +1,24 @@
-# Colorized output
-# Check: https://wiki.archlinux.org/index.php/Color_output_in_console 
-#alias ls='ls --color=auto'
-#alias ls='exa --long --git' # exa is close but not fully compliant with ls
+#!/bin/sh
+
+# Default apps
+alias reload='source ~/.profile'
+alias b='$BROWSER'
+alias e='$EDITOR'
+alias v='$VISUAL'
+alias q='exit'
+
+# open any file with it's default app and supress stdout
+_xdg_open_silent() {
+  xdg-open "$@" 2>/dev/null
+}
+
+alias x=_xdg_open_silent
+
+# Colorized output and alternatives
+# check: https://wiki.archlinux.org/index.php/Color_output_in_console 
+
+# alias ls='ls --color=auto'
+# alias ls='exa --long --git' # exa is close but not fully compliant with ls
 alias ls='exa --long'
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
@@ -11,152 +28,20 @@ alias cat='bat'
 alias ps='grc ps'
 alias ip='ip -c'
 
-# Override generic colouriser
-alias journalctl='journalctl'
-
-# Common
-alias b='browser'
-alias q='exit'
-alias x='xdg-open "$@" 2>/dev/null' # open with default application
-alias reload='source ~/.profile'
-
 # File management
-alias rm='trash -v' # move to trash
-alias mv='mv -v -n' # verbose and don't overwrite
+alias rm='trash -v' # move to trash dir
+alias mv='mv -v -n' # verbose and no clobber (don't overwrite)
 alias cp='cp -v -n'
 
-# File archiving
+# Archiving
 alias cf="compress"
 alias xf="extract"
-alias 7zcrypt="7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p" # create encrypted 7z w/ multi-OS compliance
 
-# Vim
-alias vim='nvim'
-alias v='nvim'
-alias vimdiff='nvim -d'
-alias vdiff='nvim -d' # vd is for visidata
+# compress and encrypt w/ multi-OS support
+encrypt() {
+  7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p "$1".7z "$1"
+}
 
-# Superadmin
-alias god='sudo -i'
-alias s='sudo'
-alias se='sudoedit'
-
-# Systemd
-# root
-alias 'sys'='sudo systemctl'
-alias 'sys?'='sudo systemctl status'
-alias 'sys!'='sudo systemctl restart' # will start when not running
-alias 'sys#'='sudo systemctl stop'
-alias 'sys+'='sudo systemctl enable'
-alias 'sys-'='sudo systemctl disable'
-alias 'sys%'='sudo systemctl edit'
-alias 'sys@'='sudo systemctl mask'
-# user
-alias 'sysu'='systemctl --user'
-alias 'sysu?'='systemctl --user status'
-alias 'sysu!'='systemctl --user restart'
-alias 'sysu#'='systemctl --user stop'
-alias 'sysu+'='systemctl --user enable'
-alias 'sysu-'='systemctl --user disable'
-alias 'sysu%'='systemctl --user edit'
-alias 'sysu@'='systemctl --user mask'
-
-# Docker
-alias docker='sudo docker'
-alias docker-compose='sudo docker-compose'
-
-alias d='sudo docker'
-alias d+='sudo docker-compose'
-
-# Memory
-## show mebibytes and wide
-alias free="free -mw"
-
-# clear respectively and cumulatively PageCache (1), dentries (2) and inodes (3)
-# ideally this shouldn't be used as the OS purge caches as needed to free ram
-# but sometimes it does not and this can save paging out of RAM
-alias purge="free && sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches' && free"
-
-# Package management
-alias pac='pacman'
-alias p='paru'
-
-# Make
-alias makeinfo="makepkg --printsrcinfo > .SRCINFO"
-alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"' # force XDG compliance
-
-# Python
-alias ipy='ipython'
-alias 'chpy!'="virtualenv env"
-alias 'chpy+'="source env/bin/activate"
-alias 'chpy-'="deactivate"
-
-# Git
-alias 'g=hub'
-alias 'git=hub'
-alias 'gl=git-lfs'
-
-# rename master branch to main
-# require manual intervention on web server
-alias git-unchain="git branch -M master main && git push -u origin main && git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main && git branch -a"
-
-# do a rebase from the beginning
-alias git-orwell='git rebase -i $(git log --pretty=oneline | tail -n 1 | sed "s/\s.*//")'
-
-# Subversion
-alias svn='svn --config-dir "$XDG_CONFIG_HOME/subversion"'
-
-# Pass
-alias pass='gopass' # use gopass
-alias genotp='zbarimg -q --raw download.png | pass insert -a' # usage: genotp <name>
-alias genpwd="tr -dc 'a-zA-Z0-9!@#$%*()[]{}' < /dev/urandom | fold -w 16 | head -n 1 | xclip -sel clip"
-
-# Fzf
-alias f='fzfx'
-alias ff='fzfx full' # full text search
-alias fh='fzfx all' # hidden files
-alias fcd='cd "$(fzfx cd)"' # directories
-alias fcp='fzfx cp' # copy files
-alias fmv='fzfx mv' # move files
-alias fmd='fzfx md' # markdown files
-alias fpdf='fzfx pdf' # pdf and postscript files
-alias fav='fzfx media' # audio and videos
-alias fpic='fzfx media' # pictures
-alias fps='fzfx ps' # processes
-
-# Organization
+# Organization tools
 alias j='journal'
 alias t='timew'
-
-# Feh
-alias feh='feh --scale-down --auto-zoom' # fit window
-
-# Weechat
-alias irc='tmux -L weechat a' # attach to session
-
-# Chromium
-alias html2pdf='chromium --headless --disable-gpu --run-all-compositor-stages-before-draw --print-to-pdf-no-header --print-to-pdf' # print to pdf
-
-# Exercism
-alias ex-down="exercism download"
-alias ex-send="exercism submit"
-
-# RadeonTop
-alias radeontop="radeontop -c -T"
-
-# Node
-alias npmv="npm version --sign-git-tag"
-
-# Wayland
-alias alacritty="WAYLAND_DISPLAY= alacritty"
-
-# Start Mic Loopback
-alias mic-listen="pactl load-module module-loopback latency_msed=1"
-# Stop Mic Loopback
-alias mic-stop="pactl unload-module module-loopback"
-
-# yt-dlp
-alias get-video="yt-dlp --sponsorblock-remove all"
-
-# cht.sh
-alias consult="cht.sh"

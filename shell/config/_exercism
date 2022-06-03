@@ -1,0 +1,4 @@
+#!/bin/sh
+
+alias ex-down="exercism download"
+alias ex-send="exercism submit"

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# override generic colouriser
+alias journalctl='journalctl'
+
+# root
+alias 'sys'='sudo systemctl'
+alias 'sys?'='sudo systemctl status'
+alias 'sys!'='sudo systemctl restart' # will start when not running
+alias 'sys#'='sudo systemctl stop'
+alias 'sys+'='sudo systemctl enable'
+alias 'sys-'='sudo systemctl disable'
+alias 'sys%'='sudo systemctl edit'
+alias 'sys@'='sudo systemctl mask'
+
+# user
+alias 'sysu'='systemctl --user'
+alias 'sysu?'='systemctl --user status'
+alias 'sysu!'='systemctl --user restart'
+alias 'sysu#'='systemctl --user stop'
+alias 'sysu+'='systemctl --user enable'
+alias 'sysu-'='systemctl --user disable'
+alias 'sysu%'='systemctl --user edit'
+alias 'sysu@'='systemctl --user mask'

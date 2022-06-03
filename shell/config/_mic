@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# start loopback
+alias mic-listen="pactl load-module module-loopback latency_msed=1"
+
+# stop loopback
+alias mic-stop="pactl unload-module module-loopback"

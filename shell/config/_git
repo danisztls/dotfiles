@@ -1,0 +1,17 @@
+#!/bin/sh
+alias 'g=hub'
+alias 'git=hub'
+alias 'gl=git-lfs'
+
+# rename master branch to main
+git_unchain() {
+  git branch -M master main &&
+  git push -u origin main &&
+  git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main &&
+  git branch -a
+}
+
+# do a rebase from the beginning
+git_orwell() {
+  git rebase -i "$(git log --pretty=oneline | tail -n 1 | sed 's/\s.*//')"
+}

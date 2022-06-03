@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# alias cheat="cht.sh"
+
+cheat() {
+  curl "cht.sh/$1"
+}

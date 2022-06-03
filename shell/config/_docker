@@ -1,0 +1,7 @@
+#!/bin/sh
+
+alias docker='sudo docker'
+alias docker-compose='sudo docker-compose'
+
+alias d='sudo docker'
+alias d+='sudo docker-compose'

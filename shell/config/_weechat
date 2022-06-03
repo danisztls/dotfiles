@@ -1,0 +1,3 @@
+#!/bin/sh
+
+alias irc='tmux -L weechat a'  # attach to session

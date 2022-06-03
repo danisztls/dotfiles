@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# show mebibytes and wide
+alias free="free -mw"
+
+# clear respectively and cumulatively PageCache (1), dentries (2) and inodes (3)
+# ideally this shouldn't be used as the OS purge caches as needed to free ram
+# but sometimes it does not and this can save paging out of RAM
+purge_mem() {
+  free &&
+  sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches' &&
+  free
+}

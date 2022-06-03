@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# print page to pdf
+html_to_pdf() {
+  args="--headless --disable-gpu --run-all-compositor-stages-before-draw --print-to-pdf-no-header --print-to-pdf"
+  chromium "$args" "$1"
+}

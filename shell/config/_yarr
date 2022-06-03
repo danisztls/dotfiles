@@ -1,0 +1,3 @@
+#!/bin/sh
+
+alias yarr-status='tmux -L yarr a'  # attach to session

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+alias god='sudo -i'
+alias s='sudo'
+alias se='sudoedit'

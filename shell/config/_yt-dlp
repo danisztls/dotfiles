@@ -1,0 +1,3 @@
+#!/bin/sh
+
+alias get-video="yt-dlp --sponsorblock-remove all"

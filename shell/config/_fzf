@@ -5,3 +5,16 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=dark,bg+:#373e47,bg:#2d333b,spinner:#6bac00,hl:#0087e9 \
 --color=fg:#adbac7,header:#009385,info:#d9b600,pointer:#b37eff \
 --color=marker:#cf2424,fg+:#dddddd,prompt:#d40059,hl+:#ff5c00"
+
+# FZFx
+alias f='fzfx'
+alias ff='fzfx full' # full text search
+alias fh='fzfx all' # hidden files
+alias fcd='cd "$(fzfx cd)"' # directories
+alias fcp='fzfx cp' # copy files
+alias fmv='fzfx mv' # move files
+alias fmd='fzfx md' # markdown files
+alias fpdf='fzfx pdf' # pdf and postscript files
+alias fav='fzfx media' # audio and videos
+alias fpic='fzfx media' # pictures
+alias fps='fzfx ps' # processes

@@ -1,3 +1,8 @@
 #!/bin/sh
+# Kitty
 # export KITTY_DISABLE_WAYLAND=1
-# export QT_QPA_PLATFORM=wayland
+
+# export QT_QPA_PLATFORM=wayland  # why this is needed?
+
+# Alacritty
+alias alacritty="WAYLAND_DISPLAY= alacritty"

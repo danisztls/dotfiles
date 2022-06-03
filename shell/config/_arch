@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Package management
+alias pac='pacman'
+alias p='paru'
+
+# Make
+alias makeinfo="makepkg --printsrcinfo > .SRCINFO"
