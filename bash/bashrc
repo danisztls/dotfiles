@@ -64,4 +64,4 @@ esac
 eval "$(starship init bash)"
 
 # Direnv
-eval "$(direnv hook zsh)"
+eval "$(direnv hook bash)"
