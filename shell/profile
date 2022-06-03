@@ -1,4 +1,5 @@
 #!/bin/sh
+# Default profile for POSIX compliant shells
 
 # Preferred apps
 export EDITOR="nvim"
@@ -19,19 +20,20 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # Path
-export PATH=/bin:/usr/bin/:/usr/local/bin
-export PATH=$PATH:"$HOME/.local/bin"
-export PATH=$PATH:"$HOME/Dev/sys/dotfiles/scripts"
-export PATH=$PATH:"$HOME/Dev/sys/dotfiles/scripts/private"
+export PATH="/bin:/usr/bin/:/usr/local/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/Dev/sys/dotfiles/scripts"
+export PATH="$PATH:$HOME/Dev/sys/dotfiles/scripts/private"
 
 # Load Generic Colouriser (GRC) aliases
 # note: Wrappers replace output of commands with escape sequences. Some shell scripts and programs which use the output of standard shell utilities may work wrong.
-[ -s "/etc/profile.d/grc.sh" ] && source "/etc/profile.d/grc.sh"
+[ -s "/etc/profile.d/grc.sh" ] && . "/etc/profile.d/grc.sh"
 
 # Load user aliases overriding previous aliases
-# shellcheck disable=SC1090
-[ -f "$XDG_CONFIG_HOME/shell/aliases" ] && source "$XDG_CONFIG_HOME/shell/aliases" 
-[ -f "$XDG_CONFIG_HOME/shell/private/aliases" ] && source "$XDG_CONFIG_HOME/shell/private/aliases" 
+# shellcheck source=/dev/null
+[ -f "$XDG_CONFIG_HOME/shell/aliases" ] && . "$XDG_CONFIG_HOME/shell/aliases" 
+# shellcheck source=/dev/null
+[ -f "$XDG_CONFIG_HOME/shell/private/aliases" ] && . "$XDG_CONFIG_HOME/shell/private/aliases" 
 
 # Autostart
 # lock file ensure it's run only once per session 
@@ -41,7 +43,8 @@ if [ -f "$XDG_CONFIG_HOME/shell/autostart" ] && ! [ -f "$autostart_lock" ]; then
     touch "$autostart_lock"
 fi
 
-# Source partials
+# Source config partials
 for partial in "$XDG_CONFIG_HOME/shell/config/"*; do
-  source "$partial"
+  # shellcheck source=/dev/null
+  . "$partial"
 done
