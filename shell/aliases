@@ -2,9 +2,12 @@
 
 # Default apps
 alias reload='source ~/.profile'
-alias b='$BROWSER'
-alias e='$EDITOR'
-alias v='$VISUAL'
+# shellcheck disable=SC2139
+alias b="$BROWSER"
+# shellcheck disable=SC2139
+alias e="$EDITOR"
+# shellcheck disable=SC2139
+alias v="$VISUAL"
 alias q='exit'
 
 # open any file with it's default app and supress stdout
