@@ -1,10 +1,8 @@
 # Local
 DEV.md
+*/private/
 
 # Artifacts
 shell/zsh/zinit/*
 vim/plugged/**
 vim/.netrwhist
-
-# Private
-scripts/private/

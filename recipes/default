@@ -5,10 +5,7 @@
 _link	"x11/Xresources"                  ".Xresources"
 
 # Shell
-_link "shell/aliases"                   ".config/shell/aliases"
-_link "shell/autostart"                 ".config/shell/autostart"
-_link "shell/config"                    ".config/shell/config"
-_link "shell/completions"               ".config/shell/completions"
+_link "shell"                           ".config/shell"
 _link	"shell/profile"                   ".profile"
 
 # Zsh 

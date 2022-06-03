@@ -1,6 +1,8 @@
 #!/bin/sh
 # Default profile for POSIX compliant shells
 
+alias reload='source ~/.profile'
+
 # Preferred apps
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim -d"
@@ -9,10 +11,27 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 #export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # slower than bat
 export BROWSER="chromium"
 
+# shellcheck disable=SC2139
+alias b="$BROWSER"
+# shellcheck disable=SC2139
+alias e="$EDITOR"
+# shellcheck disable=SC2139
+alias v="$VISUAL"
+alias q='exit'
+
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_BIN_HOME="$HOME/.local/bin"
+
+# open any file with it's default app and supress stdout
+_xdg_open_silent() {
+  xdg-open "$@" 2>/dev/null
+}
+
+alias x=_xdg_open_silent
 
 # History
 export HISTFILE="$XDG_DATA_HOME/shell/history"
@@ -21,19 +40,26 @@ export SAVEHIST=10000
 
 # Path
 export PATH="/bin:/usr/bin/:/usr/local/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/Dev/sys/dotfiles/scripts"
-export PATH="$PATH:$HOME/Dev/sys/dotfiles/scripts/private"
+export PATH="$PATH:$XDG_BIN_HOME"
+export PATH="$PATH:$XDG_CONFIG_HOME/shell/scripts"
 
-# Load Generic Colouriser (GRC) aliases
+# Colorized output and alternatives
+# check: https://wiki.archlinux.org/index.php/Color_output_in_console 
+
+# load Generic Colouriser (GRC) aliases
 # note: Wrappers replace output of commands with escape sequences. Some shell scripts and programs which use the output of standard shell utilities may work wrong.
 [ -s "/etc/profile.d/grc.sh" ] && . "/etc/profile.d/grc.sh"
 
-# Load user aliases overriding previous aliases
-# shellcheck source=/dev/null
-[ -f "$XDG_CONFIG_HOME/shell/aliases" ] && . "$XDG_CONFIG_HOME/shell/aliases" 
-# shellcheck source=/dev/null
-[ -f "$XDG_CONFIG_HOME/shell/private/aliases" ] && . "$XDG_CONFIG_HOME/shell/private/aliases" 
+# alias ls='ls --color=auto'
+# alias ls='exa --long --git' # exa is close but not fully compliant with ls
+alias ls='exa --long'
+alias grep='grep --colour=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+alias diff='colordiff'
+alias cat='bat'
+alias ps='grc ps'
+alias ip='ip -c'
 
 # Autostart
 # lock file ensure it's run only once per session 
@@ -48,3 +74,7 @@ for partial in "$XDG_CONFIG_HOME/shell/config/"*; do
   # shellcheck source=/dev/null
   . "$partial"
 done
+
+# Private config 
+# shellcheck source=/dev/null
+[ -f "$XDG_CONFIG_HOME/shell/private/profile" ] && . "$XDG_CONFIG_HOME/shell/private/profile" 

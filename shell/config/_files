@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# File management
+alias rm='trash -v' # move to trash dir
+alias mv='mv -v -n' # verbose and no clobber (don't overwrite)
+alias cp='cp -v -n'
+
+# Archiving
+alias cf="compress"
+alias xf="extract"
+
+# compress and encrypt w/ multi-OS support
+encrypt() {
+  7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p "$1".7z "$1"
+}
