@@ -2,7 +2,7 @@
 Description=Eudaemon
 
 [Timer]
-OnCalendar=*-*-* 00:30:00
+OnCalendar=*-*-* 00:00:00
 Unit=eudaemon.service
 
 [Install]

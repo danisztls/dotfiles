@@ -4,4 +4,4 @@ Wants=default.target
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c 'notify-send "It\'s getting late. Computer will suspend in 15 minutes. Go to sleep"; sleep 15m && systemctl suspend'
+ExecStart=/bin/sh -c 'notify-send "It\'s getting late. Go sleep. Computer will suspend soon."; sleep 30m && notify-send "Sleeping in 1 minute..." && sleep 1m && systemctl suspend'
