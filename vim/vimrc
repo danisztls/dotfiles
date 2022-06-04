@@ -52,6 +52,8 @@ let g:python3_host_prog = '/usr/bin/python3'
 syntax on
 set encoding=utf-8
 
+if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
+
 " line number
 set number relativenumber
 nnoremap <leader>n :setlocal number! relativenumber!<CR>

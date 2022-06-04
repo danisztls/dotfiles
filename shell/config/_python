@@ -3,7 +3,8 @@
 export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
-export PYTHONHISTFILE="$XDG_DATA_HOME/python" # FIXME: I don't think its working.
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup"  # FIXME: not working
+export PYTHONHISTFILE="$XDG_STATE_HOME/python/history"  # FIXME: not working
 
 alias ipy='ipython'
 alias 'chpy!'="virtualenv env"

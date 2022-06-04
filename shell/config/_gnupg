@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
