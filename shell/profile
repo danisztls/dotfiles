@@ -6,17 +6,14 @@ alias reload='source ~/.profile'
 # Preferred apps
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim -d"
-export VISUAL="alacritty -e nvim" # alacritty latency ~0.5s, urxvt is faster
+export VISUAL="alacritty -e 'nvim'" # alacritty latency ~0.5s, urxvt is faster
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-#export MANPAGER="nvim -c 'set ft=man ts=8 nomod nolist noma'" # slower than bat
 export BROWSER="chromium"
 
 # shellcheck disable=SC2139
 alias b="$BROWSER"
 # shellcheck disable=SC2139
 alias e="$EDITOR"
-# shellcheck disable=SC2139
-alias v="$VISUAL"
 alias q='exit'
 
 # XDG
@@ -26,12 +23,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_BIN_HOME="$HOME/.local/bin"
 
-# open any file with it's default app and supress stdout
-_xdg_open_silent() {
-  xdg-open "$@" 2>/dev/null
-}
-
-alias x=_xdg_open_silent
+# open with default app and supress stdout
+alias x='xdg-open 2>/dev/null'
 
 # History
 export HISTFILE="$XDG_DATA_HOME/shell/history"
