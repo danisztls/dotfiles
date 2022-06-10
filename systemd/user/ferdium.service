@@ -1,0 +1,12 @@
+[Unit]
+Description=Ferdium under Tmux
+After=default.target
+
+[Service]
+Type=forking
+RemainAfterExit=yes
+ExecStart=/usr/bin/tmux -L ferdium new -d ferdium \; set-option status off
+ExecStop=/usr/bin/killall -s 15 ferdium; /usr/bin/tmux -L ferdium kill-session
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Variety
+After=default.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/variety
+ExecStop=/usr/bin/killall variety
+
+[Install]
+WantedBy=graphical-session.target

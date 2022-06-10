@@ -29,6 +29,6 @@ done &
 # trash-empty 7 &
 
 # Desktop Apps
+# FIXME: These are not working as expected on Wayland
 (sleep 10 && ferdium) &
 (sleep 10 && variety) &
-(sleep 10 && yarr) &
