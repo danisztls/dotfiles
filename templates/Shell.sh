@@ -1,16 +1,23 @@
 #!/usr/bin/env bash
 #
-# This is a docstring with a description of what this file does.
+# This is a docstring with a description of what this script does.
 
 # @author: Daniel Souza <me@posix.dev.br>
 # @license: MIT
+# @usage:
+# @deps:
+
+# shellcheck disable=SC2034
+
+# Utils
+# -----
 
 # Debug
-set -x  # enable
-set +x  # disable
+# set -x  # enable
+# set +x  # disable
 
 # verbosity, prints shell input lines as they are read
-set -v
+# set -v
 
 # exit when a command has a non-zero exit status
 # note: '||:' at the end of a pipe mask a non-zero exit
@@ -23,20 +30,13 @@ set -u
 # exit if any command in a pipe fail
 set -o pipefail
 
-# Text Decorators
-reset="\e[0m"
-strong="\e[1;39m"
+# Text Formatting 
+reset="\e[0;0m"
 red="\e[1;31m"
-yellow="\e[1;33m"
 green="\e[1;32m"
+yellow="\e[1;33m"
 blue="\e[1;34m"
-
-printf "${strong}Colors:${reset} \
-${red}%s${reset}, \
-${yellow}%s${reset}, \
-${green}%s${reset}, \
-${blue}%s${reset}.\n" \
-"Red" "Yellow" "Green" "Blue"
+strong="\e[1;39m"
 
 # OptArgs
 _getOpts() {
@@ -52,3 +52,6 @@ _getOpts() {
 # slice arguments as getopts don't work with mixed parameters/arguments
 # e.g. script.sh target -a
 _getOpts "${@:2}"  # 2nd to nth
+
+# Main
+# ----
