@@ -1,12 +1,12 @@
 [Unit]
-Description=Yarr under Tmux
+Description=Yarr
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 RemainAfterExit=yes
-ExecStart=/usr/bin/tmux -L yarr new -d yarr \; set-option status off
-ExecStop=/usr/bin/killall -s 15 yarr; /usr/bin/tmux -L yarr kill-session
+ExecStart=yarr
+ExecStop=/usr/bin/killall -s 15 yarr
 
 [Install]
 WantedBy=graphical-session.target

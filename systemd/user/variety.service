@@ -3,7 +3,7 @@ Description=Variety
 After=default.target
 
 [Service]
-Type=exec
+Type=simple
 ExecStart=/usr/bin/variety
 ExecStop=/usr/bin/killall variety
 
