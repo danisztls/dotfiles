@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Quick debug systemd by printing variables or running a command under it.
+#
+# @author: Daniel Souza <me@posix.dev.br>
+# @license: MIT
+# @usage: systemd-debug -s '<string>', systemd-debug -c '<command>'
+
+# Utils
+# -----
+# OptArgs
+_getOpts() {
+  while getopts "us:c:" option; do
+    case $option in
+      u) isUser=1;;
+      s) runString="$OPTARG";;
+      c) runCommand="$OPTARG";;
+      *) echo "Invalid argument"
+    esac
+  done
+}
+
+# Main
+# ----
+_getOpts "${@}"
+
+if [ $isUser -eq 1 ]; then
+  if [ "$runString" ]; then
+    systemd-run --user /bin/sh -c "printf '<3>DEBUG: %s\n' ${runString}"
+  fi
+
+  if [ "$runCommand" ]; then
+    # shellcheck disable=SC2016
+    systemd-run --user /bin/sh -c "$runCommand"
+  fi
+
+else
+  if [ "$runString" ]; then
+    sudo systemd-run /bin/sh -c "printf '<3>DEBUG: %s\n' ${runString}"
+  fi
+
+  if [ "$runCommand" ]; then
+    # shellcheck disable=SC2016
+    sudo systemd-run /bin/sh -c "$runCommand"
+  fi
+fi
