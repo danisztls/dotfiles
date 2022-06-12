@@ -23,9 +23,11 @@ _getOpts() {
 # ----
 _getOpts "${@}"
 
+runDate="$(date '+%H:%M')"
+
 if [ $isUser -eq 1 ]; then
   if [ "$runString" ]; then
-    systemd-run --user /bin/sh -c "printf '<3>DEBUG: %s\n' ${runString}"
+    systemd-run --user /bin/sh -c "printf '<7>DEBUG: %s\n' ${runString}"
   fi
 
   if [ "$runCommand" ]; then
@@ -33,13 +35,17 @@ if [ $isUser -eq 1 ]; then
     systemd-run --user /bin/sh -c "$runCommand"
   fi
 
+  journalctl --user --no-pager --since "${runDate}"
+
 else
   if [ "$runString" ]; then
-    sudo systemd-run /bin/sh -c "printf '<3>DEBUG: %s\n' ${runString}"
+    sudo systemd-run /bin/sh -c "printf '<7>DEBUG: %s\n' ${runString}"
   fi
 
   if [ "$runCommand" ]; then
     # shellcheck disable=SC2016
     sudo systemd-run /bin/sh -c "$runCommand"
   fi
+
+  journalctl --no-pager --since "${runDate}"
 fi
