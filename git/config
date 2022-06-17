@@ -78,7 +78,5 @@ insteadOf = https://github.com
 [url "ssh://git@gitlab.com"]
 insteadOf = https://gitlab.com
 
-# gerrit
-[gitreview]
-remote = origin
-username = DDesouza
+[url "ssh://git@bitbucket.org"]
+insteadOf = https://bitbucket.org
