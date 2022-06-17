@@ -3,7 +3,7 @@
 # export KITTY_DISABLE_WAYLAND=1
 
 # Alacritty
-alias alacritty="WAYLAND_DISPLAY= alacritty"
+# alias alacritty="WAYLAND_DISPLAY= alacritty"
 
 # Misc
 # export QT_QPA_PLATFORM=wayland  # why this is needed?
