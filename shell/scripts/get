@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Download any content (videos currently) from the web
+
+# @author: Daniel Souza <me@posix.dev.br>
+# @license: MIT
+# @usage: get <URL>
+# @deps: yt-dlp
+
+# Use cases
+# - Offline view later
+# - Web scraping
+
+# TODO: Can I automate getting videos from RSS feeds? How to manage deletions?
+# TODO: Infer content type from URL to know what to use and where to save?
+
+url="$1"
+dst="$XDG_VIDEOS_DIR"
+
+# TODO: Make this an optional parameter
+echo "Saving at Videos"
+cd "$dst" || exit
+
+# Video
+# do not use best video + best audio due to issue with ffmpeg and merging VP9
+# see: https://github.com/yt-dlp/yt-dlp/issues/3138
+
+yt-dlp --sponsorblock-remove all -f b "$url"
+
+# TODO: Review and possibly add support for 'you-get'
