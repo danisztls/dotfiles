@@ -43,7 +43,12 @@ set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
 if has('nvim') | let &viminfo .= '.nvim' | endif
 
 filetype plugin indent on " per filetype config
-au BufNewFile,BufRead *.tsv set ft=tsv " tab-separated values
+
+" prevent including autocommands more than once
+if !exists("autocommands_loaded")
+  let autocommands_loaded = 1
+  au BufNewFile,BufRead *.tsv set ft=tsv " tab-separated values
+endif
 
 " env 
 let g:python_host_prog = '/usr/bin/python'
