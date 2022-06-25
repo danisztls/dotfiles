@@ -17,28 +17,29 @@ diffFilter = delta --color-only
 # lower case is mode and upper are options 
 a     =  add
 aA    =  add --all
-br    =  branch
-brD   =  branch --delete
-brDF  =  branch --delete --force
+b     =  branch
+bD    =  branch --delete
+bF    =  branch --delete --force
 c     =  commit
 cA    =  commit --amend
 co    =  checkout
 cp    =  cherry-pick
 d     =  diff
-ds    =  diff --staged
+dS    =  diff --staged
 f     =  fetch
 fA    =  fetch --all
 l     =  log
 lO    =  log --pretty=oneline
 lD    =  log --decorate --graph
-mg    =  merge
-mgA   =  merge --abort
-mgC   =  merge --continue
-mt    =  mergetool --prompt
+m     =  merge
+mA    =  merge --abort
+mC    =  merge --continue
+mT    =  mergetool --prompt
 pl    =  pull
 ps    =  push
 psF   =  push --force-with-lease
-r     =  reset
+rv    =  review
+rs    =  reset
 rb    =  rebase
 rbA   =  rebase --abort
 rbC   =  rebase --continue
@@ -49,7 +50,7 @@ s     =  status
 ss    =  show
 sl    =  shortlog
 t     =  tag
-ts    =  tag -s
+tS    =  tag -s
 
 [merge]
 tool = nvimdiff
