@@ -1,0 +1,7 @@
+[Unit]
+Description=Sleep time enforcer (shutdown)
+Wants=default.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'notify-send "Last warning. Shuting down in 60s. Good night!" && sleep 60 && systemctl poweroff'

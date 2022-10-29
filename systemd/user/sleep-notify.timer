@@ -1,0 +1,9 @@
+[Unit]
+Description=Sleep time notification
+
+[Timer]
+OnCalendar=*-*-* 22:00:00
+Unit=sleep-notify.service
+
+[Install]
+WantedBy=default.target

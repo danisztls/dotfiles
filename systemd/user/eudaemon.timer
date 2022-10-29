@@ -1,9 +1,0 @@
-[Unit]
-Description=Eudaemon
-
-[Timer]
-OnCalendar=*-*-* 00:00:00
-Unit=eudaemon.service
-
-[Install]
-WantedBy=default.target

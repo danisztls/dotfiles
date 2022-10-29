@@ -1,0 +1,9 @@
+[Unit]
+Description=Sleep time enforcer
+
+[Timer]
+OnCalendar=*-*-* 24:00:00
+Unit=sleep-enforce.service
+
+[Install]
+WantedBy=default.target

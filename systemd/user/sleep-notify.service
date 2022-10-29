@@ -1,0 +1,7 @@
+[Unit]
+Description=Sleep time notification
+Wants=default.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'notify-send "It\'s late. Slown down. Go sleep. Don\'t burn yourself."'
