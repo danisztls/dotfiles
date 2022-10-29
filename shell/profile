@@ -36,8 +36,8 @@ alias x='xdg-open 2>/dev/null'
 
 # History
 export HISTFILE="$XDG_DATA_HOME/shell/history"
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=50000
+export SAVEHIST=50000
 
 # Path
 export PATH="/bin:/usr/bin/:/usr/local/bin"
