@@ -22,3 +22,6 @@ alias 'sysu+'='systemctl --user enable'
 alias 'sysu-'='systemctl --user disable'
 alias 'sysu%'='systemctl --user edit'
 alias 'sysu@'='systemctl --user mask'
+
+# misc
+alias 'byebye'='systemctl poweroff'
