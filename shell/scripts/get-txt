@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Download any content (videos currently) from the web
+
+# @author: Daniel Souza <me@posix.dev.br>
+# @license: MIT
+# @usage: get-txt <URL>
+# @deps: yt-dlp
+#
+#
+url="$1"
+lang="en,pt"
+
+yt-dlp -f none --ignore-no-formats-error --write-sub --sub-langs "$lang" "$url" 2>/dev/null

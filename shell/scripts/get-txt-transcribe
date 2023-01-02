@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Download any content (videos currently) from the web
+
+# @author: Daniel Souza <me@posix.dev.br>
+# @license: MIT
+# @usage: get-txt <URL>
+# @deps: yt-dlp, openai/whisper
+#
+# TODO: Rewrite this in Python?
+
+url="$1"
+
+# TODO: Use Youtube ID
+#
+id="$(tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 7 | head -n 1)"
+audio_path="/run/user/$(id -u)/audio-$id"
+transcript_path="transcript-$id"
+
+yt-dlp --sponsorblock-remove all --format ba --no-write-subs --output "$audio_path" "$url" && chmod -w "$audio_path"
+
+# TODO: Try https://whisperapi.com/
+
+transcript_raw=$(whisper "$audio_path" --model tiny 2>&1)
+transcript_clean=$(sed '/^[^\[].*$/d;s/\[.*\]  //' <<< "$transcript_raw")
+
+echo "$transcript_clean" > "$transcript_path"
+
+rm -f "$audio_path"
