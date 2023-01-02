@@ -11,9 +11,12 @@
 
 url="$1"
 
-# TODO: Use Youtube ID
-#
-id="$(tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 7 | head -n 1)"
+# random ID
+# id="$(tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 7 | head -n 1)"
+
+# Youtube video ID
+id=${url##*v=}
+
 audio_path="/run/user/$(id -u)/audio-$id"
 transcript_path="transcript-$id"
 
@@ -22,6 +25,8 @@ yt-dlp --sponsorblock-remove all --format ba --no-write-subs --output "$audio_pa
 # TODO: Try https://whisperapi.com/
 
 transcript_raw=$(whisper "$audio_path" --model tiny 2>&1)
+
+# TODO: There's no need to clear the transcription from stdout as whisper saves the .txt automatically 
 transcript_clean=$(sed '/^[^\[].*$/d;s/\[.*\]  //' <<< "$transcript_raw")
 
 echo "$transcript_clean" > "$transcript_path"

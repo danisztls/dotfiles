@@ -9,6 +9,7 @@
 #
 #
 url="$1"
+id=${url##*v=}
 lang="en,pt"
 
-yt-dlp -f none --ignore-no-formats-error --write-sub --sub-langs "$lang" "$url" 2>/dev/null
+yt-dlp -f none --ignore-no-formats-error --write-sub --sub-langs "$lang" --output "$id" "$url" 2>/dev/null
