@@ -17,18 +17,15 @@ url="$1"
 # Youtube video ID
 id=${url##*v=}
 
-audio_path="/run/user/$(id -u)/audio-$id"
-transcript_path="transcript-$id"
+audio_file="/run/user/$(id -u)/$id"
 
-yt-dlp --sponsorblock-remove all --format ba --no-write-subs --output "$audio_path" "$url" && chmod -w "$audio_path"
+yt-dlp --sponsorblock-remove all --format ba --no-write-subs --output "$audio_file" "$url"
 
 # TODO: Try https://whisperapi.com/
+whisper "$audio_file" --model base 2>&1
 
-transcript_raw=$(whisper "$audio_path" --model tiny 2>&1)
+# remove temporary video file
+rm "$audio_file"
 
-# TODO: There's no need to clear the transcription from stdout as whisper saves the .txt automatically 
-transcript_clean=$(sed '/^[^\[].*$/d;s/\[.*\]  //' <<< "$transcript_raw")
-
-echo "$transcript_clean" > "$transcript_path"
-
-rm -f "$audio_path"
+# remove undesired formats
+rm "$id".srt "$id".vtt
