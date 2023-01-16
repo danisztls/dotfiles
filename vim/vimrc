@@ -149,6 +149,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " papercolor
+" https://github.com/NLKNguyen/papercolor-theme/blob/master/colors/PaperColor.vim#L126
 let g:PaperColor_Theme_Options = {
   \   'theme': {
   \     'default': {
@@ -171,7 +172,12 @@ let g:PaperColor_Theme_Options = {
   \         'color14' : ['#0087e9', ''],
   \         'color15' : ['#cf2424', ''],
   \         'cursorlinenr_bg' : ['#3a3a3a', ''],
-  \         'visual_bg' : ['#bec0c0', '']
+  \         'todo_fg' : ['#eeeeee', ''],
+  \         'todo_bg' : ['#b80600', ''],
+  \         'guibg' : ['#242e33', ''],
+  \         'guifg' : ['#eceff1', ''],
+  \         'visual_bg' : ['#242e33', ''],
+  \         'visual_fg' : ['#eceff1', '']
   \       }
   \     }
   \   }
@@ -223,7 +229,7 @@ let b:ale_fixers = ['prettier', 'eslint']
 nnoremap <leader>c :Codi<CR>
 nnoremap <leader>C :Codi!<CR>
 
-"UltiSnips
+" UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -255,12 +261,24 @@ nmap <Leader>hm <Plug>(git-messenger)
 "let g:git_messenger_include_diff="current"
 let g:git_messenger_always_into_popup=v:true
 
-" WEB
-"autocmd FileType html css
-
 " hexokinase
 let g:Hexokinase_highlighters = ['virtual']
 "let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
+
+" Neovide
+if exists("g:neovide")
+  " NOTE: Font weight is bugged and display as bold on dark bg
+  set guifont=Hack\ Nerd\ Font:h12:#e-subpixelantialias:h-full"
+  highlight Normal guibg=#242e33 guifg=#eceff1
+  let g:neovide_transparency = 0.98
+  " NOTE: Background color doesn't work
+  " let g:neovide_background_color = '#242e33'
+  let g:neovide_cursor_vfx_mode = "ripple"
+  let g:neovide_refresh_rate = 144
+endif
+
+" WEB
+"autocmd FileType html css
 
 " FUNCTIONS
 " convert rows of numbers or text (as if pasted from excel column) to a tuple
