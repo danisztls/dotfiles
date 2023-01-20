@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Pull from a Git repository only if remote is valid and state is clean
+
+# usage: git-pull-safe <path-to-parent-dir> (optional)
+
+# Text Formatting 
+reset="\e[0;0m"
+yellow="\e[1;33m"
+blue="\e[1;34m"
+strong="\e[1;39m"
+
+# Change dir to inputted path if valid
+if [ -d "$1" ]; then
+  cd "$1" || exit
+fi
+
+# get repo name
+path="$(pwd)"
+repo="${path##/*/}"
+
+# Check if repo has a remote
+_check() {
+  if [ "$(git remote | wc -l)" == 0 ]; then
+    return 1
+  fi
+
+  # check if repo is in a dirty state
+  # shellcheck disable=SC2015
+  # NOTE: it may be necessary to run git diff first to ensure the index is up to date
+  git diff --quiet; git diff-index --quiet HEAD -- || return 1
+
+  return 0
+}
+
+# Pull changes
+_pull() {
+  printf "${strong}Working on ${yellow}%s${reset}\n" "$repo"
+  git pull
+  printf "${strong}Done work on ${blue}%s${reset}\n\n" "$repo"
+}
+
+_check && _pull

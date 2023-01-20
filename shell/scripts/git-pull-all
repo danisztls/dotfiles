@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Pull safely from all subdirs containing a Git repo
+
+# usage: git-pull-all <path-to-parent-dir> (optional)
+
+# Change dir to inputted path if valid
+if [ -d "$1" ]; then
+  cd "$1" || exit
+fi
+
+mapfile -t repos < <(fd -t d -uuu '\.git$')
+
+for repo in "${repos[@]}"; do
+  # trim .git/
+  path="${repo%.git/}"
+
+  # run in parallel (semaphore)
+  sem -j+0 git-pull-safe "$path"
+done
+
+# wait for tasks to finish
+sem --wait
