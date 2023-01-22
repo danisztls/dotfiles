@@ -12,10 +12,12 @@
 
 # Defaults
 defaultWidth=1920
-defaultFormat="avif"
-# format="avif"
+# defaultFormat="avif"
+defaultFormat="webp"
 defaultQuality=100 # lossless
-defaultNameSuffix="_v2" # leave blank to overwrite
+defaultNameSuffix="_v2"
+# defaultModel="realesr-animevideov3" # denoise more
+defaultModel="realesrgan-x4plus" # denoise less
 
 # Formatting strings
 reset="\e[0;0m"
@@ -33,7 +35,7 @@ for prog in "${deps[@]}"; do
   fi
 done
 
-# Path Inference
+# Input Path Inference
 inputPath="$1"
 if [ ! -f "$inputPath" ]; then
   printf "${red}Input file not found: ${strong}%s${reset}\n" "$inputPath"
@@ -44,15 +46,6 @@ inputDir="$(dirname "$inputPath")"
 inputFile="$(basename "$inputPath")"
 inputName="${inputFile%.*}"
 # inputExtension="${inputFile##*.}"
-
-outputPath="${inputDir}/${inputName}${defaultNameSuffix}.${defaultFormat}"
-if [ -f "$outputPath" ]; then
-  printf "${red}Output file already exists: ${strong}%s${reset}\n" "$outputPath"
-  exit 1
-fi
-
-tmpPath="/run/user/$(id -u)/upscale/$inputPath"
-mkdir -p "${tmpPath%/*}" # create dirs for tmpFile
 
 # Dimensions Inference
 inputInfo=$(identify "$inputPath")
@@ -67,17 +60,37 @@ inputWidth=$(perl -pe 's|.*?([0-9]+)x.*|$1|' <<< "$inputInfo")
 #   inputType="portrait"
 # fi
 
-# Main
-if [ "$inputWidth" -gt "$defaultWidth" ]; then
-  printf "${blue}Converting to ${yellow}%s${reset}\n" "$defaultFormat"
-  convert -quality ${defaultQuality} "$inputPath" "$outputPath" &>/dev/null
-else 
-  printf "${blue}Upscaling with ${yellow}%s${reset}\n" "Real-ESRGAN"
-  realesrgan-ncnn-vulkan -i "$inputPath" -o "$tmpPath" &>/dev/null 
+if [ "$inputWidth" -lt "$defaultWidth" ]; then
+  _model="$defaultModel"
+fi
+
+# Output Path Inference
+outputPath="${inputDir}/${inputName}${defaultNameSuffix}${_model:+_$_model}.${defaultFormat}"
+if [ -f "$outputPath" ]; then
+  printf "${red}Output file already exists: ${strong}%s${reset}\n" "$outputPath"
+  exit 1
+fi
+
+# Library
+_upscale() {
+  printf "${blue}Upscaling with ${yellow}%s${reset}\n" "$defaultModel"
+  realesrgan-ncnn-vulkan -n "$defaultModel" -i "$1" -o "$2" &>/dev/null 
   # NOTE: realesrgan-ncnn-vulkan isn't working with paths that contain spaces
+}
 
+_convert() {
   printf "${blue}Converting to ${yellow}%s${reset}\n" "${defaultFormat^^}"
-  convert -quality ${defaultQuality} -resize ${defaultWidth}x\> "$tmpPath" "$outputPath" &>/dev/null
+  convert -quality ${defaultQuality} -resize ${defaultWidth}x\> "$1" "$2" &>/dev/null
+}
 
+# Main
+if [ ! "$_model" ]; then
+  _convert "$inputPath" "$outputPath"
+
+else
+  tmpPath="/run/user/$(id -u)/upscale/$inputPath"
+  mkdir -p "${tmpPath%/*}" # create dirs for tmpFile
+  _upscale "$inputPath" "$tmpPath"
+  _convert "$tmpPath" "$outputPath"
   rm "$tmpPath"
 fi
