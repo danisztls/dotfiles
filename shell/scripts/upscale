@@ -1,0 +1,83 @@
+#!/bin/bash
+#
+# Upscale and convert images to an Internet friendly resolution and format
+
+# @author: Daniel Souza <me at posix dot dev dot br>
+# @license: GPL3
+# @deps: imagemagick, realesrgan-ncnn-vulkan
+# @usage:
+#     upscale file.[png|jpg|jpeg]
+
+# NOTE: Real-ESRGAN upscaling method only support PNG and JPG
+
+# Defaults
+defaultWidth=1920
+defaultFormat="avif"
+# format="avif"
+defaultQuality=100 # lossless
+defaultNameSuffix="_v2" # leave blank to overwrite
+
+# Formatting strings
+reset="\e[0;0m"
+yellow="\e[1;33m"
+blue="\e[1;34m"
+red="\e[1;31m"
+strong="\e[1;39m"
+
+# Dependencies
+deps=(convert identify realesrgan-ncnn-vulkan)
+for prog in "${deps[@]}"; do
+  if [ ! "$(command -v "$prog")" ]; then
+    printf "${red}Required dependency not found: ${strong}%s${reset}\n" "$prog"
+    exit 1
+  fi
+done
+
+# Path Inference
+inputPath="$1"
+if [ ! -f "$inputPath" ]; then
+  printf "${red}Input file not found: ${strong}%s${reset}\n" "$inputPath"
+  exit 1
+fi
+
+inputBasePath="${inputPath%/*}"
+inputFile="${inputPath##*/}"
+inputName="${inputFile%.*}"
+# inputExtension="${inputFile##*.}"
+
+outputPath="${inputBasePath}/${inputName}${defaultNameSuffix}.${defaultFormat}"
+if [ -f "$outputPath" ]; then
+  printf "${red}Output file already exists: ${strong}%s${reset}\n" "$outputPath"
+  exit 1
+fi
+
+tmpPath="/run/user/$(id -u)/upscale/$inputPath"
+mkdir -p "${tmpPath%/*}" # create dirs for tmpFile
+
+# Dimensions Inference
+inputInfo=$(identify "$inputPath")
+inputWidth=$(perl -pe 's|.*?([0-9]+)x.*|$1|' <<< "$inputInfo")
+# inputHeight=$(perl -pe 's|.*x([0-9]+).*|$1|' <<< "$inputInfo")
+
+# if [ "$inputWidth" -eq "$inputHeight" ]; then
+#   inputType="squared"
+# elif [ "$inputWidth" -gt "$inputHeight" ]; then
+#   inputType="landscape"
+# else
+#   inputType="portrait"
+# fi
+
+# Main
+if [ "$inputWidth" -gt "$defaultWidth" ]; then
+  printf "${blue}Converting to ${yellow}%s${reset}\n" "$defaultFormat"
+  convert -quality ${defaultQuality} "$inputPath" "$outputPath" &>/dev/null
+else 
+  printf "${blue}Upscaling with ${yellow}%s${reset}\n" "Real-ESRGAN"
+  realesrgan-ncnn-vulkan -i "$inputPath" -o "$tmpPath" &>/dev/null 
+  # NOTE: realesrgan-ncnn-vulkan isn't working with paths that contain spaces
+
+  printf "${blue}Converting to ${yellow}%s${reset}\n" "${defaultFormat^^}"
+  convert -quality ${defaultQuality} -resize ${defaultWidth}x\> "$tmpPath" "$outputPath" &>/dev/null
+
+  rm "$tmpPath"
+fi

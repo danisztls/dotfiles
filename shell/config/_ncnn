@@ -1,0 +1,2 @@
+#!/bin/sh
+alias upscale-esrgan='realesrgan-ncnn-vulkan'
