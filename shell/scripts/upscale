@@ -40,12 +40,12 @@ if [ ! -f "$inputPath" ]; then
   exit 1
 fi
 
-inputBasePath="${inputPath%/*}"
-inputFile="${inputPath##*/}"
+inputDir="$(dirname "$inputPath")"
+inputFile="$(basename "$inputPath")"
 inputName="${inputFile%.*}"
 # inputExtension="${inputFile##*.}"
 
-outputPath="${inputBasePath}/${inputName}${defaultNameSuffix}.${defaultFormat}"
+outputPath="${inputDir}/${inputName}${defaultNameSuffix}.${defaultFormat}"
 if [ -f "$outputPath" ]; then
   printf "${red}Output file already exists: ${strong}%s${reset}\n" "$outputPath"
   exit 1
