@@ -38,6 +38,15 @@ yellow="\e[1;33m"
 blue="\e[1;34m"
 strong="\e[1;39m"
 
+# Dependencies
+deps=(convert identify22 realesrgan-ncnn-vulkan)
+for prog in "${deps[@]}"; do
+  if [ ! "$(command -v "$prog")" ]; then
+    printf "${red}Required dependency not found: ${strong}%s${reset}\n" "$prog"
+    exit 1
+  fi
+done
+
 # OptArgs
 _getOpts() {
   while getopts "ab:" option; do
