@@ -11,11 +11,9 @@
 # NOTE: Real-ESRGAN upscaling method only support PNG and JPG
 
 # Defaults
-defaultWidth=1920
-# defaultFormat="avif"
-defaultFormat="webp"
-defaultQuality=100 # lossless
-defaultNameSuffix="_v2"
+defaultWidth=3840
+defaultFormats=(avif jpg)
+defaultQuality=90 # lossless
 # defaultModel="realesr-animevideov3" # denoise more
 defaultModel="realesrgan-x4plus" # denoise less
 
@@ -60,17 +58,6 @@ inputWidth=$(perl -pe 's|.*?([0-9]+)x.*|$1|' <<< "$inputInfo")
 #   inputType="portrait"
 # fi
 
-if [ "$inputWidth" -lt "$defaultWidth" ]; then
-  _model="$defaultModel"
-fi
-
-# Output Path Inference
-outputPath="${inputDir}/${inputName}${defaultNameSuffix}${_model:+_$_model}.${defaultFormat}"
-if [ -f "$outputPath" ]; then
-  printf "${red}Output file already exists: ${strong}%s${reset}\n" "$outputPath"
-  exit 1
-fi
-
 # Library
 _upscale() {
   printf "${blue}Upscaling with ${yellow}%s${reset}\n" "$defaultModel"
@@ -79,18 +66,34 @@ _upscale() {
 }
 
 _convert() {
-  printf "${blue}Converting to ${yellow}%s${reset}\n" "${defaultFormat^^}"
-  convert -quality ${defaultQuality} -resize ${defaultWidth}x\> "$1" "$2" &>/dev/null
+  local _output="${_output}.${_format}"
+  printf "${blue}Converting to ${yellow}%s${reset}\n" "${_format^^}"
+  
+  if [ -f "$_output" ]; then
+    printf "${red}Output file already exists: ${strong}%s${reset}\n" "$_output"
+    exit 1
+  fi
+  
+  convert -quality ${defaultQuality} -resize ${defaultWidth}x\> "$_input" "$_output" &>/dev/null
 }
 
 # Main
-if [ ! "$_model" ]; then
-  _convert "$inputPath" "$outputPath"
+_output="${inputDir}/${inputName}"
 
-else
+if [ "$inputWidth" -lt "$defaultWidth" ]; then
   tmpPath="/run/user/$(id -u)/upscale/$inputPath"
   mkdir -p "${tmpPath%/*}" # create dirs for tmpFile
   _upscale "$inputPath" "$tmpPath"
-  _convert "$tmpPath" "$outputPath"
-  rm "$tmpPath"
+  _input="$tmpPath"
+  _output="${_output}_${defaultModel}"
+
+else
+  _input="$inputPath"
+  _output="${_output}_original"
 fi
+
+for _format in "${defaultFormats[@]}"; do
+  _convert
+done
+  
+[ -f "$tmpPath" ] && rm "$tmpPath"
