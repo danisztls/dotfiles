@@ -6,16 +6,22 @@
 # @license: GPL3
 # @deps: imagemagick, realesrgan-ncnn-vulkan
 # @usage:
-#     upscale file.[png|jpg|jpeg]
+#     upscale file.[png|jpg]
 
 # NOTE: Real-ESRGAN upscaling method only support PNG and JPG
+# TODO: Convert non PNG|JPG before upscaling.
 
 # Defaults
 defaultWidth=3840
-defaultFormats=(avif jpg)
-defaultQuality=90 # lossless
+defaultFormats=(avif)
+defaultQuality=100 # lossless
 # defaultModel="realesr-animevideov3" # denoise more
 defaultModel="realesrgan-x4plus" # denoise less
+
+# TODO: Support modes. e.g. gen thumbnail, high-res (4K), fake artistic canvas
+# TODO: Use sharp-cli (faster)
+# https://github.com/vseventer/sharp-cli
+# TODO: Benchmark execution time
 
 # Formatting strings
 reset="\e[0;0m"
@@ -33,67 +39,81 @@ for prog in "${deps[@]}"; do
   fi
 done
 
-# Input Path Inference
-inputPath="$1"
-if [ ! -f "$inputPath" ]; then
-  printf "${red}Input file not found: ${strong}%s${reset}\n" "$inputPath"
-  exit 1
-fi
-
-inputDir="$(dirname "$inputPath")"
-inputFile="$(basename "$inputPath")"
-inputName="${inputFile%.*}"
-# inputExtension="${inputFile##*.}"
-
-# Dimensions Inference
-inputInfo=$(identify "$inputPath")
-inputWidth=$(perl -pe 's|.*?([0-9]+)x.*|$1|' <<< "$inputInfo")
-# inputHeight=$(perl -pe 's|.*x([0-9]+).*|$1|' <<< "$inputInfo")
-
-# if [ "$inputWidth" -eq "$inputHeight" ]; then
-#   inputType="squared"
-# elif [ "$inputWidth" -gt "$inputHeight" ]; then
-#   inputType="landscape"
-# else
-#   inputType="portrait"
-# fi
-
 # Library
 _upscale() {
-  printf "${blue}Upscaling with ${yellow}%s${reset}\n" "$defaultModel"
+  printf "${strong}Upscaling with ${yellow}%s${reset}...\n" "$defaultModel"
   realesrgan-ncnn-vulkan -n "$defaultModel" -i "$1" -o "$2" &>/dev/null 
   # NOTE: realesrgan-ncnn-vulkan isn't working with paths that contain spaces
 }
 
 _convert() {
-  local _output="${_output}.${_format}"
-  printf "${blue}Converting to ${yellow}%s${reset}\n" "${_format^^}"
+  local _target="${_target}.${_format}"
+  printf "${strong}Converting to ${yellow}%s${reset}...\n" "${_format^^}"
   
-  if [ -f "$_output" ]; then
-    printf "${red}Output file already exists: ${strong}%s${reset}\n" "$_output"
+  if [ -f "$_target" ]; then
+    printf "${red}Target file already exists: ${strong}%s${reset}\n" "$_target"
     exit 1
   fi
   
-  convert -quality ${defaultQuality} -resize ${defaultWidth}x\> "$_input" "$_output" &>/dev/null
+  convert -quality ${defaultQuality} -resize ${defaultWidth}x\> "$_input" "$_target" &>/dev/null
 }
 
 # Main
-_output="${inputDir}/${inputName}"
+_main() {
+  ## Input Inference 
+  local _inputPath="$1"
+  if [ ! -f "$_inputPath" ]; then
+    printf "${red}Input file not found: ${strong}%s${reset}\n" "$_inputPath"
+    exit 1
+  fi
 
-if [ "$inputWidth" -lt "$defaultWidth" ]; then
-  tmpPath="/run/user/$(id -u)/upscale/$inputPath"
-  mkdir -p "${tmpPath%/*}" # create dirs for tmpFile
-  _upscale "$inputPath" "$tmpPath"
-  _input="$tmpPath"
-  _output="${_output}_${defaultModel}"
+  local _inputDir _inputFile _inputName _inputExtension
+  _inputDir="$(dirname "$_inputPath")"
+  _inputFile="$(basename "$_inputPath")"
+  _inputName="${_inputFile%.*}"
+  # local _inputExtension="${_inputFile##*.}"
 
-else
-  _input="$inputPath"
-  _output="${_output}_original"
-fi
+  ## Dimensions Inference
+  local _inputInfo _inputWidth _inputHeight
+  _inputInfo=$(identify "$_inputPath")
+  _inputWidth=$(perl -pe 's|.*?([0-9]+)x.*|$1|' <<< "$_inputInfo")
+  # _inputHeight=$(perl -pe 's|.*x([0-9]+).*|$1|' <<< "$_inputInfo")
 
-for _format in "${defaultFormats[@]}"; do
-  _convert
+  # if [ "$_inputWidth" -eq "$_inputHeight" ]; then
+  #   _inputType="squared"
+  # elif [ "$inputWidth" -gt "$inputHeight" ]; then
+  #   _inputType="landscape"
+  # else
+  #   _inputType="portrait"
+  # fi
+  #
+
+  ## Output Inference
+  local _target="${_inputDir}/${_inputName}"
+
+  ## Upscaling
+  if [ "$_inputWidth" -lt "$defaultWidth" ]; then
+    _tmpPath="/run/user/$(id -u)/upscale/$_inputPath"
+    mkdir -p "${_tmpPath%/*}" # create dirs for tmpFile
+    _upscale "$_inputPath" "$_tmpPath"
+    _source="$_tmpPath"
+    _target="${_target}_${defaultModel}"
+
+  else
+    _source="$_inputPath"
+    _target="${_target}_original"
+  fi
+
+  ## Conversion
+  for _format in "${defaultFormats[@]}"; do
+    _convert
+  done
+    
+  [ -f "$_tmpPath" ] && rm "$_tmpPath"
+}
+
+# Iterate multiple inputs
+for _input in "$@"; do
+  printf "\n${strong}Working on ${blue}%s${reset}\n" "${_input}"
+  _main "$_input"
 done
-  
-[ -f "$tmpPath" ] && rm "$tmpPath"
