@@ -7,6 +7,8 @@ Type=simple
 RemainAfterExit=yes
 ExecStart=yarr
 ExecStop=/usr/bin/killall -s 15 yarr
+; ExecStart=/usr/bin/tmux -L yarr new -d yarr \; set-option status off
+; ExecStop=/usr/bin/killall -s 15 yarr; /usr/bin/tmux -L yarr kill-session
 
 [Install]
 WantedBy=graphical-session.target
