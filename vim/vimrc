@@ -172,16 +172,21 @@ let g:PaperColor_Theme_Options = {
   \         'color14' : ['#0087e9', ''],
   \         'color15' : ['#cf2424', ''],
   \         'cursorlinenr_bg' : ['#3a3a3a', ''],
-  \         'todo_fg' : ['#eeeeee', ''],
-  \         'todo_bg' : ['#b80600', ''],
-  \         'guibg' : ['#242e33', ''],
-  \         'guifg' : ['#eceff1', ''],
-  \         'visual_bg' : ['#242e33', ''],
-  \         'visual_fg' : ['#eceff1', '']
   \       }
   \     }
   \   }
   \ }
+
+  " \         'cursor_fg' : ['#242e33', ''],
+  " \         'cursor_bg' : ['#eceff1', ''],
+  " \         'cursorline' : ['#eceff1', ''],
+  " \         'cursorcolumn' : ['#eceff1', ''],
+  " \         'todo_fg' : ['#eeeeee', ''],
+  " \         'todo_bg' : ['#b80600', ''],
+  " \         'guibg' : ['#242e33', ''],
+  " \         'guifg' : ['#eceff1', ''],
+  " \         'visual_bg' : ['#242e33', ''],
+  " \         'visual_fg' : ['#eceff1', '']
 
 colorscheme PaperColor
 
