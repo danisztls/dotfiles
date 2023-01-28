@@ -27,9 +27,9 @@ export XDG_BIN_HOME="$HOME/.local/bin"
 export XDG_TEMPLATES_DIR="$HOME/.templates"
 export XDG_DOWNLOAD_DIR="$HOME/Down"
 export XDG_PICTURES_DIR="$HOME/Pics"
-export XDG_BOOKS_DIR="$HOME/Dev/fun/read/Books"
-export XDG_MUSIC_DIR="$HOME/Dev/fun/listen/Music"
-export XDG_VIDEOS_DIR="$HOME/Dev/fun/watch/Videos"
+export XDG_BOOKS_DIR="$HOME/Public/fun/read/Books"
+export XDG_MUSIC_DIR="$HOME/Public/fun/listen/Music"
+export XDG_VIDEOS_DIR="$HOME/Public/fun/watch/Videos"
 
 # open with default app and supress stdout
 alias x='xdg-open 2>/dev/null'
