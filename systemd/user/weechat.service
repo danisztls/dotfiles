@@ -9,4 +9,4 @@ ExecStart=/usr/bin/tmux -L weechat new -d weechat \; set-option status off
 ExecStop=/usr/bin/killall -s 15 weechat; /usr/bin/tmux -L weechat kill-session
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target
