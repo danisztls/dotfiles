@@ -39,7 +39,7 @@ blue="\e[1;34m"
 strong="\e[1;39m"
 
 # Dependencies
-deps=(convert identify22 realesrgan-ncnn-vulkan)
+deps=(ls)
 for prog in "${deps[@]}"; do
   if [ ! "$(command -v "$prog")" ]; then
     printf "${red}Required dependency not found: ${strong}%s${reset}\n" "$prog"
