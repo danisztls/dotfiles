@@ -1,8 +1,8 @@
 #!/bin/bash
 # Link dotfiles from repo to $HOME
-# USAGE: setup <recipe> <opts>
-# e.g. 
-
+#
+# Usage: ./setup.py <recipe> <opts>
+#
 # shellcheck disable=SC2059
 
 # Strict mode
@@ -43,21 +43,27 @@ green="\e[1;32m"
 
 # Lib
 _backup() {
-  if ! [ -e "$1.bak" ]; then
-    mv "$1" "$1.bak"
+  local _source="$1"
+  local _target="$_source.bak"
+
+  if ! [ -e "$_target" ]; then
+    mv "$_source" "$_target"
   else
-    printf "${red}ERROR:${reset} ${strong}'%s'${reset} already exists.\n" "$1.bak"
+    printf "${red}ERROR:${reset} ${strong}'%s'${reset} already exists.\n" "$_target"
     return 1
   fi
 }
 
 _remove() {
-  rm -rf "$1"
+  local _file="$1"
+  rm -rf "$_file"
 }
 
 _trash() {
+  local _file="$1"
+
   if [ "$(command -v trash)" ]; then
-    trash "$1"
+    trash "$_file"
   else
     printf "${red}ERROR:${reset} ${strong}'%s'${reset} was not found.\n" "trash-cli"
     return 1
@@ -74,37 +80,37 @@ _link() {
     return 1
   fi
 
-  src="$PWD/$1"
-  dst="$HOME/$2"
-  dst_dir="${dst%/*?}"
+  local source="$PWD/$1"
+  local target="$HOME/$2"
+  local target_dir="${target%/*?}"
 
   # Is there a broken symlink at destination?
-  if [ -h "$dst" ] && ! [ -e "$dst" ]; then
-    _remove "$dst"
-    printf "${blue}NOTICE:${reset} ${strong}'%s'${reset} was a broken symlink and was removed.\n" "$dst"
+  if [ -h "$target" ] && ! [ -e "$target" ]; then
+    _remove "$target"
+    printf "${blue}NOTICE:${reset} ${strong}'%s'${reset} was a broken symlink and was removed.\n" "$target"
   fi
 
   # Does destination already exists?
-  if [ -e "$dst" ]; then
-    if [ $forceMode ]; then
-      _remove "$dst"
+  if [ -e "$target" ]; then
+    if [ "$forceMode" ]; then
+      _remove "$target"
     
     # be sensible
     else
       # noop if it's the right symlink
-      if [ "$(readlink "$dst")" = "$src" ]; then
-        printf "${blue}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$dst"
+      if [ "$(readlink "$target")" = "$source" ]; then
+        printf "${blue}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$target"
 
       # otherwise get rid or skip
       else
-        printf "${blue}NOTICE:${reset} destination ${strong}'%s'${reset} already exists.\n" "$dst"
+        printf "${blue}NOTICE:${reset} destination ${strong}'%s'${reset} already exists.\n" "$target"
         printf "${yellow}What to do?${reset} backup ${green}(b)${reset}, remove ${red}(r)${reset} or ignore ${blue}(i)${reset} it?\n"
 
         while true; do
           read -r answer
           case ${answer:0:1} in
-            b|B) _backup "$dst" && break;;
-            r|R) _remove "$dst" && break;;
+            b|B) _backup "$target" && break;;
+            r|R) _remove "$target" && break;;
             i|I) break;;
               *) continue;;
           esac
@@ -114,11 +120,11 @@ _link() {
   fi
 
   # Ensure parent dirs exist at destination
-  mkdir -p "$dst_dir"
+  mkdir -p "$target_dir"
 
   # Link files
-  ln -s "$src" "$dst" &&
-  printf "${green}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$dst" "$src"
+  ln -s "$source" "$target" &&
+  printf "${green}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$target" "$source"
 }
 
 # Main
