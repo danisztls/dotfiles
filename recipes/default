@@ -1,49 +1,30 @@
 #!/bin/bash
 # Recipe for Dotfiles Setup.
 
-# X11
-_link	"x11/Xresources"                  ".Xresources"
+_link "shell/"                          ".config/shell"
+_link "shell/profile"                   ".profile"
 
-# Shell
-_link "shell"                           ".config/shell"
-_link	"shell/profile"                   ".profile"
+_link "zsh/zshrc"                       ".zshrc"
+_link "zsh/zsh/"                        ".config/zsh"
+_link "bash/bashrc"                     ".bashrc"
 
-# Zsh 
-_link	"zsh/zshrc"                       ".zshrc"
-_link "zsh/zsh"                         ".config/zsh"
+_link "x11/Xresources"                  ".Xresources"
+_link "desktop/mimeapps.list"           ".config/mimeapps.list"
+_link "templates/"                      ".templates"
 
-# Bash
-_link	"bash/bashrc"                     ".bashrc"
-
-# Starship
-_link	"starship/starship.toml"          ".config/starship.toml"
-
-# Tmux
-_link "tmux"                            ".config/tmux"
-
-# Alacritty
+_link "starship/starship.toml"          ".config/starship.toml"
 _link "alacritty/alacritty.yml"         ".config/alacritty.yml"
+_link "kitty/"                          ".config/kitty"
+_link "tmux/"                           ".config/tmux"
 
-# Kitty
-_link "kitty"                           ".config/kitty"
-
-# Vim
-_link "vim"                             ".config/vim"
-
-# Git
 _link "git/config"                      ".gitconfig"
 
-# Utils
-_link "templates"                       ".templates"
+_link "vim/"                            ".config/vim"
 
-# Rofi 
-_link "rofi"                            ".config/rofi"
+_link "rofi/"                           ".config/rofi"
 
-# Weechat
-_link "weechat"                         ".config/weechat"
+_link "weechat/"                        ".config/weechat"
 
-# Gaming
 _link "mangohud/MangoHud.conf"          ".config/MangoHud/MangoHud.conf"
 
-# Systemd
-_link "systemd/user"                    ".config/systemd/user"
+_link "systemd/user/"                   ".config/systemd/user"
