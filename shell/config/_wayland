@@ -1,9 +1,11 @@
 #!/bin/sh
-# Kitty
+
+# Use Wayland
+export QT_QPA_PLATFORM="wayland;xcb"
+export CLUTTER_BACKEND=wayland
+
+# Use X
+# export GDK_BACKEND=x11
+# export SDL_VIDEODRIVER=x11
 # export KITTY_DISABLE_WAYLAND=1
-
-# Alacritty
 # alias alacritty="WAYLAND_DISPLAY= alacritty"
-
-# Misc
-# export QT_QPA_PLATFORM=wayland  # why this is needed?
