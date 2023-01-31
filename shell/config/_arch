@@ -6,3 +6,4 @@ alias p='paru'
 
 # Make
 alias makeinfo="makepkg --printsrcinfo > .SRCINFO"
+alias makesums="makepkg --geninteg >> PKGBUILD"
