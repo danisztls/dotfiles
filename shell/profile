@@ -6,7 +6,7 @@ alias reload='source ~/.profile'
 # Preferred apps
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim -d"
-export VISUAL="alacritty -e 'nvim'" # alacritty latency ~0.5s, urxvt is faster
+export VISUAL="neovide"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export BROWSER="chromium"
 
