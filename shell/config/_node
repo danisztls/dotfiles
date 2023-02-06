@@ -8,3 +8,12 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 alias npmv="npm version --sign-git-tag"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+
+# force local npm (if it exists)
+_npm_user_bin="$XDG_DATA_HOME/npm/bin/npm"
+# shellcheck disable=SC2139
+[ -f "$_npm_user_bin" ] && alias npm="$_npm_user_bin"
+
+# force use of pnpm (faster + disk efficient)
+# alias npm="pnpm"
+# alias npx="pnpx"
