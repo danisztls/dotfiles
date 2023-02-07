@@ -28,14 +28,13 @@ _check() {
   # shellcheck disable=SC2015
   # NOTE: it may be necessary to run git diff first to ensure the index is up to date
   git diff --quiet; git diff-index --quiet HEAD -- || return 1
-
   return 0
 }
 
 # Pull changes
 _pull() {
   printf "${strong}Working on ${yellow}%s${reset}\n" "$repo"
-  git pull
+  git pull --all --ff-only
   printf "${strong}Done work on ${blue}%s${reset}\n\n" "$repo"
 }
 
