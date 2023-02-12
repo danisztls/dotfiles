@@ -2,3 +2,5 @@
 
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
+
+# TODO: This doesn't work out-of-the-box with systemd and require modifying user units
