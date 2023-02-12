@@ -1,7 +1,14 @@
 #!/bin/sh
 
-alias docker='sudo docker'
-alias docker-compose='sudo docker-compose'
+# Root
+# alias docker='sudo docker'
+# alias docker-compose='sudo docker-compose'
 
-alias d='sudo docker'
-alias d+='sudo docker-compose'
+# alias d='sudo docker'
+# alias d+='sudo docker-compose'
+
+# Rootless
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+alias d='docker'
+alias d+='docker-compose'
