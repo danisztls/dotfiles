@@ -2,28 +2,30 @@
 # Autostart
 # Things bellow will run at startup
 
-# Link cache files to /run/user/<user_id>
-tmp_dir=/run/user/$(id -u) 
+# Link cache files to $XDG_RUNTIME_DIR
+
+# TODO: Abstract into a single function
+# TODO: Extend to find Chromium "Cache" dirs "anywhere" (at least on Ferdium partitions)
 
 cache_dirs=("chromium" "mesa_shader_cache" "mozilla" "thunderbird")
 for dir in "${cache_dirs[@]}"; do
-	  mkdir -p "$tmp_dir/cache/$dir" &&
+	  mkdir -p "$XDG_RUNTIME_DIR/cache/$dir" &&
     rm -rf "${XDG_CACHE_HOME:?}/$dir" &&
-    ln -s "$tmp_dir/cache/$dir" "${XDG_CACHE_HOME:?}/$dir"
+    ln -s "$XDG_RUNTIME_DIR/cache/$dir" "${XDG_CACHE_HOME:?}/$dir"
 done &
 
 config_dirs=("Code - OSS/Cache" "Code - OSS/CachedData" "Code - OSS/CachedExtensions" "Code - OSS/Code Cache" "Code - OSS/GPUCache" "Electron" "variety/wallpaper")
 for dir in "${config_dirs[@]}"; do
-	  mkdir -p "$tmp_dir/config/$dir" &&
+	  mkdir -p "$XDG_RUNTIME_DIR/config/$dir" &&
     rm -rf "${XDG_CONFIG_HOME:?}/$dir" &&
-    ln -s "$tmp_dir/config/$dir" "${XDG_CONFIG_HOME:?}/$dir"
+    ln -s "$XDG_RUNTIME_DIR/config/$dir" "${XDG_CONFIG_HOME:?}/$dir"
 done &
 
 config_files=("variety/history.txt" "variety/variety.log" "variety/.last_change_time")
 for file in "${config_files[@]}"; do
 	  rm -f "${XDG_CONFIG_HOME:?}/$file" &&
-    ln -s "$tmp_dir/config/$file" "${XDG_CONFIG_HOME:?}/$file"
+    ln -s "$XDG_RUNTIME_DIR/config/$file" "${XDG_CONFIG_HOME:?}/$file"
 done &
 
 # Delete from trash files older than 7 days
-# trash-empty 7 &
+trash-empty 7 &
