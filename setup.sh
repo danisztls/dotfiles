@@ -119,18 +119,17 @@ _link() {
         while true; do
           read -r answer
           case ${answer:0:1} in
-            b|B) _backup "$target" && break;;
-            r|R) _remove "$target" && break;;
-            # FIXME: Return not working as expected, _symlink still is invoked
-            i|I) return;;
+            b|B) _backup "$target" && _symlink;;
+            r|R) _remove "$target" && _symlink;;
+            i|I) break;;
               *) continue;;
           esac
         done
       fi
     fi
+  else
+    _symlink
   fi
-
-  _symlink 
 }
 
 # Main
