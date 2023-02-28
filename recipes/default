@@ -5,7 +5,6 @@ _link "shell/"                          ".config/shell"
 _link "shell/profile"                   ".profile"
 
 _link "zsh/zshrc"                       ".zshrc"
-_link "zsh/zsh/"                        ".config/zsh"
 _link "bash/bashrc"                     ".bashrc"
 
 _link "x11/Xresources"                  ".Xresources"
