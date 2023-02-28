@@ -104,6 +104,7 @@ image/x-xwindowdump=gimp.desktop;
 text/markdown=neovide.desktop;org.lite_xl.lite_xl.desktop;
 text/plain=neovide.desktop;
 video/webm=vlc.desktop;mpv.desktop;
+application/vnd.comicbook-rar=calibre-ebook-viewer.desktop;
 
 [Default Applications]
 application/epub+zip=calibre-ebook-viewer.desktop
@@ -266,5 +267,6 @@ x-scheme-handler/magnet=userapp-transmission-gtk-EHU7W0.desktop
 x-scheme-handler/mailto=ferdium.desktop
 x-scheme-handler/unknown=chromium.desktop
 x-scheme-handler/webcal=chromium.desktop
+application/vnd.comicbook-rar=calibre-ebook-viewer.desktop
 
 [Removed Associations]
