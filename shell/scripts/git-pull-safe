@@ -25,6 +25,8 @@ _check() {
     return 1
   fi
 
+  # TODO: check if branch is main/master otherwise only fetch
+
   # check if repo is in a dirty state
   # shellcheck disable=SC2015
   # NOTE: it may be necessary to run git diff first to ensure the index is up to date

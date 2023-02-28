@@ -8,7 +8,18 @@ if [ -d "$1" ]; then
   cd "$1" || exit
 fi
 
-mapfile -t repos < <(fd -t d -uuu '\.git$')
+mapfile -t repos < <(\
+                     fd -t d --unrestricted '\.git$' \
+                     --exclude "**/vim/plugged/" \
+                     --exclude "**/zinit/plugins/" \
+                     --exclude "**/Trash/" \
+                     --exclude ".cache" \
+                     --exclude ".emacs.d/" \
+                     --exclude ".config/emacs/" \
+                     --exclude ".local/share/cargo/" \
+                     --exclude ".local/share/docker/" \
+                     --exclude ".local/share/go/" \
+                    )
 
 for repo in "${repos[@]}"; do
   # trim .git/
