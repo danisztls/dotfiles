@@ -18,6 +18,7 @@ fi
 path="$(pwd)"
 repo="${path##/*/}"
 
+# TODO: Is this working?
 # Check if repo has a remote
 _check() {
   if [ "$(git remote | wc -l)" == 0 ]; then
@@ -31,6 +32,7 @@ _check() {
   return 0
 }
 
+# TODO: Don't fetch all in shallow repos
 # Pull changes
 _pull() {
   printf "${strong}Working on ${yellow}%s${reset}\n" "$repo"

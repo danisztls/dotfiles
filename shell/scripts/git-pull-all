@@ -14,8 +14,13 @@ for repo in "${repos[@]}"; do
   # trim .git/
   path="${repo%.git/}"
 
-  # run in parallel (semaphore)
-  sem -j+0 git-pull-safe "$path"
+  # run one by one
+  # sem -j+0 git-pull-safe "$path"
+
+  # run in parallel
+  sem -j 4 git-pull-safe "$path"
+
+  # NOTE: GitHub limit is 4 simultaneous connections
 done
 
 # wait for tasks to finish
