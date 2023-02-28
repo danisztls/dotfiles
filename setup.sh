@@ -119,8 +119,8 @@ _link() {
         while true; do
           read -r answer
           case ${answer:0:1} in
-            b|B) _backup "$target" && _symlink;;
-            r|R) _remove "$target" && _symlink;;
+            b|B) _backup "$target" && _symlink && break;;
+            r|R) _remove "$target" && _symlink && break;;
             i|I) break;;
               *) continue;;
           esac
