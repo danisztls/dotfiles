@@ -21,9 +21,9 @@ These are some of the configurations and scripts that I use to make my life in L
 - terminal emulator: [alacritty](https://alacritty.org/)
 - desktop environment: [gnome-shell](https://wiki.gnome.org/Projects/GnomeShell)
 - text editor: [nvim](https://neovim.io/)
-- backup: [arbie](https://github.com/lbcnz/arbie)
-- file browser: [fzfx](https://github.com/lbcnz/fzfx)
-- notes & tasks: [journal](https://github.com/lbcnz/journal)
+- backup: [arbie](https://github.com/danisztls/arbie)
+- file browser: [fzfx](https://github.com/danisztls/fzfx)
+- notes & tasks: [journal](https://github.com/danisztls/journal)
 - time logger: [timewarrior](https://timewarrior.net/)
 
 ## FAQ
@@ -58,7 +58,7 @@ Check:
 - [papirus-icon-theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 - [capitaine-cursors](https://github.com/keeferrourke/capitaine-cursors)
 
-![Desktop in 2021](https://github.com/lbcnz/dotfiles/raw/main/assets/21-desktop.png)
+![Desktop in 2021](https://github.com/danisztls/dotfiles/raw/main/assets/21-desktop.png)
 
 ### Is it worth the time?
 Sometimes but not always. Those hacks save time put also took me a lot of time to discover, create, test and improve.
