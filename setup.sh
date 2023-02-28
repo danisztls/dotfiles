@@ -42,16 +42,19 @@ blue="\e[1;34m"
 green="\e[1;32m"
 
 # Lib
+_check_path() {
+  if [ -e "$1" ]; then
+    printf "${red}ERROR:${reset} ${strong}'%s'${reset} already exists.\n" "$1"
+    return 1
+  else
+    return 0
+  fi
+}
+
 _backup() {
   local _source="$1"
   local _target="$_source.bak"
-
-  if ! [ -e "$_target" ]; then
-    mv "$_source" "$_target"
-  else
-    printf "${red}ERROR:${reset} ${strong}'%s'${reset} already exists.\n" "$_target"
-    return 1
-  fi
+  _check_path "$_target" && mv "$_source" "$_target"
 }
 
 _remove() {
@@ -70,10 +73,17 @@ _trash() {
   fi
 }
 
-_link() {
-  # Symbolic links using absolute paths
-  # NOTE: Conf will break if source is renamed.
+_symlink() {
+  # Ensure parent dirs exist at destination
+  mkdir -p "$target_dir"
 
+  # Symbolic link files
+  # NOTE: Uses absolute path. Config will break if source is renamed.
+  _check_path "$target" && ln -s "$source" "$target" &&
+  printf "${green}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$target" "$source"
+}
+
+_link() {
   # Return error if expected argument is missing
   if [ "$#" -lt 2 ]; then
     printf "${red}ERROR:${reset} %s\n" "Missing arguments."
@@ -111,7 +121,8 @@ _link() {
           case ${answer:0:1} in
             b|B) _backup "$target" && break;;
             r|R) _remove "$target" && break;;
-            i|I) break;;
+            # FIXME: Return not working as expected, _symlink still is invoked
+            i|I) return;;
               *) continue;;
           esac
         done
@@ -119,12 +130,7 @@ _link() {
     fi
   fi
 
-  # Ensure parent dirs exist at destination
-  mkdir -p "$target_dir"
-
-  # Link files
-  ln -s "$source" "$target" &&
-  printf "${green}SUCCESS:${reset} linked ${strong}'%s'${reset} to ${strong}'%s'${reset}.\n" "$target" "$source"
+  _symlink 
 }
 
 # Main
