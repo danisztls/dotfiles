@@ -11,7 +11,7 @@ _link "x11/Xresources"                  ".Xresources"
 _link "desktop/mimeapps.list"           ".config/mimeapps.list"
 _link "desktop/chromium-flags.conf"     ".config/chromium-flags.conf"
 _link "desktop/electron-flags.conf"     ".config/electron-flags.conf"
-_link "templates/"                      ".templates"
+_link "desktop/user-dirs.dirs"          ".config/user-dirs.dirs"
 
 _link "starship/starship.toml"          ".config/starship.toml"
 _link "alacritty/alacritty.yml"         ".config/alacritty.yml"
@@ -20,6 +20,8 @@ _link "kitty/"                          ".config/kitty"
 _link "tmux/"                           ".config/tmux"
 
 _link "git/config"                      ".gitconfig"
+
+_link "templates/"                      ".templates"
 
 _link "vim/"                            ".config/vim"
 
