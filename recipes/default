@@ -15,6 +15,7 @@ _link "templates/"                      ".templates"
 
 _link "starship/starship.toml"          ".config/starship.toml"
 _link "alacritty/alacritty.yml"         ".config/alacritty.yml"
+_link "wezterm"                         ".config/wezterm"
 _link "kitty/"                          ".config/kitty"
 _link "tmux/"                           ".config/tmux"
 
