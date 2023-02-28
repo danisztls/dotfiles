@@ -108,7 +108,7 @@ _link() {
     # be sensible
     else
       # noop if it's the right symlink
-      if [ "$(readlink "$target")" = "$source" ]; then
+      if [ "$(readlink "${target%/}")" = "${source%/}" ]; then
         printf "${blue}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$target"
 
       # otherwise get rid or skip
