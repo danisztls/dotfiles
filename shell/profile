@@ -6,7 +6,7 @@ alias reload='source ~/.profile'
 # Preferred apps
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim -d"
-export VISUAL="neovide"
+export VISUAL="$TERM -e $EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export BROWSER="chromium"
 
