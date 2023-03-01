@@ -42,12 +42,26 @@ blue="\e[1;34m"
 green="\e[1;32m"
 
 # Lib
+# Check if a file exists at path, returns an error if so
 _check_path() {
   if [ -e "$1" ]; then
     printf "${red}ERROR:${reset} ${strong}'%s'${reset} already exists.\n" "$1"
     return 1
   else
     return 0
+  fi
+}
+
+# Check if target symlinks to source, returns an error if not
+_check_link() {
+  local _source _target
+  _source="$1"
+  _target="$(readlink "$2")"
+
+  if [ "${_target%/}" = "${_source%/}" ]; then
+    return 0
+  else
+    return 1
   fi
 }
 
@@ -108,7 +122,7 @@ _link() {
     # be sensible
     else
       # noop if it's the right symlink
-      if [ "$(readlink "${target%/}")" = "${source%/}" ]; then
+      if _check_link "$source" "$target"; then
         printf "${blue}NOTICE:${reset} ${strong}'%s'${reset} is already correctly linked.\n" "$target"
 
       # otherwise get rid or skip
