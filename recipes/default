@@ -21,6 +21,8 @@ _link "config/weechat/"                 ".config/weechat"
 _link "config/mangohud/MangoHud.conf"   ".config/MangoHud/MangoHud.conf"
 _link "config/chromium/flags.conf"      ".config/chromium-flags.conf"
 _link "config/chromium/flags.conf"      ".config/electron-flags.conf"
+_link "config/ignore/fd"                ".fdignore"
+_link "config/ignore/rg"                ".rgignore"
 
 _link "systemd/user/"                   ".config/systemd/user"
 
