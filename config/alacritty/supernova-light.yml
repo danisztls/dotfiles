@@ -1,0 +1,13 @@
+---
+window:
+  opacity: 1
+  theme_variant: light
+
+colors:
+  primary:
+    foreground: '#242e33'
+    background: '#eceff1'
+
+  cursor:
+    text:   '#242e33'
+    cursor: '#c9d1d7'

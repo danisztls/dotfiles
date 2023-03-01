@@ -4,11 +4,7 @@ window:
     columns: 120
     lines: 50
 
-  opacity: 0.98
-
   decorations: full
-  theme_variant: dark
-
 
 font:
   normal:
@@ -21,33 +17,9 @@ font:
     x: 0
     y: 0
 
-colors:
-  primary:
-    background: '#242e33'
-    foreground: '#eceff1'
-
-  cursor:
-    text:   '#eceff1'
-    cursor: '#c9d1d7'
-
-  normal:
-    black:   '#636c77'
-    red:     '#ff1447'
-    green:   '#4e9c00'
-    yellow:  '#ba9c00'
-    blue:    '#009bba'
-    magenta: '#a42eff'
-    cyan:    '#0ba394'
-    white:   '#c9d1d7'
-
-  bright:
-    black:   '#6c7986'
-    red:     '#db0025'
-    green:   '#308000'
-    yellow:  '#cc6800'
-    blue:    '#007ea8'
-    magenta: '#c557ff'
-    cyan:    '#008276'
-    white:   '#ffffff'
-
 dynamic_title: true
+
+import:
+  - ~/.config/alacritty/supernova.yml
+  # - ~/.config/alacritty/supernova-dark.yml
+  - ~/.config/alacritty/supernova-light.yml

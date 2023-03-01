@@ -142,7 +142,8 @@ set wrap linebreak
 " Colors
 " https://github.com/RRethy/vim-hexokinase/issues/10 
 set termguicolors
-set background=dark
+" set background=dark
+set background=light
 
 " set Vim-specific sequences for RGB colors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -150,32 +151,32 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " papercolor
 " https://github.com/NLKNguyen/papercolor-theme/blob/master/colors/PaperColor.vim#L126
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1,
-  \       'override' : {
-  \         'color00' : ['#1d2529', ''],
-  \         'color01' : ['#12171a', ''],
-  \         'color02' : ['#ff66c2', ''],
-  \         'color03' : ['#d9b600', ''],
-  \         'color04' : ['#6bac00', ''],
-  \         'color05' : ['#999999', ''],
-  \         'color06' : ['#d40059', ''],
-  \         'color07' : ['#dddddd', ''],
-  \         'color08' : ['#00a8e0', ''],
-  \         'color09' : ['#ff5c00', ''],
-  \         'color10' : ['#379000', ''],
-  \         'color11' : ['#00af9e', ''],
-  \         'color12' : ['#b37eff', ''],
-  \         'color13' : ['#009385', ''],
-  \         'color14' : ['#0087e9', ''],
-  \         'color15' : ['#cf2424', ''],
-  \         'cursorlinenr_bg' : ['#3a3a3a', ''],
-  \       }
-  \     }
-  \   }
-  \ }
+" let g:PaperColor_Theme_Options = {
+"   \   'theme': {
+"   \     'default': {
+"   \       'transparent_background': 1,
+"   \       'override' : {
+"   \         'color00' : ['#1d2529', ''],
+"   \         'color01' : ['#12171a', ''],
+"   \         'color02' : ['#ff66c2', ''],
+"   \         'color03' : ['#d9b600', ''],
+"   \         'color04' : ['#6bac00', ''],
+"   \         'color05' : ['#999999', ''],
+"   \         'color06' : ['#d40059', ''],
+"   \         'color07' : ['#dddddd', ''],
+"   \         'color08' : ['#00a8e0', ''],
+"   \         'color09' : ['#ff5c00', ''],
+"   \         'color10' : ['#379000', ''],
+"   \         'color11' : ['#00af9e', ''],
+"   \         'color12' : ['#b37eff', ''],
+"   \         'color13' : ['#009385', ''],
+"   \         'color14' : ['#0087e9', ''],
+"   \         'color15' : ['#cf2424', ''],
+"   \         'cursorlinenr_bg' : ['#3a3a3a', ''],
+"   \       }
+"   \     }
+"   \   }
+"   \ }
 
   " \         'cursor_fg' : ['#242e33', ''],
   " \         'cursor_bg' : ['#eceff1', ''],
