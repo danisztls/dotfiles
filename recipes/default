@@ -19,13 +19,13 @@ _link "config/vim/"                     ".config/vim"
 _link "config/rofi/"                    ".config/rofi"
 _link "config/weechat/"                 ".config/weechat"
 _link "config/mangohud/MangoHud.conf"   ".config/MangoHud/MangoHud.conf"
+_link "config/chromium/flags.conf"      ".config/chromium-flags.conf"
+_link "config/chromium/flags.conf"      ".config/electron-flags.conf"
 
 _link "systemd/user/"                   ".config/systemd/user"
 
 _link "desktop/Xresources"              ".Xresources"
 _link "desktop/mimeapps.list"           ".config/mimeapps.list"
-_link "desktop/chromium-flags.conf"     ".config/chromium-flags.conf"
-_link "desktop/electron-flags.conf"     ".config/electron-flags.conf"
 _link "desktop/user-dirs.dirs"          ".config/user-dirs.dirs"
 
 _link "templates/"                      ".templates"
