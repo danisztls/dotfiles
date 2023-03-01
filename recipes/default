@@ -1,5 +1,8 @@
 #!/bin/bash
-# Recipe for Dotfiles Setup.
+# Recipe for Dotfiles Setup
+
+# Conventions:
+# Put a '/' at the end of dir paths to signal it's type.
 
 _link "shell/"                          ".config/shell"
 _link "shell/profile"                   ".profile"
@@ -15,13 +18,15 @@ _link "desktop/user-dirs.dirs"          ".config/user-dirs.dirs"
 
 _link "starship/starship.toml"          ".config/starship.toml"
 _link "alacritty/alacritty.yml"         ".config/alacritty.yml"
-_link "wezterm"                         ".config/wezterm"
+_link "wezterm/"                        ".config/wezterm"
 _link "kitty/"                          ".config/kitty"
 _link "tmux/"                           ".config/tmux"
 
 _link "git/config"                      ".gitconfig"
 
 _link "templates/"                      ".templates"
+
+_link "systemd/user/"                   ".config/systemd/user"
 
 _link "vim/"                            ".config/vim"
 
@@ -30,5 +35,3 @@ _link "rofi/"                           ".config/rofi"
 _link "weechat/"                        ".config/weechat"
 
 _link "mangohud/MangoHud.conf"          ".config/MangoHud/MangoHud.conf"
-
-_link "systemd/user/"                   ".config/systemd/user"
