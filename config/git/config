@@ -1,16 +1,5 @@
-# [core]
-# pager = delta --diff-so-fancy --dark 
-
 [diff]
 colorMoved = default
-
-# [delta]
-# features = navigate side-by-side line-numbers
-# line-numbers-left-format = "{nm:^4}│ "
-# line-numbers-right-format = "│ "
-
-# [interactive]
-# diffFilter = delta --color-only
 
 [alias]
 # upper and lower case just for contrast as git treat them equally
@@ -65,7 +54,7 @@ process = git-lfs filter-process
 required = true
 
 [user]
-signingkey = F3BA377BDF055814B7A521FC0E4A21C049A48DAF 
+signingkey = F3BA377BDF055814B7A521FC0E4A21C049A48DAF
 name = Daniel Souza
 email = me@posix.dev.br
 
@@ -81,3 +70,6 @@ insteadOf = https://gitlab.com
 
 [url "ssh://git@bitbucket.org"]
 insteadOf = https://bitbucket.org
+
+[url "ssh://git@codeber.org"]
+insteadOf = https://codeberg.org
