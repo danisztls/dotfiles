@@ -62,20 +62,21 @@ alias cat='bat'
 alias ps='grc ps'
 alias ip='ip -c'
 
-# Autostart
-# lock file ensure it's run only once per session 
-autostart_lock=/run/user/$(id -u)/autostart.lock
-if [ -f "$XDG_CONFIG_HOME/shell/autostart" ] && ! [ -f "$autostart_lock" ]; then
-    "$XDG_CONFIG_HOME/shell/autostart"
-    touch "$autostart_lock"
-fi
-
 # Source config partials
 for partial in "$XDG_CONFIG_HOME/shell/config/"*; do
   # shellcheck source=/dev/null
   . "$partial"
 done
 
-# Private config 
+# Source private config 
 # shellcheck source=/dev/null
 [ -f "$XDG_CONFIG_HOME/shell/private/profile" ] && . "$XDG_CONFIG_HOME/shell/private/profile" 
+
+# Autostart
+# lock file to ensure it's run only once per session 
+autostart_lock=/run/user/$(id -u)/autostart.lock
+if [ -f "$XDG_CONFIG_HOME/shell/autostart" ] && ! [ -f "$autostart_lock" ]; then
+    "$XDG_CONFIG_HOME/shell/autostart"
+    touch "$autostart_lock"
+fi
+
