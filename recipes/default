@@ -7,31 +7,26 @@
 _link "shell/"                          ".config/shell"
 _link "shell/profile"                   ".profile"
 
-_link "zsh/zshrc"                       ".zshrc"
-_link "bash/bashrc"                     ".bashrc"
+_link "config/zsh/zshrc"                ".zshrc"
+_link "config/bash/bashrc"              ".bashrc"
+_link "config/starship/starship.toml"   ".config/starship.toml"
+_link "config/alacritty/alacritty.yml"  ".config/alacritty.yml"
+_link "config/wezterm/"                 ".config/wezterm"
+_link "config/kitty/"                   ".config/kitty"
+_link "config/tmux/"                    ".config/tmux"
+_link "config/git/config"               ".gitconfig"
+_link "config/vim/"                     ".config/vim"
+_link "config/rofi/"                    ".config/rofi"
+_link "config/weechat/"                 ".config/weechat"
+_link "config/mangohud/MangoHud.conf"   ".config/MangoHud/MangoHud.conf"
 
-_link "x11/Xresources"                  ".Xresources"
+_link "systemd/user/"                   ".config/systemd/user"
+
+_link "desktop/Xresources"              ".Xresources"
 _link "desktop/mimeapps.list"           ".config/mimeapps.list"
 _link "desktop/chromium-flags.conf"     ".config/chromium-flags.conf"
 _link "desktop/electron-flags.conf"     ".config/electron-flags.conf"
 _link "desktop/user-dirs.dirs"          ".config/user-dirs.dirs"
 
-_link "starship/starship.toml"          ".config/starship.toml"
-_link "alacritty/alacritty.yml"         ".config/alacritty.yml"
-_link "wezterm/"                        ".config/wezterm"
-_link "kitty/"                          ".config/kitty"
-_link "tmux/"                           ".config/tmux"
-
-_link "git/config"                      ".gitconfig"
-
 _link "templates/"                      ".templates"
 
-_link "systemd/user/"                   ".config/systemd/user"
-
-_link "vim/"                            ".config/vim"
-
-_link "rofi/"                           ".config/rofi"
-
-_link "weechat/"                        ".config/weechat"
-
-_link "mangohud/MangoHud.conf"          ".config/MangoHud/MangoHud.conf"

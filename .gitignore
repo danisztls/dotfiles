@@ -3,5 +3,5 @@ DEV.md
 */private/
 
 # Artifacts
-vim/plugged/**
-vim/.netrwhist
+**/vim/plugged/
+**/vim/.netrwhist

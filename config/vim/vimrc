@@ -218,7 +218,7 @@ let g:ale_lint_on_enter = 1 " when opening a file
 "" set linters
 let g:ale_linters = {
 \   'html': ['prettier'],
-\   'javascript': ['eslint', 'prettier'] 
+\   'javascript': ['prettier', 'eslint'] 
 \}
 
 "" disable linters
@@ -269,18 +269,6 @@ let g:git_messenger_always_into_popup=v:true
 " hexokinase
 let g:Hexokinase_highlighters = ['virtual']
 "let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
-
-" Neovide
-if exists("g:neovide")
-  " NOTE: Font weight is bugged and display as bold on dark bg
-  set guifont=Hack\ Nerd\ Font:h12:#e-subpixelantialias:h-full"
-  highlight Normal guibg=#242e33 guifg=#eceff1
-  let g:neovide_transparency = 0.98
-  " NOTE: Background color doesn't work
-  " let g:neovide_background_color = '#242e33'
-  let g:neovide_cursor_vfx_mode = "ripple"
-  let g:neovide_refresh_rate = 144
-endif
 
 " WEB
 "autocmd FileType html css

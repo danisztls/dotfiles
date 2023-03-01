@@ -1,16 +1,16 @@
-[core]
-pager = delta --diff-so-fancy --dark 
+# [core]
+# pager = delta --diff-so-fancy --dark 
 
 [diff]
 colorMoved = default
 
-[delta]
-features = navigate side-by-side line-numbers
-line-numbers-left-format = "{nm:^4}│ "
-line-numbers-right-format = "│ "
+# [delta]
+# features = navigate side-by-side line-numbers
+# line-numbers-left-format = "{nm:^4}│ "
+# line-numbers-right-format = "│ "
 
-[interactive]
-diffFilter = delta --color-only
+# [interactive]
+# diffFilter = delta --color-only
 
 [alias]
 # upper and lower case just for contrast as git treat them equally
