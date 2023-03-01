@@ -19,7 +19,6 @@ zinit wait lucid depth=1 for \
     atinit="zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
     atload="_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
     is-snippet "/usr/share/fzf/key-bindings.zsh" \
-    as="program" pick="$ZPFX/bin/git-*" src="etc/git-extras-completion.zsh" make="PREFIX=$ZPFX" tj/git-extras \
     from="gh-r" as="program" pick="$ZPFX/bin/sysz" joehillen/sysz \
     Aloxaf/fzf-tab \
     wfxr/forgit \
