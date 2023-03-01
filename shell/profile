@@ -42,7 +42,7 @@ export SAVEHIST=50000
 # Path
 export PATH="/bin:/usr/bin/:/usr/local/bin"
 export PATH="$PATH:$XDG_BIN_HOME"
-export PATH="$PATH:$XDG_CONFIG_HOME/shell/scripts"
+export PATH="$PATH:$XDG_CONFIG_HOME/shell/bin"
 
 # Colorized output and alternatives
 # check: https://wiki.archlinux.org/index.php/Color_output_in_console 
