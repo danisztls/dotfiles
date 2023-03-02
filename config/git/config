@@ -1,45 +1,44 @@
-[diff]
-colorMoved = default
-
 [alias]
-# upper and lower case just for contrast as git treat them equally
-# lower case is mode and upper are options 
 a     =  add
-aA    =  add --all
+aa    =  add --all
 b     =  branch
-bD    =  branch --delete
-bF    =  branch --delete --force
+bd    =  branch --delete
+bf    =  branch --delete --force
 c     =  commit
-cA    =  commit --amend
+ca    =  commit --amend
 co    =  checkout
 cp    =  cherry-pick
 d     =  diff
-dS    =  diff --staged
+ds    =  diff --staged
 f     =  fetch
-fA    =  fetch --all
+fa    =  fetch --all
 l     =  log
-lO    =  log --pretty=oneline
-lD    =  log --decorate --graph
+lo    =  log --pretty=oneline
+ld    =  log --decorate --graph
 m     =  merge
-mA    =  merge --abort
-mC    =  merge --continue
-mT    =  mergetool --prompt
+ma    =  merge --abort
+mc    =  merge --continue
+mt    =  mergetool --prompt
 pl    =  pull
 ps    =  push
-psF   =  push --force-with-lease
+psf   =  push --force-with-lease
 rv    =  review
 rs    =  reset
 rb    =  rebase
-rbA   =  rebase --abort
-rbC   =  rebase --continue
-rbI   =  rebase -i
+rba   =  rebase --abort
+rbc   =  rebase --continue
+rbi   =  rebase -i
 rmc   =  rm --cached
 rf    =  reflog
 s     =  status
 ss    =  show
 sl    =  shortlog
 t     =  tag
-tS    =  tag -s
+ts    =  tag -s
+# note: git is case insensitive
+
+[diff]
+colorMoved = default
 
 [merge]
 tool = nvimdiff
@@ -64,12 +63,51 @@ gpgsign = true
 # force SSH
 [url "ssh://git@github.com"]
 insteadOf = https://github.com
-
 [url "ssh://git@gitlab.com"]
 insteadOf = https://gitlab.com
-
 [url "ssh://git@bitbucket.org"]
 insteadOf = https://bitbucket.org
-
 [url "ssh://git@codeber.org"]
 insteadOf = https://codeberg.org
+
+# dracula theme
+[color]
+  ui = auto
+[color "branch"]
+  current = cyan bold reverse
+  local = white
+  plain =
+  remote = cyan
+[color "diff"]
+  commit =
+  func = cyan
+  plain =
+  whitespace = magenta reverse
+  meta = white
+  frag = cyan bold reverse
+  old = red
+  new = green
+[color "grep"]
+  context =
+  filename =
+  function =
+  linenumber = white
+  match =
+  selected =
+  separator =
+[color "interactive"]
+  error =
+  header =
+  help =
+  prompt =
+[color "status"]
+  added = green
+  changed = yellow
+  header =
+  localBranch =
+  nobranch =
+  remoteBranch = cyan bold
+  unmerged = magenta bold reverse
+  untracked = red
+  updated = green bold
+

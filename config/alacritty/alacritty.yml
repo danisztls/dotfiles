@@ -20,6 +20,7 @@ font:
 dynamic_title: true
 
 import:
-  - ~/.config/alacritty/supernova.yml
-  - ~/.config/alacritty/supernova-dark.yml
+  # - ~/.config/alacritty/supernova.yml
+  # - ~/.config/alacritty/supernova-dark.yml
   # - ~/.config/alacritty/supernova-light.yml
+  - ~/.config/alacritty/dracula.yml

@@ -4,9 +4,11 @@ command_timeout = 150
 
 [character]
 success_symbol = "[❯](bold blue)"
+error_symbol = "[X](bold red)"
 
 [aws]
 symbol = "  "
+style = "bold #ffb86c" # dt
 
 [buf]
 symbol = " "
@@ -22,6 +24,7 @@ symbol = " "
 
 [directory]
 read_only = " "
+style = "bold #50fa7b"
 
 [docker_context]
 symbol = " "
@@ -34,6 +37,7 @@ symbol = " "
 
 [git_branch]
 symbol = " "
+style = "bold #ff79c6"
 
 # [git_metrics]
 # disabled = false
@@ -50,6 +54,7 @@ modified = "[ ${count} ](green)"
 renamed = "[ ${count} ](blue)"
 deleted = "[ ${count} ](red)"
 format = "$all_status$ahead_behind"
+style = "bold #ff5555"
 
 [golang]
 symbol = " "
@@ -89,3 +94,13 @@ symbol = " "
 
 [spack]
 symbol = "🅢 "
+
+[cmd_duration]
+style = "bold #f1fa8c"
+
+[hostname]
+style = "bold #bd93f9"
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold #8be9fd"
