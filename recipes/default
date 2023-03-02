@@ -29,6 +29,6 @@ _link "systemd/user/"                   ".config/systemd/user"
 _link "desktop/Xresources"              ".Xresources"
 _link "desktop/mimeapps.list"           ".config/mimeapps.list"
 _link "desktop/user-dirs.dirs"          ".config/user-dirs.dirs"
+_link "desktop/gnome/extensions/"       ".local/share/gnome-shell/extensions"
 
 _link "templates/"                      ".templates"
-
