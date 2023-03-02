@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 # Recipe for Dotfiles Setup
 
 # Conventions:
 # Put a '/' at the end of dir paths to signal it's type.
+
+# TODO: I might want to use this on other repos. Thus it begs the question, should I use another tool for this like stow or ansible or move this to it's own repo and support it?
 
 _link "shell/"                          ".config/shell"
 _link "shell/profile"                   ".profile"
@@ -31,4 +33,3 @@ _link "desktop/mimeapps.list"           ".config/mimeapps.list"
 _link "desktop/user-dirs.dirs"          ".config/user-dirs.dirs"
 
 _link "templates/"                      ".templates"
-

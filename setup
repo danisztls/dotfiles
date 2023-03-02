@@ -24,14 +24,14 @@ _getOpts() {
 _getOpts "${@:2}"  # 2nd to nth
 
 # Get recipe
+_project_root="$(git rev-parse --show-toplevel)"
+
+# if no recipe is inputted
 if ! [ "$1" ] || [ "${1:0:1}" == "-" ]; then
-  recipe=default
+  recipe="$_project_root/recipe"
 else
   recipe="$1"
 fi
-
-# Fix recipe path
-recipe="$(git rev-parse --show-toplevel)/recipes/${recipe}"
 
 # ANSI escape codes
 reset="\e[0m"
