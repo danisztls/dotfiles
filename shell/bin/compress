@@ -1,35 +1,35 @@
-#!/bin/bash
+#!/bin/sh
 # Compress files
-
-if [ $# -lt 1 ] || [ $# -gt 2 ] ; then
-    echo "ERROR: invalid number of arguments, it should be 1 or 2"
-    exit 1
-fi
-
-if [ $# -eq 1 ]; then
-# I am feeling lucky mode
-# zst is best compression
 # usage: compress <path>
-    inPath="$1" # input path
-    [ -e "$inPath" ] || exit 1 # fail with file or dir does not exist
-    outName="${inPath%.*.*}" # remove extension if any
-    outName="${outName%[/]}" # remove trailing slash if any
-    tar -cf - "$1" | zstd > "$outName.tar.zst"        
 
-else
-# Normal mode
-# note: bzip, gzip only compress files and write in place
-# and so weren't included
-# usage: compress <file> <path>
-    # fail if file exists
-    outFile="$1" && [ -f "$outFile" ] && exit 1
-    # fail if path is not a dir or file
-    inPath="$2" && [ -e "$inPath" ] || exit 1
-    case "$outFile" in
-      *.tar)    tar -cf  "$outFile" "$inPath";;
-      *.tar.*)  tar -caf "$outFile" "$inPath";;
-      *.zip)    zip      "$outFile" "$inPath";;
-      *.7z)     7z a     "$outFile" "$inPath";;
-      *) echo "'${outFile#*.}' not supported by compress";;
-    esac
-fi
+# TODO: Implement verbosity
+
+[ "$1" ] || exit 1
+
+_compress() {
+  _name="${1%.*.*}" # remove extension if any
+  _name="${_name%[/]}" # remove trailing slash if any
+  tar -cf - "$1" | zstd > "${_name}.tar.zst"        
+}
+
+for _file in "$@"; do
+  [ -e "$_file" ] || exit 1
+  _compress "$_file"
+done
+
+# TODO: Implement method to choose destination and format.
+# 
+# note: bzip, gzip only compress files and write in place and so weren't included
+#
+# # fail if file exists
+# outFile="$1" && [ -f "$outFile" ] && exit 1
+
+# # fail if path is not a dir or file
+# inPath="$2" && [ -e "$inPath" ] || exit 1
+# case "$outFile" in
+#   *.tar)    tar -cf  "$outFile" "$inPath";;
+#   *.tar.*)  tar -caf "$outFile" "$inPath";;
+#   *.zip)    zip      "$outFile" "$inPath";;
+#   *.7z)     7z a     "$outFile" "$inPath";;
+#   *) echo "'${outFile#*.}' not supported by compress";;
+# esac
