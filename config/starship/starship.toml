@@ -105,7 +105,7 @@ style = "bold #bd93f9"
 format = "[$user]($style) on "
 style_user = "bold #8be9fd"
 
-[custom.timetrace]
-command = """ timetrace status --format "Current project: {project} - Worked today: {trackedTimeToday}" """
-when = "timetrace status"
-shell = "sh"
+# [custom.timetrace]
+# command = """ timetrace status --format "Current project: {project} - Worked today: {trackedTimeToday}" """
+# when = "timetrace status"
+# shell = "sh"

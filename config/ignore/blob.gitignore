@@ -1,0 +1,71 @@
+# Ignore BLOBs 
+#
+# Supposedly Git would use shell glob for patterns without slash
+# And use fnmatch for patterns with slash
+# In shell glob '(foo|FOO)' would match one or more of foo or FOO
+# In fnmatch '+(foo|FOO)' would do the same but both does not work with Git
+
+# TODO: Refactor to use this format *.[tTaArR].*
+
+*.tar.*
+*.TAR.*
+*.zip
+*.ZIP
+*.7z
+*.png
+*.PNG
+*.svg
+*.SVG
+*.gif
+*.GIF
+*.jpg
+*.JPG
+*.jpeg
+*.JPEG
+*.webp
+*.WEBP
+*.djvu
+*.DJVU
+*.pdf
+*.PDF
+*.ps
+*.PS
+*.epub
+*.EPUB
+*.xlsx
+*.XLSX
+*.xlsm
+*.XLSM
+*.xls
+*.XLS
+*.ods
+*.ODS
+*.docx
+*.DOCX
+*.doc
+*.DOC
+*.odt
+*.ODT
+*.pptx
+*.PPTX
+*.ppt
+*.PPT
+*.mp3
+*.MP3
+*.wav
+*.WAV
+*.mp4
+*.MP4
+*.vsdx
+*.VSDX
+*.vdx
+*.VDX
+*.REC
+*.DEC
+*.log
+*.gnucash
+*.gnumeric
+*.skp
+*.skb
+*.dia
+*.bpm
