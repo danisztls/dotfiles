@@ -60,14 +60,14 @@ email = me@posix.dev.br
 [commit]
 gpgsign = true
 
-# force SSH
-[url "ssh://git@github.com"]
+# force GIT+SSH protocols
+[url "git+ssh://git@github.com"]
 insteadOf = https://github.com
-[url "ssh://git@gitlab.com"]
+[url "git+ssh://git@gitlab.com"]
 insteadOf = https://gitlab.com
-[url "ssh://git@bitbucket.org"]
+[url "git+ssh://git@bitbucket.org"]
 insteadOf = https://bitbucket.org
-[url "ssh://git@codeber.org"]
+[url "git+ssh://git@codeberg.org"]
 insteadOf = https://codeberg.org
 
 # dracula theme
