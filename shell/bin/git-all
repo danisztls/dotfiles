@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
-# Pull safely from all subdirs containing a Git repo
+# Run a command on all Git repos under a path
 
-# usage: git-pull-all <path-to-parent-dir> (optional)
+# usage: git-all <action> <path-to-parent-dir> (optional)
+# e.g.: git-all git-pull-safe ~
+
+[ "$1" ] && _command="$1" || exit 1
+[ "$2" ] && _path="$2"
 
 # Change dir to inputted path if valid
-if [ -d "$1" ]; then
-  cd "$1" || exit
+if [ -d "$_path" ]; then
+  cd "$_path" || exit
 fi
 
 mapfile -t repos < <(\
@@ -26,10 +30,10 @@ for repo in "${repos[@]}"; do
   path="${repo%.git/}"
 
   # run one by one
-  # sem -j+0 git-pull-safe "$path"
+  # sem -j+0 "$_command" "$path"
 
   # run in parallel
-  sem -j 4 git-pull-safe "$path"
+  sem -j 4 "$_command" "$path"
 
   # NOTE: GitHub limit is 4 simultaneous connections
 done
