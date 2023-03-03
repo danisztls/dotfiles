@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+# Collect garbage in a Git repository reducing its size.
+# Expire the reflog and prune Git and old objects.
+
+# usage: git-yolo <path-to-repo> (optional)
+
+# cd to repo if valid path is inputted
+if [ -d "$1/.git" ]; then
+  cd "$1" || exit
+fi
+
+# check for repo at current path
+_project_root=$(git rev-parse --show-toplevel 2>/dev/null) || exit
+
+# TODO: Does this make a different. I think 'git gc prune=now' also does this
+# expire reflog
+# git reflog expire --expire-unreachable=now --all
+
+# clean old objects 
+[ -f "_project_rooot/.git/lfs" ] && git-lfs prune
+git gc --prune=now --aggressive
