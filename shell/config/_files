@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # File management
-alias rm='trash -v' # move to trash dir
-alias mv='mv -v -n' # verbose and no clobber (don't overwrite)
-alias cp='cp -v -n'
+alias rm='trash' # move to trash dir
+alias mv='mv -n' # verbose and no clobber (don't overwrite)
+alias cp='cp -n'
 
 # Archiving
 alias cf="compress"
