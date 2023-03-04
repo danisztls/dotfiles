@@ -105,7 +105,10 @@ style = "bold #bd93f9"
 format = "[$user]($style) on "
 style_user = "bold #8be9fd"
 
-# [custom.timetrace]
-# command = """ timetrace status --format "Current project: {project} - Worked today: {trackedTimeToday}" """
-# when = "timetrace status"
-# shell = "sh"
+# TODO: Create a script that generates a better status from `timetrace status -o json`
+[custom.timetrace]
+when = "timetrace status"
+symbol = "[](orange) "
+command = 'timetrace status --format "{project} {trackedTimeCurrent}"'
+style = "yellow"
+shell = "sh"
