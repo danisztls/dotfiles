@@ -1,12 +1,12 @@
 [Unit]
-Description=WeeChat under Tmux
+Description=WeeChat under Screen 
 After=network.target
 
 [Service]
 Type=simple
 RemainAfterExit=yes
-ExecStart=/usr/bin/tmux -L weechat new -d weechat \; set-option status off
-ExecStop=/usr/bin/killall -s 15 weechat; /usr/bin/tmux -L weechat kill-session
+ExecStart=/usr/bin/screen -D -m -S weechat weechat \; set-option status off
+ExecStop=/usr/bin/killall -s 15 weechat; /usr/bin/screen -XS weechat quit
 
 [Install]
 WantedBy=default.target
