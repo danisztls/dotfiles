@@ -1,76 +1,75 @@
 [alias]
-a     =  add
-aa    =  add --all
-b     =  branch
-bd    =  branch --delete
-bf    =  branch --delete --force
-c     =  commit
-ca    =  commit --amend
-co    =  checkout
-cp    =  cherry-pick
-d     =  diff
-ds    =  diff --staged
-f     =  fetch
-fa    =  fetch --all
-l     =  log
-lo    =  log --pretty=oneline
-ld    =  log --decorate --graph
-m     =  merge
-ma    =  merge --abort
-mc    =  merge --continue
-mt    =  mergetool --prompt
-pl    =  pull
-ps    =  push
-psf   =  push --force-with-lease
-rv    =  review
-rs    =  reset
-rb    =  rebase
-rba   =  rebase --abort
-rbc   =  rebase --continue
-rbi   =  rebase -i
-rmc   =  rm --cached
-rf    =  reflog
-s     =  status
-ss    =  show
-sl    =  shortlog
-t     =  tag
-ts    =  tag -s
-# note: git is case insensitive
+  # note: aliases are case insensitive
+  a     =  add
+  aa    =  add --all
+  b     =  branch
+  bd    =  branch --delete
+  bf    =  branch --delete --force
+  c     =  commit
+  ca    =  commit --amend
+  co    =  checkout
+  cp    =  cherry-pick
+  d     =  diff
+  ds    =  diff --staged
+  f     =  fetch
+  fa    =  fetch --all
+  l     =  log
+  lo    =  log --pretty=oneline
+  ld    =  log --decorate --graph
+  m     =  merge
+  ma    =  merge --abort
+  mc    =  merge --continue
+  mt    =  mergetool --prompt
+  pl    =  pull
+  ps    =  push
+  psf   =  push --force-with-lease
+  rv    =  review
+  rs    =  reset
+  rb    =  rebase
+  rba   =  rebase --abort
+  rbc   =  rebase --continue
+  rbi   =  rebase -i
+  rmc   =  rm --cached
+  rf    =  reflog
+  s     =  status
+  ss    =  show
+  sl    =  shortlog
+  t     =  tag
+  ts    =  tag -s
 
 [diff]
-colorMoved = default
+  colorMoved = default
 
 [merge]
-tool = nvimdiff
+  tool = nvimdiff
 
 [init]
-defaultBranch = main
+  defaultBranch = main
 
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 
 [user]
-signingkey = F3BA377BDF055814B7A521FC0E4A21C049A48DAF
-name = Daniel Souza
-email = me@posix.dev.br
+  signingkey = F3BA377BDF055814B7A521FC0E4A21C049A48DAF
+  name = Daniel Souza
+  email = me@posix.dev.br
 
 [commit]
-gpgsign = true
+  gpgsign = true
 
 # force GIT+SSH protocols
 [url "git+ssh://git@github.com"]
-insteadOf = https://github.com
+  insteadOf = https://github.com
 [url "git+ssh://git@gitlab.com"]
-insteadOf = https://gitlab.com
+  insteadOf = https://gitlab.com
 [url "git+ssh://git@bitbucket.org"]
-insteadOf = https://bitbucket.org
+  insteadOf = https://bitbucket.org
 [url "git+ssh://git@codeberg.org"]
-insteadOf = https://codeberg.org
+  insteadOf = https://codeberg.org
 
-# dracula theme
 [color]
   ui = auto
 [color "branch"]
