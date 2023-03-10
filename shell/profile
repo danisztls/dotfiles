@@ -8,7 +8,7 @@ export EDITOR="nvim"
 export SUDO_EDITOR="nvim -d"
 export VISUAL="alacritty -e 'nvim'"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export BROWSER="chromium"
+export BROWSER="brave"
 
 # shellcheck disable=SC2139
 alias b="$BROWSER"
