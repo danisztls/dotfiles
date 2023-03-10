@@ -34,6 +34,7 @@
   s     =  status
   ss    =  show
   sl    =  shortlog
+  sm    =  submodule
   t     =  tag
   ts    =  tag -s
 
