@@ -1,0 +1,3 @@
+[submodule "shell/bin/git-tools"]
+	path = shell/bin/git-tools
+	url = https://github.com/danisztls/git-tools
