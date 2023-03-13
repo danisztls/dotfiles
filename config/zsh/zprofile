@@ -1,0 +1,5 @@
+# Load .profile
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
+
+# .zshrc is sourced automatically in interactive shells 
+# .zprofile is sourced automatically in login shells 

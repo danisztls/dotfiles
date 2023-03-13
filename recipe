@@ -8,7 +8,7 @@
 
 _link "shell/"                          ".config/shell"
 _link "shell/profile"                   ".profile"
-
+_link "config/zsh/zprofile"             ".zprofile"
 _link "config/zsh/zshrc"                ".zshrc"
 _link "config/bash/bashrc"              ".bashrc"
 _link "config/starship/starship.toml"   ".config/starship.toml"

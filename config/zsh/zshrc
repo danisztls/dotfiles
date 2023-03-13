@@ -1,6 +1,6 @@
 # Reload .profile
 # ensure changes get in effect in the same session
-[ -f "$HOME/.profile" ] && emulate sh -c 'source "$HOME/.profile"'
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
 # Zinit
 declare -A ZINIT
