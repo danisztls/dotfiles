@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/env zsh
+
 # Autostart
 # Things bellow will run only once during startup
 ephemeral
