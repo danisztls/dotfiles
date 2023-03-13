@@ -2,7 +2,7 @@
 
 # Autostart
 # Things bellow will run only once during startup
-ephemeral
+ephemeral &
 
 # Delete from trash files older than 7 days
 trash-empty 7 &
