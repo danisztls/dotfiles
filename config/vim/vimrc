@@ -273,12 +273,12 @@ if !exists("autocommands_loaded")
   au BufNewFile,BufRead *.json  set conceallevel=0
 
   augroup wikimedia
-    au BufNewFile,BufRead *wikimedia/*         set noexpandtab tabstop=4 shiftwidth=4
-    " au BufNewFile,BufRead *wikimedia/*.html  set ts=4 sw=4
-    " au BufNewFile,BufRead *wikimedia/*.css   set ts=4 sw=4
-    " au BufNewFile,BufRead *wikimedia/*.scss  set ts=4 sw=4
-    " au BufNewFile,BufRead *wikimedia/*.js    set ts=4 sw=4
-    " au BufNewFile,BufRead *wikimedia/*.php   set ts=4 sw=4
+    au BufNewFile,BufRead *wikimedia/*          set noexpandtab tabstop=4 shiftwidth=4
+    " au BufNewFile,BufRead *wikimedia/**/*.html  set noet ts=4 sw=4
+    " au BufNewFile,BufRead *wikimedia/**/*.css   set noet ts=4 sw=4
+    " au BufNewFile,BufRead *wikimedia/**/*.scss  set noet ts=4 sw=4
+    " au BufNewFile,BufRead *wikimedia/**/*.js    set noet ts=4 sw=4
+    " au BufNewFile,BufRead *wikimedia/**/*.php   set noet ts=4 sw=4
   augroup END
 endif
 

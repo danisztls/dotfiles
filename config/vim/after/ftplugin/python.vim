@@ -1,2 +1,2 @@
 " I don't remember what this does
-:iabbrev <buffer> iff if:<left>
+" :iabbrev <buffer> iff if:<left>
