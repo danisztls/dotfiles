@@ -1,6 +1,4 @@
-# Local
-DEV.md
-
-# Artifacts
+# Plugins & Artifacts
 **/vim/plugged/
 **/vim/.netrwhist
+**/tmux/plugins
