@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 #
 # This is a docstring with a description of what this script does.
 
@@ -30,19 +30,47 @@ set -u
 # exit if any command in a pipe fail
 set -o pipefail
 
-# Text Formatting 
-reset="\e[0;0m"
-red="\e[1;31m"
-green="\e[1;32m"
-yellow="\e[1;33m"
-blue="\e[1;34m"
-strong="\e[1;39m"
+if ! [ $# -eq 1 ] ; then
+  printf "ERROR: wrong arguments.\n"
+fi
+
+# is it running under systemd?
+if [ "$TERM" = "dumb" ]; then
+  _log_emerg="<0>%s\n" # red
+  _log_alert="<1>%s\n"
+  _log_crit="<2>%s\n"
+  _log_error="<3>%s\n"
+  _log_warning="<4>%s\n" # yellow
+  _log_notice="<5>%s\n" # white
+  _log_info="<6>%s\n"
+  _log_debug="<7>%s\n" # muted 
+
+else
+  # formatting escape codes
+  _fmt_clear="\e[0;0m"
+  _fmt_bold="\e[1;0m"
+  _fmt_red="\e[1;31m"
+  _fmt_yellow="\e[1;33m"
+  _fmt_blue="\e[1;34m"
+  _fmt_gray="\e[1;30m"
+
+  # log levels strings (systemd convention)
+  _log_emerg="${_fmt_red}EMERGENCY: %s${_fmt_clear}\n"
+  _log_alert="${_fmt_red}ALERT: %s${_fmt_clear}\n"
+  _log_crit="${_fmt_red}CRITICAL: %s${_fmt_clear}\n"
+  _log_error="${_fmt_red}ERROR: %s${_fmt_clear}\n"
+  _log_warning="${_fmt_yellow}WARNING: %s${_fmt_clear}\n"
+  _log_notice="${_fmt_bold}NOTICE: %s${_fmt_clear}\n"
+  _log_info="${_fmt_clear}INFO: %s\n${_fmt_clear}\n"
+  _log_debug="${_fmt_gray}DEBUG: %s${_fmt_clear}\n"
+fi
 
 # Dependencies
 deps=(ls)
 for prog in "${deps[@]}"; do
   if [ ! "$(command -v "$prog")" ]; then
-    printf "${red}Required dependency not found: ${strong}%s${reset}\n" "$prog"
+    # shellcheck disable=SC2059
+    printf "$_log_error" "$prog not found found."
     exit 1
   fi
 done
