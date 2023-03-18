@@ -31,7 +31,7 @@ set -u
 set -o pipefail
 
 if ! [ $# -eq 1 ] ; then
-  printf "ERROR: wrong arguments.\n"
+  printf "ERROR: wrong number of arguments.\n"
 fi
 
 # is it running under systemd?
@@ -66,19 +66,19 @@ else
 fi
 
 # Dependencies
-deps=(ls)
-for prog in "${deps[@]}"; do
-  if [ ! "$(command -v "$prog")" ]; then
+_deps=(ls)
+for _prog in "${_deps[@]}"; do
+  if [ ! "$(command -v "$_prog")" ]; then
     # shellcheck disable=SC2059
-    printf "$_log_error" "$prog not found found."
+    printf "$_log_error" "$_prog not found found."
     exit 1
   fi
 done
 
 # OptArgs
 _getOpts() {
-  while getopts "ab:" option; do
-    case $option in
+  while getopts "ab:" _option; do
+    case $_option in
       a) testFlag="true";;
       b) testVar="$OPTARG";;
       *) echo "Not a valid argument."
