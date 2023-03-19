@@ -48,11 +48,18 @@ if [ "$TERM" = "dumb" ]; then
 else
   # formatting escape codes
   _fmt_clear="\e[0;0m"
-  _fmt_bold="\e[1;0m"
+  _fmt_bold="\e[0;1m"
+  _fmt_muted="\e[0;2m"
+  _fmt_italic="\e[0;3m"
+  _fmt_underlined="\e[0;4m"
+  _fmt_black="\e[1;30m"
   _fmt_red="\e[1;31m"
+  _fmt_green="\e[1;32m"
   _fmt_yellow="\e[1;33m"
   _fmt_blue="\e[1;34m"
-  _fmt_gray="\e[1;30m"
+  _fmt_purple="\e[1;35m"
+  _fmt_cyan="\e[1;36m"
+  _fmt_white="\e[1;37m"
 
   # log levels strings (systemd convention)
   _log_emerg="${_fmt_red}EMERGENCY: %s${_fmt_clear}\n"
@@ -62,7 +69,7 @@ else
   _log_warning="${_fmt_yellow}WARNING: %s${_fmt_clear}\n"
   _log_notice="${_fmt_bold}NOTICE: %s${_fmt_clear}\n"
   _log_info="${_fmt_clear}INFO: %s\n${_fmt_clear}\n"
-  _log_debug="${_fmt_gray}DEBUG: %s${_fmt_clear}\n"
+  _log_debug="${_fmt_muted}DEBUG: %s${_fmt_clear}\n"
 fi
 
 # Dependencies
