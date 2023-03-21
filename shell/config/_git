@@ -1,7 +1,6 @@
 #!/bin/sh
-alias 'g=hub'
-alias 'git=hub'
-alias 'gl=git-lfs'
+# alias 'g=hub'
+# alias 'git=hub'
 
 # rename master branch to main
 git_unchain() {
