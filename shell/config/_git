@@ -1,4 +1,5 @@
 #!/bin/sh
+alias 'g=git'
 # alias 'g=hub'
 # alias 'git=hub'
 
