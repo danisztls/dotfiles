@@ -30,8 +30,8 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " language pack
 Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' } " table of contents
 
 " Snippets
-Plug 'SirVer/ultisnips' " snippets framework
-Plug 'honza/vim-snippets' " snippets
+" Plug 'SirVer/ultisnips' " snippets framework
+" Plug 'honza/vim-snippets' " snippets
 
 " Deprecation candidates
 Plug 'tpope/vim-abolish' " variations for search and replace
@@ -192,10 +192,10 @@ nnoremap <leader>c :Codi<CR>
 nnoremap <leader>C :Codi!<CR>
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-nnoremap <leader>fs :Snippets<CR>
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" nnoremap <leader>fs :Snippets<CR>
 
 " GIT
 "" Diffs
