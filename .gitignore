@@ -1,4 +1,6 @@
 # Plugins & Artifacts
 **/vim/plugged/
 **/vim/.netrwhist
+**/nvim/plugged/
+**/nvim/.netrwhist
 **/tmux/plugins

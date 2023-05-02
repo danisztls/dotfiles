@@ -1,7 +1,7 @@
 #!/bin/sh
-
-export VIMINIT="set runtimepath^=~/.config/vim|set runtimepath+=~/.config/vim/after|source ~/.config/vim/vimrc" # vim and neovim
+# export VIMINIT="set runtimepath^=~/.config/nvim|set runtimepath+=~/.config/nvim/after|source ~/.config/nvim/init.lua"
+unset VIMINIT
 
 alias vim='nvim'
 alias vimdiff='nvim -d'
-alias vdiff='nvim -d' # vd is for visidata
+alias vdiff='nvim -d'
