@@ -31,38 +31,13 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 
+require("keymaps")
+
 -- enable mouse events
 vim.opt.mouse = 'a'
 
--- alternative <esc> in insert mode
-vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true })
-
--- disable arrow keys
--- vim.api.nvim_set_keymap('i', '<Up>', '<nop>', { noremap = true })
--- vim.api.nvim_set_keymap('i', '<Down>', '<nop>', { noremap = true })
--- vim.api.nvim_set_keymap('i', '<Left>', '<nop>', { noremap = true })
--- vim.api.nvim_set_keymap('i', '<Right>', '<nop>', { noremap = true })
-
--- enclosing helpers
--- word on cursor
-vim.api.nvim_set_keymap('n', '<leader>"', 'ciw"<C-r>""<ESC>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>\'', 'ciw\'<C-r>"\'<ESC>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>(', 'ciw(<C-r>")<ESC>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>[', 'ciw[<C-r>"]<ESC>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>{', 'ciw{<C-r>"}<ESC>', { noremap = true })
-
--- cursor to EOL
-vim.api.nvim_set_keymap('n', '<leader>e"', 'c$"<C-r>""<ESC>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>e\'', 'c$\'<C-r>"\'<ESC>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>e(', 'c$(<C-r>")<ESC>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>e[', 'c$(<C-r>])<ESC>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>e{', 'c$(<C-r>"}<ESC>', { noremap = true })
-
 -- tabularize
 vim.cmd('cnoreabbrev Tab Tabularize/')
-
--- folds
-vim.api.nvim_set_keymap('n', '<space>', 'za', { noremap = true })
 
 -- ignores capital-typos when you want to write/quit
 vim.cmd('command! WQ wq')
@@ -70,25 +45,11 @@ vim.cmd('command! Wq wq')
 vim.cmd('command! W w')
 vim.cmd('command! Q q')
 
--- clipboard
-vim.api.nvim_set_keymap('v', '<C-c>', '"*y:let @+=@*<CR>', { noremap = true })
-vim.api.nvim_set_keymap('v', '<C-x>', '"*x:let @+=@*<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-v>', '"+P', { noremap = true })
-
--- spell-check
-vim.api.nvim_set_keymap('n', '<leader>en', ':setlocal spell! spelllang=en_us<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>pt', ':setlocal spell! spelllang=pt_br<CR>', { noremap = true })
-
--- show hidden chars
-vim.api.nvim_set_keymap('n', '<leader>i', ':setlocal list!<CR>', { noremap = true })
--- show space as .
-vim.opt.listchars:append('space:·')
-
--- allow the . to execute once for each line of a visual selection
-vim.api.nvim_set_keymap('v', '.', ':normal .<CR>', { noremap = true })
-
 -- vim auto-update
 vim.opt.updatetime = 250
+
+-- show space as .
+vim.opt.listchars:append('space:·')
 
 -- disable automatic commenting on new line
 -- autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
