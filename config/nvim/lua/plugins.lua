@@ -1,5 +1,8 @@
--- Only required if you have packer configured as `opt`
--- vim.cmd [[packadd packer.nvim]]
+-- returns the require for use in `config` parameter of lazy's use
+-- expects the name of the config file
+function get_setup(name)
+  return string.format('require("setup/%s")', name)
+end
 
 return require('packer').startup(function(use)
   -- Manage itself 
@@ -30,6 +33,9 @@ return require('packer').startup(function(use)
   use 'junegunn/gv.vim'
   use 'rhysd/git-messenger.vim'
   use 'airblade/vim-gitgutter'
+
+  -- Treesitter
+  use {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', config = get_setup("treesitter")}
 
   -- Markdown
   use {'plasticboy/vim-markdown', ft = 'markdown'}
