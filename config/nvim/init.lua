@@ -1,28 +1,16 @@
 require("plugins")
--- vim.cmd('source ~/.config/nvim/opts.vim')
 
--- base
-vim.cmd('filetype plugin indent on')
-vim.cmd('syntax on')
-
--- vim.cmd('source ~/.config/nvim/legacy.vim')
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
 require("options")
 require("keymaps")
 
--- Plugins Config
-require("fzf")
-require("ale")
-require("airline")
-require("git-fugitive")
-require("git-gutter")
-require("git-messenger")
-require("hexokinase")
--- require("ultisnips")
--- require("codi")
-
--- tabularize
-vim.cmd('cnoreabbrev Tab Tabularize/')
+-- vim.cmd('source ~/.config/nvim/legacy.vim')
 
 -- WEB
 -- autocmd FileType html css
