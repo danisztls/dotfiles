@@ -41,3 +41,18 @@ km.set('n', '<leader>e\'', 'c$\'<C-r>"\'<ESC>', { noremap = true })
 km.set('n', '<leader>e(', 'c$(<C-r>")<ESC>', { noremap = true })
 km.set('n', '<leader>e[', 'c$(<C-r>])<ESC>', { noremap = true })
 km.set('n', '<leader>e{', 'c$(<C-r>"}<ESC>', { noremap = true })
+
+-- splits
+km.set('n', '<C-h>', '<C-w>h', { noremap = true })
+km.set('n', '<C-j>', '<C-w>j', { noremap = true })
+km.set('n', '<C-k>', '<C-w>k', { noremap = true })
+km.set('n', '<C-l>', '<C-w>l', { noremap = true })
+
+-- toggle line number
+km.set('n', '<leader>n', ':setlocal number! relativenumber!<CR>', { noremap = true })
+
+-- ignores capital-typos when you want to write/quit
+vim.cmd('command! WQ wq')
+vim.cmd('command! Wq wq')
+vim.cmd('command! W w')
+vim.cmd('command! Q q')
