@@ -1,10 +1,21 @@
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 function get_setup(name)
   return string.format('require("setup/%s")', name)
 end
 
 return require("packer").startup(function(use)
-  -- Manage itself 
+  -- Base 
   use "wbthomason/packer.nvim"
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+  }
 
   -- Browsing
   use {
@@ -15,11 +26,10 @@ return require("packer").startup(function(use)
   use "tpope/vim-vinegar"
 
   -- Visual
-  use "nvim-tree/nvim-web-devicons"
   use {"dracula/vim", as = "dracula"}
   use {
     "nvim-lualine/lualine.nvim",
-    requires = {"nvim-tree/nvim-web-devicons", opt = true},
+    requires = {"nvim-tree/nvim-web-devicons"},
     config = get_setup("lualine")
   }
   use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent")}
@@ -29,9 +39,10 @@ return require("packer").startup(function(use)
 
   -- Code
   use {"dense-analysis/ale", config = get_setup("ale")}
-  use {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", config = get_setup("treesitter")}
-  use "tpope/vim-surround"
+  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup("treesitter")}
   use "tpope/vim-commentary"
+  use "tpope/vim-surround"
+  use {"godlygeek/tabular", config = get_setup("tabular")}
 
   -- Git
   use {"tpope/vim-fugitive", config = get_setup("git-fugitive")}
@@ -39,15 +50,6 @@ return require("packer").startup(function(use)
   use "junegunn/gv.vim"
   use {"rhysd/git-messenger.vim", config = get_setup("git-messenger")}
   use {"lewis6991/gitsigns.nvim", config = get_setup("git-signs")}
-
-  -- Markdown
-  use {"plasticboy/vim-markdown", ft = "markdown"}
-  -- use {"mzlogin/vim-markdown-toc", ft = "markdown"}
-
-  -- Misc
-  -- use "tpope/vim-abolish"
-  use {"godlygeek/tabular", config = get_setup("tabular")}
-  use "cespare/vim-toml"
 
   -- AI
   use {"github/copilot.vim", config = get_setup("copilot")}
@@ -74,4 +76,11 @@ return require("packer").startup(function(use)
       require("codegpt.config")
     end
   })
+
+  -- Markdown
+  use {"plasticboy/vim-markdown", ft = "markdown"}
+  -- use {"mzlogin/vim-markdown-toc", ft = "markdown"}
+
+  -- TOML
+  use {"cespare/vim-toml", ft = "toml"}
 end)
