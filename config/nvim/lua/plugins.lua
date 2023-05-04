@@ -14,11 +14,15 @@ return require('packer').startup(function(use)
   use 'tpope/vim-vinegar'
 
   -- Visual
-  use 'ryanoasis/vim-devicons'
-  use {'vim-airline/vim-airline', config = get_setup("airline")}
+  use 'nvim-tree/nvim-web-devicons'
+  use {'dracula/vim', as = 'dracula'}
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'nvim-tree/nvim-web-devicons', opt = true},
+    config = get_setup("lualine")
+  }
   use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent")}
   use {'rrethy/vim-hexokinase', run = 'make hexokinase', config = get_setup("hexokinase")}
-  use {'dracula/vim', as = 'dracula'}
 
   -- Code
   use {'dense-analysis/ale', config = get_setup("ale")}
