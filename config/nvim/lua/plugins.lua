@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
     config = get_setup("lualine")
   }
   use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent")}
+  use {'edluffy/hologram.nvim', config = get_setup("hologram")}
   use {'rrethy/vim-hexokinase', run = 'make hexokinase', config = get_setup("hexokinase")}
 
   -- Code
