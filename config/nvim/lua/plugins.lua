@@ -46,4 +46,5 @@ return require('packer').startup(function(use)
   -- use 'tpope/vim-abolish'
   use {'godlygeek/tabular', config = get_setup("tabular")}
   use 'cespare/vim-toml'
+  use 'dstein64/nvim-scrollview'
 end)
