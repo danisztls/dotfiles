@@ -9,8 +9,11 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Browsing
-  use {'junegunn/fzf', run = 'fzf#install()'}
-  use {'junegunn/fzf.vim', config = get_setup("fzf")}
+  use {
+    'nvim-telescope/telescope.nvim', 
+    requires = {'nvim-lua/plenary.nvim'},
+    config = get_setup("telescope")
+  }
   use 'tpope/vim-vinegar'
 
   -- Visual
