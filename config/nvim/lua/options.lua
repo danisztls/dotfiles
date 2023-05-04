@@ -32,9 +32,6 @@ opt.mouse = 'a'
 -- vim auto-update
 opt.updatetime = 250
 
--- show space as .
-opt.listchars:append('space:·')
-
 -- disable automatic commenting on new line
 -- autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 opt_local.formatoptions:remove({'c', 'r', 'o'})

@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
   -- Visual
   use 'ryanoasis/vim-devicons'
   use {'vim-airline/vim-airline', config = get_setup("airline")}
-  use 'Yggdroot/indentLine'
+  use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent")}
   use {'rrethy/vim-hexokinase', run = 'make hexokinase', config = get_setup("hexokinase")}
   use {'dracula/vim', as = 'dracula'}
 
