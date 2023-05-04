@@ -25,7 +25,7 @@ return require("packer").startup(function(use)
   }
   use "tpope/vim-vinegar"
 
-  -- Visual
+  -- UI 
   use {"dracula/vim", as = "dracula"}
   use {
     "nvim-lualine/lualine.nvim",
@@ -37,9 +37,11 @@ return require("packer").startup(function(use)
   use {"rrethy/vim-hexokinase", run = "make hexokinase", config = get_setup("hexokinase")}
   use {"edluffy/hologram.nvim", config = get_setup("hologram")}
 
-  -- Code
+  -- Code Parsers
   use {"dense-analysis/ale", config = get_setup("ale")}
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup("treesitter")}
+
+  -- Code Formatters
   use "tpope/vim-commentary"
   use "tpope/vim-surround"
   use {"godlygeek/tabular", config = get_setup("tabular")}
@@ -51,9 +53,28 @@ return require("packer").startup(function(use)
   use {"rhysd/git-messenger.vim", config = get_setup("git-messenger")}
   use {"lewis6991/gitsigns.nvim", config = get_setup("git-signs")}
 
-  -- AI
+  -- LSP
+  -- use "aca/emmet-ls"
+  use {"neovim/nvim-lspconfig"}
+
+  -- Autocomplete (CMP)
+  -- use "hrsh7th/cmp-vsnip"
+  -- use "hrsh7th/cmp-buffer"
+  -- use "hrsh7th/cmp-path"
+  -- use "hrsh7th/cmp-cmdline"
+  -- use "hrsh7th/vim-vsnip"
+  -- use "hrsh7th/cmp-nvim-lsp"
+  -- use {"hrsh7th/nvim-cmp", config = get_setup("lsp-cmp")}
+
+  -- Autocomplete (COQ)
+  use {"ms-jpq/coq_nvim", branch = "coq", config = get_setup("lsp-coq")}
+  use {"ms-jpq/coq.artifacts", branch = "artifacts"}
+  use {"ms-jpq/coq.thirdparty", branch = "3p"}
+
+  -- Copilot 
   use {"github/copilot.vim", config = get_setup("copilot")}
 
+  -- ChatGPT
   -- use({
   -- "jackMort/ChatGPT.nvim",
   --   config = function()
