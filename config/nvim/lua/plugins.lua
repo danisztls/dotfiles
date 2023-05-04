@@ -35,7 +35,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'junegunn/gv.vim'
   use {'rhysd/git-messenger.vim', config = get_setup("git-messenger")}
-  use {'airblade/vim-gitgutter', config = get_setup("git-gutter")}
+  use {'lewis6991/gitsigns.nvim', config = get_setup("git-signs")}
 
   -- Markdown
   use {'plasticboy/vim-markdown', ft = 'markdown'}
