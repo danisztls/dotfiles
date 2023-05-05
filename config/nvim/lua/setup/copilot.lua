@@ -1,8 +1,15 @@
-vim.g.copilot_filetypes = {
-  ["*"] = false,
-  ["javascript"] = true,
-  ["typescript"] = true,
-  ["rust"] = true,
-  ["go"] = true,
-  ["python"] = true,
-}
+-- vim.g.copilot_filetypes = {
+--   ["*"] = false,
+--   ["html"] = true,
+--   ["css"] = true,
+--   ["scss"] = true,
+--   ["javascript"] = true,
+--   ["typescript"] = true,
+--   ["vue"] = true,
+--   ["rust"] = true,
+--   ["go"] = true,
+--   ["python"] = true,
+--   ["lua"] = true,
+--   ["yaml"] = false,
+  -- ["markdown"] = false,
+-- }
