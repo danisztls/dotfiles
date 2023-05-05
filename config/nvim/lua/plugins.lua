@@ -34,8 +34,13 @@ return require("packer").startup(function(use)
   }
 
   -- UI 
-  -- use {"olimorris/onedarkpro.nvim", config = get_setup("onedarkpro")}
-  use {"romgrk/doom-one.vim", config = get_setup("doom-one")}
+  -- TODO: Experiment with darken/brighten functions
+  -- https://github.com/olimorris/onedarkpro.nvim
+  --
+  -- TODO: Experiment with doom-one colors
+  -- https://github.com/romgrk/doom-one.vim/blob/master/colors/doom-one.vim
+  --
+  use {"olimorris/onedarkpro.nvim", config = get_setup("onedarkpro")}
 
   use {
     "nvim-lualine/lualine.nvim",
@@ -47,25 +52,8 @@ return require("packer").startup(function(use)
   use {"rrethy/vim-hexokinase", run = "make hexokinase", config = get_setup("hexokinase")}
   use {"edluffy/hologram.nvim", config = get_setup("hologram")}
 
-  -- Code Parsers
-  use {"dense-analysis/ale", config = get_setup("ale")}
+  -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup("treesitter")}
-
-  -- use {
-  --   "SmiteshP/nvim-navic",
-  --   requires = "neovim/nvim-lspconfig"
-  -- }
-  --
-  -- use {
-  --   "SmiteshP/nvim-navbuddy",
-  --   requires = {
-  --       "neovim/nvim-lspconfig",
-  --       "SmiteshP/nvim-navic",
-  --       "MunifTanjim/nui.nvim",
-  --       {"numToStr/Comment.nvim", opt = true},
-  --       {"nvim-telescope/telescope.nvim", opt = true}
-  --   }
-  -- }
 
   -- Code Formatters
   use {'numToStr/Comment.nvim', config = get_setup("comment")}
@@ -81,21 +69,57 @@ return require("packer").startup(function(use)
 
   -- LSP
   -- use "aca/emmet-ls"
-  use {"neovim/nvim-lspconfig", config = get_setup("lsp")}
 
   -- Autocomplete (CMP)
-  -- use "hrsh7th/cmp-vsnip"
-  -- use "hrsh7th/cmp-buffer"
-  -- use "hrsh7th/cmp-path"
-  -- use "hrsh7th/cmp-cmdline"
-  -- use "hrsh7th/vim-vsnip"
-  -- use "hrsh7th/cmp-nvim-lsp"
-  -- use {"hrsh7th/nvim-cmp", config = get_setup("lsp-cmp")}
+  -- use {
+  --   "hrsh7th/nvim-cmp",
+  --   after = "nvim-lspconfig",
+  --   requires = {
+  --     "hrsh7th/cmp-nvim-lsp",
+  --     "hrsh7th/cmp-buffer",
+  --     "hrsh7th/cmp-path",
+  --     "hrsh7th/cmp-cmdline",
+  --     "hrsh7th/cmp-vsnip",
+  --     "hrsh7th/vim-vsnip"
+  --   },
+  --   config = get_setup("lsp-cmp")
+  -- }
 
   -- Autocomplete (COQ)
-  use {"ms-jpq/coq_nvim", branch = "coq"}
-  use {"ms-jpq/coq.artifacts", branch = "artifacts"}
-  use {"ms-jpq/coq.thirdparty", branch = "3p"}
+  use {
+    "ms-jpq/coq_nvim",
+    branch = "coq",
+    requires = {
+      "neovim/nvim-lspconfig",
+      {"ms-jpq/coq.artifacts", branch = "artifacts"},
+      {"ms-jpq/coq.thirdparty", branch = "3p"}
+    }
+  }
+
+  use {
+    "neovim/nvim-lspconfig",
+    config = get_setup("lsp")
+  }
+
+  use {
+    "dense-analysis/ale",
+    config = get_setup("ale")
+  }
+
+  -- use {
+  --   "SmiteshP/nvim-navic",
+  -- }
+  --
+  -- use {
+  --   "SmiteshP/nvim-navbuddy",
+  --   requires = {
+  --       "neovim/nvim-lspconfig",
+  --       "SmiteshP/nvim-navic",
+  --       "MunifTanjim/nui.nvim",
+  --       {"numToStr/Comment.nvim", opt = true},
+  --       {"nvim-telescope/telescope.nvim", opt = true}
+  --   }
+  -- }
 
   -- Copilot 
   use {"github/copilot.vim", config = get_setup("copilot")}
