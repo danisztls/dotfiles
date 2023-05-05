@@ -24,7 +24,11 @@ return require("packer").startup(function(use)
     config = get_setup("telescope")
   }
   use "tpope/vim-vinegar"
-  use "easymotion/vim-easymotion"
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = get_setup("hop") 
+  }
 
   -- UI 
   use {"dracula/vim", as = "dracula"}
