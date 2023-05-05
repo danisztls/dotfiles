@@ -100,8 +100,4 @@ return require("packer").startup(function(use)
 
   -- Markdown
   use {"plasticboy/vim-markdown", ft = "markdown"}
-  -- use {"mzlogin/vim-markdown-toc", ft = "markdown"}
-
-  -- TOML
-  use {"cespare/vim-toml", ft = "toml"}
 end)
