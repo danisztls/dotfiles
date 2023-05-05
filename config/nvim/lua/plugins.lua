@@ -42,7 +42,7 @@ return require("packer").startup(function(use)
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup("treesitter")}
 
   -- Code Formatters
-  use "tpope/vim-commentary"
+  use {'numToStr/Comment.nvim', config = get_setup("comment")} 
   use "tpope/vim-surround"
   use {"godlygeek/tabular", config = get_setup("tabular")}
 
