@@ -9,6 +9,7 @@ lsp.eslint.setup(coq.lsp_ensure_capabilities())
 lsp.cssls.setup(coq.lsp_ensure_capabilities())
 lsp.html.setup(coq.lsp_ensure_capabilities())
 lsp.pylyzer.setup(coq.lsp_ensure_capabilities())
+lsp.lua_ls.setup(coq.lsp_ensure_capabilities())
 -- lsp.emmet_ls.setup(coq.lsp_ensure_capabilities())
 
 require("coq_3p") {
