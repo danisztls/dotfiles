@@ -20,7 +20,10 @@ return require("packer").startup(function(use)
   -- Navigation 
   use {
     "nvim-telescope/telescope.nvim",
-    requires = {"nvim-lua/plenary.nvim"},
+    requires = {
+      "nvim-lua/plenary.nvim",
+      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    },
     config = get_setup("telescope")
   }
   use "tpope/vim-vinegar"
