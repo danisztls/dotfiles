@@ -5,7 +5,7 @@ vim.cmd([[
   augroup end
 ]])
 
-function get_setup(name)
+local function get_setup(name)
   return string.format('require("setup/%s")', name)
 end
 
@@ -19,15 +19,15 @@ return require("packer").startup(function(use)
 
   -- Navigation 
   use {
-    "nvim-telescope/telescope.nvim", 
+    "nvim-telescope/telescope.nvim",
     requires = {"nvim-lua/plenary.nvim"},
     config = get_setup("telescope")
   }
   use "tpope/vim-vinegar"
   use {
     'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
-    config = get_setup("hop") 
+    branch = 'v2',
+    config = get_setup("hop")
   }
 
   -- UI 
@@ -46,8 +46,24 @@ return require("packer").startup(function(use)
   use {"dense-analysis/ale", config = get_setup("ale")}
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup("treesitter")}
 
+  -- use {
+  --   "SmiteshP/nvim-navic",
+  --   requires = "neovim/nvim-lspconfig"
+  -- }
+  --
+  -- use {
+  --   "SmiteshP/nvim-navbuddy",
+  --   requires = {
+  --       "neovim/nvim-lspconfig",
+  --       "SmiteshP/nvim-navic",
+  --       "MunifTanjim/nui.nvim",
+  --       {"numToStr/Comment.nvim", opt = true},
+  --       {"nvim-telescope/telescope.nvim", opt = true}
+  --   }
+  -- }
+
   -- Code Formatters
-  use {'numToStr/Comment.nvim', config = get_setup("comment")} 
+  use {'numToStr/Comment.nvim', config = get_setup("comment")}
   use "tpope/vim-surround"
   use {"godlygeek/tabular", config = get_setup("tabular")}
 
@@ -60,7 +76,7 @@ return require("packer").startup(function(use)
 
   -- LSP
   -- use "aca/emmet-ls"
-  use {"neovim/nvim-lspconfig"}
+  use {"neovim/nvim-lspconfig", config = get_setup("lsp")}
 
   -- Autocomplete (CMP)
   -- use "hrsh7th/cmp-vsnip"
@@ -72,7 +88,7 @@ return require("packer").startup(function(use)
   -- use {"hrsh7th/nvim-cmp", config = get_setup("lsp-cmp")}
 
   -- Autocomplete (COQ)
-  use {"ms-jpq/coq_nvim", branch = "coq", config = get_setup("lsp-coq")}
+  use {"ms-jpq/coq_nvim", branch = "coq"}
   use {"ms-jpq/coq.artifacts", branch = "artifacts"}
   use {"ms-jpq/coq.thirdparty", branch = "3p"}
 
@@ -91,7 +107,7 @@ return require("packer").startup(function(use)
   --     "nvim-telescope/telescope.nvim"
   --   }
   -- })
-  
+
   use({
     "dpayne/CodeGPT.nvim",
     requires = {

@@ -49,7 +49,7 @@ km.set('n', '<C-k>', '<C-w>k', { noremap = true })
 km.set('n', '<C-l>', '<C-w>l', { noremap = true })
 
 -- toggle line number
-km.set('n', '<leader>n', ':setlocal number! relativenumber!<CR>', { noremap = true })
+-- km.set('n', '<leader>n', ':setlocal number! relativenumber!<CR>', { noremap = true })
 
 -- ignores capital-typos when you want to write/quit
 vim.cmd('command! WQ wq')
