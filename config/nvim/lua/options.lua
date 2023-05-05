@@ -28,8 +28,10 @@ opt.splitright = true
 -- enable mouse events
 opt.mouse = 'a'
 
--- vim auto-update
+-- responsiveness
 opt.updatetime = 100
+opt.timeout = true
+opt.timeoutlen = 300
 
 -- disable automatic commenting on new line
 -- autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

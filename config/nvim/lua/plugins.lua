@@ -47,6 +47,7 @@ return require("packer").startup(function(use)
     requires = {"nvim-tree/nvim-web-devicons"},
     config = get_setup("lualine")
   }
+
   use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent")}
   use "dstein64/nvim-scrollview"
   use {"rrethy/vim-hexokinase", run = "make hexokinase", config = get_setup("hexokinase")}
@@ -170,4 +171,10 @@ return require("packer").startup(function(use)
 
   -- Markdown
   use {"plasticboy/vim-markdown", ft = "markdown"}
+
+  -- TODO: Use wk.register() to register maps
+  use {
+    "folke/which-key.nvim",
+    config = get_setup("which-key")
+  }
 end)
