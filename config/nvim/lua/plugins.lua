@@ -54,6 +54,20 @@ return require("packer").startup(function(use)
 
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup("treesitter")}
+  use({
+    "nvim-treesitter/nvim-treesitter-context",
+    after = "nvim-treesitter",
+  })
+  -- use({
+  --   -- TODO: Configure
+  --   "nvim-treesitter/nvim-treesitter-textobjects",
+  --   after = "nvim-treesitter",
+  -- })
+  -- use({
+  --   -- TODO: Configure
+  --   "nvim-treesitter/nvim-treesitter-refactor",
+  --   after = "nvim-treesitter",
+  -- })
 
   -- Code Formatters
   use {'numToStr/Comment.nvim', config = get_setup("comment")}
