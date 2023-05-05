@@ -17,13 +17,14 @@ return require("packer").startup(function(use)
     requires = "nvim-tree/nvim-web-devicons",
   }
 
-  -- Browsing
+  -- Navigation 
   use {
     "nvim-telescope/telescope.nvim", 
     requires = {"nvim-lua/plenary.nvim"},
     config = get_setup("telescope")
   }
   use "tpope/vim-vinegar"
+  use "easymotion/vim-easymotion"
 
   -- UI 
   use {"dracula/vim", as = "dracula"}
