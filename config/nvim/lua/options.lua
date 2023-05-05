@@ -29,7 +29,7 @@ opt.splitright = true
 opt.mouse = 'a'
 
 -- vim auto-update
-opt.updatetime = 250
+opt.updatetime = 100
 
 -- disable automatic commenting on new line
 -- autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

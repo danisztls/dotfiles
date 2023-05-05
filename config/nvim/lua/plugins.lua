@@ -120,20 +120,26 @@ return require("packer").startup(function(use)
     config = get_setup("ale")
   }
 
-  -- use {
-  --   "SmiteshP/nvim-navic",
-  -- }
-  --
-  -- use {
-  --   "SmiteshP/nvim-navbuddy",
-  --   requires = {
-  --       "neovim/nvim-lspconfig",
-  --       "SmiteshP/nvim-navic",
-  --       "MunifTanjim/nui.nvim",
-  --       {"numToStr/Comment.nvim", opt = true},
-  --       {"nvim-telescope/telescope.nvim", opt = true}
-  --   }
-  -- }
+  use {
+    "SmiteshP/nvim-navbuddy",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+      {"numToStr/Comment.nvim", opt = true},
+      {"nvim-telescope/telescope.nvim", opt = true}
+    }
+  }
+
+  use({
+    "utilyre/barbecue.nvim",
+    tag = "*",
+    requires = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = get_setup("barbecue")
+  })
 
   -- Copilot 
   use {"github/copilot.vim", config = get_setup("copilot")}
