@@ -31,7 +31,9 @@ return require("packer").startup(function(use)
   }
 
   -- UI 
-  use {"dracula/vim", as = "dracula"}
+  -- use {"olimorris/onedarkpro.nvim", config = get_setup("onedarkpro")}
+  use {"romgrk/doom-one.vim", config = get_setup("doom-one")}
+
   use {
     "nvim-lualine/lualine.nvim",
     requires = {"nvim-tree/nvim-web-devicons"},

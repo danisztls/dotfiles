@@ -1,6 +1,6 @@
-require("plugins")
 require("options")
 require("keymaps")
+require("plugins")
 
 -- vim.cmd('source ~/.config/nvim/legacy.vim')
 

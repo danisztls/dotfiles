@@ -41,4 +41,4 @@ opt.linebreak = true
 
 -- colors
 opt.termguicolors = true
-opt.background = 'dark'
+-- opt.background = 'dark'
