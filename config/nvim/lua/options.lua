@@ -3,7 +3,6 @@ local opt_local = vim.opt_local
 
 -- base
 vim.cmd('filetype plugin indent on')
-vim.cmd('syntax off')
 
 -- env
 opt.encoding = 'utf-8'
