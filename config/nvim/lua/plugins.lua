@@ -113,17 +113,6 @@ return require("packer").startup(function(use)
     config = get_setup("ale")
   }
 
-  use {
-    "SmiteshP/nvim-navbuddy",
-    requires = {
-      "neovim/nvim-lspconfig",
-      "SmiteshP/nvim-navic",
-      "MunifTanjim/nui.nvim",
-      {"numToStr/Comment.nvim", opt = true},
-      {"nvim-telescope/telescope.nvim", opt = true}
-    }
-  }
-
   use({
     "utilyre/barbecue.nvim",
     tag = "*",
