@@ -123,8 +123,10 @@ return require("packer").startup(function(use)
     config = get_setup("barbecue")
   })
 
-  -- Copilot 
-  use {"github/copilot.vim", config = get_setup("copilot")}
+  use {
+    "zbirenbaum/copilot.lua",
+    config = get_setup("copilot")
+  }
 
   -- ChatGPT
   -- use({
