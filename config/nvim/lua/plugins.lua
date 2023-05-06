@@ -9,6 +9,7 @@ local function get_setup(name)
   return string.format('require("setup/%s")', name)
 end
 
+-- migrate to lazy
 return require("packer").startup(function(use)
   -- Base 
   use "wbthomason/packer.nvim"
@@ -83,36 +84,27 @@ return require("packer").startup(function(use)
   use {"lewis6991/gitsigns.nvim", config = get_setup("git-signs")}
 
   -- LSP
-  -- use "aca/emmet-ls"
-
   -- Autocomplete (CMP)
-  -- use {
-  --   "hrsh7th/nvim-cmp",
-  --   after = "nvim-lspconfig",
-  --   requires = {
-  --     "hrsh7th/cmp-nvim-lsp",
-  --     "hrsh7th/cmp-buffer",
-  --     "hrsh7th/cmp-path",
-  --     "hrsh7th/cmp-cmdline",
-  --     "hrsh7th/cmp-vsnip",
-  --     "hrsh7th/vim-vsnip"
-  --   },
-  --   config = get_setup("lsp-cmp")
-  -- }
-
-  -- Autocomplete (COQ)
+  -- check: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
   use {
-    "ms-jpq/coq_nvim",
-    branch = "coq",
+    "hrsh7th/nvim-cmp",
     requires = {
-      "neovim/nvim-lspconfig",
-      {"ms-jpq/coq.artifacts", branch = "artifacts"},
-      {"ms-jpq/coq.thirdparty", branch = "3p"}
-    }
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-latex-symbols",
+    },
+    config = get_setup("cmp")
   }
 
   use {
     "neovim/nvim-lspconfig",
+    after = "nvim-cmp",
     config = get_setup("lsp")
   }
 

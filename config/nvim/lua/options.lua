@@ -30,8 +30,8 @@ opt.mouse = 'a'
 
 -- responsiveness
 opt.updatetime = 100
-opt.timeout = true
-opt.timeoutlen = 300
+-- opt.timeout = true
+-- opt.timeoutlen = 300
 
 -- disable automatic commenting on new line
 -- autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
