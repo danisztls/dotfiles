@@ -123,10 +123,15 @@ return require("packer").startup(function(use)
     config = get_setup("barbecue")
   })
 
-  use {
-    "zbirenbaum/copilot.lua",
-    config = get_setup("copilot")
-  }
+  -- Copilot
+  use {"zbirenbaum/copilot.lua", config = get_setup("copilot")}
+
+  -- use {
+  --   "zbirenbaum/copilot-cmp",
+  --   requires = {"zbirenbaum/copilot.lua" },
+  --   after = {"copilot.lua"},
+  --   config = get_setup("copilot")
+  -- }
 
   -- ChatGPT
   -- use({
