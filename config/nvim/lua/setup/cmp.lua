@@ -19,21 +19,28 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
-  sources = cmp.config.sources(
-    --
-    {
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' },
 
+  -- see: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+  sources = cmp.config.sources(
+    {
+      { name = 'vsnip' },
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lua' },
+      { name = 'emoji' },
+      { name = 'latex_symbols' },
+      { name = 'calc' },
+      { name = 'treesiter' },
+      { name = 'tmux' },
+      { name = 'digraphs' },
+      { name = 'nerdfont' }
     },
-    --
+
     {
       { name = 'buffer' },
     }
   )
 })
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
@@ -41,7 +48,6 @@ cmp.setup.cmdline({ '/', '?' }, {
   }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources(
