@@ -27,12 +27,11 @@ cmp.setup({
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'emoji' },
+      { name = 'nerdfont' },
       { name = 'latex_symbols' },
       { name = 'calc' },
       { name = 'treesiter' },
       { name = 'tmux' },
-      { name = 'digraphs' },
-      { name = 'nerdfont' }
     },
 
     {

@@ -97,12 +97,11 @@ return require("packer").startup(function(use)
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-emoji",
+      "chrisgrieser/cmp-nerdfont",
       "hrsh7th/cmp-latex-symbols",
       "hrsh7th/cmp-calc",
       "ray-x/cmp-treesitter",
       "andersevenrud/cmp-tmux",
-      "dmitmel/cmp-digraphs",
-      "chrisgrieser/cmp-nerdfont"
     },
     config = get_setup("cmp")
   }
