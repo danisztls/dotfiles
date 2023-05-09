@@ -1,0 +1,3 @@
+#!/bin/sh
+
+alias "google-earth-pro"='unset QT_QPA_PLATFORMTHEME && unset QT_QPA_PLATFORM && \google-earth-pro'
