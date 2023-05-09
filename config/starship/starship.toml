@@ -23,7 +23,7 @@ symbol = " "
 symbol = " "
 
 [directory]
-read_only = " "
+read_only = " "
 style = "bold #50fa7b"
 
 [docker_context]
@@ -47,8 +47,8 @@ ahead = "[⇡${count} ](bold green)"
 diverged = "⇕[⇡${ahead_count}](bold green)[⇣${behind_count} ](bold red)"
 behind = "[⇣${count} ](bold red)"
 conflicted = "[ ](bold red)"
-untracked = "[ ${count} ](yellow)"
-staged = "[ ${count} ](blue)"
+untracked = "[󰗖 ${count} ](yellow)"
+staged = "[ ${count} ](blue)"
 stashed = "[ ${count} ](purple)"
 modified = "[ ${count} ](green)"
 renamed = "[ ${count} ](blue)"
@@ -72,10 +72,10 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 
 [nim]
-symbol = " "
+symbol = " "
 
 [nix_shell]
 symbol = " "
@@ -84,7 +84,7 @@ symbol = " "
 symbol = " "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
 
 [python]
 symbol = " "
