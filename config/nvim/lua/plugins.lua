@@ -51,7 +51,7 @@ return require("packer").startup(function(use)
 
   use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent")}
   use "dstein64/nvim-scrollview"
-  use {"rrethy/vim-hexokinase", run = "make hexokinase", config = get_setup("hexokinase")}
+  use {"brenoprata10/nvim-highlight-colors", config = get_setup("colors")}
 
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup("treesitter")}
