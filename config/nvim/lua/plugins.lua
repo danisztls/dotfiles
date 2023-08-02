@@ -48,24 +48,22 @@ return require("packer").startup(function(use)
     config = get_setup("hop")
   }
 
-  -- UI 
+  -- Colors 
+  -- TODO: Setup dynamic colorscheme switching based on time of day 
   -- TODO: Experiment with darken/brighten functions
-  -- https://github.com/olimorris/onedarkpro.nvim
-  --
-  -- TODO: Experiment with doom-one colors
-  -- https://github.com/romgrk/doom-one.vim/blob/master/colors/doom-one.vim
-  --
-  use {"olimorris/onedarkpro.nvim", config = get_setup("onedarkpro")}
+  -- use {"olimorris/onedarkpro.nvim", config = get_setup("colors-onedarkpro")}
+  use {"sainnhe/gruvbox-material", config = get_setup("colors-gruvbox")}
 
+  -- UI
   use {
     "nvim-lualine/lualine.nvim",
     requires = {"nvim-tree/nvim-web-devicons"},
     config = get_setup("lualine")
   }
 
+  use {"brenoprata10/nvim-highlight-colors", config = get_setup("colors-highlight")}
   use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent")}
   use "dstein64/nvim-scrollview"
-  use {"brenoprata10/nvim-highlight-colors", config = get_setup("colors")}
 
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup("treesitter")}
