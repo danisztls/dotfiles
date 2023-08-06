@@ -49,10 +49,12 @@ return require("packer").startup(function(use)
   }
 
   -- Colors 
-  -- TODO: Setup dynamic colorscheme switching based on time of day 
+  -- TODO: Setup dynamic colorscheme switching based on time of daylight
+
   -- TODO: Experiment with darken/brighten functions
-  -- use {"olimorris/onedarkpro.nvim", config = get_setup("colors-onedarkpro")}
-  use {"sainnhe/gruvbox-material", config = get_setup("colors-gruvbox")}
+  use {"olimorris/onedarkpro.nvim", config = get_setup("colors-onedarkpro")}
+
+  -- use {"sainnhe/gruvbox-material", config = get_setup("colors-gruvbox")}
 
   -- UI
   use {
