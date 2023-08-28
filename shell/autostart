@@ -7,4 +7,4 @@
 # ephemeral
 
 # Delete from trash files older than 7 days
-(sleep 30 && trash-empty 7) &
+# (sleep 30 && trash-empty 14) &
