@@ -59,7 +59,7 @@ export PATH
 
 # alias ls='ls --color=auto'
 # alias ls='exa --long --git' # exa is close but not fully compliant with ls
-alias ls='exa --long'
+alias ls='eza --long'
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
