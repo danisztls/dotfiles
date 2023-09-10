@@ -141,7 +141,7 @@ return require("packer").startup(function(use)
   })
 
   -- Copilot
-  use {"zbirenbaum/copilot.lua", config = get_setup("copilot")}
+  -- use {"zbirenbaum/copilot.lua", config = get_setup("copilot")}
 
   -- use {
   --   "zbirenbaum/copilot-cmp",
