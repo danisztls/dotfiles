@@ -1,4 +1,3 @@
--- Bootstrap Packer
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -23,7 +22,6 @@ local function get_setup(name)
   return string.format('require("setup/%s")', name)
 end
 
--- migrate to lazy
 return require("packer").startup(function(use)
   -- Base 
   use "wbthomason/packer.nvim"

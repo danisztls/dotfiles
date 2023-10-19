@@ -7,12 +7,17 @@ vim.cmd [[highlight IndentBlanklineChar guifg=#7C8193 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#4EFA80 gui=nocombine]]
 -- vim.cmd [[highlight IndentBlanklineContextChar guifg=#FA4EC8 gui=nocombine]]
 
-require("indent_blankline").setup {
-  space_char_blankline = " ",
-  color_gui = "#7C8193",
-  -- char_list = {'¦'},
-  show_end_of_line = false,
-  show_current_context = true,
-  show_current_context_start = true,
-  show_trailing_blankline_indent = true,
-}
+-- v2
+-- require("indent_blankline").setup {
+--   space_char_blankline = " ",
+--   color_gui = "#7C8193",
+--   -- char_list = {'¦'},
+--   show_end_of_line = false,
+--   show_current_context = true,
+--   show_current_context_start = true,
+--   show_trailing_blankline_indent = true,
+-- }
+
+
+-- v3
+require("ibl").setup()
