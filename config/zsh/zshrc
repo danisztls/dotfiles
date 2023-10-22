@@ -24,12 +24,14 @@ zinit wait lucid depth=1 for \
     wfxr/forgit \
 
 # Bindings
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[5~"  vi-forward-word
-bindkey  "^[[6~"  vi-backward-word 
-bindkey  "^[[2~"  delete-word
-bindkey  "^[[3~"  delete-char
+bindkey  "^[[H"    beginning-of-line
+bindkey  "^[[F"    end-of-line
+bindkey  "^[[1;2D" backward-word # Shift+ArrowLeft
+bindkey  "^[[1;2C" forward-word # Shift+ArrowRight
+bindkey  "^[[5~"   vi-forward-word # Shift+PageUp?
+bindkey  "^[[6~"   vi-backward-word # Shift+PageDown?
+bindkey  "^[[2~"   delete-word # Shift+Insert?
+bindkey  "^[[3~"   delete-char # Delete
 
 # Extra
 # if X set terminal title
