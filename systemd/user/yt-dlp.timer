@@ -1,0 +1,10 @@
+[Unit]
+Description=Youtube Downloader 
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+Unit=yt-dlp.service
+
+[Install]
+WantedBy=default.target
