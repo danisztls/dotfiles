@@ -50,8 +50,8 @@ if not autocommands_loaded then
    vim.cmd([[
        augroup wikimedia
        au!
-       au BufNewFile,BufRead *wikimedia/* set noexpandtab tabstop=4 shiftwidth=4
-       " au BufNewFile,BufRead *wikimedia/**/*.{html,js,css,scss,php} set noet ts=4 sw=4
+       au BufNewFile,BufRead *work/wmf/* set noexpandtab tabstop=4 shiftwidth=4
+       " au BufNewFile,BufRead *work/wmf/**/*.{html,js,css,scss,php} set noet ts=4 sw=4
        augroup END
    ]])
 end
