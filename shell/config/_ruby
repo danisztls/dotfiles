@@ -1,10 +1,12 @@
 #!/bin/sh
-GEM_HOME="$(ruby -e 'puts Gem.user_dir')" && export GEM_HOME
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem" 
+if [ "$(command -v "ruby")" ]; then
+  GEM_HOME="$(ruby -e 'puts Gem.user_dir')" && export GEM_HOME
+  export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem" 
 
-# export BUNDLE_PATH="$GEM_HOME"
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
+  # export BUNDLE_PATH="$GEM_HOME"
+  export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
+  export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+  export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
-export PATH="$PATH:$GEM_HOME/bin"
+  export PATH="$PATH:$GEM_HOME/bin"
+fi
