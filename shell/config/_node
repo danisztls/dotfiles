@@ -3,24 +3,27 @@ export NODEJS_HOME="$XDG_DATA_HOME"
 export NODE_PATH="$XDG_DATA_HOME/npm/lib/node_modules"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 
-# npm
+
+# NOTE: Never use NPM to isntall global packages, use PNPM instead.
+
+# NVM
+. /usr/share/nvm/init-nvm.sh
+
+# NPM
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export npm_config_prefix="$XDG_DATA_HOME/npm"
-export _npm_user_bin="$XDG_DATA_HOME/npm/bin/npm"
 export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
 
-# shellcheck disable=SC2139
-[ -f "$_npm_user_bin" ] && alias npm="$_npm_user_bin"
-alias npmv="npm version --sign-git-tag"
+# nvm doesn't work with npm_config_prefix
+# export npm_config_prefix="$XDG_DATA_HOME/npm"
 
-# pnpm
+export _npm_user_bin="$XDG_DATA_HOME/npm/bin/npm"
+
+# alias npm="$_npm_user_bin"
+# alias npmv="npm version --sign-git-tag"
+
+# PNPM
 export PNPM_HOME="/home/dani/.local/share/pnpm"
 export PATH="$PATH:$PNPM_HOME"
 
-# force use of pnpm (faster + disk efficient)
-# alias npm="pnpm"
-# alias npx="pnpx"
-
-# yarn
-# shellcheck disable=SC2139
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+# YARN
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config" 
