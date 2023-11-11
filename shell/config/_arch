@@ -1,9 +1,11 @@
 #!/bin/sh
 
-# Package management
-alias pac='pacman'
+# pacman + aur
 alias p='paru'
 
-# Make
+# remove orphan packages and free cache 
+alias pacman-clean='sudo sh -c "pacman -Qtdq >/dev/null && pacman -Rns $(pacman -Qtdq)"; paccache -rk 1; paccache -ruk 0'
+
+# make
 alias makeinfo="makepkg --printsrcinfo > .SRCINFO"
 alias makesums="makepkg --geninteg >> PKGBUILD"
