@@ -1,0 +1,26 @@
+#!/usr/bin/env bash 
+#
+# Get the summary of video using Kagi Universal Summarizer API
+
+# @author: Daniel Souza <me@posix.dev.br>
+# @license: MIT
+# @usage: kagi-sum <video_URL>
+# @deps: curl
+# @docs: https://help.kagi.com/kagi/api/summarizer.html
+
+
+if ! [ "$KAGI_TOKEN" ]; then
+  echo "\$KAGI_TOKEN not found."
+  exit 1
+fi
+
+if ! [ "$1" ]; then
+  echo "No URL input."
+  exit 1
+fi
+
+_url="$1"
+
+curl -v \
+  -H "Authorization: Bot $KAGI_TOKEN" \
+  "https://kagi.com/api/v0/summarize?engine=muriel&url=$_url"
