@@ -1,6 +1,3 @@
-[submodule "shell/bin/git-tools"]
-	path = shell/bin/git-tools
-	url = https://github.com/danisztls/git-tools
 [submodule "setup"]
 	path = setup
 	url = https://github.com/danisztls/dotfiles-setup

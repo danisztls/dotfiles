@@ -43,11 +43,6 @@ export SAVEHIST=50000
 PATH="/bin:/usr/bin/:/usr/local/bin"
 PATH="$PATH:$XDG_BIN_HOME"
 PATH="$PATH:$XDG_CONFIG_HOME/shell/bin"
-
-for _dir in "$XDG_CONFIG_HOME/shell/bin/"*/; do
-  PATH="$PATH:$_dir"
-done
-
 export PATH
 
 # Colorized output and alternatives
