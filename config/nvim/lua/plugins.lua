@@ -11,12 +11,15 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+-- FIXME: This doesn't work. Every time I update I have to run PackerUpdate & PackerCompile.
 vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
+
+-- TODO: Automate updates?
 
 local function get_setup(name)
   return string.format('require("setup/%s")', name)
@@ -138,6 +141,19 @@ return require("packer").startup(function(use)
     config = get_setup("barbecue")
   })
 
+  -- ChatGPT
+  use({
+  "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
+
   -- Copilot
   -- use {"zbirenbaum/copilot.lua", config = get_setup("copilot")}
 
@@ -147,30 +163,6 @@ return require("packer").startup(function(use)
   --   after = {"copilot.lua"},
   --   config = get_setup("copilot")
   -- }
-
-  -- ChatGPT
-  -- use({
-  -- "jackMort/ChatGPT.nvim",
-  --   config = function()
-  --     require("chatgpt").setup()
-  --   end,
-  --   requires = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim"
-  --   }
-  -- })
-
-  use({
-    "dpayne/CodeGPT.nvim",
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("codegpt.config")
-    end
-  })
 
   -- Markdown
   use {"plasticboy/vim-markdown", ft = "markdown"}
