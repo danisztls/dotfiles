@@ -13,7 +13,7 @@
 
 # Defaults
 defaultWidth=3840
-defaultFormats=(avif)
+defaultFormats=(avif jpeg)
 defaultQuality=100 # lossless
 # defaultModel="realesr-animevideov3" # denoise more
 defaultModel="realesrgan-x4plus" # denoise less
