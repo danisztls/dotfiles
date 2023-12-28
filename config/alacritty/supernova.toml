@@ -1,0 +1,23 @@
+[colors.bright]
+black = "#6c7986"
+blue = "#007ea8"
+cyan = "#008276"
+green = "#308000"
+magenta = "#c557ff"
+red = "#db0025"
+white = "#ffffff"
+yellow = "#cc6800"
+
+[colors.normal]
+black = "#636c77"
+blue = "#009bba"
+cyan = "#0ba394"
+green = "#4e9c00"
+magenta = "#a42eff"
+red = "#ff1447"
+white = "#c9d1d7"
+yellow = "#ba9c00"
+
+[window]
+opacity = 1
+theme_variant = "dark"

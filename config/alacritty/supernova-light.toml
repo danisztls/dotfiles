@@ -1,0 +1,11 @@
+[colors.cursor]
+cursor = "#c9d1d7"
+text = "#242e33"
+
+[colors.primary]
+background = "#eceff1"
+foreground = "#242e33"
+
+[window]
+opacity = 1
+theme_variant = "light"

@@ -1,0 +1,20 @@
+# dynamic_title = true
+import = ["/home/dani/.config/alacritty/dracula.toml"]
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[window]
+decorations = "full"
+
+[window.dimensions]
+columns = 120
+lines = 50
