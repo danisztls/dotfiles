@@ -3,10 +3,10 @@ export NODEJS_HOME="$XDG_DATA_HOME"
 export NODE_PATH="$XDG_DATA_HOME/npm/lib/node_modules"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 
-
-# NOTE: Never use NPM to isntall global packages, use PNPM instead.
+# NOTE: Never use NPM to install global packages, use PNPM instead.
 
 # NVM
+export NVM_DIR="$XDG_DATA_HOME"/nvm
 . /usr/share/nvm/init-nvm.sh
 
 # NPM
