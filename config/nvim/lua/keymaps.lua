@@ -27,6 +27,9 @@ km.set('v', '.', ':normal .<CR>', { noremap = true })
 -- km.set('i', '<Left>', '<nop>', { noremap = true })
 -- km.set('i', '<Right>', '<nop>', { noremap = true })
 
+-- whichkey
+km.set('n', '<leader>w', ':WhichKey<CR>', { noremap = true })
+
 -- enclosing helpers
 -- word on cursor
 km.set('n', '<leader>"', 'ciw"<C-r>""<ESC>', { noremap = true })
