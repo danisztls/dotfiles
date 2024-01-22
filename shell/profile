@@ -42,7 +42,7 @@ export SAVEHIST=50000
 # Path
 PATH="/bin:/usr/bin/:/usr/local/bin"
 PATH="$PATH:$XDG_BIN_HOME"
-PATH="$PATH:$XDG_CONFIG_HOME/shell/bin"
+PATH="$PATH:$HOME/.dotfiles/scripts"
 export PATH
 
 # Colorized output and alternatives
