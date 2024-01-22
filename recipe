@@ -26,7 +26,7 @@ _link "config/chromium/flags.conf"      ".config/electron-flags.conf"
 _link "config/ignore/fd"                ".fdignore"
 _link "config/ignore/rg"                ".rgignore"
 
-_link "systemd/user/"                   ".config/systemd/user"
+_link "systemd/"                        ".config/systemd"
 
 _link "desktop/Xresources"              ".Xresources"
 _link "desktop/mimeapps.list"           ".config/mimeapps.list"

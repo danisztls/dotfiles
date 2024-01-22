@@ -1,15 +1,14 @@
 [Unit]
 Description=Yarr
-Description=yet another rss reader
 After=network.target
 
 [Service]
 Type=simple
 RemainAfterExit=yes
 ExecStart=yarr
-ExecStop=/usr/bin/killall -s 15 yarr
+ExecStop=/usr/bin/killall -s 15 yarr 
 Restart = always
-RestartSec = 1
+RestartSec = 5
 
 [Install]
 WantedBy=default.target
