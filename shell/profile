@@ -71,7 +71,7 @@ done
 
 # Source private config 
 # shellcheck source=/dev/null
-[ -f "$XDG_CONFIG_HOME/shell/private/profile" ] && . "$XDG_CONFIG_HOME/shell/private/profile" 
+[ -f "$HOME/.dotfiles/private/profile" ] && . "$HOME/.dotfiles/private/profile"
 
 # Autostart
 # lock file to ensure it's run only once per session 
