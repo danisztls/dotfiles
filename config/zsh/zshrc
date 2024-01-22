@@ -15,13 +15,14 @@ fi && source "$ZINIT[BIN_DIR]/zinit.zsh" # load
 
 # Plugins
 zinit wait lucid depth=1 for \
-    blockf atpull='zinit creinstall -q "$XDG_CONFIG_HOME/shell/completions"' zsh-users/zsh-completions \
     atinit="zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
     atload="_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
-    is-snippet "/usr/share/fzf/key-bindings.zsh" \
     from="gh-r" as="program" pick="$ZPFX/bin/sysz" joehillen/sysz \
     Aloxaf/fzf-tab \
     wfxr/forgit \
+    is-snippet "/usr/share/fzf/key-bindings.zsh" \
+    as"completion" is-snippet "$HOME/.dotfiles/shell/completions/_poetry" \
+    as"completion" is-snippet https://github.com/ianmkenney/timewarrior_zsh_completion/blob/main/_timew \
 
 # Bindings
 bindkey  "^[[H"    beginning-of-line
