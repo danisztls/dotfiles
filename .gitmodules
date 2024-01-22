@@ -4,3 +4,6 @@
 [submodule "shell/private"]
 	path = shell/private
 	url = https://github.com/danisztls/dotfiles-private
+[submodule "private"]
+	path = private
+	url = git@github.com:danisztls/dotfiles-private.git
