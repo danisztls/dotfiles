@@ -13,7 +13,9 @@ if ! [ -f "$ZINIT[BIN_DIR]/zinit.zsh" ]; then
     git clone --depth 1 --branch main "https://github.com/zdharma-continuum/zinit" "$ZINIT[BIN_DIR]" &&
 fi && source "$ZINIT[BIN_DIR]/zinit.zsh" # load
 
-# Plugins
+# Zinit (plugins) 
+# docs: https://zdharma-continuum.github.io/zinit/wiki/INTRODUCTION/
+# each line is a different plugin, this is an advanced syntax to load plugins delayed (turbo mode) and in parallel
 zinit wait lucid depth=1 for \
     atinit="zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
     atload="_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
