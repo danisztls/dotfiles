@@ -31,6 +31,9 @@ export XDG_BOOKS_DIR="$HOME/Public/fun/read/Books"
 export XDG_MUSIC_DIR="$HOME/Public/fun/listen/Music"
 export XDG_VIDEOS_DIR="$HOME/Public/fun/watch/Videos"
 
+# extra dirs
+export DOTFILES_HOME="$HOME/.dotfiles"
+
 # open with default app and supress stdout
 alias x='xdg-open 2>/dev/null'
 
@@ -42,7 +45,7 @@ export SAVEHIST=50000
 # Path
 PATH="/bin:/usr/bin/:/usr/local/bin"
 PATH="$PATH:$XDG_BIN_HOME"
-PATH="$PATH:$HOME/.dotfiles/bin"
+PATH="$PATH:$DOTFILES_HOME/bin"
 export PATH
 
 # Colorized output and alternatives
@@ -64,19 +67,19 @@ alias ps='grc ps'
 alias ip='ip -c'
 
 # Source config partials
-for partial in "$XDG_CONFIG_HOME/shell/config/"*; do
+for partial in "$DOTFILES_HOME/shell/partials/"*; do
   # shellcheck source=/dev/null
   . "$partial"
 done
 
 # Source private config 
 # shellcheck source=/dev/null
-[ -f "$HOME/.dotfiles/private/profile" ] && . "$HOME/.dotfiles/private/profile"
+[ -f "$DOTFILES_HOME/private/profile" ] && . "$DOTFILES_HOME/private/profile"
 
 # Autostart
 # lock file to ensure it's run only once per session 
 autostart_lock=/run/user/$(id -u)/autostart.lock
-if [ -f "$XDG_CONFIG_HOME/shell/autostart" ] && ! [ -f "$autostart_lock" ]; then
-  "$XDG_CONFIG_HOME/shell/autostart"
+if [ -f "$DOTFILES_HOME/shell/autostart" ] && ! [ -f "$autostart_lock" ]; then
+  "$DOTFILES_HOME/shell/autostart"
   touch "$autostart_lock"
 fi

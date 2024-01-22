@@ -3,8 +3,5 @@
 # Autostart
 # Things bellow will run only once during startup
 
-# Link chromium/electron cache dirs to runtime dir
-# ephemeral
-
 # Delete from trash files older than 7 days
 # (sleep 30 && trash-empty 14) &

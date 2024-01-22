@@ -4,9 +4,6 @@
 # Conventions:
 # Put a '/' at the end of dir paths to signal it's type.
 
-# TODO: I might want to use this on other repos. Thus it begs the question, should I use another tool for this like stow or ansible or move this to it's own repo and support it?
-
-_link "shell/"                          ".config/shell"
 _link "shell/profile"                   ".profile"
 _link "config/zsh/zprofile"             ".zprofile"
 _link "config/zsh/zshrc"                ".zshrc"
