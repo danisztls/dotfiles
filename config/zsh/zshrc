@@ -36,6 +36,15 @@ bindkey  "^[[6~"   vi-backward-word # Shift+PageDown?
 bindkey  "^[[2~"   delete-word # Shift+Insert?
 bindkey  "^[[3~"   delete-char # Delete
 
+# Options
+# https://zsh.sourceforge.io/Doc/Release/Options.html
+# setopt append_history # append at exit
+setopt inc_append_history # append immediately
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+
 # Extra
 # if X set terminal title
 if [[ "$TERM" != "linux" ]]; then
