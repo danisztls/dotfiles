@@ -1,4 +1,15 @@
 {
+  "generic_task": {
+    "type": "chat",
+    "opts": {
+      "template": "{{input}}",
+      "strategy": "replace",
+      "params": {
+        "model": "gpt-3.5-turbo",
+        "temperature": 0.8
+      }
+    }
+  },
   "complete_code": {
     "type": "chat",
     "opts": {
