@@ -34,18 +34,22 @@ end
 vim.api.nvim_set_keymap("n", "<leader>x", ":lua CleanTrailingWhitespaces()<CR>", { noremap = true, silent = true })
 
 -- AUTOCOMMANDS
--- prevent including autocommands more than once
-local autocommands_loaded = false
-if not autocommands_loaded then
-  autocommands_loaded = true
-  vim.cmd "au BufNewFile,BufRead *.tsv set filetype=tsv" -- tab-separated values
-  vim.cmd "au BufNewFile,BufRead *.json set conceallevel=0"
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.tsv" },
+  command = "set filetype=tsv",
+})
 
-  vim.cmd [[
-    augroup Wikimedia
-      au!
-      au BufNewFile,BufRead *work/wmf/* set noexpandtab tabstop=4 shiftwidth=4
-      " au BufNewFile,BufRead *work/wmf/**/*.{html,js,css,scss,php} set noet ts=4 sw=4
-    augroup END
-  ]]
-end
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.json" },
+  command = "set conceallevel=0",
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*work/wmf/*" },
+  command = "set noexpandtab tabstop=4 shiftwidth=4",
+})
+
+-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+--   pattern = { "*work/wmf/**/*.{html,js,css,scss,php}" },
+--   command = "set noet ts=4 sw=4",
+-- })
