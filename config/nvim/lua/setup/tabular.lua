@@ -1,1 +1,1 @@
-vim.cmd('cnoreabbrev Tab Tabularize/')
+vim.cmd "cnoreabbrev Tab Tabularize/"

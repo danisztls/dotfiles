@@ -1,4 +1,4 @@
-require("onedarkpro").setup({
+require("onedarkpro").setup {
   colors = {
     -- bg = "#282c34",
     -- black = "#282c34",
@@ -45,7 +45,7 @@ require("onedarkpro").setup({
     transparency = true,
     terminal_colors = false,
     highlight_inactive_windows = false,
-  }
-})
+  },
+}
 
-vim.cmd("colorscheme onedark_vivid")
+vim.cmd "colorscheme onedark_vivid"

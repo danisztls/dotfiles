@@ -1,7 +1,7 @@
-local copilot = require("copilot")
+local copilot = require "copilot"
 
 -- Standalone
-copilot.setup({
+copilot.setup {
   panel = {
     enabled = true,
     auto_refresh = false,
@@ -10,11 +10,11 @@ copilot.setup({
       jump_next = "]]",
       accept = "<CR>",
       refresh = "gr",
-      open = "<M-CR>"
+      open = "<M-CR>",
     },
     layout = {
       position = "bottom",
-      ratio = 0.4
+      ratio = 0.4,
     },
   },
   suggestion = {
@@ -30,7 +30,7 @@ copilot.setup({
       dismiss = "<C-]>",
     },
   },
-})
+}
 
 -- CMP
 -- copilot.setup({

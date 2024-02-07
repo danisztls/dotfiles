@@ -1,1 +1,1 @@
-vim.cmd("colorscheme doom-one")
+vim.cmd "colorscheme doom-one"

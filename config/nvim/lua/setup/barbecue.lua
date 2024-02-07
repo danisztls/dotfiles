@@ -1,6 +1,6 @@
-require("barbecue").setup({
+require("barbecue").setup {
   create_autocmd = false, -- prevent barbecue from updating itself automatically
-})
+}
 
 vim.api.nvim_create_autocmd({
   "WinScrolled", -- or WinResized on NVIM-v0.9 and higher

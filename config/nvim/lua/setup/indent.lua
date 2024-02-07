@@ -18,6 +18,5 @@ vim.cmd [[highlight IndentBlanklineContextChar guifg=#4EFA80 gui=nocombine]]
 --   show_trailing_blankline_indent = true,
 -- }
 
-
 -- v3
 require("ibl").setup()

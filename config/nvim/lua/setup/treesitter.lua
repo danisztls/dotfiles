@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup {
   ensure_installed = "all",
   ignore_install = { "t32" },
   sync_install = false,
@@ -21,8 +21,8 @@ require'nvim-treesitter.configs'.setup {
   },
 
   indent = {
-    enable = true
-  }
+    enable = true,
+  },
 }
 
 vim.o.foldmethod = "expr"

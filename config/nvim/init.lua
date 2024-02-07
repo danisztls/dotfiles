@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   command = "set conceallevel=0",
 })
 
--- NOTE: it doesn't work with BufReadPre event 
+-- NOTE: it doesn't work with BufReadPre event
 vim.api.nvim_create_autocmd({ "BufRead", "FileReadPre" }, {
   pattern = { "*" },
   callback = function()

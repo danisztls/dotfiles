@@ -2,7 +2,7 @@ local lsp = require "lspconfig"
 
 local lsp_config = {
   -- on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').default_capabilities()
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
 
 lsp.lua_ls.setup(lsp_config)
