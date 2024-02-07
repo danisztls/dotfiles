@@ -33,6 +33,28 @@ function CleanTrailingWhitespaces()
 end
 vim.api.nvim_set_keymap("n", "<leader>x", ":lua CleanTrailingWhitespaces()<CR>", { noremap = true, silent = true })
 
+function DisableSyntaxTreesitter()
+  if vim.fn.exists ":TSBufDisable" then
+    vim.cmd "TSBufDisable autotag"
+    vim.cmd "TSBufDisable highlight"
+    vim.cmd "TSBufDisable incremental_selection"
+    vim.cmd "TSBufDisable indent"
+    vim.cmd "TSBufDisable playground"
+    vim.cmd "TSBufDisable query_linter"
+    vim.cmd "TSBufDisable rainbow"
+    vim.cmd "TSBufDisable refactor.highlight_definitions"
+    vim.cmd "TSBufDisable refactor.navigation"
+    vim.cmd "TSBufDisable refactor.smart_rename"
+    vim.cmd "TSBufDisable refactor.highlight_current_scope"
+    vim.cmd "TSBufDisable textobjects.swap"
+    -- vim.cmd('TSBufDisable textobjects.move')
+    vim.cmd "TSBufDisable textobjects.lsp_interop"
+    vim.cmd "TSBufDisable textobjects.select"
+  end
+
+  vim.opt.foldmethod = "manual"
+end
+
 -- AUTOCOMMANDS
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.tsv" },
@@ -42,6 +64,17 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.json" },
   command = "set conceallevel=0",
+})
+
+-- NOTE: it doesn't work with BufReadPre event 
+vim.api.nvim_create_autocmd({ "BufRead", "FileReadPre" }, {
+  pattern = { "*" },
+  callback = function()
+    -- if file is larger than 512 KiB
+    if vim.fn.getfsize(vim.fn.expand "%:p") > 512 * 1024 then
+      DisableSyntaxTreesitter()
+    end
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
