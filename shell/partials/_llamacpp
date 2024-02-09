@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# shellcheck disable=SC2139
+
+MODELS_DIR="${HOME}/.models/llm/"
+LOG_DIR="${XDG_DATA_HOME}/llama.cpp"
+LLAMA_OPTS="--color --log-disable -ld ${LOG_DIR}"
+# NOTE: --log-disable will disable printing debug traces and writing to ~/main.log while -fd <PATH> will save YAML files to the dir.
+
+alias llama.cpp="llama.cpp ${LLAMA_OPTS}"
+alias llama.cpp-llama2-7b="llama.cpp ${LLAMA_OPTS} -m ${MODELS_DIR}/llama-2-7b-chat.Q5_K_M.gguf"
+alias llama.cpp-mixtral-8x7b="llama.cpp  ${LLAMA_OPTS} -m ${MODELS_DIR}/mixtral-8x7b-q4k-small.gguf"
