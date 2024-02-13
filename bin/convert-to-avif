@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# title: convert-to-avif
+# description: downscale pictures and convert to AVIF
+# author: Daniel Souza <daniel at posix.dev.br>
+# license: MIT
+
+_fmt_bold="\e[0;1m"
+_fmt_red="\e[1;31m"
+_fmt_clear="\e[0;0m"
+
+# 2K 16:9
+ASPECT_RATIO=1.78
+TARGET_WIDTH=2560
+TARGET_HEIGHT=1440
+# DRY_MODE_CONV=True
+
+findPics() {
+  local query="$1"
+  fd --ignore-case --unrestricted "$query" 
+}
+
+convertPic() {
+  local src="$1"
+  local dst="${src%.*}.avif" 
+  width=$(identify -format "%w" "$src")
+  height=$(identify -format "%h" "$src")
+  aspect_ratio=$(echo "$width/$height" | bc -l)
+
+  if [ "$DRY_MODE_CONV" == "True" ]
+  then
+    printf "%s\n" "$src"
+  else
+    #  downscale based on height or width depending on the aspect ratio
+    if (( $(echo "$aspect_ratio > $ASPECT_RATIO" | bc -l) )); then
+      convert "$src" -resize "x${TARGET_HEIGHT}>" "$dst"
+    else
+      convert "$src" -resize "${TARGET_WIDTH}x>" "$dst"
+    fi
+    # remove source
+    rm "$src"
+  fi
+}
+
+convertPics() {
+  mapfile -t pictures < <(findPics '^.*\.(jpg|jpeg|png|webp)$')
+  for file in "${pictures[@]}"; do
+    if [ "${file##*.}" = "avif" ]; then
+      # skip if the picture was already transformed (ends with AVIF extension)
+      continue
+    else
+      convertPic "$file"
+    fi
+  done
+}
+
+fileMode() {
+  local src_file="$1"
+  printf "Converting file: ${_fmt_bold}%s${_fmt_clear}\n\n" "$src_file"
+  convertPic "$src_file"
+}
+
+dirMode() {
+  local src_dir="$1"
+  cd "$src_dir" || exit
+  printf "Working from directory: ${_fmt_bold}%s${_fmt_clear}\n\n" "$src_dir"
+  printf "${_fmt_red}%s${_fmt_clear}\n\n${_fmt_bold}" "Warning! This will downscale, convert and delete the sources of all the pictures inside this directory."
+  read -p "Are you sure? (y/N) " -n 1 -r
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit
+  fi
+  echo -e "${_fmt_clear}\n"
+  convertPics
+}
+
+main() {
+  if [ "$DRY_MODE_CONV" == "True" ]
+  then
+    printf "${_fmt_red}%s${_fmt_clear}\n\n${_fmt_bold}" "Dry mode is enabled! No modifications will be made. It will print path instead."
+  fi
+  if [ -d "$1" ];
+  then
+    dirMode "$1"
+  elif [ -f "$1" ]
+  then
+    fileMode "$1"
+  else
+    exit
+  fi
+}
+
+main "$@"

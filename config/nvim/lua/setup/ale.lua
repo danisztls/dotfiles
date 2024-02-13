@@ -1,18 +1,33 @@
 vim.g.ale_lint_on_enter = 1
 -- vim.g.ale_lint_on_text_changed = 'never'
 -- vim.g.ale_lint_on_insert_leave = 0
+vim.g.ale_fix_on_save = 1
+vim.ale_disable_lsp = 1
+-- vim.g.ale_linters = {
+-- 	markdown = { "prettier" },
+-- 	html = { "prettier" },
+-- 	css = { "prettier", "stylelint" },
+-- 	scss = { "prettier", "stylelint" },
+-- 	javascript = { "prettier", "eslint" },
+-- 	yaml = { "prettier" },
+-- 	python = { "black" },
+-- 	lua = { "stylua" },
+-- }
 
--- linters & fixers
-vim.g.ale_linters = {
-  html = { "prettier" },
-  javascript = { "prettier", "eslint" },
+vim.g.ale_fixers = {
+  ["*"] = { "remove_trailing_lines", "trim_whitespace"},
+	markdown = { "prettier" },
+	html = { "prettier" },
+	css = { "prettier", "stylelint" },
+	scss = { "prettier", "stylelint" },
+	javascript = { "prettier", "eslint" },
+	yaml = { "prettier" },
+	python = { "black" },
+	lua = { "stylua" },
 }
 
-vim.g.ale_fixers = { "prettier", "eslint" }
-
 vim.g.ale_pattern_options = {
-  ["\\.min.js$"] = { ale_enabled = 0 },
-  ["\\.md$"] = { ale_enabled = 0 },
+	["\\.min.js$"] = { ale_enabled = 0 },
 }
 
 -- binds
@@ -21,5 +36,5 @@ vim.api.nvim_set_keymap("n", "<C-b>", "<Plug>(ale_previous_wrap)", { silent = tr
 vim.api.nvim_set_keymap("n", "<C-e>", "<Plug>(ale_next_wrap)", { silent = true })
 
 -- highlight
-vim.cmd "highlight ALEWarning ctermbg=yellow"
-vim.cmd "highlight ALEError ctermbg=red"
+vim.cmd("highlight ALEWarning ctermbg=yellow")
+vim.cmd("highlight ALEError ctermbg=red")
