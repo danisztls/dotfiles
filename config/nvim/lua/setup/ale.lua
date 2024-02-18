@@ -1,8 +1,8 @@
+vim.g.ale_disable_lsp = 1
 vim.g.ale_lint_on_enter = 1
 -- vim.g.ale_lint_on_text_changed = 'never'
 -- vim.g.ale_lint_on_insert_leave = 0
-vim.g.ale_fix_on_save = 1
-vim.ale_disable_lsp = 1
+
 -- vim.g.ale_linters = {
 -- 	markdown = { "prettier" },
 -- 	html = { "prettier" },
@@ -14,20 +14,21 @@ vim.ale_disable_lsp = 1
 -- 	lua = { "stylua" },
 -- }
 
-vim.g.ale_fixers = {
-  ["*"] = { "remove_trailing_lines", "trim_whitespace"},
-	markdown = { "prettier" },
-	html = { "prettier" },
-	css = { "prettier", "stylelint" },
-	scss = { "prettier", "stylelint" },
-	javascript = { "prettier", "eslint" },
-	yaml = { "prettier" },
-	python = { "black" },
-	lua = { "stylua" },
-}
+-- vim.g.ale_fix_on_save = 1 -- not working
+-- vim.g.ale_fixers = {
+--   ["*"] = { "remove_trailing_lines", "trim_whitespace"},
+-- 	markdown = { "prettier" },
+-- 	html = { "prettier" },
+-- 	css = { "prettier", "stylelint" },
+-- 	scss = { "prettier", "stylelint" },
+-- 	javascript = { "prettier", "eslint" },
+-- 	yaml = { "prettier" },
+-- 	python = { "black" },
+-- 	lua = { "stylua" },
+-- }
 
 vim.g.ale_pattern_options = {
-	["\\.min.js$"] = { ale_enabled = 0 },
+  ["\\.min.js$"] = { ale_enabled = 0 },
 }
 
 -- binds
