@@ -9,4 +9,5 @@ LLAMA_OPTS="--color --log-disable -ld ${LOG_DIR}"
 
 alias llama.cpp="llama.cpp ${LLAMA_OPTS}"
 alias llama.cpp-llama2-7b="llama.cpp ${LLAMA_OPTS} -m ${MODELS_DIR}/llama-2-7b-chat.Q5_K_M.gguf"
+alias llama.cpp-llama2-13b="llama.cpp ${LLAMA_OPTS} -m ${MODELS_DIR}/llama-2-13b-chat.Q5_K_M.gguf"
 alias llama.cpp-mixtral-8x7b="llama.cpp  ${LLAMA_OPTS} -m ${MODELS_DIR}/mixtral-8x7b-q4k-small.gguf"
