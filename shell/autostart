@@ -5,3 +5,20 @@
 
 # Delete from trash files older than 7 days
 # (sleep 30 && trash-empty 14) &
+
+# Link temporary stuff to /run/user/$UID to avoid unwanted writes to disk
+# TODO: This works but isn't robusts. Would be great to do the same for other know offenders like Chromium.
+config_dirs=("variety/wallpaper")
+config_files=("variety/history.txt" "variety/variety.log" "variety/.last_change_time")
+
+for _dir in "${config_dirs[@]}"; do
+  rm -rf "${XDG_CONFIG_HOME:?}/$_dir" &&
+  mkdir -p "/run/user/$UID/config/$_dir" &&
+  ln -s "/run/user/$UID/config/$_dir" "${XDG_CONFIG_HOME:?}/$_dir"
+done
+
+for _file in "${config_files[@]}"; do
+  rm -f "${XDG_CONFIG_HOME:?}/$_file" &&
+  touch "/run/user/$UID/config/$_file" &&
+  ln -s "/run/user/$UID/config/$_file" "${XDG_CONFIG_HOME:?}/$_file"
+done
