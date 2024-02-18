@@ -5,6 +5,17 @@
       "template": "{{input}}",
       "strategy": "replace",
       "params": {
+        "model": "gpt-4",
+        "temperature": 0.8
+      }
+    }
+  },
+  "generic_task_turbo": {
+    "type": "chat",
+    "opts": {
+      "template": "{{input}}",
+      "strategy": "replace",
+      "params": {
         "model": "gpt-3.5-turbo",
         "temperature": 0.8
       }
