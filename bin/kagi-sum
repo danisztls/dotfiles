@@ -5,7 +5,7 @@
 # @author: Daniel Souza <me@posix.dev.br>
 # @license: MIT
 # @usage: kagi-sum <video_URL>
-# @deps: curl
+# @deps: curl, jq
 # @docs: https://help.kagi.com/kagi/api/summarizer.html
 
 
@@ -21,6 +21,8 @@ fi
 
 _url="$1"
 
-curl -v \
+curl -s \
   -H "Authorization: Bot $KAGI_TOKEN" \
-  "https://kagi.com/api/v0/summarize?engine=muriel&url=$_url"
+  "https://kagi.com/api/v0/summarize?engine=muriel&url=$_url" |
+
+jq .data.output
