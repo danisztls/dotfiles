@@ -34,8 +34,8 @@ export XDG_VIDEOS_DIR="$HOME/Public/fun/watch/Videos"
 # extra dirs
 export DOTFILES_HOME="$HOME/.dotfiles"
 
-# open with default app and supress stdout
-alias x='xdg-open 2>/dev/null'
+# SSH
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 
 # History
 export HISTFILE="$XDG_DATA_HOME/shell/history"
