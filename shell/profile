@@ -10,11 +10,10 @@ export VISUAL="alacritty -e 'nvim'"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'" MANROFFOPT="-c"
 export BROWSER="brave"
 
-# shellcheck disable=SC2139
 alias b="$BROWSER"
-# shellcheck disable=SC2139
 alias e="$EDITOR"
 alias q='exit'
+alias x='xdg-open 2>/dev/null'
 
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -51,12 +50,6 @@ export PATH
 # Colorized output and alternatives
 # check: https://wiki.archlinux.org/index.php/Color_output_in_console 
 
-# load Generic Colouriser (GRC) aliases
-# note: Wrappers replace output of commands with escape sequences. Some shell scripts and programs which use the output of standard shell utilities may work wrong.
-[ -s "/etc/profile.d/grc.sh" ] && . "/etc/profile.d/grc.sh"
-
-# alias ls='ls --color=auto'
-# alias ls='exa --long --git' # exa is close but not fully compliant with ls
 alias ls='eza'
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
