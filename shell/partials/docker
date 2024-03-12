@@ -10,5 +10,8 @@
 # Rootless
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
+# BuildKit
+DOCKER_BUILDKIT=1
+
 alias d='docker'
 alias d+='docker-compose'
