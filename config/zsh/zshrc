@@ -95,4 +95,4 @@ bindkey '^e' edit-command-line
 eval "$(starship init zsh)"
 
 # Direnv
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"

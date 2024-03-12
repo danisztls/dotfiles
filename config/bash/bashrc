@@ -26,4 +26,4 @@ esac
 eval "$(starship init bash)"
 
 # Direnv
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
