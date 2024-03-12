@@ -1,0 +1,14 @@
+[Unit]
+Description=Transmission
+After=network.target
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=transmission-daemon --log-level=error
+ExecStop=transmission-remote --exit 
+Restart = always
+RestartSec = 5
+
+[Install]
+WantedBy=default.target
