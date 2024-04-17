@@ -5,4 +5,4 @@ Wants=default.target
 [Service]
 Type=simple
 ExecStart=yt-dlp
-WorkingDirectory=%h/Videos/Youtube
+WorkingDirectory=%h/Videos
