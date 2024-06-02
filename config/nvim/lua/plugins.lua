@@ -12,12 +12,12 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- FIXME: This doesn't work. Every time I update I have to run PackerUpdate & PackerCompile.
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]]
+-- vim.cmd [[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--   augroup end
+-- ]]
 
 -- TODO: Automate updates?
 
@@ -69,11 +69,12 @@ return require("packer").startup(function(use)
   use "dstein64/nvim-scrollview"
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup "treesitter" }
-  use {
-    "nvim-treesitter/nvim-treesitter-context",
-    after = "nvim-treesitter",
-  }
+  -- use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup "treesitter" }
+  -- use {
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   after = "nvim-treesitter",
+  -- }
+  --
   -- use({
   --   -- TODO: Configure
   --   "nvim-treesitter/nvim-treesitter-textobjects",
