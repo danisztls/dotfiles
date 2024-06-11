@@ -78,11 +78,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "FileReadPre" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = { "*work/wmf/*" },
+  pattern = { "*Dev-External/wmf/*" },
   command = "set noexpandtab tabstop=4 shiftwidth=4",
 })
 
 -- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
---   pattern = { "*work/wmf/**/*.{html,js,css,scss,php}" },
+--   pattern = { "*Dev-External/wmf/**/*.{html,js,css,scss,php}" },
 --   command = "set noet ts=4 sw=4",
 -- })
