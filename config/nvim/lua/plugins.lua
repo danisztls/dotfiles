@@ -143,14 +143,19 @@ return require("packer").startup(function(use)
   }
 
   -- ChatGPT
+  -- use {
+  --   "jackMort/ChatGPT.nvim",
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  --   config = get_setup "chatgpt/config",
+  -- }
+
   use {
-    "jackMort/ChatGPT.nvim",
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = get_setup "chatgpt/config",
+    "robitx/gp.nvim",
+    config = get_setup "gp",
   }
 
   -- Copilot
