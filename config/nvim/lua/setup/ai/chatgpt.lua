@@ -3,7 +3,7 @@ local chatgpt = require "chatgpt"
 -- defaults: https://github.com/jackMort/ChatGPT.nvim/blob/main/lua/chatgpt/config.lua
 
 chatgpt.setup {
-  actions_paths = { "~/.config/nvim/lua/setup/chatgpt/actions.json" },
+  actions_paths = { "~/.config/nvim/lua/setup/ai/chatgpt.json" },
   openai_params = {
     model = "gpt-4o",
     frequency_penalty = 0,
