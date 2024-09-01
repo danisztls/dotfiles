@@ -24,7 +24,6 @@ return require("packer").startup(function(use)
   }
 
   -- UI 
-  -- TODO: Experiment with darken/brighten functions
   use { "olimorris/onedarkpro.nvim", config = get_setup "ui/onedarkpro" }
 
   use {
