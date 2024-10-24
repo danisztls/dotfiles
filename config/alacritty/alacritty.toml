@@ -1,5 +1,3 @@
-# dynamic_title = true
-import = ["/home/dani/.config/alacritty/dracula.toml"]
 
 [font]
 size = 12.0
@@ -18,3 +16,7 @@ decorations = "full"
 [window.dimensions]
 columns = 120
 lines = 50
+
+[general]
+# dynamic_title = true
+import = ["/home/dani/.config/alacritty/dracula.toml"]
