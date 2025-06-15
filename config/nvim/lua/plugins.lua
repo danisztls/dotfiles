@@ -65,11 +65,11 @@ return require("packer").startup(function(use)
   use { "godlygeek/tabular", config = get_setup "format/tabular" }
 
   -- Treesitter
-  -- use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup "treesitter" }
-  -- use {
-  --   "nvim-treesitter/nvim-treesitter-context",
-  --   after = "nvim-treesitter",
-  -- }
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup "treesitter" }
+  use {
+    "nvim-treesitter/nvim-treesitter-context",
+    after = "nvim-treesitter",
+  }
   --
   -- use({
   --   -- TODO: Configure
