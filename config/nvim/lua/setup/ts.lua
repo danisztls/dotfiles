@@ -1,6 +1,6 @@
 require("nvim-treesitter.configs").setup {
   ensure_installed = "all",
-  ignore_install = { "t32" },
+  ignore_install = { "t32", "fusion", "jsonc", "blueprint", "ipkg" }, -- they are failing to install
   sync_install = false,
   auto_install = true,
 

@@ -1,3 +1,4 @@
+-- TODO: Replace Packer with vim.pack() after Neovim 0.12
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -46,11 +47,6 @@ return require("packer").startup(function(use)
     config = get_setup "navigate/telescope",
   }
   use "tpope/vim-vinegar"
-  use {
-    "phaazon/hop.nvim",
-    branch = "v2",
-    config = get_setup "navigate/hop",
-  }
 
   -- Git
   use { "tpope/vim-fugitive", config = get_setup "git/fugitive" }
@@ -65,7 +61,7 @@ return require("packer").startup(function(use)
   use { "godlygeek/tabular", config = get_setup "format/tabular" }
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup "treesitter" }
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_setup "ts" }
   use {
     "nvim-treesitter/nvim-treesitter-context",
     after = "nvim-treesitter",
@@ -96,6 +92,7 @@ return require("packer").startup(function(use)
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-emoji",
       "chrisgrieser/cmp-nerdfont",
+      "nvim-mini/mini.icons",
       "hrsh7th/cmp-latex-symbols",
       "hrsh7th/cmp-calc",
       "ray-x/cmp-treesitter",
@@ -107,7 +104,7 @@ return require("packer").startup(function(use)
   use {
     "neovim/nvim-lspconfig",
     after = "nvim-cmp",
-    config = get_setup "code/lsp",
+    config = get_setup "lsp",
   }
 
   use {
